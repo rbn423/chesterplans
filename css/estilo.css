@@ -1,0 +1,279 @@
+body{
+    height: 100%;
+    margin: 0;
+}
+@media only screen and (max-width: 1400px) {
+	div#cabecera {	
+		height: 20%;
+		background-color: white;
+		border-bottom: black 2px solid;
+	}
+
+	div#cabecera a{
+		color: white;	
+	}
+
+	div#cabecera img{
+		padding-top:20px;
+		padding-left:20px;
+	}
+
+	div#cabecera div#login div#boton {
+		float:right;
+		margin-top: -20px;
+	}
+
+	div#cabecera div#login{
+		float: right;
+		background-color: white;
+		padding-top: -20px;
+		padding-left: 10px;
+		padding-right:10px;
+		height: 90%;
+		border: black 2px solid;
+		color: black;
+		margin-right:10px;
+		margin-top:5px;
+	}	
+
+	div#menu{
+		float: bottom;
+		background-color: white;
+		height: 5%;
+		color: white;
+		text-align:center;
+	}
+
+	div#menu span#apartado{
+		text-align: center;
+		width: 19.8%;
+		height: 100%;
+		float:left;
+		border-right: black 2px solid;
+		padding-top: 10px;
+	}
+
+	div#menu span#ultimo{
+		text-align: center;
+		width: 19.8%;
+		height: 100%;
+		float:left;
+		padding-top: 10px;
+	}
+
+	div#izquierda {
+		float: left;
+		width: 20%;
+		height: 65%;
+		background-color: #dddddd;
+		border-top: black 2px solid;
+	}
+
+	div#derecha {
+		float: right;
+		width: 20%;
+		height: 65%;
+		background-color: #dddddd;
+		border-top: black 2px solid;
+	}
+
+	div#contenido {
+		float: left;
+		height: 65%;
+		width: 60%;
+		background-color: white;
+		color: black;
+		border-top: black 2px solid;
+	}
+
+	div#pie {
+		clear: both;
+		background-color: black;
+		color: white;
+		text-align: center;
+		height: 8%;
+	}
+	
+	div#registro{
+		border: black 2px solid;
+		padding-left:20px;
+		width: 48%;
+		margin-left: 25%;
+		margin-top: 2%;
+	}
+	
+	div#registro h1{
+		font-size: 200%;
+		text-align:center;
+	}
+}
+
+@media only screen and (min-width : 1400px) and(max-width: 2000px) {
+	div#cabecera {	
+		height: 15%;
+		background-color: white;
+		color: white;
+		border-bottom: black 2px solid;
+	}
+
+	div#cabecera a{
+		color: white;	
+	}
+
+	div#cabecera img{
+		padding-top:25px;
+		padding-left:20px;
+	}
+
+	div#cabecera div#boton {
+		float:right;
+		margin-top: -20px;
+	}
+
+	div#cabecera div#login{
+		float: right;
+		background-color: white;
+		padding-left: 10px;
+		padding-right:10px;
+		height: 80%;
+		border: black 2px solid;
+		color: black;
+		margin-right:10px;
+		margin-top:0.6%;
+	}	
+
+	div#menu{
+		float: bottom;
+		background-color: white;
+		height: 5%;
+		color: white;
+		text-align:center;
+	}
+
+	div#menu div#apartado{
+		text-align: center;
+		width: 19.8%;
+		height: 100%;
+		float:left;
+		border-right: black 2px solid;
+		padding-top: 10px;
+	}
+
+	div#menu div#ultimo{
+		text-align: center;
+		width: 19.8%;
+		height: 100%;
+		float:left;
+		padding-top: 10px;
+	}
+
+	div#izquierda {
+		float: left;
+		width: 20%;
+		height: 70%;
+		background-color: #dddddd;
+		border-top: black 2px solid;
+	}
+
+	div#derecha {
+		float: right;
+		width: 20%;
+		height: 70%;
+		background-color: #dddddd;
+		border-top: black 2px solid;
+	}
+
+	div#contenido {
+		float: left;
+		min-height: 65%;
+		height: 65%;
+		width: 70%;
+		background-color: white;
+		color: black;
+		border-top: black 2px solid;
+	}
+
+	div#pie {
+		clear: both;
+		background-color: black;
+		color: white;
+		text-align: center;
+		height: 8.6%;
+	}
+	
+	div#registro{
+		border: black 2px solid;
+		padding-left:20px;
+		width: 48%;
+		margin-left: 25%;
+		margin-top: 2%;
+	}
+	
+	div#registro h1{
+		font-size: 200%;
+		text-align:center;
+	}
+}
+
+
+
+
+
+
+
+
+div#cabecera a, div#cabecera a:visited {
+	color: black;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+div#cabecera a:hover {
+	color: red;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+div#izquierda a, div#izquierda a:visited {
+	color: red;
+	font-weight: bold;
+	text-decoration: none;
+} 
+
+div#izquierda a:hover {
+	color: red;
+	text-decoration: underline;
+}
+
+div.saludo {
+	width: 100%;
+	text-align: right;
+}
+
+div.novedades {
+	text-align: right;
+}
+
+fieldset {
+	border: 1px solid black;
+	width: 15em;
+	margin: 0 auto;
+}
+
+legend {
+	color: #fff;
+	background: #303030;
+	border: 1px solid black;
+	padding: 2px 6px;
+} 
+
+label {
+	width: 4em;
+	text-align: right;
+	margin-right: 0.5em;
+	display: inline-block;
+}
+
+button {
+	margin-left: 100px;
+}
