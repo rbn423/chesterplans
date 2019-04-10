@@ -1,23 +1,22 @@
 <?php
 	require("includes/config.php");
-	
+	require_once ('includes/Usuario.php');
+
 	$nombre = htmlspecialchars(trim(strip_tags($_REQUEST["nombre"])));
 	$contraseña = htmlspecialchars(trim(strip_tags($_REQUEST["contra"])));
-	$conn = $app->conexionBd();
 	
-	$query="SELECT * FROM usuario WHERE NICK='$nombre' AND PASSWORD='$contraseña'";
-	
-	$resultado = $conn->query($query)
-		or die ($conn->error. " en la línea ".(__LINE__-1));
+	$usuario = Usuario::login($nombre, $contraseña);
 
-	if($resultado->num_rows==1 && $nombre!="" && $contraseña!=""){
-		$SESSION["nombre"]=$nombre;
-		$SESSION["contraseña"]=$contraseña;
+	if($usuario){
+		$SESSION["nombre"]=$usuario->nombre();
 		$_SESSION["login"]=true;
-		$_SESSION["nick"]=$nombre;
+		$_SESSION["nick"]=$usuario->nick();
+		$_SESSION["apellidos"]=$usuario->apellidos();
+		$_SESSION["mail"]=$usuario->mail();
+		$_SESSION["telefono"]=$usuario->telefono();
+		$_SESSION["tipo"]=$usuario->tipo();
 		header('Location: index.php');
 	}
-	mysqli_close($conn);
 ?>
 
 <html>
