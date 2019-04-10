@@ -188,7 +188,7 @@ CREATE TABLE `usuario` (
   `NICK` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `NOMBRE` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `APELLIDOS` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `PASSWORD` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `PASSWORD` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `MAIL` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `TELEFONO` int(12) NOT NULL,
   `TIPO` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
