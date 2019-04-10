@@ -7,7 +7,7 @@
 		else{
 			echo '<div id="login">';
 			echo '<form method="post" action="logout.php">';
-			echo '<p>Hola, '.$_SESSION["nick"].'</p>';
+			echo '<p>Hola, '.$_SESSION["nombre"].' <a href="miPerfil.php">Mi Perfil</a></p>';
 			echo '<input type="submit" value="Logout">';
 			echo '</form>';
 			echo'</div>';

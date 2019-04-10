@@ -7,6 +7,15 @@
 	$rcontraseña = htmlspecialchars(trim(strip_tags($_REQUEST["rcontraseña"])));
 	$email = htmlspecialchars(trim(strip_tags($_REQUEST["email"])));
 	$telefono = htmlspecialchars(trim(strip_tags($_REQUEST["telefono"])));
+	
+	$mysqli = new mysqli("localhost", "admin","admin", "chesterplans");
+	if(mysqli_connect_error()){
+		echo "Error de conexión a la BD: ".mysql_connect_error();
+		exit();
+	}
+	$querynick="SELECT * FROM usuario WHERE NICK='$nick'";
+	$resultado=$mysqli->query($querynick)
+			or die ($mysqli->error. " en la línea ".(__LINE__-1));
 ?>
 
 <html>
@@ -24,20 +33,11 @@
 		?>
 		<div id="contenido">
 			<?php
-				$mysqli = new mysqli("localhost", "admin","admin", "chesterplans");
-				if(mysqli_connect_error()){
-					echo "Error de conexión a la BD: ".mysql_connect_error();
-					exit();
-				}
-				$querynick="SELECT * FROM usuario WHERE NICK='$nick'";
-				$resultado=$mysqli->query($querynick)
-						or die ($mysqli->error. " en la línea ".(__LINE__-1));
 				if($nick!="" && $nombre!="" && $apellidos!="" && $contraseña!="" && $email!="" && $telefono!=""){
 					if($resultado->num_rows==0){
 						if($contraseña==$rcontraseña){
 							$query="INSERT INTO usuario (NICK,NOMBRE,APELLIDOS,PASSWORD,MAIL,TELEFONO) 
 									VALUES ('$nick','$nombre','$apellidos','$contraseña','$email','$telefono')";
-							//Ver como vamos a hacer lo del tipo
 							$mysqli->query($query)
 								or die ($mysqli->error. " en la línea ".(__LINE__-1));
 							echo '<p> ¡Enhorabuena '.$nick.', ya te has registrado!</p>';

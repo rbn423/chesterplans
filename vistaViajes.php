@@ -10,7 +10,7 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
 		<meta charset="utf-8">
-		<title> viajes </title>
+		<title> Inicio </title>
 	</head>
 	<body>
 
@@ -20,6 +20,7 @@
 			require("includes/comun/izquierda.php");
 		?>
 			<div id="contenido">
+				<div id="viajes">
 				<?php
 					$sql = "SELECT id FROM viaje";
 					$busquedas = $mysqli->query($sql);
@@ -31,7 +32,7 @@
 							$sql = "SELECT * FROM viaje where id = '$valor'";
 							$experiencia = $mysqli->query($sql);
 							$experiencia = $experiencia->fetch_assoc();
-							echo '<div id="cuadroExperiencia">';
+							echo '<div id="viaje">';
 								echo '<h1><a href="viaje.php?id='.$valor.'">'.$experiencia["TITULO"].'</a></h1>';
 								echo '<p>'.$experiencia["DESCB"].'<p>';
 								echo '<p>De '.$experiencia["FECHAINI"].' a '.$experiencia["FECHAFIN"]. '<p>';
@@ -40,6 +41,7 @@
 						}
 					}
 				?>
+				</div>
 			</div>
 		<?php
 			require("includes/comun/derecha.php");

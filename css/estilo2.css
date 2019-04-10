@@ -3,10 +3,6 @@ body{
     margin: 0;
 }
 @media only screen and (max-width: 1400px) {
-	* {
-		box-sizing: border-box;
-	}
-	
 	div#cabecera {	
 		height: 20%;
 		background-color: white;
@@ -38,31 +34,29 @@ body{
 		color: black;
 		margin-right:10px;
 		margin-top:5px;
-	}
-	
+	}	
 
 	div#menu{
 		float: bottom;
 		background-color: white;
-		height: 7%;
+		height: 5%;
 		color: white;
 		text-align:center;
 	}
 
 	div#menu span#apartado{
 		text-align: center;
-		width: 20%;
+		width: 19.8%;
 		height: 100%;
 		float:left;
 		border-right: black 2px solid;
 		padding-top: 10px;
 		border-bottom: black 2px solid;
-		box-sizing: border-box;
 	}
 
 	div#menu span#ultimo{
 		text-align: center;
-		width: 20%;
+		width: 20.2%;
 		height: 100%;
 		float:left;
 		padding-top: 10px;
@@ -94,10 +88,10 @@ body{
 
 	div#pie {
 		clear: both;
-		background-color: #E9E8E2;
-		color: black;
+		background-color: black;
+		color: white;
 		text-align: center;
-		height: 8%;
+		height: 7.9%;
 	}
 	
 	div#registro{
@@ -113,13 +107,13 @@ body{
 		text-align:center;
 	}
 	
-	
-	div#contenido div#experiencia{
-		border-bottom: black 1px solid;
-		text-align: center;
+	div#contenido div#experiencias {
+		margin:20px;
+		border: black 2px solid;
 	}
 	
-	div#contenido div#ultimaexperiencia{
+	div#contenido div#experiencias div#experiencia{
+		border: black 1px solid;
 		text-align: center;
 	}
 	
@@ -146,7 +140,7 @@ body{
 
 @media only screen and (min-width : 1400px){
 	div#cabecera {	
-		height: 16.5%;
+		height: 15%;
 		background-color: white;
 		color: white;
 		border-bottom: black 2px solid;
@@ -181,7 +175,7 @@ body{
 	div#menu{
 		float: bottom;
 		background-color: white;
-		height: 3.5%;
+		height: 5%;
 		color: white;
 		text-align:center;
 	}
@@ -198,7 +192,7 @@ body{
 
 	div#menu span#ultimo{
 		text-align: center;
-		width: 20.38%;
+		width: 20.2%;
 		height: 100%;
 		float:left;
 		padding-top: 10px;
@@ -234,7 +228,7 @@ body{
 		background-color: black;
 		color: white;
 		text-align: center;
-		height: 8.6%;
+		height: 9.9%;
 	}
 	
 	div#registro{
