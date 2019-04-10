@@ -1,34 +1,27 @@
 <?php
-	session_start();
-	
+	require("includes/config.php");
+	require_once ('includes/Usuario.php');
+
 	$nombre = htmlspecialchars(trim(strip_tags($_REQUEST["nombre"])));
 	$contraseña = htmlspecialchars(trim(strip_tags($_REQUEST["contra"])));
-	$mysqli = new mysqli("localhost", "admin","admin", "chesterplans");
-	if(mysqli_connect_error()){
-		echo "Error de conexión a la BD: ".mysql_connect_error();
-		exit();
-	}
 	
-	$query="SELECT * FROM usuario WHERE NICK='$nombre' AND PASSWORD='$contraseña'";
-	
-	$resultado = $mysqli->query($query)
-		or die ($mysqli->error. " en la línea ".(__LINE__-1));
+	$usuario = Usuario::login($nombre, $contraseña);
 
-	if($resultado->num_rows==1 && $nombre!="" && $contraseña!=""){
-		$resultado=$resultado->fetch_assoc();
-		$_SESSION["nombre"]=$resultado["NOMBRE"];
-		$_SESSION["contraseña"]=$contraseña;
+	if($usuario){
+		$SESSION["nombre"]=$usuario->nombre();
 		$_SESSION["login"]=true;
-		$_SESSION["nick"]=$nombre;
+		$_SESSION["nick"]=$usuario->nick();
+		$_SESSION["apellidos"]=$usuario->apellidos();
+		$_SESSION["mail"]=$usuario->mail();
+		$_SESSION["telefono"]=$usuario->telefono();
+		$_SESSION["tipo"]=$usuario->tipo();
 		header('Location: index.php');
 	}
-	mysqli_close($mysqli);
 ?>
 
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
-		<meta charset="utf-8">
 		<title> Inicio </title>
 	</head>
 	<body>
