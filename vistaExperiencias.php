@@ -24,7 +24,6 @@
 					$sql = "SELECT id FROM experiencias";
 					$busquedas = $mysqli->query($sql);
 					$nexp=$busquedas->num_rows;
-					//$ultima= 
 					$busquedas = $busquedas->fetch_all();
 					$tam = sizeof($busquedas);
 					for ($i=0;$i<$nexp;$i++){
