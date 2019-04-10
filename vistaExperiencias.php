@@ -10,7 +10,7 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
 		<meta charset="utf-8">
-		<title> Experiencias </title>
+		<title> Inicio </title>
 	</head>
 	<body>
 
@@ -23,19 +23,25 @@
 				<?php
 					$sql = "SELECT id FROM experiencias";
 					$busquedas = $mysqli->query($sql);
+					$nexp=$busquedas->num_rows;
+					//$ultima= 
 					$busquedas = $busquedas->fetch_all();
 					$tam = sizeof($busquedas);
-					for ($i=0;$i<6;$i++){
-						if ($i < $tam){	
+					for ($i=0;$i<$nexp;$i++){
+						if ($i < $tam){
+							if($i!=$nexp-1)
+								echo '<div id="experiencia">';
+							else
+								echo '<div id="ultimaexperiencia">';
 							$valor = $busquedas[$i][0];
 							$sql = "SELECT * FROM experiencias where id = '$valor'";
 							$experiencia = $mysqli->query($sql);
 							$experiencia = $experiencia->fetch_assoc();
-							echo '<div id="cuadroExperiencia">';
-								echo '<h3><a href="experiencia.php?id='.$valor.'">'.$experiencia["TITULO"].'</a></h3>';
-								echo '<p>'.$experiencia["DESCB"].'<p>';
+							echo '<h3><a href="experiencia.php?id='.$valor.'">'.$experiencia["TITULO"].'</a></h3>';
+							echo '<p>'.$experiencia["DESCB"].'<p>';
 							echo '</div>';
 						}
+						
 					}
 				?>
 			</div>

@@ -15,7 +15,7 @@
 			require("includes/comun/izquierda.php");
 		?>
 			<div id="contenido">
-			 	<p>Bienvenido a ChesterPlans.</p>
+			 	<p>hola</p>
 			</div>
 		<?php
 			require("includes/comun/derecha.php");

@@ -11,7 +11,7 @@
 	<span id ="apartado">
 		<a href="vistaExperiencias.php">Experiencias</a>
 	</span>
-	<span id ="crear Experiencia">
+	<span id ="ultimo">
 		<a href="vistaCrearExperiencia.php">Crear experiencia</a>
 	</span>
 </div>
