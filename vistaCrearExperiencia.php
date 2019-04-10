@@ -1,15 +1,9 @@
 <?php
-	session_start();
-	$mysqli = new mysqli("localhost", "admin","admin", "chesterplans");
-	if(mysqli_connect_error()){
-		echo "Error de conexión a la BD: ".mysql_connect_error();
-		exit();
-	}
+	require("includes/config.php");
 ?>
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
-		<meta charset="utf-8">
 		<title> Crear Experiencia </title>
 	</head>
 	<body>

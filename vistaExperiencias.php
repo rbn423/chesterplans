@@ -1,6 +1,6 @@
 <?php
-	session_start();
-	$mysqli = new mysqli("localhost", "admin","admin", "chesterplans");
+	require("includes/config.php");
+	$conn = $app->conexionBd();
 	if(mysqli_connect_error()){
 		echo "Error de conexión a la BD: ".mysql_connect_error();
 		exit();
@@ -9,7 +9,6 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
-		<meta charset="utf-8">
 		<title> Inicio </title>
 	</head>
 	<body>
@@ -20,29 +19,29 @@
 			require("includes/comun/izquierda.php");
 		?>
 			<div id="contenido">
+				<div id="experiencias">
 				<?php
 					$sql = "SELECT id FROM experiencias";
-					$busquedas = $mysqli->query($sql);
-					$nexp=$busquedas->num_rows;
+					$busquedas = $conn->query($sql);
 					$busquedas = $busquedas->fetch_all();
 					$tam = sizeof($busquedas);
-					for ($i=0;$i<$nexp;$i++){
+					for ($i=0;$i<6;$i++){
 						if ($i < $tam){
-							if($i!=$nexp-1)
-								echo '<div id="experiencia">';
-							else
-								echo '<div id="ultimaexperiencia">';
+							echo '<div id="experiencia">';
 							$valor = $busquedas[$i][0];
 							$sql = "SELECT * FROM experiencias where id = '$valor'";
-							$experiencia = $mysqli->query($sql);
+							$experiencia = $conn->query($sql);
 							$experiencia = $experiencia->fetch_assoc();
-							echo '<h3><a href="experiencia.php?id='.$valor.'">'.$experiencia["TITULO"].'</a></h3>';
-							echo '<p>'.$experiencia["DESCB"].'<p>';
+							echo '<div id="cuadroExperiencia">';
+								echo '<h3><a href="experiencia.php?id='.$valor.'">'.$experiencia["TITULO"].'</a></h3>';
+								echo '<p>'.$experiencia["DESCB"].'<p>';
+							echo '</div>';
 							echo '</div>';
 						}
 						
 					}
 				?>
+				</div>
 			</div>
 		<?php
 			require("includes/comun/derecha.php");

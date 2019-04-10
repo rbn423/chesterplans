@@ -1,11 +1,11 @@
 <?php
-	session_start();
+	require("includes/config.php");
 	$nick = $_SESSION["nick"];
 	$titulo = htmlspecialchars(trim(strip_tags($_REQUEST["titulo"])));
 	$descb = htmlspecialchars(trim(strip_tags($_REQUEST["descb"])));
 	$texto = htmlspecialchars(trim(strip_tags($_REQUEST["descg"])));
 	if($titulo != "" && $descb != "" && $texto != ""){
-		$mysqli = new mysqli("localhost", "admin","admin", "chesterplans");
+		$conn = $app->conexionBd();
 		if(mysqli_connect_error()){
 			echo "Error de conexión a la BD: ".mysql_connect_error();
 			exit();
@@ -14,16 +14,15 @@
 		$id=$nick.$f;
 		$query="INSERT INTO experiencias (ID,TITULO,DESCB,DESCG,CREADOR) 
 			VALUES ('$id','$titulo','$descb','$texto','$nick')";
-		$mysqli->query($query)
-			or die ($mysqli->error. " en la línea ".(__LINE__-1));
-		mysqli_close($mysqli);
+		$conn->query($query)
+			or die ($conn->error. " en la línea ".(__LINE__-1));
+		mysqli_close($conn);
 	}
 ?>
 
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
-		<meta charset="utf-8">
 		<title> Experiencia creada </title>
 	</head>
 	<body>
