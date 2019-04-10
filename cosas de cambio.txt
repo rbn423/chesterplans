@@ -1,0 +1,13 @@
+Archivos donde he tocado:
+	-estilos.css
+	-registrado.php
+	-procesarLogin.php
+	-logout.php
+	-experiencia.php
+
+
+Archivos que deberiamos tocar:
+	-vistaViajes.php
+	-vistaEsperiencias.php
+	-vistaCrearExperiencia.php
+	

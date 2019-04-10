@@ -1,10 +1,9 @@
 <?php
-	session_start();
+	require("includes/config.php");
 ?>
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
-		<meta charset="utf-8">
 		<title> Inicio </title>
 	</head>
 	<body>
@@ -15,7 +14,7 @@
 			require("includes/comun/izquierda.php");
 		?>
 			<div id="contenido">
-			 	<p>Bienvenido a ChesterPlans.</p>
+			 	<p>hola</p>
 			</div>
 		<?php
 			require("includes/comun/derecha.php");
