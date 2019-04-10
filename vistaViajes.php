@@ -1,6 +1,6 @@
 <?php
-	session_start();
-	$mysqli = new mysqli("localhost", "admin","admin", "chesterplans");
+	require("includes/config.php");
+	$conn = $app->conexionBd();
 	if(mysqli_connect_error()){
 		echo "Error de conexión a la BD: ".mysql_connect_error();
 		exit();
@@ -9,7 +9,6 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
-		<meta charset="utf-8">
 		<title> Inicio </title>
 	</head>
 	<body>
@@ -23,14 +22,14 @@
 				<div id="viajes">
 				<?php
 					$sql = "SELECT id FROM viaje";
-					$busquedas = $mysqli->query($sql);
+					$busquedas = $conn->query($sql);
 					$busquedas = $busquedas->fetch_all();
 					$tam = sizeof($busquedas);
 					for ($i=0;$i<6;$i++){
 						if ($i < $tam){	
 							$valor = $busquedas[$i][0];
 							$sql = "SELECT * FROM viaje where id = '$valor'";
-							$experiencia = $mysqli->query($sql);
+							$experiencia = $conn->query($sql);
 							$experiencia = $experiencia->fetch_assoc();
 							echo '<div id="viaje">';
 								echo '<h1><a href="viaje.php?id='.$valor.'">'.$experiencia["TITULO"].'</a></h1>';

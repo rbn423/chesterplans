@@ -1,10 +1,9 @@
 <?php
-
+	require("includes/config.php");
 ?>
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
-		<meta charset="utf-8">
 		<title> Inicio </title>
 	</head>
 	<body>

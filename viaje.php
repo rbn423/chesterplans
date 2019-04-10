@@ -1,24 +1,23 @@
 <?php
-	session_start();
-	$mysqli = new mysqli("localhost", "admin","admin", "chesterplans");
+	require("includes/config.php");
+	$conn = $app->conexionBd();
 	if(mysqli_connect_error()){
 		echo "Error de conexiÃ³n a la BD: ".mysql_connect_error();
 		exit();
 	}
 	$id=$_GET["id"];
 	$sql = "SELECT * FROM viaje where id = '$id'";
-	$viaje = $mysqli->query($sql);
+	$viaje = $conn->query($sql);
 	$viaje = $viaje->fetch_assoc();
 	
 	$idcomen = $viaje["COMENTARIO"];
 	$query = "SELECT * FROM comentario where id = '$idcomen'";
-	$comentario = $mysqli->query($query);
+	$comentario = $conn->query($query);
 	$comentario = $comentario->fetch_assoc();
 ?>
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
-		<meta charset="utf-8">
 		<title> Inicio </title>
 	</head>
 	<body>

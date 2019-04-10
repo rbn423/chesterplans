@@ -1,23 +1,22 @@
 <?php
-	session_start();
-	$mysqli = new mysqli("localhost", "admin","admin", "chesterplans");
+	require("includes/config.php");
+	$conn = $app->conexionBd();
 	if(mysqli_connect_error()){
 		echo "Error de conexiÃ³n a la BD: ".mysql_connect_error();
 		exit();
 	}
 	$id=$_GET["id"];
 	$sql = "SELECT * FROM experiencias where id = '$id'";
-	$experiencia = $mysqli->query($sql);
+	$experiencia = $conn->query($sql);
 	$experiencia = $experiencia->fetch_assoc();
 	$idcomen = $experiencia["COMENTARIO"];
 	$query = "SELECT * FROM comentario where id = '$idcomen'";//esta query habra que cambiarla orque habra que llamar a todos los comentarios
-	$comentario = $mysqli->query($query);
+	$comentario = $conn->query($query);
 	
 ?>
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
-		<meta charset="utf-8">
 		<title> Inicio </title>
 	</head>
 	<body>
