@@ -10,18 +10,18 @@
 		for ($i=0;$i<$nviajes;$i++){	
 			$valor = $busquedas[$i][0];
 			$sql = "SELECT * FROM viaje where id = '$valor'";
-			$experiencia = $conn->query($sql);
-			$experiencia = $experiencia->fetch_assoc();
+			$viaje = $conn->query($sql);
+			$viaje = $viaje->fetch_assoc();
 			if($i!=$nviajes-1){
 				echo '<div id="viaje">';
 			}
 			else{
 				echo '<div id="ultimoviaje">';
 				echo '<div id="info">';
-				echo '<h1>'.$experiencia["TITULO"].'</h1>';
-				echo '<p>'.$experiencia["DESCB"].'<p>';
-				echo '<p>De '.$experiencia["FECHAINI"].' a '.$experiencia["FECHAFIN"]. '<p>';
-				echo '<p>Precio: '.$experiencia["PRECIO"].'</p>';
+				echo '<h1>'.$viaje["TITULO"].'</h1>';
+				echo '<p>'.$viaje["DESCB"].'<p>';
+				echo '<p>De '.$viaje["FECHAINI"].' a '.$viaje["FECHAFIN"]. '<p>';
+				echo '<p>Precio: '.$viaje["PRECIO"].'</p>';
 				echo '</div>';
 				echo '<form method="post" action="viaje.php?id='.$valor.'">';
 				echo '<div id="boton">';
