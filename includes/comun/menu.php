@@ -12,6 +12,6 @@
 		<a href="vistaExperiencias.php">Experiencias</a>
 	</span>
 	<span id ="ultimo">
-		<a href="vistaCrearExperiencia.php">Crear experiencia</a>
+		<a href="">Combo</a>
 	</span>
 </div>
