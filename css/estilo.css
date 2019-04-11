@@ -62,8 +62,16 @@ body{
 		color: white;
 		text-align:center;
 	}
+	
+	div#menubasico{
+		float: bottom;
+		background-color: white;
+		height: 7%;
+		color: white;
+		text-align:center;
+	}
 
-	div#menu span#apartado{
+	span#apartado{
 		text-align: center;
 		width: 20%;
 		height: 100%;
@@ -74,7 +82,7 @@ body{
 		box-sizing: border-box;
 	}
 
-	div#menu span#ultimo{
+	span#ultimo{
 		text-align: center;
 		width: 20%;
 		height: 100%;
@@ -125,6 +133,10 @@ body{
 	div#registro h1{
 		font-size: 200%;
 		text-align:center;
+	}
+	
+	div#escribirExperiencia{
+		padding-left:5%;
 	}
 	
 }
@@ -247,6 +259,12 @@ div#cabecera a, div#cabecera a:visited {
 }
 
 div#menu a, div#menu a:visited {
+	color: black;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+div#menubasico a, div#menubasico a:visited {
 	color: black;
 	font-weight: bold;
 	text-decoration: none;
