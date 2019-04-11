@@ -1,5 +1,6 @@
 <?php
 	require("includes/config.php");
+	echo "hola";
 ?>
 <html>
 	<head>
