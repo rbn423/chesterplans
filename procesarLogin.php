@@ -8,7 +8,7 @@
 	$usuario = Usuario::login($nombre, $contraseña);
 
 	if($usuario){
-		$SESSION["nombre"]=$usuario->nombre();
+		$_SESSION["nombre"]=$usuario->nombre();
 		$_SESSION["login"]=true;
 		$_SESSION["nick"]=$usuario->nick();
 		$_SESSION["apellidos"]=$usuario->apellidos();
