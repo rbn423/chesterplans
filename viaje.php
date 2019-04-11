@@ -1,10 +1,7 @@
 <?php
 	require("includes/config.php");
+	
 	$conn = $app->conexionBd();
-	if(mysqli_connect_error()){
-		echo "Error de conexiÃ³n a la BD: ".mysql_connect_error();
-		exit();
-	}
 	$id=$_GET["id"];
 	$sql = "SELECT * FROM viaje where id = '$id'";
 	$viaje = $conn->query($sql);
@@ -14,6 +11,17 @@
 	$query = "SELECT * FROM comentario where id = '$idcomen'";
 	$comentario = $conn->query($query);
 	$comentario = $comentario->fetch_assoc();
+
+	function mostrarContenido($viaje,$comentario){
+		echo '<h1>'.$viaje["TITULO"].'</h1>';
+		echo '<p>'.$viaje["DESCB"].'<p>';
+		echo '<p>'.$viaje["DESCG"].'<p>';
+		echo '<p>'.$viaje["FOTO"].'<p>';
+		echo '<p>Comentarios: '.$comentario["COMENTARIO"].' escrito por: '.$comentario["ESCRITOR"].'<p>';
+		echo '<p> Creador del viaje: '.$viaje["CREADOR"].'<p>';
+		echo '<p> Fecha de inicio: '.$viaje["FECHAINI"].'    Fecha de fin: '.$viaje["FECHAFIN"].'</p>';
+		echo '<p>Precio: '.$viaje["PRECIO"].'</p>';
+	}
 ?>
 <html>
 	<head>
@@ -30,16 +38,7 @@
 			<div id="contenido">
 				<div id="ViajeConcreto">
 				<?php
-					echo '<h1>'.$viaje["TITULO"].'</h1>';
-					echo '<p>'.$viaje["DESCB"].'<p>';
-					echo '<p>'.$viaje["DESCG"].'<p>';
-					echo '<p>'.$viaje["FOTO"].'<p>';
-					
-					echo '<p>Comentarios: '.$comentario["COMENTARIO"].' escrito por: '.$comentario["ESCRITOR"].'<p>';
-					
-					echo '<p> Creador del viaje: '.$viaje["CREADOR"].'<p>';
-					echo '<p> Fecha de inicio: '.$viaje["FECHAINI"].'    Fecha de fin: '.$viaje["FECHAFIN"].'</p>';
-					echo '<p>Precio: '.$viaje["PRECIO"].'</p>';					
+					mostrarContenido($viaje,$comentario);	
 				?>
 				</div>
 			</div>
