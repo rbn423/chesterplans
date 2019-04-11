@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-04-2019 a las 11:55:22
+-- Tiempo de generación: 11-04-2019 a las 17:52:07
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -84,6 +84,18 @@ INSERT INTO `comentario` (`ID`, `ESCRITOR`, `COMENTARIO`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `compras`
+--
+
+CREATE TABLE `compras` (
+  `IDUSUARIO` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `TIPO` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `IDCOMPRA` varchar(20) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `experiencias`
 --
 
@@ -155,6 +167,18 @@ CREATE TABLE `intercomentario` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `intereses`
+--
+
+CREATE TABLE `intereses` (
+  `IDUSUARIO` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `IDINTERES` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `TIPO` varchar(15) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `interfoto`
 --
 
@@ -188,7 +212,7 @@ CREATE TABLE `usuario` (
   `NICK` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `NOMBRE` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `APELLIDOS` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `PASSWORD` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `PASSWORD` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `MAIL` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `TELEFONO` int(12) NOT NULL,
   `TIPO` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
@@ -263,6 +287,12 @@ ALTER TABLE `comentario`
   ADD KEY `ESCRITOR` (`ESCRITOR`);
 
 --
+-- Indices de la tabla `compras`
+--
+ALTER TABLE `compras`
+  ADD KEY `IDUSUARIO` (`IDUSUARIO`);
+
+--
 -- Indices de la tabla `experiencias`
 --
 ALTER TABLE `experiencias`
@@ -291,6 +321,12 @@ ALTER TABLE `intercombo`
 ALTER TABLE `intercomentario`
   ADD KEY `ID` (`ID`,`IDCOMENT`,`TIPO`),
   ADD KEY `IDCOMENT` (`IDCOMENT`);
+
+--
+-- Indices de la tabla `intereses`
+--
+ALTER TABLE `intereses`
+  ADD KEY `IDUSUARIO` (`IDUSUARIO`);
 
 --
 -- Indices de la tabla `interfoto`
@@ -355,6 +391,12 @@ ALTER TABLE `comentario`
   ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`ESCRITOR`) REFERENCES `usuario` (`NICK`);
 
 --
+-- Filtros para la tabla `compras`
+--
+ALTER TABLE `compras`
+  ADD CONSTRAINT `compras_ibfk_1` FOREIGN KEY (`IDUSUARIO`) REFERENCES `usuario` (`NICK`);
+
+--
 -- Filtros para la tabla `experiencias`
 --
 ALTER TABLE `experiencias`
@@ -374,6 +416,12 @@ ALTER TABLE `intercombo`
 --
 ALTER TABLE `intercomentario`
   ADD CONSTRAINT `intercomentario_ibfk_1` FOREIGN KEY (`IDCOMENT`) REFERENCES `comentario` (`ID`);
+
+--
+-- Filtros para la tabla `intereses`
+--
+ALTER TABLE `intereses`
+  ADD CONSTRAINT `intereses_ibfk_1` FOREIGN KEY (`IDUSUARIO`) REFERENCES `usuario` (`NICK`);
 
 --
 -- Filtros para la tabla `interfoto`
