@@ -1,6 +1,6 @@
 <?php
 	require("includes/config.php");
-	echo "hola";
+	echo "hola jsaidoifnweepepfpe";
 ?>
 <html>
 	<head>
