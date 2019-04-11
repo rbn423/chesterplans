@@ -7,9 +7,9 @@
 			echo'<h3>Título:</h3>';
 			echo'<p><input type="text" name="titulo"/></p>';
 			echo'<h3>Fecha Inicio:</h3>';
-			echo'<p><input type="date" value="fechaini"/></p>';
+			echo'<p><input type="date" value="fechaIni"/></p>';
 			echo'<h3>Fecha Fin:</h3>';
-			echo'<p><input type="date" value="fechafin"/></p>';
+			echo'<p><input type="date" value="fechaFin"/></p>';
 			echo'<h3>Descripción breve:</h3>';
 			echo'<p><input type="text" name="descb" size="50"/></p>';
 			echo'<h3>Texto:</h3>';
@@ -35,7 +35,7 @@
 		?>
 			<div id="contenido">
 				<?php
-					
+					 mostrarCrear();
 				?>
 			</div>
 		<?php
