@@ -9,6 +9,7 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
+		<meta charset="utf-8">
 		<title> Inicio </title>
 	</head>
 	<body>
@@ -19,28 +20,34 @@
 			require("includes/comun/izquierda.php");
 		?>
 			<div id="contenido">
-				<div id="viajes">
 				<?php
 					$sql = "SELECT id FROM viaje";
 					$busquedas = $conn->query($sql);
+					$nviajes=$busquedas->num_rows;
 					$busquedas = $busquedas->fetch_all();
-					$tam = sizeof($busquedas);
-					for ($i=0;$i<6;$i++){
-						if ($i < $tam){	
-							$valor = $busquedas[$i][0];
-							$sql = "SELECT * FROM viaje where id = '$valor'";
-							$experiencia = $conn->query($sql);
-							$experiencia = $experiencia->fetch_assoc();
+					for ($i=0;$i<$nviajes;$i++){	
+						$valor = $busquedas[$i][0];
+						$sql = "SELECT * FROM viaje where id = '$valor'";
+						$experiencia = $conn->query($sql);
+						$experiencia = $experiencia->fetch_assoc();
+						if($i!=$nviajes-1)
 							echo '<div id="viaje">';
-								echo '<h1><a href="viaje.php?id='.$valor.'">'.$experiencia["TITULO"].'</a></h1>';
+						else
+							echo '<div id="ultimoviaje">';
+								echo '<div id="info">';
+								echo '<h1>'.$experiencia["TITULO"].'</h1>';
 								echo '<p>'.$experiencia["DESCB"].'<p>';
 								echo '<p>De '.$experiencia["FECHAINI"].' a '.$experiencia["FECHAFIN"]. '<p>';
 								echo '<p>Precio: '.$experiencia["PRECIO"].'</p>';
+								echo '</div>';
+								echo '<form method="post" action="viaje.php?id='.$valor.'">';
+								echo '<div id="boton">';
+									echo '<input type="submit" value="Ver mas">';
+								echo '</div>';
+								echo '</form>';
 							echo '</div>';
-						}
 					}
 				?>
-				</div>
 			</div>
 		<?php
 			require("includes/comun/derecha.php");

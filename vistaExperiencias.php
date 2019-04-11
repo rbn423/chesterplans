@@ -9,6 +9,7 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
+		<meta charset="utf-8">
 		<title> Inicio </title>
 	</head>
 	<body>
@@ -19,29 +20,32 @@
 			require("includes/comun/izquierda.php");
 		?>
 			<div id="contenido">
-				<div id="experiencias">
 				<?php
 					$sql = "SELECT id FROM experiencias";
 					$busquedas = $conn->query($sql);
+					$nexperiencias=$busquedas->num_rows;
 					$busquedas = $busquedas->fetch_all();
-					$tam = sizeof($busquedas);
-					for ($i=0;$i<6;$i++){
-						if ($i < $tam){
+					for ($i=0;$i<$nexperiencias;$i++){
+						if($i!=$nexperiencias-1)
 							echo '<div id="experiencia">';
-							$valor = $busquedas[$i][0];
-							$sql = "SELECT * FROM experiencias where id = '$valor'";
-							$experiencia = $conn->query($sql);
-							$experiencia = $experiencia->fetch_assoc();
-							echo '<div id="cuadroExperiencia">';
-								echo '<h3><a href="experiencia.php?id='.$valor.'">'.$experiencia["TITULO"].'</a></h3>';
-								echo '<p>'.$experiencia["DESCB"].'<p>';
+						else
+							echo '<div id="ultimaexperiencia">';
+						$valor = $busquedas[$i][0];
+						$sql = "SELECT * FROM experiencias where id = '$valor'";
+						$experiencia = $conn->query($sql);
+						$experiencia = $experiencia->fetch_assoc();
+						echo '<div id="info">';
+							echo '<h2>'.$experiencia["TITULO"].'</h2>';
+							echo '<p>'.$experiencia["DESCB"].'<p>';
+						echo '</div>';
+						echo '<form method="post" action="experiencia.php?id='.$valor.'">';						
+							echo '<div id="boton">';
+								echo '<input type="submit" value="Ver mas">';
 							echo '</div>';
-							echo '</div>';
-						}
-						
+						echo '</form>';
+						echo '</div>';
 					}
 				?>
-				</div>
 			</div>
 		<?php
 			require("includes/comun/derecha.php");
