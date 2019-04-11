@@ -10,6 +10,8 @@
 	$email = htmlspecialchars(trim(strip_tags($_REQUEST["email"])));
 	$telefono = htmlspecialchars(trim(strip_tags($_REQUEST["telefono"])));
 	$tipo = "nada";
+
+	$user = Usuario::crea($nick, $nombre, $apellidos, $contraseña, $rcontraseña, $email, $telefono, $tipo );
 ?>
 
 <html>
@@ -26,7 +28,6 @@
 		?>
 		<div id="contenido">
 			<?php
-				$user = Usuario::crea($nick, $nombre, $apellidos, $contraseña, $rcontraseña, $email, $telefono, $tipo );
 				if ($user){
 					echo '<p> ¡Enhorabuena '.$nick.', ya te has registrado!</p>';
 				}	

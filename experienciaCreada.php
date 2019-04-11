@@ -1,5 +1,6 @@
 <?php
 	require("includes/config.php");
+
 	$nick = $_SESSION["nick"];
 	$titulo = htmlspecialchars(trim(strip_tags($_REQUEST["titulo"])));
 	$descb = htmlspecialchars(trim(strip_tags($_REQUEST["descb"])));
@@ -18,6 +19,22 @@
 			or die ($conn->error. " en la línea ".(__LINE__-1));
 		mysqli_close($conn);
 	}
+
+	function mostrarCreada($titulo, $descb, $texto, $nick){
+		if($titulo != "" && $descb != "" && $texto != ""){
+			echo '<p> Enorabuena '.$nick.', ya has creado una experiencia.</p>';
+		}
+		else{
+			$mensaje = "No se ha creado la experiencia porque faltan por rellenar: ";
+			if($titulo == "")
+				$mensaje .= " -titulo ";
+			if($descb == "")
+				$mensaje .= " -descripcion breve ";
+			if($texto == "")
+				$mensaje .= " -texto ";
+			echo $mensaje;
+		}
+	}
 ?>
 
 <html>
@@ -34,19 +51,7 @@
 		?>
 		<div id="contenido">
 			<?php
-			if($titulo != "" && $descb != "" && $texto != ""){
-				echo '<p> Enorabuena '.$nick.', ya has creado una experiencia.</p>';
-			}
-			else{
-				$mensaje = "No se ha creado la experiencia porque faltan por rellenar: ";
-				if($titulo == "")
-					$mensaje .= " -titulo ";
-				if($descb == "")
-					$mensaje .= " -descripcion breve ";
-				if($texto == "")
-					$mensaje .= " -texto ";
-				echo $mensaje;
-			}
+				mostrarCreada($titulo, $descb, $texto, $nick);
 			?>		
 		</div>			
 		<?php

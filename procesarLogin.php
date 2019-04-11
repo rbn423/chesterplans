@@ -32,7 +32,7 @@
 		?>
 			<div id="contenido">
 				<?php
-						echo '<p> El usuario o la contraseña no son correctos</p>';	
+					echo '<p> El usuario o la contraseña no son correctos</p>';	
 				?>
 			</div>
 		<?php

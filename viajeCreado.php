@@ -5,19 +5,35 @@
 	$descb = htmlspecialchars(trim(strip_tags($_REQUEST["descb"])));
 	$texto = htmlspecialchars(trim(strip_tags($_REQUEST["descg"])));
 	$precio = htmlspecialchars(trim(strip_tags($_REQUEST["precio"])));
-	if($titulo != "" && $descb != "" && $texto != "" && $precio != ""){
+	$fechaIni = htmlspecialchars(trim(strip_tags($_REQUEST["fechaIni"])));
+	$fechaFin = htmlspecialchars(trim(strip_tags($_REQUEST["FechaFin"])));
+	if($titulo != "" && $descb != "" && $texto != "" && $precio != "" && $precio > 0 /* && comprobar fecha correcta*/){
 		$conn = $app->conexionBd();
-		if(mysqli_connect_error()){
-			echo "Error de conexión a la BD: ".mysql_connect_error();
-			exit();
-		}
 		$f=getdate()[0];
 		$id=$nick.$f;
-		$query="INSERT INTO experiencias (ID,TITULO,DESCB,DESCG,CREADOR,PRECIO) 
-			VALUES ('$id','$titulo','$descb','$texto','$nick', '$precio')";
+		$query="INSERT INTO experiencias (ID,TITULO,DESCB,DESCG,CREADOR,PRECIO,FECHAINI,FECHAFIN) 
+			VALUES ('$id','$titulo','$descb','$texto','$nick', '$precio', '$fechaIni', '$fechaFin')";
 		$conn->query($query)
 			or die ($conn->error. " en la línea ".(__LINE__-1));
 		mysqli_close($conn);
+	}
+
+	function mostrarCreado($titulo, $descb, $texto, $precio){
+		if($titulo != "" && $descb != "" && $texto != "" && $precio != ""){
+			echo '<p> Enorabuena '.$nick.', ya has creado un viaje.</p>';
+		}
+		else{
+			$mensaje = "No se ha creado el viaje porque faltan por rellenar: ";
+			if($titulo == "")
+				$mensaje .= " -titulo ";
+			if($descb == "")
+				$mensaje .= " -descripcion breve ";
+			if($texto == "")
+				$mensaje .= " -texto ";
+			if($precio == "")
+				$mensaje .= " -precio ";
+			echo $mensaje;
+		}
 	}
 ?>
 
@@ -35,21 +51,7 @@
 		?>
 		<div id="contenido">
 			<?php
-			if($titulo != "" && $descb != "" && $texto != "" && $precio != ""){
-				echo '<p> Enorabuena '.$nick.', ya has creado un viaje.</p>';
-			}
-			else{
-				$mensaje = "No se ha creado el viaje porque faltan por rellenar: ";
-				if($titulo == "")
-					$mensaje .= " -titulo ";
-				if($descb == "")
-					$mensaje .= " -descripcion breve ";
-				if($texto == "")
-					$mensaje .= " -texto ";
-				if($precio == "")
-					$mensaje .= " -precio ";
-				echo $mensaje;
-			}
+				mostrarCreado($titulo, $descb, $texto, $precio);
 			?>		
 		</div>			
 		<?php
