@@ -14,9 +14,13 @@
 		if($_POST['like'] == 'Me gusta'){
 			$query = "INSERT INTO megustas(NICKUSUARIO, IDEXPERIENCIA) VALUES ('".$_SESSION['nick']."','".$id."')";
 			$conn->query($query);
+			$query = "UPDATE usuario SET PUNTOS = puntos+'1' WHERE nick = '".$experiencia['CREADOR']."'";
+			$conn->query($query);
 		}
 		else{
 			$query = "DELETE FROM megustas WHERE NICKUSUARIO = '".$_SESSION['nick']."' AND IDEXPERIENCIA = '".$id."'";
+			$conn->query($query);
+			$query = "UPDATE usuario SET PUNTOS = puntos-'1' WHERE nick = '".$experiencia['CREADOR']."'";
 			$conn->query($query);
 		}
 	}
