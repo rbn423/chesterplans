@@ -41,6 +41,12 @@
 					<input type="text" name="telefono"/>
 				</p>
 				<p>
+					Tipo de cuenta: <select name="tipo">
+						<option value="basico">Básico</option>
+						<option value="empresa">Empresa</option>
+					<select>
+				</p>
+				<p>
 					<input type="submit" value="Enviar">
 				</p>
 			</div>
@@ -58,7 +64,7 @@ EOF;
 			$rcontraseña = htmlspecialchars(trim(strip_tags($datos["rcontraseña"])));
 			$email = htmlspecialchars(trim(strip_tags($datos["email"])));
 			$telefono = htmlspecialchars(trim(strip_tags($datos["telefono"])));
-			$tipo = "nada";
+			$tipo = htmlspecialchars(trim(strip_tags($datos["tipo"])));
 
 			$user = Usuario::crea($nick, $nombre, $apellidos, $contraseña, $rcontraseña, $email, $telefono, $tipo );
 			if ($user){
