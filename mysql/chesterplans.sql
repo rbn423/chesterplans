@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-04-2019 a las 17:52:07
--- Versión del servidor: 10.1.38-MariaDB
--- Versión de PHP: 7.3.2
+-- Tiempo de generación: 12-04-2019 a las 23:14:34
+-- Versión del servidor: 10.1.30-MariaDB
+-- Versión de PHP: 7.2.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `actividad` (
-  `ID` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `ID` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `TITULO` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `DESCB` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `DESCG` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
@@ -54,7 +54,7 @@ INSERT INTO `actividad` (`ID`, `TITULO`, `DESCB`, `DESCG`, `FOTO`, `COMENTARIO`,
 --
 
 CREATE TABLE `combo` (
-  `ID` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `ID` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `CREADOR` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `VIAJE` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `ACTIVIDAD` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE `combo` (
 --
 
 CREATE TABLE `comentario` (
-  `ID` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `ID` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `ESCRITOR` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `COMENTARIO` varchar(500) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -88,7 +88,7 @@ INSERT INTO `comentario` (`ID`, `ESCRITOR`, `COMENTARIO`) VALUES
 --
 
 CREATE TABLE `compras` (
-  `IDUSUARIO` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `IDUSUARIO` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `TIPO` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `IDCOMPRA` varchar(20) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -100,7 +100,7 @@ CREATE TABLE `compras` (
 --
 
 CREATE TABLE `experiencias` (
-  `ID` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `ID` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `TITULO` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `DESCB` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `DESCG` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
@@ -128,7 +128,7 @@ INSERT INTO `experiencias` (`ID`, `TITULO`, `DESCB`, `DESCG`, `FOTO`, `COMENTARI
 --
 
 CREATE TABLE `foto` (
-  `ID` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `ID` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `NOMBRE` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `IMAGEN` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -148,8 +148,8 @@ INSERT INTO `foto` (`ID`, `NOMBRE`, `IMAGEN`) VALUES
 --
 
 CREATE TABLE `intercombo` (
-  `IDACT` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `IDCOMBO` varchar(20) COLLATE utf8_spanish_ci NOT NULL
+  `IDACT` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `IDCOMBO` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -159,8 +159,8 @@ CREATE TABLE `intercombo` (
 --
 
 CREATE TABLE `intercomentario` (
-  `ID` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `IDCOMENT` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `ID` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `IDCOMENT` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `TIPO` varchar(15) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -171,8 +171,8 @@ CREATE TABLE `intercomentario` (
 --
 
 CREATE TABLE `intereses` (
-  `IDUSUARIO` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `IDINTERES` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `IDUSUARIO` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `IDINTERES` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `TIPO` varchar(15) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -183,8 +183,8 @@ CREATE TABLE `intereses` (
 --
 
 CREATE TABLE `interfoto` (
-  `ID` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `IDFOTO` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `ID` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `IDFOTO` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `TIPO` varchar(15) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -205,11 +205,34 @@ CREATE TABLE `lista` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `megustas`
+--
+
+CREATE TABLE `megustas` (
+  `nickusuario` varchar(50) NOT NULL,
+  `idexperiencia` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `megustas`
+--
+
+INSERT INTO `megustas` (`nickusuario`, `idexperiencia`) VALUES
+('h', 'exp01'),
+('h', 'ruben1553553013'),
+('a', 'exp01'),
+('a', 'ruben1553553013'),
+('a', 'ruben1553553075'),
+('h', 'ruben1553553075');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuario`
 --
 
 CREATE TABLE `usuario` (
-  `NICK` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `NICK` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `NOMBRE` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `APELLIDOS` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `PASSWORD` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
@@ -224,7 +247,12 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`NICK`, `NOMBRE`, `APELLIDOS`, `PASSWORD`, `MAIL`, `TELEFONO`, `TIPO`, `PUNTOS`) VALUES
+('1', '1', '1', '$2y$10$VQE35tvYtTuj1tAfBGYGf.mAETONAHcM72j0FXs.hZDMHDBNytZyO', '1', 1, 'nada', 0),
+('a', 'a', 'a', '$2y$10$B7YkufGfVKwp2VigCspFcekIA6ufk5BBg1UJyEjB4CNH1SR81uGCq', 'a', 1, 'nada', 0),
 ('adri', 'adri', 'agudo', 'adri', 'adri@gmail.com', 651234123, 'admin', 0),
+('c', 'c', 'c', '$2y$10$bErt9VAUKMRJ6W2dwlm3YOfxpf9p6VoS4xjATOPzN4ZIB9RaIrcAG', 'c', 1, 'nada', 0),
+('g', 'g', 'g', '$2y$10$cQzGbam6qK5UlZs2Z52htuh6gmHkZUVzW8ohE/7hvOe43S99TuanS', 'g', 1, 'empresa', 0),
+('h', 'h', 'h', '$2y$10$NVbnN3fflaL9BTKAJi2QQe/VqHfIlwD5M9xswm64mrHBOS7yAG5Ei', 'h', 1, 'basico', 0),
 ('ruben', 'ruben', 'ruben', 'ruben', 'ruben', 0, '', 0),
 ('samu', 'samu', 'solo', 'samu', 'samu@gmail.com', 651232133, 'admin', 0);
 
@@ -235,7 +263,7 @@ INSERT INTO `usuario` (`NICK`, `NOMBRE`, `APELLIDOS`, `PASSWORD`, `MAIL`, `TELEF
 --
 
 CREATE TABLE `viaje` (
-  `ID` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `ID` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `TITULO` varchar(30) CHARACTER SET utf32 COLLATE utf32_spanish_ci NOT NULL,
   `DESCB` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `DESCG` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
@@ -346,6 +374,13 @@ ALTER TABLE `lista`
   ADD KEY `IDACTIVIDAD` (`IDACTIVIDAD`,`IDCOMBO`,`IDVIAJE`),
   ADD KEY `IDVIAJE` (`IDVIAJE`),
   ADD KEY `IDCOMBO` (`IDCOMBO`);
+
+--
+-- Indices de la tabla `megustas`
+--
+ALTER TABLE `megustas`
+  ADD KEY `nickusuario` (`nickusuario`),
+  ADD KEY `idexperiencia` (`idexperiencia`);
 
 --
 -- Indices de la tabla `usuario`
