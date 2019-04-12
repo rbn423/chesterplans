@@ -1,18 +1,22 @@
 <?php
 	require("includes/config.php");
+
 	$nick = $_SESSION["nick"];
 	$titulo = htmlspecialchars(trim(strip_tags($_REQUEST["titulo"])));
+	$fechaIni = htmlspecialchars(trim(strip_tags($_REQUEST["fechaIni"])));
 	$descb = htmlspecialchars(trim(strip_tags($_REQUEST["descb"])));
 	$texto = htmlspecialchars(trim(strip_tags($_REQUEST["descg"])));
 	$precio = htmlspecialchars(trim(strip_tags($_REQUEST["precio"])));
-	$fechaIni = htmlspecialchars(trim(strip_tags($_REQUEST["fechaIni"])));
-	$fechaFin = htmlspecialchars(trim(strip_tags($_REQUEST["FechaFin"])));
-	if($titulo != "" && $descb != "" && $texto != "" && $precio != "" && $precio > 0 /* && comprobar fecha correcta*/){
+	if($titulo != "" && $descb != "" && $texto != "" && $precio > 0 /*&& Fecha*/){
 		$conn = $app->conexionBd();
+		if(mysqli_connect_error()){
+			echo "Error de conexión a la BD: ".mysql_connect_error();
+			exit();
+		}
 		$f=getdate()[0];
 		$id=$nick.$f;
-		$query="INSERT INTO viaje (ID,TITULO,DESCB,DESCG,CREADOR,PRECIO,FECHAINI,FECHAFIN) 
-			VALUES ('$id','$titulo','$descb','$texto','$nick', '$precio', '$fechaIni', '$fechaFin')";
+		$query="INSERT INTO actividad (ID,TITULO,DESCB,DESCG,CREADOR,PRECIO) 
+			VALUES ('$id','$titulo','$descb','$texto','$nick', '$precio')";
 		$conn->query($query)
 			or die ($conn->error. " en la línea ".(__LINE__-1));
 		mysqli_close($conn);
@@ -20,10 +24,10 @@
 
 	function mostrarCreado($titulo, $descb, $texto, $precio){
 		if($titulo != "" && $descb != "" && $texto != "" && $precio != ""){
-			echo '<p> Enorabuena '.$nick.', ya has creado un viaje.</p>';
+			echo '<p> Enorabuena '.$nick.', ya has creado una actividad.</p>';
 		}
 		else{
-			$mensaje = "No se ha creado el viaje porque faltan por rellenar: ";
+			$mensaje = "No se ha creado la experiencia porque faltan por rellenar: ";
 			if($titulo == "")
 				$mensaje .= " -titulo ";
 			if($descb == "")
@@ -40,7 +44,7 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
-		<title> Viaje creado </title>
+		<title> Actividad creada </title>
 	</head>
 	<body>
 

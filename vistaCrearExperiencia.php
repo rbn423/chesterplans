@@ -35,6 +35,7 @@
 		?>
 			<div id="contenido">
 				<?php
+					require("menubasico.php");
 					mostrarCrear();
 				?>
 			</div>
