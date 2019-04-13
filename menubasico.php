@@ -1,6 +1,6 @@
 <div id="menubasico">
 	<span id="apartado">
-		<a href="">Exp.compartida</a>
+		<a href="vistaExperienciasCompartidas.php">Exp.compartida</a>
 	</span>
 	<span id ="apartado">
 		<a href="">Puntos</a>

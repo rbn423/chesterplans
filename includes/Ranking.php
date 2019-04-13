@@ -21,7 +21,11 @@
 			$numero = count($Nicks);
 			$html = "<h2>Ranking de puntos</h2>";
 			for($i=0;$i<$numero;$i++){
-				$html .= "<p>Nick: ".$Nicks[$i][0]." ".$Nicks[$i][1]." PUNTOS</p>";
+				$html .='<div id="ranking">';
+				$html .= '<div id="nick">'.$Nicks[$i][0].'</div>';
+				$html .= '<div id="puntos">'.$Nicks[$i][1].' puntos</div>';
+				//$html .= "<p>Nick: ".$Nicks[$i][0]." ".$Nicks[$i][1]." PUNTOS</p>";
+				$html .= "</div>";
 			}
 			return $html;
 		}
