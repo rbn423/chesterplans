@@ -13,7 +13,6 @@
 			VALUES ('$id','$titulo','$descb','$texto','$nick')";
 		$conn->query($query)
 			or die ($conn->error. " en la línea ".(__LINE__-1));
-		mysqli_close($conn);
 	}
 
 	function mostrarCreada($titulo, $descb, $texto, $nick){
