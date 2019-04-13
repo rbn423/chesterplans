@@ -20,8 +20,6 @@
 			require("includes/comun/derecha.php");
 			require("includes/comun/pie.php");
 		?>
-		
-	
 	</body>
 
 </html>

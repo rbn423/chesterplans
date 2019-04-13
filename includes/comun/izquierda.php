@@ -1,3 +1,9 @@
+<?php
+	include (dirname(__DIR__)."/Ranking.php");
+?>
 <div id="izquierda">
-	<p>Izquierda<p>
+	<?php 
+		$ranking = new Ranking();
+		echo $ranking::gestionar();
+	?>
 </div>
