@@ -7,10 +7,6 @@
 	$texto = htmlspecialchars(trim(strip_tags($_REQUEST["descg"])));
 	if($titulo != "" && $descb != "" && $texto != ""){
 		$conn = $app->conexionBd();
-		if(mysqli_connect_error()){
-			echo "Error de conexión a la BD: ".mysql_connect_error();
-			exit();
-		}
 		$f=getdate()[0];
 		$id=$nick.$f;
 		$query="INSERT INTO experiencias (ID,TITULO,DESCB,DESCG,CREADOR) 
@@ -22,7 +18,7 @@
 
 	function mostrarCreada($titulo, $descb, $texto, $nick){
 		if($titulo != "" && $descb != "" && $texto != ""){
-			echo '<p> Enorabuena '.$nick.', ya has creado una experiencia.</p>';
+			echo '<p> Enhorabuena '.$nick.', ya has creado una experiencia.</p>';
 		}
 		else{
 			$mensaje = "No se ha creado la experiencia porque faltan por rellenar: ";
@@ -51,6 +47,7 @@
 		?>
 		<div id="contenido">
 			<?php
+				require('menubasico.php');
 				mostrarCreada($titulo, $descb, $texto, $nick);
 			?>		
 		</div>			
