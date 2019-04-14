@@ -1,26 +1,26 @@
 <div id="menu">
 	<a href="index.php">
-		<span class="apartado" id="inicio">
+		<span class="apartado">
 			Inicio
 		</span>
 	</a>
 	<a href="vistaViajes.php">
-		<span class="apartado" id="viaje">
+		<span class="apartado">
 			Viajes
 		</span>
 	</a>
 	<a href="">
-		<span class="apartado" id="aventura">
-			Aventuras
+		<span class="apartado">
+			Actividades
 		</span>
 	</a>
 	<a href="vistaExperiencias.php">
-		<span class="apartado" id="experiencia">
+		<span class="apartado">
 			Experiencias
 		</span>
 	</a>
 	<a href="vistaCombo.php">
-		<span class="ultimo" id="combo">
+		<span class="ultimo">
 			Combo
 		</span>
 	</a>

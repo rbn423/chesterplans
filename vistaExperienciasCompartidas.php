@@ -19,9 +19,9 @@
 			$experienciasCreadas=$experienciasCreadas->fetch_all();
 			for($i=0; $i<$nexperiencias; $i++){
 				if($i!=$nexperiencias-1)
-					echo '<div id="experiencia">';
+					echo '<div id="lista">';
 				else
-					echo '<div id="ultimaexperiencia">';
+					echo '<div id="ultimolista">';
 				$valor = $experienciasCreadas[$i][0];
 				$sql = "SELECT * FROM experiencias where id = '$valor'";
 				$experiencia = $conn->query($sql);

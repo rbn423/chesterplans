@@ -7,7 +7,7 @@
 	$experiencia = $conn->query($sql);
 	$experiencia = $experiencia->fetch_assoc();
 	$idcomen = $experiencia["COMENTARIO"];
-	$query = "SELECT * FROM comentario where id = '$idcomen'";//esta query habra que cambiarla orque habra que llamar a todos los comentarios
+	$query = "SELECT * FROM intercomentario where id = '$id'";//esta query busca todos los comentarios de la experiencia
 	$comentario = $conn->query($query);
 
 	if (isset($_POST['like'])){
@@ -16,15 +16,11 @@
 			$conn->query($query);
 			$query = "UPDATE usuario SET PUNTOS = puntos+'1' WHERE nick = '".$experiencia['CREADOR']."'";
 			$conn->query($query);
-			$query = "UPDATE experiencias SET likes = likes+'1' WHERE id = '$id'";
-			$conn->query($query);
 		}
 		else{
 			$query = "DELETE FROM megustas WHERE NICKUSUARIO = '".$_SESSION['nick']."' AND IDEXPERIENCIA = '".$id."'";
 			$conn->query($query);
 			$query = "UPDATE usuario SET PUNTOS = puntos-'1' WHERE nick = '".$experiencia['CREADOR']."'";
-			$conn->query($query);
-			$query = "UPDATE experiencias SET likes = likes-'1' WHERE id = '$id'";
 			$conn->query($query);
 		}
 	}
@@ -35,14 +31,7 @@
 		echo '<p>'.$experiencia["DESCG"].'<p>';
 		echo '<p>'.$experiencia["FOTO"].'<p>';
 		echo '<p> Autor de la experiencia '.$experiencia["CREADOR"].'<p>';
-		if($comentario->num_rows>0){
-			$comentario = $comentario->fetch_assoc();
-			echo '<p>Comentarios: '.$comentario["COMENTARIO"].'. Comentario escrito por: '.$comentario["ESCRITOR"].'<p>';
-		}
 		if (isset($_SESSION["login"])){
-			echo '<div id="nuevoComentario">';
-			echo '<p>Crea tu comentario</p>';
-			echo '</div>';
 			$query="SELECT * FROM megustas WHERE nickusuario = '". $_SESSION['nick']. "' AND idexperiencia = '$id'";
 			$resultado = $conn->query($query);
 			if ($resultado->num_rows == 1){
@@ -63,6 +52,28 @@
 				echo '</form>';
 				echo '</div>';
 			}
+		}
+		if($comentario->num_rows>0){
+			$ncomentarios=$comentario->num_rows;
+			$comentario = $comentario->fetch_all();
+			for($i=0; $i<$ncomentarios; $i++){
+				$valor=$comentario[$i][1];
+				$que= "SELECT * from comentario where id='$valor'";
+				$comen=$conn->query($que);
+				$comen= $comen->fetch_assoc();
+				if($i==0)
+					echo '<div id="primercomentario">';
+				else
+					echo '<div id="comentario">';
+				echo '<p>'.$comen["COMENTARIO"].'</p>';
+				echo '<p>Por: '.$comen["ESCRITOR"].'<p>';
+				echo '</div>';
+			}
+		}
+		if (isset($_SESSION["login"])){
+			echo '<div id="nuevoComentario">';
+			echo '<p>Crea tu comentario</p>';
+			echo '</div>';
 		}
 	}
 	
