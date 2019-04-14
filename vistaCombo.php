@@ -47,7 +47,7 @@
 		?>
 			<div id="contenido">
 				<?php
-					mostrarViajes($conn);			
+					mostrarCombo($conn);			
 				?>
 			</div>
 		<?php

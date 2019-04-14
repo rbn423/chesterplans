@@ -1,14 +1,14 @@
 <div id="menuempresa">
-	<span id="apartado">
-		<a href="vistaCrearExperiencia.php">Crear Actividad</a>
+	<span class="apartado">
+		<a href="vistaCrearActividad.php">Crear Actividad</a>
 	</span>
-	<span id ="apartado">
+	<span class="apartado">
 		<a href="vistaCrearViaje.php">Crear Viaje</a>
 	</span>
-	<span id="apartado">
+	<span class="apartado">
 		<a href="vistaCrearCombo.php">Crear Combo</a>
 	</span>
-	<span id ="ultimo">
+	<span class="ultimo">
 		<a href="">Historial</a>
 	</span>
 </div>

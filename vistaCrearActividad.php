@@ -33,6 +33,7 @@
 		?>
 			<div id="contenido">
 				<?php
+					require('menuempresa.php');
 					mostrarCrear();
 				?>
 			</div>

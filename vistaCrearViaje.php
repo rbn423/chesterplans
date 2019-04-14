@@ -35,7 +35,8 @@
 		?>
 			<div id="contenido">
 				<?php
-					 mostrarCrear();
+					require('menuempresa.php');
+					mostrarCrear();
 				?>
 			</div>
 		<?php
