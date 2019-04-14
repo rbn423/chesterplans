@@ -26,8 +26,8 @@
 			$idActividades = $idActividades->fetch_all();
 			$nactividades=count($idActividades);
 			$html = "<ul>";
-			for($i=0;$i<$nactividades;$i++){
-				$sql= "SELECT titulo, descb FROM actividad WHERE id = '".$idActividades[$i][0]."'";
+			for($j=0;$j<$nactividades;$j++){
+				$sql= "SELECT titulo, descb FROM actividad WHERE id = '".$idActividades[$j][0]."'";
 				$actividad = $conn->query($sql);
 				$actividad = $actividad->fetch_assoc();
 				$html .= "<li><h2>".$actividad['titulo'].": ".$actividad['descb']."</h2></li>";
@@ -48,8 +48,8 @@
 			echo '</div>';
 			echo '</form>';
 			echo '</div>';
-			}
 		}
+	}
 ?>
 
 <html>
