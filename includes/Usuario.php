@@ -39,7 +39,7 @@ class Usuario
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query = sprintf("SELECT * FROM USUARIO U WHERE U.NICK = '%s'", $conn->real_escape_string($nick));
+        $query = sprintf("SELECT * FROM usuario U WHERE U.NICK = '%s'", $conn->real_escape_string($nick));
         $rs = $conn->query($query);
         $result = false;
         if ($rs) {
@@ -103,7 +103,7 @@ class Usuario
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query=sprintf("INSERT INTO USUARIO(NICK, NOMBRE, APELLIDOS, PASSWORD, MAIL, TELEFONO, TIPO) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s')"
+        $query=sprintf("INSERT INTO usuario(NICK, NOMBRE, APELLIDOS, PASSWORD, MAIL, TELEFONO, TIPO) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s')"
             , $conn->real_escape_string($usuario->Nick)
             , $conn->real_escape_string($usuario->Nombre)
             , $conn->real_escape_string($usuario->Apellidos)
@@ -122,7 +122,7 @@ class Usuario
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query=sprintf("UPDATE USUARIO U SET NOMBRE = '%s', APELLIDOS = '%s', PASSWORD = '%s', MAIL = '%s', TELEFONO = '%s', TIPO = '%s' WHERE U.NICK = %i"
+        $query=sprintf("UPDATE usuario U SET NOMBRE = '%s', APELLIDOS = '%s', PASSWORD = '%s', MAIL = '%s', TELEFONO = '%s', TIPO = '%s' WHERE U.NICK = %i"
             , $conn->real_escape_string($usuario->Nombre)
             , $conn->real_escape_string($usuario->Apellidos)
             , $conn->real_escape_string($usuario->Password)

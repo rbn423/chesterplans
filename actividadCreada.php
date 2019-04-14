@@ -3,21 +3,23 @@
 
 	$nick = $_SESSION["nick"];
 	$titulo = htmlspecialchars(trim(strip_tags($_REQUEST["titulo"])));
+	$fecha = htmlspecialchars(trim(strip_tags($_REQUEST["fecha"])));
 	$descb = htmlspecialchars(trim(strip_tags($_REQUEST["descb"])));
 	$texto = htmlspecialchars(trim(strip_tags($_REQUEST["descg"])));
-	if($titulo != "" && $descb != "" && $texto != ""){
+	$precio = htmlspecialchars(trim(strip_tags($_REQUEST["precio"])));
+	if($titulo != "" && $descb != "" && $texto != "" && $precio > 0 /*&& Fecha*/){
 		$conn = $app->conexionBd();
 		$f=getdate()[0];
 		$id=$nick.$f;
-		$query="INSERT INTO experiencias (ID,TITULO,DESCB,DESCG,CREADOR) 
-			VALUES ('$id','$titulo','$descb','$texto','$nick')";
+		$query="INSERT INTO actividad (ID,TITULO,DESCB,DESCG,CREADOR,PRECIO,FECHA) 
+			VALUES ('$id','$titulo','$descb','$texto','$nick', '$precio','$fecha')";
 		$conn->query($query)
 			or die ($conn->error. " en la línea ".(__LINE__-1));
 	}
 
-	function mostrarCreada($titulo, $descb, $texto, $nick){
-		if($titulo != "" && $descb != "" && $texto != ""){
-			echo '<p> Enhorabuena '.$nick.', ya has creado una experiencia.</p>';
+	function mostrarCreado($nick,$titulo, $descb, $texto, $precio){
+		if($titulo != "" && $descb != "" && $texto != "" && $precio != ""){
+			echo '<p> Enorabuena '.$nick.', ya has creado una actividad.</p>';
 		}
 		else{
 			$mensaje = "No se ha creado la experiencia porque faltan por rellenar: ";
@@ -27,6 +29,8 @@
 				$mensaje .= " -descripcion breve ";
 			if($texto == "")
 				$mensaje .= " -texto ";
+			if($precio == "")
+				$mensaje .= " -precio ";
 			echo $mensaje;
 		}
 	}
@@ -35,7 +39,7 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
-		<title> Experiencia creada </title>
+		<title> Actividad creada </title>
 	</head>
 	<body>
 
@@ -46,8 +50,7 @@
 		?>
 		<div id="contenido">
 			<?php
-				require('menubasico.php');
-				mostrarCreada($titulo, $descb, $texto, $nick);
+				mostrarCreado($nick,$titulo, $descb, $texto, $precio);
 			?>		
 		</div>			
 		<?php

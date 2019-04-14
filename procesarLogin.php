@@ -8,7 +8,7 @@
 	$usuario = Usuario::login($nombre, $contraseña);
 
 	if($usuario){
-		$SESSION["nombre"]=$usuario->nombre();
+		$_SESSION["nombre"]=$usuario->nombre();
 		$_SESSION["login"]=true;
 		$_SESSION["nick"]=$usuario->nick();
 		$_SESSION["apellidos"]=$usuario->apellidos();
@@ -32,7 +32,7 @@
 		?>
 			<div id="contenido">
 				<?php
-						echo '<p> El usuario o la contraseña no son correctos</p>';	
+					echo '<p> El usuario o la contraseña no son correctos</p>';	
 				?>
 			</div>
 		<?php

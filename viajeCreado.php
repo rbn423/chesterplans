@@ -1,32 +1,36 @@
 <?php
 	require("includes/config.php");
-
 	$nick = $_SESSION["nick"];
 	$titulo = htmlspecialchars(trim(strip_tags($_REQUEST["titulo"])));
 	$descb = htmlspecialchars(trim(strip_tags($_REQUEST["descb"])));
 	$texto = htmlspecialchars(trim(strip_tags($_REQUEST["descg"])));
-	if($titulo != "" && $descb != "" && $texto != ""){
+	$precio = htmlspecialchars(trim(strip_tags($_REQUEST["precio"])));
+	$fechaIni = htmlspecialchars(trim(strip_tags($_REQUEST["fechaIni"])));
+	$fechaFin = htmlspecialchars(trim(strip_tags($_REQUEST["fechaFin"])));
+	if($titulo != "" && $descb != "" && $texto != "" && $precio != "" && $precio > 0 /* && comprobar fecha correcta*/){
 		$conn = $app->conexionBd();
 		$f=getdate()[0];
 		$id=$nick.$f;
-		$query="INSERT INTO experiencias (ID,TITULO,DESCB,DESCG,CREADOR) 
-			VALUES ('$id','$titulo','$descb','$texto','$nick')";
+		$query="INSERT INTO viaje (ID,TITULO,DESCB,DESCG,CREADOR,PRECIO,FECHAINI,FECHAFIN) 
+			VALUES ('$id','$titulo','$descb','$texto','$nick', '$precio', '$fechaIni', '$fechaFin')";
 		$conn->query($query)
 			or die ($conn->error. " en la línea ".(__LINE__-1));
 	}
 
-	function mostrarCreada($titulo, $descb, $texto, $nick){
-		if($titulo != "" && $descb != "" && $texto != ""){
-			echo '<p> Enhorabuena '.$nick.', ya has creado una experiencia.</p>';
+	function mostrarCreado($nick,$titulo, $descb, $texto, $precio){
+		if($titulo != "" && $descb != "" && $texto != "" && $precio != ""){
+			echo '<p> Enorabuena '.$nick.', ya has creado un viaje.</p>';
 		}
 		else{
-			$mensaje = "No se ha creado la experiencia porque faltan por rellenar: ";
+			$mensaje = "No se ha creado el viaje porque faltan por rellenar: ";
 			if($titulo == "")
 				$mensaje .= " -titulo ";
 			if($descb == "")
 				$mensaje .= " -descripcion breve ";
 			if($texto == "")
 				$mensaje .= " -texto ";
+			if($precio == "")
+				$mensaje .= " -precio ";
 			echo $mensaje;
 		}
 	}
@@ -35,7 +39,7 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
-		<title> Experiencia creada </title>
+		<title> Viaje creado </title>
 	</head>
 	<body>
 
@@ -46,8 +50,7 @@
 		?>
 		<div id="contenido">
 			<?php
-				require('menubasico.php');
-				mostrarCreada($titulo, $descb, $texto, $nick);
+				mostrarCreado($nick,$titulo, $descb, $texto, $precio);
 			?>		
 		</div>			
 		<?php

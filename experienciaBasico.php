@@ -16,20 +16,17 @@
 			$conn->query($query);
 			$query = "UPDATE usuario SET PUNTOS = puntos+'1' WHERE nick = '".$experiencia['CREADOR']."'";
 			$conn->query($query);
-			$query = "UPDATE experiencias SET likes = likes+'1' WHERE id = '".$id."'";
-			$conn->query($query);
 		}
 		else{
 			$query = "DELETE FROM megustas WHERE NICKUSUARIO = '".$_SESSION['nick']."' AND IDEXPERIENCIA = '".$id."'";
 			$conn->query($query);
 			$query = "UPDATE usuario SET PUNTOS = puntos-'1' WHERE nick = '".$experiencia['CREADOR']."'";
 			$conn->query($query);
-			$query = "UPDATE experiencias SET likes = likes-'1' WHERE id = '".$id."'";
-			$conn->query($query);
 		}
 	}
 
 	function mostrarExperiencia($experiencia,$comentario,$id,$conn){
+		echo '<div id="ExperienciaConcreta">';
 		echo '<h1>'.$experiencia["TITULO"].'</h1>';
 		echo '<p>'.$experiencia["DESCB"].'<p>';
 		echo '<p>'.$experiencia["DESCG"].'<p>';
@@ -79,6 +76,7 @@
 			echo '<p>Crea tu comentario</p>';
 			echo '</div>';
 		}
+		echo '</div>';
 	}
 	
 ?>
@@ -95,11 +93,10 @@
 			require("includes/comun/izquierda.php");
 		?>
 			<div id="contenido">
-				<div id="ExperienciaConcreta">
 				<?php
+					require('menubasico.php');
 					mostrarExperiencia($experiencia,$comentario,$id,$conn);
 				?>
-				</div>
 			</div>
 		<?php
 			require("includes/comun/derecha.php");
