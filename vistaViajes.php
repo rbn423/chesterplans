@@ -3,7 +3,14 @@
 	$conn = $app->conexionBd();
 
 	function mostrarViajes($conn){
-		$sql = "SELECT id FROM viaje";
+		if($_POST){
+			if ($_POST['precio'] == 0)
+				$sql = "SELECT id FROM viaje ORDER BY ".$_POST['filtro']." ".$_POST['orden'];
+			else
+				$sql = "SELECT id FROM viaje WHERE precio < ".$_POST['precio']. " ORDER BY ".$_POST['filtro']." ".$_POST['orden'];
+		}
+		else
+			$sql = "SELECT id FROM viaje";
 		$busquedas = $conn->query($sql);
 		$nviajes=$busquedas->num_rows;
 		$busquedas = $busquedas->fetch_all();

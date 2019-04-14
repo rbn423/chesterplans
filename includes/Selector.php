@@ -11,6 +11,7 @@
 					<div id="selector">
 						<p>
 							Precio máximo: <select name="precio">
+								<option value=0>-----</option>
 								<option value=50>50 €</option>
 								<option value=100>100 €</option>
 								<option value=150>150 €</option>
@@ -38,6 +39,9 @@
 							<p><input type="radio" name="filtro" value="fechaIni">Fecha de inicio</p>
 							<p><input type="radio" name="filtro" value="fechaFin">Fecha de fin</p>
  							<p><input type="radio" name="filtro" value="precio">Precio</p>
+ 						<p>Orden: </p>
+		 					<p><input type="radio" name="orden" value="desc" checked>Descendente</p>
+		 					<p><input type="radio" name="orden" value="asc">Ascendente</p>
 						<p>
 							<input type="submit" value="Enviar">
 						</p>
