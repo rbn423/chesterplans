@@ -151,6 +151,13 @@ break;
 					</div>
 				</form>
 EOF;
+break;
+			default:
+				echo "<h3>Bienvendido a Chesterplans</h3>";
+				echo "<p>Aquí podrás disfrutar del mejor contenido para viajeros.</p>";
+				echo "<p>Disponemos de las mejores ofertas para viajes y actividades, además de contenido compratido por nuestros usuarios en los que comparten sus experiencias.</p>";
+				echo "<p>Date una vuelta y mira lo que te interese</p>";
+				echo "<p>Si eres una empresa también podrás publicar tus ofertas de viajes y actividades aquí.</p>";
 			}
 		}
 	}
