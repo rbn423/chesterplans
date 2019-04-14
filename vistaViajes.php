@@ -20,10 +20,10 @@
 			$viaje = $conn->query($sql);
 			$viaje = $viaje->fetch_assoc();
 			if($i!=$nviajes-1){
-				echo '<div id="viaje">';
+				echo '<div id="lista">';
 			}
 			else{
-				echo '<div id="ultimoviaje">';
+				echo '<div id="ultimolista">';
 			}
 			echo '<div id="info">';
 			echo '<h1>'.$viaje["TITULO"].'</h1>';
