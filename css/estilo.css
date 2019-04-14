@@ -90,6 +90,7 @@ body{
 		color:black;
 		padding-left:2%;
 		font-size:19px;
+		overflow: auto;
 	}
 
 	div#contenido {
