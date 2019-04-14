@@ -42,6 +42,7 @@
 	<body>
 
 		<?php
+			$_SESSION['vista'] = "viajes";
 			require("includes/comun/cabecera.php");
 			require("includes/comun/menu.php");
 			require("includes/comun/izquierda.php");

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-04-2019 a las 20:37:47
+-- Tiempo de generación: 14-04-2019 a las 14:35:39
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -108,22 +108,23 @@ CREATE TABLE `experiencias` (
   `COMENTARIO` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
   `CREADOR` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `FECHAINI` date DEFAULT NULL,
-  `FECHAFIN` date DEFAULT NULL
+  `FECHAFIN` date DEFAULT NULL,
+  `likes` int(255) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `experiencias`
 --
 
-INSERT INTO `experiencias` (`ID`, `TITULO`, `DESCB`, `DESCG`, `FOTO`, `COMENTARIO`, `CREADOR`, `FECHAINI`, `FECHAFIN`) VALUES
-('exp01', 'caribe', 'playas bonitas', 'Viajamos dees el 31 de junio hasta el 6 de juio...', 'foto1', 'com01', 'adri', '0000-00-00', '2018-07-06'),
-('h1555174825', 'A', 'A', 'A', NULL, NULL, 'h', NULL, NULL),
-('h1555174873', 'fasdfasdf', 'asdfasdf', 'dsafsdfasdfasdf', NULL, NULL, 'h', NULL, NULL),
-('h1555175255', 'fasdfasdf', 'asdfasdf', 'dsafsdfasdfasdf', NULL, NULL, 'h', NULL, NULL),
-('h1555175312', 'fasdfasdf', 'asdfasdf', 'dsafsdfasdfasdf', NULL, NULL, 'h', NULL, NULL),
-('ruben1553553013', 'Viaje maravillo', 'RealicÃ© un viaje genial con mis amigos y lo comparto', 'Hace unos meses realicÃ© uno de los viajes mas bonitos de mi vida, y no puedo evitar pensar en que el siguiente siga siendo asÃ­ de bueno.', NULL, NULL, 'rbn', NULL, NULL),
-('ruben1553553075', 'China', 'China es un paÃ­s Ãºnico', 'Recomiendo encarecidamente a cualquiera que visite China, es un lugar genial, con una cultura muy rica.', NULL, NULL, 'rbn', NULL, NULL),
-('ruben1553553133', 'Que pasa en Can', 'Hay una hora menos que en la peninsula', 'En Canarias se vive con una hora menos con respecto a la peninsula, pero si estÃ¡s preocupado por tener jetlag, no te afecta casi nada.', NULL, NULL, 'rbn', NULL, NULL);
+INSERT INTO `experiencias` (`ID`, `TITULO`, `DESCB`, `DESCG`, `FOTO`, `COMENTARIO`, `CREADOR`, `FECHAINI`, `FECHAFIN`, `likes`) VALUES
+('exp01', 'caribe', 'playas bonitas', 'Viajamos dees el 31 de junio hasta el 6 de juio...', 'foto1', 'com01', 'adri', '0000-00-00', '2018-07-06', 1),
+('h1555174825', 'A', 'A', 'A', NULL, NULL, 'h', NULL, NULL, 0),
+('h1555174873', 'fasdfasdf', 'asdfasdf', 'dsafsdfasdfasdf', NULL, NULL, 'h', NULL, NULL, 0),
+('h1555175255', 'fasdfasdf', 'asdfasdf', 'dsafsdfasdfasdf', NULL, NULL, 'h', NULL, NULL, 0),
+('h1555175312', 'fasdfasdf', 'asdfasdf', 'dsafsdfasdfasdf', NULL, NULL, 'h', NULL, NULL, 0),
+('ruben1553553013', 'Viaje maravillo', 'RealicÃ© un viaje genial con mis amigos y lo comparto', 'Hace unos meses realicÃ© uno de los viajes mas bonitos de mi vida, y no puedo evitar pensar en que el siguiente siga siendo asÃ­ de bueno.', NULL, NULL, 'rbn', NULL, NULL, 0),
+('ruben1553553075', 'China', 'China es un paÃ­s Ãºnico', 'Recomiendo encarecidamente a cualquiera que visite China, es un lugar genial, con una cultura muy rica.', NULL, NULL, 'rbn', NULL, NULL, 0),
+('ruben1553553133', 'Que pasa en Can', 'Hay una hora menos que en la peninsula', 'En Canarias se vive con una hora menos con respecto a la peninsula, pero si estÃ¡s preocupado por tener jetlag, no te afecta casi nada.', NULL, NULL, 'rbn', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -230,7 +231,8 @@ INSERT INTO `megustas` (`nickusuario`, `idexperiencia`) VALUES
 ('h', 'ruben1553553075'),
 ('h', 'ruben1553553075'),
 ('h', 'ruben1553553075'),
-('h', 'ruben1553553075');
+('h', 'ruben1553553075'),
+('j', 'exp01');
 
 -- --------------------------------------------------------
 
@@ -256,7 +258,7 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`NICK`, `NOMBRE`, `APELLIDOS`, `PASSWORD`, `MAIL`, `TELEFONO`, `TIPO`, `PUNTOS`) VALUES
 ('1', '1', '1', '$2y$10$VQE35tvYtTuj1tAfBGYGf.mAETONAHcM72j0FXs.hZDMHDBNytZyO', '1', 1, 'nada', 1),
 ('a', 'a', 'a', '$2y$10$B7YkufGfVKwp2VigCspFcekIA6ufk5BBg1UJyEjB4CNH1SR81uGCq', 'a', 1, 'nada', 0),
-('adri', 'adri', 'agudo', 'adri', 'adri@gmail.com', 651234123, 'admin', -1),
+('adri', 'adri', 'agudo', 'adri', 'adri@gmail.com', 651234123, 'admin', 0),
 ('c', 'c', 'c', '$2y$10$bErt9VAUKMRJ6W2dwlm3YOfxpf9p6VoS4xjATOPzN4ZIB9RaIrcAG', 'c', 1, 'nada', 0),
 ('g', 'g', 'g', '$2y$10$cQzGbam6qK5UlZs2Z52htuh6gmHkZUVzW8ohE/7hvOe43S99TuanS', 'g', 1, 'empresa', 0),
 ('h', 'h', 'h', '$2y$10$NVbnN3fflaL9BTKAJi2QQe/VqHfIlwD5M9xswm64mrHBOS7yAG5Ei', 'h', 1, 'basico', 0),

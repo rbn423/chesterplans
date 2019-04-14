@@ -3,7 +3,10 @@
 	$conn = $app->conexionBd();
 	
 	function mostrarExperiencias($conn){
-		$sql = "SELECT id FROM experiencias";
+		if($_POST)
+			$sql = "SELECT id FROM experiencias ORDER BY ".$_POST['filtro']." ".$_POST['orden'];
+		else
+			$sql = "SELECT id FROM experiencias";
 		$busquedas = $conn->query($sql);
 		$nexperiencias=$busquedas->num_rows;
 		$busquedas = $busquedas->fetch_all();
@@ -37,6 +40,7 @@
 	<body>
 
 		<?php
+			$_SESSION['vista'] = "experiencias";
 			require("includes/comun/cabecera.php");
 			require("includes/comun/menu.php");
 			require("includes/comun/izquierda.php");

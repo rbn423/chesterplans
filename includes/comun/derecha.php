@@ -1,3 +1,9 @@
+<?php 
+	include (dirname(__DIR__)."/Selector.php");
+?>
 <div id="derecha">
-	<p>Derecha<p>
+	<?php
+		$selector = new Selector(); 
+		$selector->genera($_SESSION['vista']);
+	?>
 </div>
