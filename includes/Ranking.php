@@ -11,7 +11,7 @@
 		private static function buscar(){
 			$app = Aplicacion::getSingleton();
 			$conn = $app->conexionBd();
-			$query = "SELECT nick, puntos FROM usuario ORDER BY PUNTOS DESC LIMIT 20";
+			$query = "SELECT nick, puntos FROM usuario WHERE tipo = 'basico' ORDER BY PUNTOS DESC LIMIT 20";
 			$Nicks = $conn->query($query);
 			$Nicks = $Nicks->fetch_all();
 			return $Nicks;

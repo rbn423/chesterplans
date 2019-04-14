@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-04-2019 a las 18:41:33
+-- Tiempo de generación: 14-04-2019 a las 23:35:45
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -45,8 +45,13 @@ CREATE TABLE `actividad` (
 --
 
 INSERT INTO `actividad` (`ID`, `TITULO`, `DESCB`, `DESCG`, `FOTO`, `COMENTARIO`, `CREADOR`, `FECHA`, `PRECIO`) VALUES
-('12asd', 'otro', 'asdf', 'sadfasdfasdf', NULL, NULL, 'rbn', '2019-04-04', 10),
-('act01', 'excursion', '', '', 'exc01', 'com02', 'samu', '2019-06-06', 300);
+('adri1555273544', 'Paseo en canoa', 'Divertido viaje en canoa por el rio', 'Ven con nosotros a disfrutar de un viaje en canoa por el rio, con un instructor que te ayudará en todo lo que necesites.\r\nEl equipamiento está incluido.', NULL, NULL, 'adri', '2019-04-29', 60),
+('adri1555273688', 'Salto en paracaidas', 'Un paseo por las nubes... hacia el suelo.', 'Salta con nosotros desde un avión y prepárate para el mayor subidón de adrenalina de tu vida.\r\nNo te arrepentirás y seguro que te quedarás con ganas de repetir.', NULL, NULL, 'adri', '2019-05-05', 120),
+('adri1555273770', 'Paseo a caballo', 'Date un relajante paseo a caballo por el campo.', 'Si te apetece un plan fuera de lo común no dudes en dar un paseo a caballo con nosotros. No hace falta que te traigas el caballo, lo ponemos nosotros. Solo tienes que traer ganas de divertirte.', NULL, NULL, 'adri', '2019-04-27', 40),
+('adri1555273875', 'Vuelta en deportivo', 'Prueba la mayor experiencia de velocidad', 'Te ofrecemos un par de vueltas en un circuito profesional, con un deportivo de alta gama.\r\nPodrás disfrutar de la sensación de velocidad que ofrece esta experiencia.', NULL, NULL, 'adri', '2019-05-24', 100),
+('adri1555273947', 'Bolera', 'Dos pases para la bolera', 'Ven a divertirte en un día de bolera sin igual.\r\nTe ofrecemos dos pases de día completo en la bolera, con los que podrás disfrutar de unas partidas de bolos con quien tu mas quieras.', NULL, NULL, 'adri', '2019-06-07', 30),
+('adri1555274092', 'Degustación de vino', 'Cata de vinos profesional', 'En esta cata de vinos podrás ser un gourmet de los mejores caldos de la península.\r\nTendrás a tu disposición, además, a varios expertos que te guiarán en la cata.\r\nNo te lo pierdas.', NULL, NULL, 'adri', '2019-04-16', 90),
+('adri1555274178', 'Cine para dos', 'Ven al cine con quién tu más quieras... o ven dos veces.', 'Ofrecemos dos entradas de cine para el cine que desees. No desaproveches esta oportunidad de ver tus películas preferidas a muy buen precio.', NULL, NULL, 'adri', '2019-06-20', 15);
 
 -- --------------------------------------------------------
 
@@ -59,15 +64,18 @@ CREATE TABLE `combo` (
   `CREADOR` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `VIAJE` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `ACTIVIDAD` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `PRECIO` float NOT NULL
+  `PRECIO` float NOT NULL,
+  `NOMBREVIAJE` varchar(30) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `combo`
 --
 
-INSERT INTO `combo` (`ID`, `CREADOR`, `VIAJE`, `ACTIVIDAD`, `PRECIO`) VALUES
-('11', 'rbn', 'via01', NULL, 30);
+INSERT INTO `combo` (`ID`, `CREADOR`, `VIAJE`, `ACTIVIDAD`, `PRECIO`, `NOMBREVIAJE`) VALUES
+('asdf1234', 'adri', 'adri1555275879', NULL, 450, 'Granada'),
+('ckasiend254424', 'adri', 'adri1555275802', NULL, 1500, 'Antipodas'),
+('cmb45678', 'adri', 'adri1555276268', NULL, 800, 'Berlín');
 
 -- --------------------------------------------------------
 
@@ -80,14 +88,6 @@ CREATE TABLE `comentario` (
   `ESCRITOR` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `COMENTARIO` varchar(500) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `comentario`
---
-
-INSERT INTO `comentario` (`ID`, `ESCRITOR`, `COMENTARIO`) VALUES
-('com01', 'adri', 'Me ha gustado mucho'),
-('com02', 'samu', 'Lo recomiendo');
 
 -- --------------------------------------------------------
 
@@ -125,14 +125,15 @@ CREATE TABLE `experiencias` (
 --
 
 INSERT INTO `experiencias` (`ID`, `TITULO`, `DESCB`, `DESCG`, `FOTO`, `COMENTARIO`, `CREADOR`, `FECHAINI`, `FECHAFIN`, `likes`) VALUES
-('exp01', 'caribe', 'playas bonitas', 'Viajamos dees el 31 de junio hasta el 6 de juio...', 'foto1', 'com01', 'adri', '0000-00-00', '2018-07-06', 1),
-('h1555174825', 'A', 'A', 'A', NULL, NULL, 'h', NULL, NULL, 0),
-('h1555174873', 'fasdfasdf', 'asdfasdf', 'dsafsdfasdfasdf', NULL, NULL, 'h', NULL, NULL, 0),
-('h1555175255', 'fasdfasdf', 'asdfasdf', 'dsafsdfasdfasdf', NULL, NULL, 'h', NULL, NULL, 0),
-('h1555175312', 'fasdfasdf', 'asdfasdf', 'dsafsdfasdfasdf', NULL, NULL, 'h', NULL, NULL, 0),
-('ruben1553553013', 'Viaje maravillo', 'RealicÃ© un viaje genial con mis amigos y lo comparto', 'Hace unos meses realicÃ© uno de los viajes mas bonitos de mi vida, y no puedo evitar pensar en que el siguiente siga siendo asÃ­ de bueno.', NULL, NULL, 'rbn', NULL, NULL, 0),
-('ruben1553553075', 'China', 'China es un paÃ­s Ãºnico', 'Recomiendo encarecidamente a cualquiera que visite China, es un lugar genial, con una cultura muy rica.', NULL, NULL, 'rbn', NULL, NULL, 0),
-('ruben1553553133', 'Que pasa en Can', 'Hay una hora menos que en la peninsula', 'En Canarias se vive con una hora menos con respecto a la peninsula, pero si estÃ¡s preocupado por tener jetlag, no te afecta casi nada.', NULL, NULL, 'rbn', NULL, NULL, 0);
+('andrea1555275491', 'No os perdáis el concierto', 'Os recomiendo el mejor concierto que podeis ver en Madrid', 'No os lo perdais', NULL, NULL, 'andrea', NULL, NULL, 3),
+('ari1555275216', 'Me encanta Madrid', 'De Madrid al cielo', 'Madrid es una ciudad impresionante a la hora de hacer turismo. Ni en un mes de vacaciones podrías visitar todo.', NULL, NULL, 'ari', NULL, NULL, 1),
+('esti1555275416', 'Nada como Bilbao', 'Me encanta Bilbao, es increible', 'No hay sitio como Bilbao. La comida es genial, y el ambiente es buenisimo. Lo recomiendo encarecidamente a todo el mundo.', NULL, NULL, 'esti', NULL, NULL, 2),
+('lucia1555275309', 'Nueva York', 'Nueva York es increible y quiero volver', 'Estuve en Nueva York el mes pasado, y no tengo suficientes palabras para describir lo muchísimo que me gustó.', NULL, NULL, 'lucia', NULL, NULL, 1),
+('ruben1555274337', 'Mis paseos por el Retiro', 'En esta entrada describo mis paseos por el parque del Retiro', 'Ir por el parque del Retiro es una gozada. Da igual la época del año en que vayas, siempre es digno de ver. Con suerte hasta te puedes encontrar con una ardilla.', NULL, NULL, 'ruben', NULL, NULL, 3),
+('ruben1555274459', 'Hice senderismo', 'Describo mi experiencia como senderista', 'Me fui a la Pedriza, a realizar una ruta de senderismo.\r\nFue una experiencia dura, porque no estaba acostumbrado a tanta caminata, pero valió la pena.', NULL, NULL, 'ruben', NULL, NULL, 1),
+('ruben1555274937', 'Me perdí en el bosque', 'Me perdí en el bosque cuando era pequeño', 'Cuando era niño me adentré demasiado en el bosque, y cuando quise volver no encontraba el camino.\r\nAl final todo salió bien y me encontraron.', NULL, NULL, 'ruben', NULL, NULL, 2),
+('samu1555275043', 'Visité la Alhambra', 'Fui a Granada y visite la Alhambra', 'En Granada está la conocida Alhambra, que es su monumento mas famoso. Me encantó el patio de los leones.', NULL, NULL, 'samu', NULL, NULL, 2),
+('samu1555275108', 'Mi viaje a Barcelona', 'Estuve en Barcelona y me gustó', 'Barcelona es una ciudad maravillosa. No esperaba que me fuese a gustar tanto, pero lo hizo.', NULL, NULL, 'samu', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -145,14 +146,6 @@ CREATE TABLE `foto` (
   `NOMBRE` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `IMAGEN` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `foto`
---
-
-INSERT INTO `foto` (`ID`, `NOMBRE`, `IMAGEN`) VALUES
-('exc01', 'excursion2', ''),
-('foto1', 'caribe', 0x6361726962652e6a7067);
 
 -- --------------------------------------------------------
 
@@ -170,8 +163,13 @@ CREATE TABLE `intercombo` (
 --
 
 INSERT INTO `intercombo` (`IDACT`, `IDCOMBO`) VALUES
-('12asd', '11'),
-('act01', '11');
+('adri1555273544', 'asdf1234'),
+('adri1555273688', 'asdf1234'),
+('adri1555273947', 'ckasiend254424'),
+('adri1555273947', 'cmb45678'),
+('adri1555274092', 'asdf1234'),
+('adri1555274092', 'ckasiend254424'),
+('adri1555274178', 'cmb45678');
 
 -- --------------------------------------------------------
 
@@ -239,16 +237,22 @@ CREATE TABLE `megustas` (
 --
 
 INSERT INTO `megustas` (`nickusuario`, `idexperiencia`) VALUES
-('h', 'ruben1553553013'),
-('a', 'exp01'),
-('a', 'ruben1553553013'),
-('a', 'ruben1553553075'),
-('h', 'ruben1553553075'),
-('h', 'ruben1553553075'),
-('h', 'ruben1553553075'),
-('h', 'ruben1553553075'),
-('h', 'ruben1553553075'),
-('j', 'exp01');
+('adri', 'andrea1555275491'),
+('adri', 'ari1555275216'),
+('adri', 'lucia1555275309'),
+('adri', 'ruben1555274337'),
+('adri', 'ruben1555274937'),
+('ruben', 'andrea1555275491'),
+('ruben', 'esti1555275416'),
+('ruben', 'ruben1555274337'),
+('ruben', 'samu1555275043'),
+('ruben', 'ruben1555274459'),
+('ruben', 'samu1555275108'),
+('andrea', 'andrea1555275491'),
+('andrea', 'esti1555275416'),
+('andrea', 'ruben1555274337'),
+('andrea', 'ruben1555274937'),
+('andrea', 'samu1555275043');
 
 -- --------------------------------------------------------
 
@@ -272,17 +276,17 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`NICK`, `NOMBRE`, `APELLIDOS`, `PASSWORD`, `MAIL`, `TELEFONO`, `TIPO`, `PUNTOS`) VALUES
-('1', '1', '1', '$2y$10$VQE35tvYtTuj1tAfBGYGf.mAETONAHcM72j0FXs.hZDMHDBNytZyO', '1', 1, 'nada', 1),
-('a', 'a', 'a', '$2y$10$B7YkufGfVKwp2VigCspFcekIA6ufk5BBg1UJyEjB4CNH1SR81uGCq', 'a', 1, 'nada', 0),
-('adri', 'adri', 'agudo', 'adri', 'adri@gmail.com', 651234123, 'admin', 0),
-('c', 'c', 'c', '$2y$10$bErt9VAUKMRJ6W2dwlm3YOfxpf9p6VoS4xjATOPzN4ZIB9RaIrcAG', 'c', 1, 'nada', 0),
-('g', 'g', 'g', '$2y$10$cQzGbam6qK5UlZs2Z52htuh6gmHkZUVzW8ohE/7hvOe43S99TuanS', 'g', 1, 'empresa', 0),
-('h', 'h', 'h', '$2y$10$NVbnN3fflaL9BTKAJi2QQe/VqHfIlwD5M9xswm64mrHBOS7yAG5Ei', 'h', 1, 'basico', 0),
-('i', 'i', 'i', '$2y$10$c55wJmrgVPQuJc273Q9h7OmmAS0aC9mD884unO0olUklzu30lsmay', 'i', 2, 'empresa', 0),
-('j', 'j', 'j', '$2y$10$trqZ/5t9mmMr5bQVWFfLDuxtWl76.R0DZbJUo8KKJWJhkm3.jXW4K', 'j', 5, 'basico', 0),
-('r', 'r', 'r', '$2y$10$JnvqX23cex4FayhCRElXbO3cI4IpLqz/AxR2YUB79QA3z5FZBG5Ny', 'r', 1, 'basico', 0),
-('rbn', 'rbn', 'peña', '$2y$10$7YWB/xRTB7cB8IccWMyi6eNnzul4XYvicf5EJXjjU.DMc5wrwDP9m', 'rbn', 123456, 'basico', 0),
-('samu', 'samu', 'solo', 'samu', 'samu@gmail.com', 651232133, 'admin', 2);
+('adri', 'adrian', 'agudo', '$2y$10$Q50hSqbXSdPrjkP4qqp8Wu9Smhv6GKKF3vd4DmJfXRpNbVWAeIttu', 'adrian@ucm.es', 12356, 'empresa', 0),
+('andrea', 'andrea', 'lopez', '$2y$10$pEDRdScx5C/FOCvi7n7HRupynF53zp3cocaNLmN/Nj1BFD3NTwTHK', 'andrea@ucm.es', 7864432, 'basico', 3),
+('ari', 'arantxa', 'brock', '$2y$10$T4gbIRvuvcxEjPPSmFJwHO0vQaEz/LUvaF0fJuNIJiM8KDbGHX6h.', 'ari@ucm.es', 2871832, 'basico', 1),
+('esti', 'estibaliz', 'busto', '$2y$10$E5XdhwV6cdwQgBK4Ql1I/eTSlqxjCKMIRX7Xq3cekGAC6LMxK3Aoa', 'esti@ucm.es', 1234567, 'basico', 2),
+('lucia', 'lucia', 'perez', '$2y$10$qvFhXAG64Bs5UvK4/Uxdf.v3F650czIC/9838MT/S2Oq2MlZ2THoa', 'lucia@ucm.es', 4597527, 'basico', 1),
+('luis', 'luis', 'lopez', '$2y$10$L9hqJprd/90/QZroZX0EleuU0F6ImH0meivp1FrPn5X6oS.M1pp5a', 'luis@ucm.es', 85748914, 'basico', 0),
+('manu', 'manuel', 'garcia', '$2y$10$id.hUVT8pDkTmAwf1dSKNeixdJvnZzkj0gSWdFp0HJVSxRyQmrmM6', 'manu@ucm.es', 75823482, 'basico', 0),
+('nati', 'natalia', 'bermudez', '$2y$10$HFnM5G0hZ5T0qnOu.d50o.vubyKq7rcxriLudrFWrbS7m7yt3m4RG', 'nati@ucm.es', 3578185, 'basico', 0),
+('pepe', 'pepe', 'garcia', '$2y$10$R62FJCRvyyA23UjM/KPUrewjBBW/WWTdS0Lympu6UPDErCDf8OKxy', 'pepe@ucm.es', 2147483647, 'basico', 0),
+('ruben', 'ruben', 'peña', '$2y$10$oL23XtllYFgoYUDoS9dVV.6TaJgHtByRB1uvoJGPRFUxUrZ3/tM52', 'ruben@ucm.es', 1234567, 'basico', 6),
+('samu', 'samuel', 'solo', '$2y$10$ZE0610vX9z7ZgkPbZGk5ue.pri7URRIqIMgz1ZHBKUhrNRq/Fqeee', 'samu@ucm.es', 4567891, 'basico', 3);
 
 -- --------------------------------------------------------
 
@@ -308,9 +312,12 @@ CREATE TABLE `viaje` (
 --
 
 INSERT INTO `viaje` (`ID`, `TITULO`, `DESCB`, `DESCG`, `FOTO`, `COMENTARIO`, `CREADOR`, `FECHAINI`, `FECHAFIN`, `PRECIO`) VALUES
-('asdfasdf', 'z', 'nuevo', 'ñaldksjfñlaksdjflkñasdjflkñasjdflñksdjfñlksjdfñlaksdjfñlksdajflkñasdjfklasjdfasdf', NULL, NULL, 'h', '2019-04-14', '2019-04-18', 70),
-('asdffasdfasdfasdf', 'b', 'nuevo', 'ñaldksjfñlaksdjflkñasdjflkñasjdflñksdjfñlksjdfñlaksdjfñlksdajflkñasdjfklasjdfasdf', NULL, NULL, 'h', '2019-04-16', '2019-04-30', 200),
-('via01', 'caribe', '', '', 'foto1', 'com01', 'adri', '0000-00-00', '0000-00-00', 700);
+('adri1555275802', 'Antipodas', 'Viaja a las Antípodas', 'No puedes desaprovechar la oportunidad de viajar con nosotros a las Antípodas.', NULL, NULL, 'adri', '2019-04-11', '2019-04-29', 730),
+('adri1555275879', 'Granada', 'Viaje a Granada por todo lo alto', 'Viaja con nosotros y ven a ver la maravillosa Alhambra con una buena cervecita.', NULL, NULL, 'adri', '2019-04-21', '2019-04-24', 110),
+('adri1555275938', 'Marruecos', 'Un viaje exótico a Marruecos', 'Te lo pasarás genial en este viaje. Es una oportunidad que no puedes perder.', NULL, NULL, 'adri', '2019-05-04', '2019-05-22', 230),
+('adri1555276145', 'París', 'Viaja a la ciudad del amor', 'Te ofrecemos el mejor precio para pasar un par de semanas románticas en París.', NULL, NULL, 'adri', '2019-05-04', '2019-05-27', 435),
+('adri1555276268', 'Berlín', 'Un mes por Berlín', 'Mejor precio imposible. No dudes en obtener esta oferta.', NULL, NULL, 'adri', '2019-06-15', '2019-07-20', 463),
+('adri1555276343', 'Rio de Janeiro', 'Viaja al paraiso', 'No se nos ocurre mejor viaje para tomarse un merecido descanso.', NULL, NULL, 'adri', '2019-04-29', '2019-05-03', 860);
 
 --
 -- Índices para tablas volcadas
