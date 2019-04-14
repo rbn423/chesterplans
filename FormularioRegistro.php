@@ -4,8 +4,12 @@
 
 	class FormularioRegistro extends Form{
 
+		private $option = array();
+
+
 		public function __construct(){
-			parent::__construct("form-registro");
+			$this->option['action'] = "registro.php";
+			parent::__construct("form-registro", $this->option);
 		}
 
 		protected function generaCamposFormulario($datosIniciales){

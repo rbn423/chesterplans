@@ -9,10 +9,6 @@
 	$precio = htmlspecialchars(trim(strip_tags($_REQUEST["precio"])));
 	if($titulo != "" && $descb != "" && $texto != "" && $precio > 0 /*&& Fecha*/){
 		$conn = $app->conexionBd();
-		if(mysqli_connect_error()){
-			echo "Error de conexión a la BD: ".mysql_connect_error();
-			exit();
-		}
 		$f=getdate()[0];
 		$id=$nick.$f;
 		$query="INSERT INTO actividad (ID,TITULO,DESCB,DESCG,CREADOR,PRECIO) 

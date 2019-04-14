@@ -17,19 +17,19 @@
 			}
 			else{
 				echo '<div id="ultimoviaje">';
-				echo '<div id="info">';
-				echo '<h1>'.$viaje["TITULO"].'</h1>';
-				echo '<p>'.$viaje["DESCB"].'<p>';
-				echo '<p>De '.$viaje["FECHAINI"].' a '.$viaje["FECHAFIN"]. '<p>';
-				echo '<p>Precio: '.$viaje["PRECIO"].'</p>';
-				echo '</div>';
-				echo '<form method="post" action="viaje.php?id='.$valor.'">';
-				echo '<div id="boton">';
-				echo '<input type="submit" value="Ver mas">';
-				echo '</div>';
-				echo '</form>';
-				echo '</div>';
 			}
+			echo '<div id="info">';
+			echo '<h1>'.$viaje["TITULO"].'</h1>';
+			echo '<p>'.$viaje["DESCB"].'<p>';
+			echo '<p>De '.$viaje["FECHAINI"].' a '.$viaje["FECHAFIN"]. '<p>';
+			echo '<p>Precio: '.$viaje["PRECIO"].'</p>';
+			echo '</div>';
+			echo '<form method="post" action="viaje.php?id='.$valor.'">';
+			echo '<div id="boton">';
+			echo '<input type="submit" value="Ver mas">';
+			echo '</div>';
+			echo '</form>';
+			echo '</div>';		
 		}
 	}
 ?>

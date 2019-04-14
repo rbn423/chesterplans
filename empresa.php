@@ -14,12 +14,17 @@
 			require("includes/comun/izquierda.php");
 		?>
 			<div id="contenido">
-			 	<p>hola</p>
+			<?php
+				require("menuempresa.php");
+			?>
+			 	<p>Usuario empresarial</p>
 			</div>
 		<?php
 			require("includes/comun/derecha.php");
 			require("includes/comun/pie.php");
 		?>
+		
+	
 	</body>
 
 </html>
