@@ -38,6 +38,7 @@
 		echo '<p> Fecha de inicio: '.$viaje["FECHAINI"].' Fecha de fin: '.$viaje["FECHAFIN"].'</p>';
 		echo "<h1>ACTIVIDADES</h1>";
 		echo $html;
+		echo "<h2>Precio: ".$combo['PRECIO']." €</h2>";
 	}
 ?>
 <html>
