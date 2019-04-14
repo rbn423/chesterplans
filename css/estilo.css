@@ -50,7 +50,6 @@ body{
 		float:right;
 	}
 	
-
 	div#menu{
 		float: bottom;
 		background-color: #18F393;
@@ -89,6 +88,8 @@ body{
 		height: 65%;
 		background-color:#0EA5DA;
 		color:black;
+		padding-left:2%;
+		font-size:19px;
 	}
 
 	div#contenido {
@@ -190,6 +191,8 @@ body{
 		height: 70%;
 		background-color:#0EA5DA;
 		color:black;
+		padding-left:2%;
+		font-size:19px;
 	}
 
 	div#contenido {
@@ -301,6 +304,21 @@ div#contenido div#ExperienciaConcreta div#boton{
 	margin-right:2%;
 }
 
+div#contenido div#ViajeConcreto{
+	text-align: center;
+	margin:20px;
+}
+
+div#contenido div#ActividadConcreta{
+	text-align: center;
+	margin:20px;
+}
+
+div#contenido div#ComboConcreto{
+	text-align: center;
+	margin:20px;
+}
+
 div#contenido div#lista{
 	border-bottom: black 2px solid;
 	display:flex;
@@ -333,11 +351,6 @@ div#contenido div#ultimolista div#boton{
 div#contenido div#nombre {
 	margin-left: 3%;
 	font-size: 30px;
-}
-
-div#contenido div#ViajeConcreto{
-	text-align: center;
-	margin:20px;
 }
 
 div#contenido div#escribirActividad {

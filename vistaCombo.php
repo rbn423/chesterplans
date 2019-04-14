@@ -26,14 +26,14 @@
 				$html .= "<li><h2>".$actividad['titulo'].": ".$actividad['descb']."</h2></li>";
 			}
 			if($i!=$ncombos-1){
-				echo '<div id="combo">';
+				echo '<div id="lista">';
 			}
 			else
-				echo '<div id="ultimocombo">';
+				echo '<div id="ultimolista">';
 			echo '<div id="info">';
 			echo '<h1>'.$viaje["titulo"].': '.$viaje["descb"].'</h1>';
 			echo $html;
-			echo '<h1>Precio: '.$precio.' €</h1>';
+			echo '<p>Precio: '.$precio.' €</p>';
 			echo '</div>';
 			echo '<form method="post" action="combo.php?id='.$idcombo.'">';
 			echo '<div id="boton">';
