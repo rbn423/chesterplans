@@ -1,3 +1,4 @@
 <div id="pie">
-	<p>Pie<p>
+	<p>Trabajo realizado por estudiantes del grado en informática de la Universidad Complutense de Madrid.<p>
+	<p>Rubén Peña, Adrian Agudo, Arantxa Patricia Brock, Samuel Solo</p>
 </div>
