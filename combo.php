@@ -55,7 +55,7 @@
 			require("includes/comun/izquierda.php");
 		?>
 			<div id="contenido">
-				<div id="Combo">
+				<div id="ComboConcreto">
 				<?php
 					mostrarCombo($combo, $viaje, $html);		
 				?>

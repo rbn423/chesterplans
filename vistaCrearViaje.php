@@ -7,9 +7,9 @@
 			echo'<h3>Título:</h3>';
 			echo'<p><input type="text" name="titulo"/></p>';
 			echo'<h3>Fecha Inicio:</h3>';
-			echo'<p><input type="date" value="fechaIni"/></p>';
+			echo'<p><input type="date" name="fechaIni"/></p>';
 			echo'<h3>Fecha Fin:</h3>';
-			echo'<p><input type="date" value="fechaFin"/></p>';
+			echo'<p><input type="date" name="fechaFin"/></p>';
 			echo'<h3>Descripción breve:</h3>';
 			echo'<p><input type="text" name="descb" size="50"/></p>';
 			echo'<h3>Texto:</h3>';

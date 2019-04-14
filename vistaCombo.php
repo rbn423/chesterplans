@@ -3,10 +3,17 @@
 	$conn = $app->conexionBd();
 
 	function mostrarCombos($conn){
-		$sql = "SELECT id, viaje, precio FROM combo";
+		if($_POST){
+			if ($_POST['precio'] == 0)
+				$sql = "SELECT id, viaje, precio FROM combo ORDER BY ".$_POST['filtro']." ".$_POST['orden'];
+			else
+				$sql = "SELECT id, viaje, precio FROM combo WHERE precio < ".$_POST['precio']. " ORDER BY ".$_POST['filtro']." ".$_POST['orden'];
+		}
+		else
+			$sql = "SELECT id, viaje, precio FROM combo";
 		$busquedas = $conn->query($sql);
-		$ncombos=$busquedas->num_rows;
 		$busquedas = $busquedas->fetch_all();
+		$ncombos = count($busquedas);
 		for ($i=0;$i<$ncombos;$i++){	
 			$idcombo = $busquedas[$i][0];
 			$idViaje = $busquedas[$i][1];
@@ -26,14 +33,14 @@
 				$html .= "<li><h2>".$actividad['titulo'].": ".$actividad['descb']."</h2></li>";
 			}
 			if($i!=$ncombos-1){
-				echo '<div id="combo">';
+				echo '<div id="lista">';
 			}
 			else
-				echo '<div id="ultimocombo">';
+				echo '<div id="ultimolista">';
 			echo '<div id="info">';
 			echo '<h1>'.$viaje["titulo"].': '.$viaje["descb"].'</h1>';
 			echo $html;
-			echo '<h1>Precio: '.$precio.' €</h1>';
+			echo '<p>Precio: '.$precio.' €</p>';
 			echo '</div>';
 			echo '<form method="post" action="combo.php?id='.$idcombo.'">';
 			echo '<div id="boton">';
@@ -53,6 +60,7 @@
 	<body>
 
 		<?php
+			$_SESSION['vista'] = "combos";
 			require("includes/comun/cabecera.php");
 			require("includes/comun/menu.php");
 			require("includes/comun/izquierda.php");
