@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-04-2019 a las 14:35:39
+-- Tiempo de generación: 14-04-2019 a las 18:41:33
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -33,8 +33,8 @@ CREATE TABLE `actividad` (
   `TITULO` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `DESCB` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `DESCG` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
-  `FOTO` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `COMENTARIO` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `FOTO` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `COMENTARIO` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
   `CREADOR` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `FECHA` date NOT NULL,
   `PRECIO` float NOT NULL
@@ -45,6 +45,7 @@ CREATE TABLE `actividad` (
 --
 
 INSERT INTO `actividad` (`ID`, `TITULO`, `DESCB`, `DESCG`, `FOTO`, `COMENTARIO`, `CREADOR`, `FECHA`, `PRECIO`) VALUES
+('12asd', 'otro', 'asdf', 'sadfasdfasdf', NULL, NULL, 'rbn', '2019-04-04', 10),
 ('act01', 'excursion', '', '', 'exc01', 'com02', 'samu', '2019-06-06', 300);
 
 -- --------------------------------------------------------
@@ -57,9 +58,16 @@ CREATE TABLE `combo` (
   `ID` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `CREADOR` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `VIAJE` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `ACTIVIDAD` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `ACTIVIDAD` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
   `PRECIO` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `combo`
+--
+
+INSERT INTO `combo` (`ID`, `CREADOR`, `VIAJE`, `ACTIVIDAD`, `PRECIO`) VALUES
+('11', 'rbn', 'via01', NULL, 30);
 
 -- --------------------------------------------------------
 
@@ -156,6 +164,14 @@ CREATE TABLE `intercombo` (
   `IDACT` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `IDCOMBO` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `intercombo`
+--
+
+INSERT INTO `intercombo` (`IDACT`, `IDCOMBO`) VALUES
+('12asd', '11'),
+('act01', '11');
 
 -- --------------------------------------------------------
 
@@ -262,6 +278,7 @@ INSERT INTO `usuario` (`NICK`, `NOMBRE`, `APELLIDOS`, `PASSWORD`, `MAIL`, `TELEF
 ('c', 'c', 'c', '$2y$10$bErt9VAUKMRJ6W2dwlm3YOfxpf9p6VoS4xjATOPzN4ZIB9RaIrcAG', 'c', 1, 'nada', 0),
 ('g', 'g', 'g', '$2y$10$cQzGbam6qK5UlZs2Z52htuh6gmHkZUVzW8ohE/7hvOe43S99TuanS', 'g', 1, 'empresa', 0),
 ('h', 'h', 'h', '$2y$10$NVbnN3fflaL9BTKAJi2QQe/VqHfIlwD5M9xswm64mrHBOS7yAG5Ei', 'h', 1, 'basico', 0),
+('i', 'i', 'i', '$2y$10$c55wJmrgVPQuJc273Q9h7OmmAS0aC9mD884unO0olUklzu30lsmay', 'i', 2, 'empresa', 0),
 ('j', 'j', 'j', '$2y$10$trqZ/5t9mmMr5bQVWFfLDuxtWl76.R0DZbJUo8KKJWJhkm3.jXW4K', 'j', 5, 'basico', 0),
 ('r', 'r', 'r', '$2y$10$JnvqX23cex4FayhCRElXbO3cI4IpLqz/AxR2YUB79QA3z5FZBG5Ny', 'r', 1, 'basico', 0),
 ('rbn', 'rbn', 'peña', '$2y$10$7YWB/xRTB7cB8IccWMyi6eNnzul4XYvicf5EJXjjU.DMc5wrwDP9m', 'rbn', 123456, 'basico', 0),
@@ -291,7 +308,9 @@ CREATE TABLE `viaje` (
 --
 
 INSERT INTO `viaje` (`ID`, `TITULO`, `DESCB`, `DESCG`, `FOTO`, `COMENTARIO`, `CREADOR`, `FECHAINI`, `FECHAFIN`, `PRECIO`) VALUES
-('via01', 'caribe', '', '', 'foto1', 'com01', 'adri', '0000-00-00', '0000-00-00', 0);
+('asdfasdf', 'z', 'nuevo', 'ñaldksjfñlaksdjflkñasdjflkñasjdflñksdjfñlksjdfñlaksdjfñlksdajflkñasdjfklasjdfasdf', NULL, NULL, 'h', '2019-04-14', '2019-04-18', 70),
+('asdffasdfasdfasdf', 'b', 'nuevo', 'ñaldksjfñlaksdjflkñasdjflkñasjdflñksdjfñlksjdfñlaksdjfñlksdajflkñasdjfklasjdfasdf', NULL, NULL, 'h', '2019-04-16', '2019-04-30', 200),
+('via01', 'caribe', '', '', 'foto1', 'com01', 'adri', '0000-00-00', '0000-00-00', 700);
 
 --
 -- Índices para tablas volcadas
