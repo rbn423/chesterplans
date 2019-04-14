@@ -12,7 +12,7 @@
 	function mostrarExpCompartidas($experienciasCreadas, $conn){
 		$nexperiencias=$experienciasCreadas->num_rows;
 		if($nexperiencias==0){
-			echo '<p>Aun no has greado ninguna experiencia</p>';
+			echo '<p>Aun no has creado ninguna experiencia</p>';
 			echo '<p>Si quieres crear una experiencia <a href="vistaCrearExperiencia.php">pulsa aqui</a></p>';
 		}
 		else{
