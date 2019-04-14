@@ -3,23 +3,28 @@
 
 	$conn = $app->conexionBd();
 	$id=$_GET["id"];
-	$sql = "SELECT * FROM combo c, intercombo i, actividad a where c.combo = '$id' and 
-	i.idcombo = '$id' and i.idact = a.id";
+	$sql = "SELECT * FROM combo where id = '$id'";
 	$combo = $conn->query($sql);
-	$combo = $combo->fetch_assoc();
+	$combo= $combo->fetch_assoc();
 	
-	
-	$idact= $combo["ACTIVIDAD"];
-	$query = "SELECT * FROM ACTIVIDAD where id = '$idact'";
-	$idact = $conn->query($sql);
-	$idact = $combo->fetch_assoc();
+	$idviaje = $combo["VIAJE"];
+	$query = "SELECT * FROM combo where viaje = '$idviaje'";
+	$viaje = $conn->query($query);
+	$viaje = $viaje->fetch_assoc();
 
-	function mostrarCombo($combo, $actividad){
-		echo '<p> Creador del combo: '.$combo["CREADOR"].
-		echo '<h1>'.$actividad["TITULO"].'</h1>';
-		echo '<p>'.$actividad["DESCB"].'<p>';
-		echo '<p>'.$actividad["DESCG"].'<p>';
-		echo '<p>Precio: '.$viaje["PRECIO"].'</p>';
+	$idactividad = $combo["ACTIVIDAD"];
+	$query = "SELECT * FROM combo where actividad = '$idactividad'";
+	$actividad = $conn->query($query);
+	$actividad = $actividad->fetch_assoc();
+
+
+	function mostrarCombo($combo, $viaje, $actividad){
+		echo '<h1>'.$viaje["TITULO"].'</h1>';
+		echo '<p>'.$viaje["DESCG"].'<p>';
+		echo '<p> Fecha de inicio: '.$viaje["FECHAINI"].'    Fecha de fin: '.$viaje["FECHAFIN"].'</p>';
+		echo '<h2>'.$actividad["TITULO"].'</p>';
+		echo '<p>' .$actividad["DESCB"].'</p>';
+		echo '<p>' .$combo["PRECIO"]. '</p>';
 	}
 ?>
 <html>
@@ -35,9 +40,9 @@
 			require("includes/comun/izquierda.php");
 		?>
 			<div id="contenido">
-				<div id="ViajeConcreto">
+				<div id="Combo">
 				<?php
-					mostrarViaje($combo, $actividad);		
+					mostrarCombo($combo, $viaje, $actividad);		
 				?>
 				</div>
 			</div>

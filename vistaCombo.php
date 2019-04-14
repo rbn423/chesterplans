@@ -2,27 +2,35 @@
 	require("includes/config.php");
 	$conn = $app->conexionBd();
 
-	function mostrarCombo($conn){
+	function mostrarCombos($conn){
 		$sql = "SELECT id FROM combo";
 		$busquedas = $conn->query($sql);
-		$ncombo=$busquedas->num_rows;
+		$ncombos=$busquedas->num_rows;
 		$busquedas = $busquedas->fetch_all();
-		for ($i=0;$i<$ncombo;$i++){	
+		for ($i=0;$i<$ncombos;$i++){	
 			$valor = $busquedas[$i][0];
-			$sql = "SELECT * FROM combo where id = '$valor'";
+			$sql = "SELECT idact FROM intercombo WHERE idcombo = '".$id."'";
 			$combo = $conn->query($sql);
-			$combo = $combo->fetch_assoc();
-			if($i!=$ncombo-1){
+			$combo = $combo->fetch_all());
+			$nactividades=$combo->num_rows;
+			for($i=0;$i<nactividades;$i++){
+				$valor2 = $combo[$i][0];
+				$sql= "SELECT titulo FROM actividad WHERE id = '".$id."'";
+			}
+			if($i!=$ncombos-1){
 				echo '<div id="combo">';
 			}
 			else{
 				echo '<div id="ultimocombo">';
 				echo '<div id="info">';
-				echo '<h1>'.$combo["VIAJE"].'</h1>';
-				echo '<p>'.$combo["ACTIVIDAD"].'<p>';
+				echo '<h1>'.$viaje["TITULO"].'</h1>';
+				echo '<p>'.$viaje["DESCB"].'<p>';
+				echo '<p>De '.$viaje["FECHAINI"].' a '.$viaje["FECHAFIN"]. '<p>';
+				echo '<h2>'.$actividad["TITULO"].'</p>';
+				echo '<p>' .$actividad["DESCB"].'</p>';
 				echo '<p>Precio: '.$combo["PRECIO"].'</p>';
 				echo '</div>';
-				echo '<form method="post" action="combo.php?id='.$valor.'">';
+				echo '<form method="post" action="viaje.php?id='.$valor.'">';
 				echo '<div id="boton">';
 				echo '<input type="submit" value="Ver mas">';
 				echo '</div>';
@@ -47,7 +55,7 @@
 		?>
 			<div id="contenido">
 				<?php
-					mostrarCombo($conn);			
+					mostrarCombos($conn);			
 				?>
 			</div>
 		<?php
