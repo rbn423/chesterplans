@@ -1,14 +1,22 @@
 <div id="menuempresa">
-	<span class="apartado">
-		<a href="vistaCrearActividad.php">Crear Actividad</a>
-	</span>
-	<span class="apartado">
-		<a href="vistaCrearViaje.php">Crear Viaje</a>
-	</span>
-	<span class="apartado">
-		<a href="vistaCrearCombo.php">Crear Combo</a>
-	</span>
-	<span class="ultimo">
-		<a href="">Historial</a>
-	</span>
+	<a href="vistaCrearActividad.php">
+		<span class="apartado">
+			Crear Actividad
+		</span>
+	</a>
+	<a href="vistaCrearViaje.php">
+		<span class="apartado">
+			Crear Viaje
+		</span>
+	</a>
+	<a href="vistaCrearCombo.php">
+		<span class="apartado">
+			Crear Combo
+		</span>
+	</a>
+	<a href="">
+		<span class="ultimo">
+			Historial
+		</span>
+	</a>
 </div>

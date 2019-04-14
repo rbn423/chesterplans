@@ -1,17 +1,27 @@
 <div id="menu">
-	<span class="apartado" id="inicio">
-		<a href="index.php">Inicio</a>
-	</span>
-	<span class="apartado" id="viaje">
-		<a href="vistaViajes.php">Viajes</a>
-	</span>
-	<span class="apartado" id="aventura">
-		<a href="">Aventuras</a>
-	</span>
-	<span class="apartado" id="experiencia">
-		<a href="vistaExperiencias.php">Experiencias</a>
-	</span>
-	<span class="ultimo" id="combo">
-		<a href="vistaCombo.php">Combo</a>
-	</span>
+	<a href="index.php">
+		<span class="apartado" id="inicio">
+			Inicio
+		</span>
+	</a>
+	<a href="vistaViajes.php">
+		<span class="apartado" id="viaje">
+			Viajes
+		</span>
+	</a>
+	<a href="">
+		<span class="apartado" id="aventura">
+			Aventuras
+		</span>
+	</a>
+	<a href="vistaExperiencias.php">
+		<span class="apartado" id="experiencia">
+			Experiencias
+		</span>
+	</a>
+	<a href="vistaCombo.php">
+		<span class="ultimo" id="combo">
+			Combo
+		</span>
+	</a>
 </div>
