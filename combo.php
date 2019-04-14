@@ -34,6 +34,7 @@
 	function mostrarCombo($combo, $viaje, $html){
 		echo "<h1>VIAJE</h1>";
 		echo '<h2>'.$viaje["TITULO"].'</h2>';
+		echo '<h3>'.$viaje["DESCB"].'</h3>';
 		echo '<p>'.$viaje["DESCG"].'<p>';
 		echo '<p> Fecha de inicio: '.$viaje["FECHAINI"].' Fecha de fin: '.$viaje["FECHAFIN"].'</p>';
 		echo "<h1>ACTIVIDADES</h1>";
