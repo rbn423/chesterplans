@@ -19,9 +19,9 @@
 			$experienciasCreadas=$experienciasCreadas->fetch_all();
 			for($i=0; $i<$nexperiencias; $i++){
 				if($i!=$nexperiencias-1)
-					echo '<div id="experiencia">';
+					echo '<div id="lista">';
 				else
-					echo '<div id="ultimaexperiencia">';
+					echo '<div id="ultimolista">';
 				$valor = $experienciasCreadas[$i][0];
 				$sql = "SELECT * FROM experiencias where id = '$valor'";
 				$experiencia = $conn->query($sql);
@@ -30,7 +30,7 @@
 				echo '<h2>'.$experiencia["TITULO"].'</h2>';
 				echo '<p>'.$experiencia["DESCB"].'<p>';
 				echo '</div>';
-				echo '<form method="post" action="experiencia.php?id='.$valor.'">';						
+				echo '<form method="post" action="experienciaBasico.php?id='.$valor.'">';						
 				echo '<div id="boton">';
 				echo '<input type="submit" value="Ver mas">';
 				echo '</div>';

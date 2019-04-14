@@ -3,7 +3,14 @@
 	$conn = $app->conexionBd();
 
 	function mostrarViajes($conn){
-		$sql = "SELECT id FROM viaje";
+		if($_POST){
+			if ($_POST['precio'] == 0)
+				$sql = "SELECT id FROM viaje ORDER BY ".$_POST['filtro']." ".$_POST['orden'];
+			else
+				$sql = "SELECT id FROM viaje WHERE precio < ".$_POST['precio']. " ORDER BY ".$_POST['filtro']." ".$_POST['orden'];
+		}
+		else
+			$sql = "SELECT id FROM viaje";
 		$busquedas = $conn->query($sql);
 		$nviajes=$busquedas->num_rows;
 		$busquedas = $busquedas->fetch_all();
@@ -13,10 +20,10 @@
 			$viaje = $conn->query($sql);
 			$viaje = $viaje->fetch_assoc();
 			if($i!=$nviajes-1){
-				echo '<div id="viaje">';
+				echo '<div id="lista">';
 			}
 			else{
-				echo '<div id="ultimoviaje">';
+				echo '<div id="ultimolista">';
 			}
 			echo '<div id="info">';
 			echo '<h1>'.$viaje["TITULO"].'</h1>';
@@ -42,6 +49,7 @@
 	<body>
 
 		<?php
+			$_SESSION['vista'] = "viajes";
 			require("includes/comun/cabecera.php");
 			require("includes/comun/menu.php");
 			require("includes/comun/izquierda.php");

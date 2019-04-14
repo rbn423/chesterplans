@@ -6,10 +6,10 @@
 			echo'<div id="escribirActividad">'; 
 				echo'<h3>Título:</h3>';
 				echo'<p><input type="text" name="titulo"/></p>';
-				echo'<h3>Fecha Inicio:</h3>';
-				echo'<p><input type="date" value="fechaIni"/></p>';
-				echo'<h3>Fecha Fin:</h3>';
-				echo'<p><input type="text" name="descb" size="50"/></p>';
+				echo'<h3>Fecha:</h3>';
+				echo'<p><input type="date" name="fecha"/></p>';
+				echo'<h3>Descripcion breve: </h3>';
+				echo'<p><textarea rows="5" cols="60" name="descb"></textarea></p>';
 				echo'<h3>Texto:</h3>';
 				echo'<p><textarea rows="10" cols="60" name="descg"></textarea></p>';
 				echo'<h3>Precio:</h3>';
@@ -33,6 +33,7 @@
 		?>
 			<div id="contenido">
 				<?php
+					require('menuempresa.php');
 					mostrarCrear();
 				?>
 			</div>

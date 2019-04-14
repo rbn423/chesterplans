@@ -3,7 +3,7 @@
 
 	$nick = $_SESSION["nick"];
 	$titulo = htmlspecialchars(trim(strip_tags($_REQUEST["titulo"])));
-	$fechaIni = htmlspecialchars(trim(strip_tags($_REQUEST["fechaIni"])));
+	$fecha = htmlspecialchars(trim(strip_tags($_REQUEST["fecha"])));
 	$descb = htmlspecialchars(trim(strip_tags($_REQUEST["descb"])));
 	$texto = htmlspecialchars(trim(strip_tags($_REQUEST["descg"])));
 	$precio = htmlspecialchars(trim(strip_tags($_REQUEST["precio"])));
@@ -11,14 +11,13 @@
 		$conn = $app->conexionBd();
 		$f=getdate()[0];
 		$id=$nick.$f;
-		$query="INSERT INTO actividad (ID,TITULO,DESCB,DESCG,CREADOR,PRECIO) 
-			VALUES ('$id','$titulo','$descb','$texto','$nick', '$precio')";
+		$query="INSERT INTO actividad (ID,TITULO,DESCB,DESCG,CREADOR,PRECIO,FECHA) 
+			VALUES ('$id','$titulo','$descb','$texto','$nick', '$precio','$fecha')";
 		$conn->query($query)
 			or die ($conn->error. " en la línea ".(__LINE__-1));
-		mysqli_close($conn);
 	}
 
-	function mostrarCreado($titulo, $descb, $texto, $precio){
+	function mostrarCreado($nick,$titulo, $descb, $texto, $precio){
 		if($titulo != "" && $descb != "" && $texto != "" && $precio != ""){
 			echo '<p> Enorabuena '.$nick.', ya has creado una actividad.</p>';
 		}
@@ -51,7 +50,7 @@
 		?>
 		<div id="contenido">
 			<?php
-				mostrarCreado($titulo, $descb, $texto, $precio);
+				mostrarCreado($nick,$titulo, $descb, $texto, $precio);
 			?>		
 		</div>			
 		<?php

@@ -1,17 +1,27 @@
 <div id="menubasico">
-	<span id="apartado">
-		<a href="vistaExperienciasCompartidas.php">Exp.compartida</a>
-	</span>
-	<span id ="apartado">
-		<a href="">Puntos</a>
-	</span>
-	<span id="apartado">
-		<a href="vistaCrearExperiencia.php">Crear Experiencia</a>
-	</span>
-	<span id ="apartado">
-		<a href="">Intereses guardados</a>
-	</span>
-	<span id ="ultimo">
-		<a href="">Historial</a>
-	</span>
+	<a href="vistaExperienciasCompartidas.php">
+		<span class="apartado">
+			Exp.compartida
+		</span>
+	</a>
+	<a href="">
+		<span class="apartado">
+			Puntos
+		</span>
+	</a>
+	<a href="vistaCrearExperiencia.php">
+		<span class="apartado">
+			Crear Experiencia
+		</span>
+	</a>
+	<a href="">
+		<span class="apartado">
+			Intereses guardados
+		</span>
+	</a>
+	<a href="">
+		<span class="ultimo">
+			Historial
+		</span>
+	</a>
 </div>

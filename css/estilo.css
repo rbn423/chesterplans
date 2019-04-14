@@ -2,16 +2,12 @@ body{
     height: 100%;
     margin: 0;
 }
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-height: 900px) {
 	
 	div#cabecera {	
 		height: 20%;
 		background-color: white;
 		border-bottom: black 2px solid;
-	}
-
-	div#cabecera a{
-		color: white;	
 	}
 
 	div#cabecera img{
@@ -54,103 +50,72 @@ body{
 		float:right;
 	}
 	
-
 	div#menu{
 		float: bottom;
-		background-color: white;
+		background-color: #18F393;
 		height: 7%;
-		color: white;
 		text-align:center;
 	}
 	
 	div#menubasico{
 		float: bottom;
-		background-color: white;
+		background-color: #F9610A;
 		height: 7%;
-		color: white;
 		text-align:center;
 	}
-
-	span#apartado{
-		text-align: center;
-		width: 20%;
-		height: 100%;
-		float:left;
-		border-right: black 2px solid;
-		padding-top: 10px;
-		border-bottom: black 2px solid;
-		box-sizing: border-box;
-	}
-
-	span#ultimo{
-		text-align: center;
-		width: 20%;
-		height: 100%;
-		float:left;
-		padding-top: 10px;
-		border-bottom: black 2px solid;
+	
+	div#menuempresa{
+		float: bottom;
+		background-color: #F129FA;
+		height: 7%;
+		text-align:center;
 	}
 
 	div#izquierda {
 		float: left;
 		width: 20%;
 		height: 65%;
-		background-color: #dddddd;
+		flex-direction:colum;
+		text-align:center;
+		overflow: auto;
+		background-color:#0EA5DA;
+		color:black;
 	}
 
 	div#derecha {
 		float: right;
 		width: 20%;
 		height: 65%;
-		background-color: #dddddd;
+		background-color:#0EA5DA;
+		color:black;
+		padding-left:2%;
+		font-size:19px;
 	}
 
 	div#contenido {
 		float: left;
 		height: 65%;
 		width: 60%;
-		background-color: white;
 		color: black;
 		overflow: auto;
+		background-color:#EEEEEF;
 	}
 
 	div#pie {
 		clear: both;
-		background-color: #E9E8E2;
-		color: black;
+		background-color: black;
+		color: white;
 		text-align: center;
 		height: 8%;
 	}
-	
-	div#registro{
-		border: black 2px solid;
-		padding-left:20px;
-		width: 48%;
-		margin-left: 25%;
-		margin-top: 2%;
-	}
-	
-	div#registro h1{
-		font-size: 200%;
-		text-align:center;
-	}
-	
-	div#escribirExperiencia{
-		padding-left:5%;
-	}
-	
 }
 
-@media only screen and (min-width : 1400px){
+@media only screen and (min-height : 900px){
+	
 	div#cabecera {	
 		height: 16.5%;
 		background-color: white;
-		color: white;
 		border-bottom: black 2px solid;
-	}
-
-	div#cabecera a{
-		color: white;	
 	}
 
 	div#cabecera img{
@@ -166,6 +131,7 @@ body{
 	div#cabecera div#login{
 		float: right;
 		background-color: white;
+		padding-top: -20px;
 		padding-left: 10px;
 		padding-right:10px;
 		height: 80%;
@@ -173,57 +139,69 @@ body{
 		color: black;
 		margin-right:10px;
 		margin-top:0.6%;
-	}	
+	}
+	
+	div#cabecera div#logout{
+		float: right;
+		background-color: white;
+		padding-top: -20px;
+		padding-left: 10px;
+		padding-right:10px;
+		height: 70%;
+		border: black 2px solid;
+		color: black;
+		margin-right:10px;
+		margin-top:0.9%;
+	}
 
 	div#menu{
 		float: bottom;
-		background-color: white;
+		background-color: #18F393;
 		height: 3.5%;
-		color: white;
 		text-align:center;
 	}
-
-	div#menu span#apartado{
-		text-align: center;
-		width: 19.8%;
-		height: 100%;
-		float:left;
-		border-right: black 2px solid;
-		padding-top: 10px;
-		border-bottom: black 2px solid;
+	
+	div#menubasico{
+		float: bottom;
+		background-color: #F9610A;
+		height: 5%;
 	}
-
-	div#menu span#ultimo{
-		text-align: center;
-		width: 20.38%;
-		height: 100%;
-		float:left;
-		padding-top: 10px;
-		border-bottom: black 2px solid;
+	
+	div#menuempresa{
+		float: bottom;
+		background-color: #F129FA;
+		height: 5%;
+		text-align:center;
 	}
 
 	div#izquierda {
 		float: left;
 		width: 20%;
 		height: 70%;
-		background-color: #dddddd;
+		flex-direction:colum;
+		text-align:center;
+		overflow: auto;
+		background-color:#0EA5DA;
+		color:black;
 	}
 
 	div#derecha {
 		float: right;
 		width: 20%;
 		height: 70%;
-		background-color: #dddddd;
+		background-color:#0EA5DA;
+		color:black;
+		padding-left:2%;
+		font-size:19px;
 	}
 
 	div#contenido {
 		float: left;
-		min-height: 65%;
-		height: 65%;
+		height: 70%;
 		width: 60%;
-		background-color: white;
 		color: black;
-		overflow:auto;		
+		overflow:auto;
+		background-color:#EEEEEF;;
 	}
 
 	div#pie {
@@ -231,20 +209,7 @@ body{
 		background-color: black;
 		color: white;
 		text-align: center;
-		height: 8.6%;
-	}
-	
-	div#registro{
-		border: black 2px solid;
-		padding-left:20px;
-		width: 48%;
-		margin-left: 25%;
-		margin-top: 2%;
-	}
-	
-	div#registro h1{
-		font-size: 200%;
-		text-align:center;
+		height: 10%;
 	}	
 }
 
@@ -256,6 +221,7 @@ div#cabecera a, div#cabecera a:visited {
 	color: black;
 	font-weight: bold;
 	text-decoration: none;
+	text-decoration:underline;
 }
 
 div#menu a, div#menu a:visited {
@@ -264,76 +230,162 @@ div#menu a, div#menu a:visited {
 	text-decoration: none;
 }
 
+span.apartado{
+	text-align: center;
+	width: 20%;
+	height: 100%;
+	float:left;
+	border-right: black 2px solid;
+	padding-top: 10px;
+	border-bottom: black 2px solid;
+	box-sizing: border-box;
+}
+
+span.ultimo{
+	text-align: center;
+	width: 20%;
+	height: 100%;
+	float:left;
+	padding-top: 10px;
+	border-bottom: black 2px solid;
+}
+
 div#menubasico a, div#menubasico a:visited {
 	color: black;
 	font-weight: bold;
 	text-decoration: none;
 }
 
-div#contenido div#experiencia{
+div#menuempresa a, div#menuempresa a:visited {
+	color: black;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+div#menuempresa span.apartado{
+	text-align: center;
+	width: 25%;
+	height: 100%;
+	float:left;
+	border-right: black 2px solid;
+	padding-top: 10px;
 	border-bottom: black 2px solid;
+	box-sizing: border-box;
+}
+
+div#menuempresa span.ultimo{
+	text-align: center;
+	width: 25%;
+	height: 100%;
+	float:left;
+	padding-top: 10px;
+	border-bottom: black 2px solid;
+}
+
+div#izquierda div#ranking {
 	display:flex;
 	flex-direction: row;
+	font-size:25px;
 }
 
-div#contenido div#experiencia div#info{
-	width:80%;
+div#izquierda div#ranking div#nick{
+	width:50%;
 	margin-left: 3%;
-}
-
-div#contenido div#experiencia div#boton{
-	padding-top:40px;
-}
-
-div#contenido div#ultimaexperiencia{
-	display:flex;
-	flex-direction: row;
-}
-
-div#contenido div#ultimaexperiencia div#info{
-	width:80%;
-	margin-left: 3%;
-}
-
-div#contenido div#ultimaexperiencia div#boton{
-	padding-top:40px;
 }
 
 div#contenido div#ExperienciaConcreta{
 	text-align: center;
-	margin:20px;
+	margin-top:20px;
 }
 
-div#contenido div#viaje{
-	border-bottom: black 2px solid;
-	display:flex;
-	flex-direction: row;
-}
-
-div#contenido div#viaje div#info{
-	width:80%;
-	margin-left: 3%;
-}
-
-div#contenido div#viaje div#boton{
-	padding-top:60px;
-}
-
-div#contenido div#ultimoviaje{
-	display:flex;
-	flex-direction: row;
-}
-
-div#contenido div#ultimoviaje div#info{
-	width:80%;
-	margin-left: 3%;
-}
-
-div#contenido div#ultimoviaje div#boton{
-	padding-top:60px;
+div#contenido div#ExperienciaConcreta div#boton{
+	float:right;
+	margin-top:-4%;
+	margin-right:2%;
 }
 
 div#contenido div#ViajeConcreto{
 	text-align: center;
 	margin:20px;
-} 
+}
+
+div#contenido div#ActividadConcreta{
+	text-align: center;
+	margin:20px;
+}
+
+div#contenido div#ComboConcreto{
+	text-align: center;
+	margin:20px;
+}
+
+div#contenido div#lista{
+	border-bottom: black 2px solid;
+	display:flex;
+	flex-direction: row;
+}
+
+div#contenido div#lista div#info{
+	width:80%;
+	margin-left: 3%;
+}
+
+div#contenido div#lista div#boton{
+	padding-top:60px;
+}
+
+div#contenido div#ultimolista{
+	display:flex;
+	flex-direction: row;
+}
+
+div#contenido div#ultimolista div#info{
+	width:80%;
+	margin-left: 3%;
+}
+
+div#contenido div#ultimolista div#boton{
+	padding-top:60px;
+}
+
+div#contenido div#nombre {
+	margin-left: 3%;
+	font-size: 30px;
+}
+
+div#contenido div#escribirActividad {
+	margin-left:4%;
+}
+
+div#contenido div#escribirViaje {
+	margin-left:4%;
+}
+
+div#registro{
+	border: black 2px solid;
+	padding-left:20px;
+	width: 48%;
+	margin-left: 25%;
+	margin-top: 2%;
+}
+
+div#registro h1{
+	font-size: 200%;
+	text-align:center;
+}
+
+div#escribirExperiencia{
+	padding-left:5%;
+}
+	
+
+div#primercomentario{
+	width:100%;
+	border-bottom:black 2px solid;
+	border-top:black 2px solid;
+}
+
+div#comentario{
+	width:100%;
+	border-bottom:black 2px solid;
+}
