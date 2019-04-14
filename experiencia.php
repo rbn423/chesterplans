@@ -16,11 +16,15 @@
 			$conn->query($query);
 			$query = "UPDATE usuario SET PUNTOS = puntos+'1' WHERE nick = '".$experiencia['CREADOR']."'";
 			$conn->query($query);
+			$query = "UPDATE experiencias SET likes = likes+'1' WHERE id = '".$id."'";
+			$conn->query($query);
 		}
 		else{
 			$query = "DELETE FROM megustas WHERE NICKUSUARIO = '".$_SESSION['nick']."' AND IDEXPERIENCIA = '".$id."'";
 			$conn->query($query);
 			$query = "UPDATE usuario SET PUNTOS = puntos-'1' WHERE nick = '".$experiencia['CREADOR']."'";
+			$conn->query($query);
+			$query = "UPDATE experiencias SET likes = likes-'1' WHERE id = '".$id."'";
 			$conn->query($query);
 		}
 	}
