@@ -9,7 +9,7 @@
 			Viajes
 		</span>
 	</a>
-	<a href="">
+	<a href="vistaActividades.php">
 		<span class="apartado">
 			Actividades
 		</span>
