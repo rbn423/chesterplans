@@ -29,6 +29,7 @@
 	<body>
 
 		<?php
+			$_SESSION["vista"] = "crearExperiencia";
 			require("includes/comun/cabecera.php");
 			require("includes/comun/menu.php");
 			require("includes/comun/izquierda.php");

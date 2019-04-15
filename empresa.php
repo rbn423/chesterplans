@@ -9,6 +9,7 @@
 	<body>
 
 		<?php
+			$_SESSION["vista"] = "empresa";
 			require("includes/comun/cabecera.php");
 			require("includes/comun/menu.php");
 			require("includes/comun/izquierda.php");

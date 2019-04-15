@@ -27,6 +27,7 @@
 	<body>
 
 		<?php
+			$_SESSION["vista"] = "crearActividad";
 			require("includes/comun/cabecera.php");
 			require("includes/comun/menu.php");
 			require("includes/comun/izquierda.php");
