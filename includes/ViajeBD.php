@@ -18,7 +18,6 @@ class ViajeBD
 	public static function getConn() {
 		//$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
-		
 	}
 
     public static function listaViajes() {
@@ -31,6 +30,9 @@ class ViajeBD
 		}
 		else
 			$sql = "SELECT id FROM viaje";
+		$busquedas = $conn->query($sql);
+		//$nviajes=$busquedas->num_rows;
+		$busquedas = $busquedas->fetch_all();
     }
 
     //Inicia el login
