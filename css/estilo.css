@@ -100,6 +100,7 @@ body{
 		color: black;
 		overflow: auto;
 		background-color:#EEEEEF;
+		
 	}
 
 	div#pie {
@@ -124,7 +125,7 @@ body{
 		padding-left:20px;
 	}
 
-	div#cabecera div#boton {
+	div#cabecera div#login div#boton {
 		float:right;
 		margin-top: -20px;
 	}
@@ -153,6 +154,10 @@ body{
 		color: black;
 		margin-right:10px;
 		margin-top:0.9%;
+	}
+	
+	div#cabecera div#logout div#boton {
+		float:right;
 	}
 
 	div#menu{
@@ -239,7 +244,6 @@ span.apartado{
 	border-right: black 2px solid;
 	padding-top: 10px;
 	border-bottom: black 2px solid;
-	box-sizing: border-box;
 }
 
 span.ultimo{
