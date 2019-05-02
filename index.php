@@ -1,5 +1,6 @@
 <?php
 	require("includes/config.php");
+	require("includes/ExperienciaBD.php");
 	$conn = $app->conexionBd();
 	
 	function mostrarContenido($conn){
@@ -68,19 +69,15 @@
 				echo '</div>';
 			}
 		}
-		$query="SELECT id FROM experiencias";
-		$experiencias= $conn->query($query);
-		$nexperiencias=$experiencias->num_rows;
-		$experiencias= $experiencias->fetch_all();
+		$experiencias= ExperienciaBD::buscarListaExperiencias();
+		$nexperiencias=count($experiencias);
 		echo '<div id="nombre">';
 		echo '<p>Experiencias</p>';
 		echo '</div>';
 		for($i=0; $i<$nexperiencias; $i++){
 			if($i<2){
 				$valor = $experiencias[$i][0];
-				$sql = "SELECT * FROM experiencias where id = '$valor'";
-				$experiencia= $conn->query($sql);
-				$experiencia= $experiencia->fetch_assoc();
+				$experiencia=ExperienciaBD::buscarExperiencia($valor);
 				if($i!=$nexperiencias-1)
 					echo '<div id="lista">';
 				else
