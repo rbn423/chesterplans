@@ -1,28 +1,17 @@
 <?php
 	require("includes/config.php");
+	require("includes/ExperienciaBD.php");
 	$conn = $app->conexionBd();
 	
 	$id = $_GET["id"];
-	$sql = "SELECT * FROM experiencias where id = '$id'";
-	$experiencia = $conn->query($sql);
-	$experiencia = $experiencia->fetch_assoc();
-	$idcomen = $experiencia["COMENTARIO"];
-	$query = "SELECT * FROM intercomentario where id = '$id'";//esta query busca todos los comentarios de la experiencia
-	$comentario = $conn->query($query);
+	$experiencia= ExperienciaBD::buscarExperiencia($id);
+	$comentario = ExperienciaBD::buscarlistaComentarios($id);
 
 	if (isset($_POST['like'])){
-		if($_POST['like'] == 'Me gusta'){
-			$query = "INSERT INTO megustas(NICKUSUARIO, IDEXPERIENCIA) VALUES ('".$_SESSION['nick']."','".$id."')";
-			$conn->query($query);
-			$query = "UPDATE usuario SET PUNTOS = puntos+'1' WHERE nick = '".$experiencia['CREADOR']."'";
-			$conn->query($query);
-		}
-		else{
-			$query = "DELETE FROM megustas WHERE NICKUSUARIO = '".$_SESSION['nick']."' AND IDEXPERIENCIA = '".$id."'";
-			$conn->query($query);
-			$query = "UPDATE usuario SET PUNTOS = puntos-'1' WHERE nick = '".$experiencia['CREADOR']."'";
-			$conn->query($query);
-		}
+		if($_POST['like'] == 'Me gusta')
+			ExperienciaBD::meGusta($_SESSION['nick'],$id,$experiencia['CREADOR']);
+		else
+			ExperienciaBD::noMeGusta($_SESSION['nick'],$id,$experiencia['CREADOR']);
 	}
 
 	function mostrarExperiencia($experiencia,$comentario,$id,$conn){
@@ -33,11 +22,10 @@
 		echo '<p>'.$experiencia["FOTO"].'<p>';
 		echo '<p> Autor de la experiencia '.$experiencia["CREADOR"].'<p>';
 		if (isset($_SESSION["login"])){
-			$query="SELECT * FROM megustas WHERE nickusuario = '". $_SESSION['nick']. "' AND idexperiencia = '$id'";
-			$resultado = $conn->query($query);
+			$resultado=ExperienciaBD::tieneMegusta($_SESSION['nick'], $id);
 			if ($resultado->num_rows == 1){
 				echo '<div id="botonNoMeGusta">';
-				echo '<form method="post" action="experiencia.php?id='.$id.'">';
+				echo '<form method="post" action="experienciaBasico.php?id='.$id.'">';
 				echo '<div id="boton">';
 				echo '<input type="submit" value="No me gusta" name="like">';
 				echo '</div>';
@@ -46,7 +34,7 @@
 			}
 			else{
 				echo '<div id="botonMeGusta">';
-				echo '<form method="post" action="experiencia.php?id='.$id.'">';
+				echo '<form method="post" action="experienciaBasico.php?id='.$id.'">';
 				echo '<div id="boton">';
 				echo '<input type="submit" value="Me gusta" name="like">';
 				echo '</div>';
@@ -54,14 +42,11 @@
 				echo '</div>';
 			}
 		}
-		if($comentario->num_rows>0){
-			$ncomentarios=$comentario->num_rows;
-			$comentario = $comentario->fetch_all();
+		$ncomentarios=count($comentario);
+		if($ncomentarios>0){
 			for($i=0; $i<$ncomentarios; $i++){
 				$valor=$comentario[$i][1];
-				$que= "SELECT * from comentario where id='$valor'";
-				$comen=$conn->query($que);
-				$comen= $comen->fetch_assoc();
+				$comen = ExperienciaBD::buscarComentario($valor);
 				if($i==0)
 					echo '<div id="primercomentario">';
 				else
