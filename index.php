@@ -1,22 +1,21 @@
 <?php
 	require("includes/config.php");
 	require("includes/ExperienciaBD.php");
+	require("includes/ViajeBD.php");
+	
 	$conn = $app->conexionBd();
 	
 	function mostrarContenido($conn){
-		$query="SELECT id FROM viaje";
-		$viajes= $conn->query($query);
-		$nviajes=$viajes->num_rows;
-		$viajes= $viajes->fetch_all();
+		
+		$viajes=viajeBD::ListaViajes();
+		$nviajes=count($viajes);
 		echo '<div id="nombre">';
 		echo '<p>Viajes</p>';
 		echo '</div>';
 		for($i=0; $i<$nviajes; $i++){
 			if($i<2){
 				$valor = $viajes[$i][0];
-				$sql = "SELECT * FROM viaje where id = '$valor'";
-				$viaje = $conn->query($sql);
-				$viaje = $viaje->fetch_assoc();
+				$viaje=ViajeBD::buscarViaje($valor);
 				if($i!=$nviajes-1){
 				echo '<div id="lista">';
 				}

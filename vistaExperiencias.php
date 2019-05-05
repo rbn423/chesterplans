@@ -3,7 +3,7 @@
 	require("includes/ExperienciaBD.php");
 	
 	function mostrarExperiencias(){
-		$busquedas=ExperienciaBD::buscarListaExperiencias();
+		$busquedas=ExperienciaBD::ListaExperiencias();
 		$nexperiencias=count($busquedas);
 		for ($i=0;$i<$nexperiencias;$i++){
 			if($i!=$nexperiencias-1)
