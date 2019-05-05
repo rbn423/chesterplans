@@ -1,18 +1,15 @@
 <?php
 	require("includes/config.php");
+	require("includes/ExperienciaBD.php");
 
 	$nick = $_SESSION["nick"];
 	$titulo = htmlspecialchars(trim(strip_tags($_REQUEST["titulo"])));
 	$descb = htmlspecialchars(trim(strip_tags($_REQUEST["descb"])));
 	$texto = htmlspecialchars(trim(strip_tags($_REQUEST["descg"])));
 	if($titulo != "" && $descb != "" && $texto != ""){
-		$conn = $app->conexionBd();
 		$f=getdate()[0];
 		$id=$nick.$f;
-		$query="INSERT INTO experiencias (ID,TITULO,DESCB,DESCG,CREADOR) 
-			VALUES ('$id','$titulo','$descb','$texto','$nick')";
-		$conn->query($query)
-			or die ($conn->error. " en la línea ".(__LINE__-1));
+		ExperienciaBD::crearExperiencia($id, $titulo, $descb, $texto, $nick);
 	}
 
 	function mostrarCreada($titulo, $descb, $texto, $nick){

@@ -14,11 +14,13 @@
 	}
 
 	function mostrarExperiencia($experiencia,$comentarios,$id){
+		echo '<div id="infoExperiencia">';
 		echo '<h1>'.$experiencia["TITULO"].'</h1>';
 		echo '<p>'.$experiencia["DESCB"].'<p>';
 		echo '<p>'.$experiencia["DESCG"].'<p>';
 		echo '<p>'.$experiencia["FOTO"].'<p>';
 		echo '<p> Autor de la experiencia '.$experiencia["CREADOR"].'<p>';
+		echo '</div>';
 		if (isset($_SESSION["login"])){
 			$resultado=ExperienciaBD::tieneMegusta($_SESSION['nick'], $id);
 			if ($resultado->num_rows == 1){
@@ -45,9 +47,7 @@
 			for($i=0; $i<$ncomentarios; $i++){
 				$valor=$comentarios[$i][1];
 				$comen = ExperienciaBD::buscarComentario($valor);
-				if($i==0)
-					echo '<div id="primercomentario">';
-				else
+				
 					echo '<div id="comentario">';
 				echo '<p>'.$comen["COMENTARIO"].'</p>';
 				echo '<p>Por: '.$comen["ESCRITOR"].'<p>';
@@ -56,11 +56,14 @@
 		}
 		if (isset($_SESSION["login"])){
 			echo '<div id="nuevoComentario">';
-			echo '<p>Crea tu comentario</p>';
+			echo '<form method="post" action="comentarioCreado.php?id='.$id.'">';
+			echo '<h3>Cree un comentario:</h3>';
+			echo '<p><input type="text" name="com" id="textoComentario"/></p>';
+			echo '<input type="submit" value="Enviar" name="comentario" id="crearComentario">';
+			echo '</form>';
 			echo '</div>';
 		}
 	}
-	
 ?>
 <html>
 	<head>
@@ -74,13 +77,15 @@
 			require("includes/comun/menu.php");
 			require("includes/comun/izquierda.php");
 		?>
-			<div id="contenido">
-				<div id="ExperienciaConcreta">
-				<?php
-					mostrarExperiencia($experiencia,$comentarios,$id);
-				?>
-				</div>
+		
+		<div id="contenido">
+			<div id="ExperienciaConcreta">
+			<?php
+				mostrarExperiencia($experiencia,$comentarios,$id);
+			?>
 			</div>
+		</div>
+		
 		<?php
 			require("includes/comun/derecha.php");
 			require("includes/comun/pie.php");

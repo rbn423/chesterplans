@@ -88,6 +88,27 @@ class ExperienciaBD {
 		$query = "UPDATE experiencias SET likes = likes-'1' WHERE id = '$id'";
 		$conn->query($query);
 	}
+	
+	public static function nuevoComentario($id,$nick,$comentario){
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		//añadir comentario
+		$f=getdate()[0];
+		$idcomentario=$nick.$f;
+		$query = "INSERT INTO `comentario`(`ID`, `ESCRITOR`, `COMENTARIO`) VALUES ('$idcomentario','$nick','$comentario')";
+		$conn->query($query);
+		//añadir a intercomentario
+		$query = "INSERT INTO `intercomentario`(`ID`, `IDCOMENT`, `TIPO`) VALUES ('$id','$idcomentario','experiencia')";
+		$conn->query($query);
+	}
+	
+	public static function crearExperiencia($id, $titulo, $descb, $texto, $nick){
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		$query="INSERT INTO experiencias (ID,TITULO,DESCB,DESCG,CREADOR) 
+			VALUES ('$id','$titulo','$descb','$texto','$nick')";
+		$conn->query($query);
+	}
 }
 
 ?>

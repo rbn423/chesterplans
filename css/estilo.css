@@ -62,6 +62,7 @@ body{
 		background-color: #F9610A;
 		height: 7%;
 		text-align:center;
+		flex-direction:row;
 	}
 	
 	div#menuempresa{
@@ -69,6 +70,7 @@ body{
 		background-color: #F129FA;
 		height: 7%;
 		text-align:center;
+		flex-direction:row;
 	}
 
 	div#izquierda {
@@ -293,20 +295,14 @@ div#izquierda div#ranking {
 	font-size:25px;
 }
 
+div#izquierda{
+	display:flex;
+	flex-direction:column;
+}
+
 div#izquierda div#ranking div#nick{
 	width:50%;
 	margin-left: 3%;
-}
-
-div#contenido div#ExperienciaConcreta{
-	text-align: center;
-	margin-top:20px;
-}
-
-div#contenido div#ExperienciaConcreta div#boton{
-	float:right;
-	margin-top:-4%;
-	margin-right:2%;
 }
 
 div#contenido div#ViajeConcreto{
@@ -383,14 +379,35 @@ div#escribirExperiencia{
 	padding-left:5%;
 }
 	
-
-div#primercomentario{
-	width:100%;
+div#infoExperiencia{
 	border-bottom:black 2px solid;
-	border-top:black 2px solid;
 }
 
 div#comentario{
 	width:100%;
 	border-bottom:black 2px solid;
+}
+
+div#contenido div#ExperienciaConcreta{
+	text-align: center;
+	margin-top:20px;
+}
+
+div#contenido div#ExperienciaConcreta div#nuevoComentario h3{
+	margin-left:-35%;
+}
+
+div#contenido div#ExperienciaConcreta div#nuevoComentario input#crearComentario{
+	margin-right:-48%;
+}
+
+div#contenido div#ExperienciaConcreta div#nuevoComentario input#textoComentario{
+	height: 13%;
+	width: 55%;
+}
+
+div#contenido div#ExperienciaConcreta div#boton{
+	float:right;
+	margin-top:-6%;
+	margin-right:2%;
 }
