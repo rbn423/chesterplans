@@ -153,7 +153,7 @@ break;
 EOF;
 break;
 			default:
-				echo "<h3>Bienvendido a Chesterplans</h3>";
+				echo "<h3>Bienvenido a Chesterplans</h3>";
 				echo "<p>Aquí podrás disfrutar del mejor contenido para viajeros.</p>";
 				echo "<p>Disponemos de las mejores ofertas para viajes y actividades, además de contenido compratido por nuestros usuarios en los que comparten sus experiencias.</p>";
 				echo "<p>Date una vuelta y mira lo que te interese.</p>";
