@@ -12,7 +12,7 @@
 			echo'<h3>Texto:</h3>';
 			echo'<p><textarea rows="10" cols="60" name="descg"></textarea></p>';
 			echo'<p>Imagenes:</p>';
-			echo'<p><input type="file" name="imagenes[]"/></p>';
+			echo'<p><input type="file" name="imagen"/></p>';
 			echo'<p><input type="submit" value="compartir"/></p>';
 			echo'</div>';
 			echo'</form>';

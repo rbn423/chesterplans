@@ -6,9 +6,23 @@
 	$titulo = htmlspecialchars(trim(strip_tags($_REQUEST["titulo"])));
 	$descb = htmlspecialchars(trim(strip_tags($_REQUEST["descb"])));
 	$texto = htmlspecialchars(trim(strip_tags($_REQUEST["descg"])));
+	$imagen = $_FILES["imagen"]; //["tmp_name"];
+	if($imagen["size"] != 0 )
+		echo "si";
+	else
+	 echo "nada";
+	exit;
+	
+	header("Content-type: image/jpg");
+	echo $foto;
+	exit;
 	if($titulo != "" && $descb != "" && $texto != ""){
 		$f=getdate()[0];
 		$id=$nick.$f;
+		if($imagen["size"] != 0 ){
+			$idImagen=$imagen["name"].$f;
+			$foto = file_get_contents($imagen);
+		}
 		ExperienciaBD::crearExperiencia($id, $titulo, $descb, $texto, $nick);
 	}
 
