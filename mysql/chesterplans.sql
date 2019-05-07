@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-04-2019 a las 23:35:45
+-- Tiempo de generación: 08-05-2019 a las 00:00:04
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -132,6 +132,7 @@ INSERT INTO `experiencias` (`ID`, `TITULO`, `DESCB`, `DESCG`, `FOTO`, `COMENTARI
 ('ruben1555274337', 'Mis paseos por el Retiro', 'En esta entrada describo mis paseos por el parque del Retiro', 'Ir por el parque del Retiro es una gozada. Da igual la época del año en que vayas, siempre es digno de ver. Con suerte hasta te puedes encontrar con una ardilla.', NULL, NULL, 'ruben', NULL, NULL, 3),
 ('ruben1555274459', 'Hice senderismo', 'Describo mi experiencia como senderista', 'Me fui a la Pedriza, a realizar una ruta de senderismo.\r\nFue una experiencia dura, porque no estaba acostumbrado a tanta caminata, pero valió la pena.', NULL, NULL, 'ruben', NULL, NULL, 1),
 ('ruben1555274937', 'Me perdí en el bosque', 'Me perdí en el bosque cuando era pequeño', 'Cuando era niño me adentré demasiado en el bosque, y cuando quise volver no encontraba el camino.\r\nAl final todo salió bien y me encontraron.', NULL, NULL, 'ruben', NULL, NULL, 2),
+('ruben1557265652', 'hola', 'corta', '1', NULL, NULL, 'ruben', NULL, NULL, 0),
 ('samu1555275043', 'Visité la Alhambra', 'Fui a Granada y visite la Alhambra', 'En Granada está la conocida Alhambra, que es su monumento mas famoso. Me encantó el patio de los leones.', NULL, NULL, 'samu', NULL, NULL, 2),
 ('samu1555275108', 'Mi viaje a Barcelona', 'Estuve en Barcelona y me gustó', 'Barcelona es una ciudad maravillosa. No esperaba que me fuese a gustar tanto, pero lo hizo.', NULL, NULL, 'samu', NULL, NULL, 1);
 
@@ -144,7 +145,7 @@ INSERT INTO `experiencias` (`ID`, `TITULO`, `DESCB`, `DESCG`, `FOTO`, `COMENTARI
 CREATE TABLE `foto` (
   `ID` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `NOMBRE` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `IMAGEN` blob NOT NULL
+  `IMAGEN` mediumblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -202,9 +203,8 @@ CREATE TABLE `intereses` (
 --
 
 CREATE TABLE `interfoto` (
-  `ID` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `IDFOTO` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `TIPO` varchar(15) COLLATE utf8_spanish_ci NOT NULL
+  `IDPUBLICACION` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `IDFOTO` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -397,8 +397,7 @@ ALTER TABLE `intereses`
 -- Indices de la tabla `interfoto`
 --
 ALTER TABLE `interfoto`
-  ADD KEY `ID` (`ID`,`IDFOTO`,`TIPO`),
-  ADD KEY `TIPO` (`TIPO`),
+  ADD KEY `ID` (`IDPUBLICACION`,`IDFOTO`),
   ADD KEY `IDFOTO` (`IDFOTO`);
 
 --
@@ -444,7 +443,6 @@ ALTER TABLE `viaje`
 -- Filtros para la tabla `actividad`
 --
 ALTER TABLE `actividad`
-  ADD CONSTRAINT `actividad_ibfk_1` FOREIGN KEY (`FOTO`) REFERENCES `foto` (`ID`),
   ADD CONSTRAINT `actividad_ibfk_2` FOREIGN KEY (`CREADOR`) REFERENCES `usuario` (`NICK`),
   ADD CONSTRAINT `actividad_ibfk_3` FOREIGN KEY (`COMENTARIO`) REFERENCES `comentario` (`ID`);
 
@@ -472,7 +470,6 @@ ALTER TABLE `compras`
 -- Filtros para la tabla `experiencias`
 --
 ALTER TABLE `experiencias`
-  ADD CONSTRAINT `experiencias_ibfk_1` FOREIGN KEY (`FOTO`) REFERENCES `foto` (`ID`),
   ADD CONSTRAINT `experiencias_ibfk_2` FOREIGN KEY (`CREADOR`) REFERENCES `usuario` (`NICK`),
   ADD CONSTRAINT `experiencias_ibfk_3` FOREIGN KEY (`COMENTARIO`) REFERENCES `comentario` (`ID`);
 
@@ -496,12 +493,6 @@ ALTER TABLE `intereses`
   ADD CONSTRAINT `intereses_ibfk_1` FOREIGN KEY (`IDUSUARIO`) REFERENCES `usuario` (`NICK`);
 
 --
--- Filtros para la tabla `interfoto`
---
-ALTER TABLE `interfoto`
-  ADD CONSTRAINT `interfoto_ibfk_1` FOREIGN KEY (`IDFOTO`) REFERENCES `foto` (`ID`);
-
---
 -- Filtros para la tabla `lista`
 --
 ALTER TABLE `lista`
@@ -514,7 +505,6 @@ ALTER TABLE `lista`
 -- Filtros para la tabla `viaje`
 --
 ALTER TABLE `viaje`
-  ADD CONSTRAINT `viaje_ibfk_1` FOREIGN KEY (`FOTO`) REFERENCES `foto` (`ID`),
   ADD CONSTRAINT `viaje_ibfk_2` FOREIGN KEY (`CREADOR`) REFERENCES `usuario` (`NICK`),
   ADD CONSTRAINT `viaje_ibfk_3` FOREIGN KEY (`COMENTARIO`) REFERENCES `comentario` (`ID`);
 COMMIT;

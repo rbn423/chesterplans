@@ -1,27 +1,24 @@
 <?php
 	require("includes/config.php");
 	require("includes/ExperienciaBD.php");
+	require("includes/ImagenBD.php");
 
 	$nick = $_SESSION["nick"];
 	$titulo = htmlspecialchars(trim(strip_tags($_REQUEST["titulo"])));
 	$descb = htmlspecialchars(trim(strip_tags($_REQUEST["descb"])));
 	$texto = htmlspecialchars(trim(strip_tags($_REQUEST["descg"])));
 	$imagen = $_FILES["imagen"]; //["tmp_name"];
-	if($imagen["size"] != 0 )
-		echo "si";
-	else
-	 echo "nada";
-	exit;
 	
-	header("Content-type: image/jpg");
-	echo $foto;
-	exit;
+	//header("Content-type: image/jpg"); //sirve para mostrar una foto
 	if($titulo != "" && $descb != "" && $texto != ""){
 		$f=getdate()[0];
 		$id=$nick.$f;
-		if($imagen["size"] != 0 ){
+		if($imagen["size"] != 0 && $imagen["error"] == 0){
 			$idImagen=$imagen["name"].$f;
-			$foto = file_get_contents($imagen);
+			ImagenBD::insertaImagen($imagen,$idImagen,$id);
+		}
+		else{
+			//mostrar un mensaje de que la imagen ha fallado
 		}
 		ExperienciaBD::crearExperiencia($id, $titulo, $descb, $texto, $nick);
 	}
