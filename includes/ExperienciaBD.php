@@ -101,6 +101,17 @@ class ExperienciaBD {
 		$query = "INSERT INTO `intercomentario`(`ID`, `IDCOMENT`, `TIPO`) VALUES ('$id','$idcomentario','experiencia')";
 		$conn->query($query);
 	}
+
+	public static function insertaImagen($imagen,$idImagen,$nombreImagen,$idExperiencia){
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		$query = "INSERT INTO foto(ID, NOMBRE, IMAGEN) VALUES ('$idImagen','$nombreImagen', '$imagen')";
+		$conn->query($query);
+		$query = "UPDATE usuario SET PUNTOS = puntos+'1' WHERE nick = '$creador'";
+		$conn->query($query);
+		$query = "UPDATE experiencias SET likes = likes+'1' WHERE id = '$id'";
+		$conn->query($query);
+	}
 	
 	public static function crearExperiencia($id, $titulo, $descb, $texto, $nick){
 		$app = Aplicacion::getSingleton();
