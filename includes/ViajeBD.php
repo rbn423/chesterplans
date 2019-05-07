@@ -74,7 +74,14 @@ class ViajeBD {
 		$comen= $comen->fetch_assoc();
 		return $comen;
 	}
-   
+
+	public static function crearViaje($id, $titulo, $descb, $texto, $precio, $nick, $fechaIni, $fechaFin){
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		$query="INSERT INTO viaje (ID,TITULO,DESCB,DESCG,CREADOR,PRECIO,FECHAINI,FECHAFIN) 
+			VALUES ('$id','$titulo','$descb','$texto','$nick', '$precio', '$fechaIni', '$fechaFin')";
+		$conn->query($query);
+	}
 }
 
 ?>
