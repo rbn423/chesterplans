@@ -58,7 +58,7 @@
 			echo '<div id="nuevoComentario">';
 			echo '<form method="post" action="comentarioCreado.php?id='.$id.'">';
 			echo '<h3>Cree un comentario:</h3>';
-			echo '<p><input type="text" name="com" id="textoComentario"/></p>';
+			echo '<p><textarea rows="5" cols="50" name="com" id="textoComentario"/></textarea></p>';
 			echo '<input type="submit" value="Enviar" name="comentario" id="crearComentario">';
 			echo '</form>';
 			echo '</div>';
