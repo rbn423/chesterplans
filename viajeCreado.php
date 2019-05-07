@@ -1,5 +1,6 @@
 <?php
 	require("includes/config.php");
+	require("includes/ViajeBD.php");
 	$nick = $_SESSION["nick"];
 	$titulo = htmlspecialchars(trim(strip_tags($_REQUEST["titulo"])));
 	$descb = htmlspecialchars(trim(strip_tags($_REQUEST["descb"])));
@@ -7,18 +8,15 @@
 	$precio = htmlspecialchars(trim(strip_tags($_REQUEST["precio"])));
 	$fechaIni = htmlspecialchars(trim(strip_tags($_REQUEST["fechaIni"])));
 	$fechaFin = htmlspecialchars(trim(strip_tags($_REQUEST["fechaFin"])));
-	if($titulo != "" && $descb != "" && $texto != "" && $precio != "" && $precio > 0 /* && comprobar fecha correcta*/){
+	if($titulo != "" && $descb != "" && $texto != "" && $precio != "" && $precio > 0 && $fechaIni != "" && $fechaFin != ""){
 		$conn = $app->conexionBd();
 		$f=getdate()[0];
 		$id=$nick.$f;
-		$query="INSERT INTO viaje (ID,TITULO,DESCB,DESCG,CREADOR,PRECIO,FECHAINI,FECHAFIN) 
-			VALUES ('$id','$titulo','$descb','$texto','$nick', '$precio', '$fechaIni', '$fechaFin')";
-		$conn->query($query)
-			or die ($conn->error. " en la línea ".(__LINE__-1));
+		ViajeBD::crearViaje($id, $titulo, $descb, $texto, $precio, $nick, $fechaIni, $fechaFin);
 	}
 
-	function mostrarCreado($nick,$titulo, $descb, $texto, $precio){
-		if($titulo != "" && $descb != "" && $texto != "" && $precio != ""){
+	function mostrarCreado($nick,$titulo, $descb, $texto, $precio, $fechaIni, $fechaFin){
+		if($titulo != "" && $descb != "" && $texto != "" && $precio != "" && $fechaIni != "" && $fechaFin != "" ){
 			echo '<p> Enorabuena '.$nick.', ya has creado un viaje.</p>';
 		}
 		else{
@@ -31,6 +29,10 @@
 				$mensaje .= " -texto ";
 			if($precio == "")
 				$mensaje .= " -precio ";
+			if($fechaIni == "")
+				$mensaje .= " -fecha inicio ";
+			if($fechaFin == "")
+				$mensaje .= " -fecha fin ";
 			echo $mensaje;
 		}
 	}
@@ -50,7 +52,7 @@
 		?>
 		<div id="contenido">
 			<?php
-				mostrarCreado($nick,$titulo, $descb, $texto, $precio);
+				mostrarCreado($nick,$titulo, $descb, $texto, $precio, $fechaIni, $fechaFin);
 			?>		
 		</div>			
 		<?php
