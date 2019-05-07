@@ -16,7 +16,7 @@
 
 		echo '<p> Creador del viaje: '.$viaje["CREADOR"].'<p>';
 		echo '<p> Fecha de inicio: '.$viaje["FECHAINI"].'    Fecha de fin: '.$viaje["FECHAFIN"].'</p>';
-		echo '<p>Precio: '.$viaje["PRECIO"].'</p>';
+		echo '<p> Precio: '.$viaje["PRECIO"].' €</p>';
 		
 		$ncomentarios=count($comentarios);
 		if($ncomentarios>0){

@@ -18,7 +18,7 @@
 			echo '<h1>'.$viaje["TITULO"].'</h1>';
 			echo '<p>'.$viaje["DESCB"].'<p>';
 			echo '<p>De '.$viaje["FECHAINI"].' a '.$viaje["FECHAFIN"]. '<p>';
-			echo '<p>Precio: '.$viaje["PRECIO"].'</p>';
+			echo '<p>Precio: '.$viaje["PRECIO"].' €</p>';
 			echo '</div>';
 			echo '<form method="post" action="viaje.php?id='.$valor.'">';
 			echo '<div id="boton">';
