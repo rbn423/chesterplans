@@ -1,30 +1,18 @@
 <?php
 	require("includes/config.php");
-	$conn = $app->conexionBd();
-
-	function mostrarActividades($conn){
-		if($_POST){
-			if ($_POST['precio'] == 0)
-				$sql = "SELECT id FROM actividad ORDER BY ".$_POST['filtro']." ".$_POST['orden'];
-			else
-				$sql = "SELECT id FROM actividad WHERE precio < ".$_POST['precio']. " ORDER BY ".$_POST['filtro']." ".$_POST['orden'];
-		}
-		else
-			$sql = "SELECT id FROM actividad";
-		$busquedas = $conn->query($sql);
-		$nactividades=$busquedas->num_rows;
-		$busquedas = $busquedas->fetch_all();
-		for ($i=0;$i<$nactividades;$i++){	
-			$valor = $busquedas[$i][0];
-			$sql = "SELECT * FROM actividad where id = '$valor'";
-			$actividad = $conn->query($sql);
-			$actividad = $actividad->fetch_assoc();
-			if($i!=$nactividades-1){
+	require("includes/ActividadBD.php");
+	
+	function mostrarActividades(){
+		$busquedas=ActividadBD::ListaActividades();
+		$nactividades=count($busquedas);
+		for ($i=0;$i<$nactividades;$i++){
+			if($i!=$nactividades-1)
 				echo '<div id="lista">';
-			}
-			else{
+			else
 				echo '<div id="ultimolista">';
-			}
+			$valor = $busquedas[$i][0];
+			$actividad = ActividadBD::buscarActividad($valor);
+			
 			echo '<div id="info">';
 			echo '<h1>'.$actividad["TITULO"].'</h1>';
 			echo '<p>'.$actividad["DESCB"].'<p>';
@@ -56,7 +44,7 @@
 		?>
 			<div id="contenido">
 				<?php
-					mostrarActividades($conn);			
+					mostrarActividades();			
 				?>
 			</div>
 		<?php
