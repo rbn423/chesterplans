@@ -19,7 +19,8 @@
 		echo '<p>'.$experiencia["DESCB"].'<p>';
 		echo '<p>'.$experiencia["DESCG"].'<p>';
 		echo '<p>'.$experiencia["FOTO"].'<p>';
-		echo '<p> Autor de la experiencia '.$experiencia["CREADOR"].'<p>';
+		echo '<p> Autor de la experiencia: '.$experiencia["CREADOR"].'<p>';
+		echo '<p> Puntos totales de la experiencia: ' .$experiencia["likes"]. '</p>';
 		echo '</div>';
 		if (isset($_SESSION["login"])){
 			$resultado=ExperienciaBD::tieneMegusta($_SESSION['nick'], $id);
@@ -58,7 +59,7 @@
 			echo '<div id="nuevoComentario">';
 			echo '<form method="post" action="comentarioCreado.php?id='.$id.'">';
 			echo '<h3>Cree un comentario:</h3>';
-			echo '<p><textarea rows="5" cols="50" name="com" id="textoComentario"/></textarea></p>';
+			echo '<p><input type="text" name="com" id="textoComentario"/></p>';
 			echo '<input type="submit" value="Enviar" name="comentario" id="crearComentario">';
 			echo '</form>';
 			echo '</div>';
