@@ -1,12 +1,9 @@
 <?php
 	require("includes/config.php");
+	require("includes/ActividadBD.php");
 
-	$conn = $app->conexionBd();
 	$id=$_GET["id"];
-	$sql = "SELECT * FROM actividad where id = '$id'";
-	$actividad = $conn->query($sql);
-	$actividad = $actividad->fetch_assoc();
-	
+	$actividad = ActividadBD::buscarActividad($id);	
 
 	function mostrarActividad($actividad){
 		echo '<h1>'.$actividad["TITULO"].'</h1>';
