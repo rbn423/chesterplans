@@ -15,3 +15,4 @@ Las funcionalidades implementadas en esta entrega son:
 - Un sistema de me gustas que permite sumar puntos a los usuarios si reciben me gustas
 - Un ranking en la barra derecha que muestra los usuarios con mas puntos.
 - La vista del empresario, que permite crear viajes y actividades.
+- Se pueden insertar imagenes en el contenido compartido.
