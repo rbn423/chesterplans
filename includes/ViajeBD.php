@@ -30,15 +30,6 @@ class ViajeBD {
 		$busquedas = $busquedas->fetch_all();
 		return $busquedas;
     }
-
-	public static function buscarListaViajesConcretas($nick){
-		$app = Aplicacion::getSingleton();
-		$conn = $app->conexionBd();
-		$query="SELECT id FROM viaje WHERE CREADOR='$nick'";
-		$viajesCreados=$conn->query($query);
-		$viajesCreados=$viajesCreados->fetch_all();
-		return $viajesCreados;
-	}
 	
 		public static function buscarViaje($id){
 		$app = Aplicacion::getSingleton();
