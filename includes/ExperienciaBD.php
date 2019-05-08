@@ -3,14 +3,6 @@ require("config.php");
 
 class ExperienciaBD {
 	
-	private $Id;
-	private $Titulo;
-	private $DesCB;
-	private $DesCG;
-	private $Foto;
-	private $Comentario;
-	private $Likes;
-	
 	public static function buscarListaExperiencias(){
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();

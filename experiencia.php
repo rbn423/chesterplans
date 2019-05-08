@@ -1,6 +1,7 @@
 <?php
 	require("includes/config.php");
 	require("includes/ExperienciaBD.php");
+	require("includes/imagenBD.php");
 	
 	$id = $_GET["id"];
 	$experiencia= ExperienciaBD::buscarExperiencia($id);

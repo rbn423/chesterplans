@@ -21,6 +21,15 @@ class ImagenBD {
 			echo "Formato de imagen no permitido";
 		}
 	}
+
+	public static function cargaImagen($idImagen){
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		$query = "SELECT ID,NOMBRE,IMAGEN FROM foto WHERE ID = " . $idImagen . ";";
+		$datos = $conn->query($query);
+		$datos = $datos->fetch_assoc();
+		return $datos;
+	}
 }
 
 ?>
