@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-05-2019 a las 00:00:04
+-- Tiempo de generación: 09-05-2019 a las 19:54:19
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -112,7 +112,6 @@ CREATE TABLE `experiencias` (
   `TITULO` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `DESCB` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `DESCG` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
-  `FOTO` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
   `COMENTARIO` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
   `CREADOR` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `FECHAINI` date DEFAULT NULL,
@@ -124,17 +123,17 @@ CREATE TABLE `experiencias` (
 -- Volcado de datos para la tabla `experiencias`
 --
 
-INSERT INTO `experiencias` (`ID`, `TITULO`, `DESCB`, `DESCG`, `FOTO`, `COMENTARIO`, `CREADOR`, `FECHAINI`, `FECHAFIN`, `likes`) VALUES
-('andrea1555275491', 'No os perdáis el concierto', 'Os recomiendo el mejor concierto que podeis ver en Madrid', 'No os lo perdais', NULL, NULL, 'andrea', NULL, NULL, 3),
-('ari1555275216', 'Me encanta Madrid', 'De Madrid al cielo', 'Madrid es una ciudad impresionante a la hora de hacer turismo. Ni en un mes de vacaciones podrías visitar todo.', NULL, NULL, 'ari', NULL, NULL, 1),
-('esti1555275416', 'Nada como Bilbao', 'Me encanta Bilbao, es increible', 'No hay sitio como Bilbao. La comida es genial, y el ambiente es buenisimo. Lo recomiendo encarecidamente a todo el mundo.', NULL, NULL, 'esti', NULL, NULL, 2),
-('lucia1555275309', 'Nueva York', 'Nueva York es increible y quiero volver', 'Estuve en Nueva York el mes pasado, y no tengo suficientes palabras para describir lo muchísimo que me gustó.', NULL, NULL, 'lucia', NULL, NULL, 1),
-('ruben1555274337', 'Mis paseos por el Retiro', 'En esta entrada describo mis paseos por el parque del Retiro', 'Ir por el parque del Retiro es una gozada. Da igual la época del año en que vayas, siempre es digno de ver. Con suerte hasta te puedes encontrar con una ardilla.', NULL, NULL, 'ruben', NULL, NULL, 3),
-('ruben1555274459', 'Hice senderismo', 'Describo mi experiencia como senderista', 'Me fui a la Pedriza, a realizar una ruta de senderismo.\r\nFue una experiencia dura, porque no estaba acostumbrado a tanta caminata, pero valió la pena.', NULL, NULL, 'ruben', NULL, NULL, 1),
-('ruben1555274937', 'Me perdí en el bosque', 'Me perdí en el bosque cuando era pequeño', 'Cuando era niño me adentré demasiado en el bosque, y cuando quise volver no encontraba el camino.\r\nAl final todo salió bien y me encontraron.', NULL, NULL, 'ruben', NULL, NULL, 2),
-('ruben1557265652', 'hola', 'corta', '1', NULL, NULL, 'ruben', NULL, NULL, 0),
-('samu1555275043', 'Visité la Alhambra', 'Fui a Granada y visite la Alhambra', 'En Granada está la conocida Alhambra, que es su monumento mas famoso. Me encantó el patio de los leones.', NULL, NULL, 'samu', NULL, NULL, 2),
-('samu1555275108', 'Mi viaje a Barcelona', 'Estuve en Barcelona y me gustó', 'Barcelona es una ciudad maravillosa. No esperaba que me fuese a gustar tanto, pero lo hizo.', NULL, NULL, 'samu', NULL, NULL, 1);
+INSERT INTO `experiencias` (`ID`, `TITULO`, `DESCB`, `DESCG`, `COMENTARIO`, `CREADOR`, `FECHAINI`, `FECHAFIN`, `likes`) VALUES
+('andrea1555275491', 'No os perdáis el concierto', 'Os recomiendo el mejor concierto que podeis ver en Madrid', 'No os lo perdais', NULL, 'andrea', NULL, NULL, 3),
+('ari1555275216', 'Me encanta Madrid', 'De Madrid al cielo', 'Madrid es una ciudad impresionante a la hora de hacer turismo. Ni en un mes de vacaciones podrías visitar todo.', NULL, 'ari', NULL, NULL, 1),
+('esti1555275416', 'Nada como Bilbao', 'Me encanta Bilbao, es increible', 'No hay sitio como Bilbao. La comida es genial, y el ambiente es buenisimo. Lo recomiendo encarecidamente a todo el mundo.', NULL, 'esti', NULL, NULL, 2),
+('lucia1555275309', 'Nueva York', 'Nueva York es increible y quiero volver', 'Estuve en Nueva York el mes pasado, y no tengo suficientes palabras para describir lo muchísimo que me gustó.', NULL, 'lucia', NULL, NULL, 1),
+('ruben1555274337', 'Mis paseos por el Retiro', 'En esta entrada describo mis paseos por el parque del Retiro', 'Ir por el parque del Retiro es una gozada. Da igual la época del año en que vayas, siempre es digno de ver. Con suerte hasta te puedes encontrar con una ardilla.', NULL, 'ruben', NULL, NULL, 3),
+('ruben1555274459', 'Hice senderismo', 'Describo mi experiencia como senderista', 'Me fui a la Pedriza, a realizar una ruta de senderismo.\r\nFue una experiencia dura, porque no estaba acostumbrado a tanta caminata, pero valió la pena.', NULL, 'ruben', NULL, NULL, 1),
+('ruben1555274937', 'Me perdí en el bosque', 'Me perdí en el bosque cuando era pequeño', 'Cuando era niño me adentré demasiado en el bosque, y cuando quise volver no encontraba el camino.\r\nAl final todo salió bien y me encontraron.', NULL, 'ruben', NULL, NULL, 2),
+('ruben1557265652', 'hola', 'corta', '1', NULL, 'ruben', NULL, NULL, 0),
+('samu1555275043', 'Visité la Alhambra', 'Fui a Granada y visite la Alhambra', 'En Granada está la conocida Alhambra, que es su monumento mas famoso. Me encantó el patio de los leones.', NULL, 'samu', NULL, NULL, 2),
+('samu1555275108', 'Mi viaje a Barcelona', 'Estuve en Barcelona y me gustó', 'Barcelona es una ciudad maravillosa. No esperaba que me fuese a gustar tanto, pero lo hizo.', NULL, 'samu', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -145,7 +144,8 @@ INSERT INTO `experiencias` (`ID`, `TITULO`, `DESCB`, `DESCG`, `FOTO`, `COMENTARI
 CREATE TABLE `foto` (
   `ID` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `NOMBRE` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `IMAGEN` mediumblob NOT NULL
+  `IMAGEN` mediumblob NOT NULL,
+  `TIPO` varchar(20) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -362,7 +362,6 @@ ALTER TABLE `compras`
 --
 ALTER TABLE `experiencias`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `FOTO` (`FOTO`),
   ADD KEY `COMENTARIO` (`COMENTARIO`),
   ADD KEY `CREADOR` (`CREADOR`);
 

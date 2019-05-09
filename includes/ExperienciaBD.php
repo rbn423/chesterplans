@@ -33,6 +33,16 @@ class ExperienciaBD {
 		return $experiencia;
 	}
 	
+	public static function buscarFoto($idExperiencia){
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		$sql = "SELECT IDFOTO FROM interfoto where IDPUBLICACION = '$idExperiencia'";
+		$idFoto = $conn->query($sql);
+		$idFoto = $idFoto->fetch_all();
+		$idFoto = $idFoto[0][0];
+		return $idFoto;
+	}
+
 	public static function buscarListaComentarios($idexp) {
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
