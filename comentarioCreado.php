@@ -3,7 +3,7 @@
 	
 	$nick = $_SESSION["nick"];
 	$id = $_GET["id"];
-	$comentario= $_POST["com"];
+	$comentario= htmlspecialchars(trim(strip_tags($_REQUEST["com"])));;
 	
 	ExperienciaBD::nuevoComentario($id, $nick, $comentario);
 	

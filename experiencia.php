@@ -1,12 +1,10 @@
 <?php
 	require("includes/config.php");
 	require("includes/ExperienciaBD.php");
-	require("includes/imagenBD.php");
 	
 	$id = $_GET["id"];
 	$experiencia= ExperienciaBD::buscarExperiencia($id);
 	$comentarios = ExperienciaBD::buscarlistaComentarios($id);
-	$idFoto = ExperienciaBD::buscarFoto($id);
 
 	if (isset($_POST['like'])){
 		if($_POST['like'] == 'Me gusta')
@@ -15,14 +13,13 @@
 			ExperienciaBD::noMeGusta($_SESSION['nick'],$id,$experiencia['CREADOR']);
 	}
 
-	function mostrarExperiencia($experiencia,$comentarios,$id,$idFoto){
+	function mostrarExperiencia($experiencia,$comentarios,$id){
 		echo '<div id="infoExperiencia">';
 		echo '<h1>'.$experiencia["TITULO"].'</h1>';
-		echo '<p>'.$experiencia["DESCB"].'</p>';
-		echo '<p>'.$experiencia["DESCG"].'</p>';
-		imagenBD::cargaImagen($idFoto);
-		echo '<p> Autor de la experiencia: '.$experiencia["CREADOR"].'</p>';
-		echo '<p> Puntos totales de la experiencia: ' .$experiencia["likes"]. '</p>';
+		echo '<p>'.$experiencia["DESCB"].'<p>';
+		echo '<p>'.$experiencia["DESCG"].'<p>';
+		echo '<p>'.$experiencia["FOTO"].'<p>';
+		echo '<p> Autor de la experiencia '.$experiencia["CREADOR"].'<p>';
 		echo '</div>';
 		if (isset($_SESSION["login"])){
 			$resultado=ExperienciaBD::tieneMegusta($_SESSION['nick'], $id);
@@ -61,7 +58,7 @@
 			echo '<div id="nuevoComentario">';
 			echo '<form method="post" action="comentarioCreado.php?id='.$id.'">';
 			echo '<h3>Cree un comentario:</h3>';
-			echo '<p><input type="text" name="com" id="textoComentario"/></p>';
+			echo '<p><textarea rows="5" cols="50" name="com" id="textoComentario"/></textarea></p>';
 			echo '<input type="submit" value="Enviar" name="comentario" id="crearComentario">';
 			echo '</form>';
 			echo '</div>';
@@ -84,7 +81,7 @@
 		<div id="contenido">
 			<div id="ExperienciaConcreta">
 			<?php
-				mostrarExperiencia($experiencia,$comentarios,$id,$idFoto);
+				mostrarExperiencia($experiencia,$comentarios,$id);
 			?>
 			</div>
 		</div>
