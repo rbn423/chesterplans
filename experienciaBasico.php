@@ -1,7 +1,6 @@
 <?php
 	require("includes/config.php");
 	require("includes/ExperienciaBD.php");
-	$conn = $app->conexionBd();
 	
 	$id = $_GET["id"];
 	$experiencia= ExperienciaBD::buscarExperiencia($id);
@@ -14,7 +13,7 @@
 			ExperienciaBD::noMeGusta($_SESSION['nick'],$id,$experiencia['CREADOR']);
 	}
 
-	function mostrarExperiencia($experiencia,$comentario,$id,$conn){
+	function mostrarExperiencia($experiencia,$comentario,$id){
 		echo '<div id="ExperienciaConcreta">';
 		echo '<h1>'.$experiencia["TITULO"].'</h1>';
 		echo '<p>'.$experiencia["DESCB"].'<p>';
@@ -80,7 +79,7 @@
 			<div id="contenido">
 				<?php
 					require('menubasico.php');
-					mostrarExperiencia($experiencia,$comentario,$id,$conn);
+					mostrarExperiencia($experiencia,$comentario,$id);
 				?>
 			</div>
 		<?php
