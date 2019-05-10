@@ -39,8 +39,11 @@ class ExperienciaBD {
 		$sql = "SELECT IDFOTO FROM interfoto where IDPUBLICACION = '$idExperiencia'";
 		$idFoto = $conn->query($sql);
 		$idFoto = $idFoto->fetch_all();
-		$idFoto = $idFoto[0][0];
-		return $idFoto;
+		if (count($idFoto) != 0){
+			$idFoto = $idFoto[0][0];
+			return $idFoto;
+		}
+		return NULL;
 	}
 
 	public static function buscarListaComentarios($idexp) {

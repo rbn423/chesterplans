@@ -20,7 +20,9 @@
 		echo '<h1>'.$experiencia["TITULO"].'</h1>';
 		echo '<p>'.$experiencia["DESCB"].'<p>';
 		echo '<p>'.$experiencia["DESCG"].'<p>';
-		imagenBD::cargaImagen($idFoto);
+		if ($idFoto != NULL){
+			imagenBD::cargaImagen($idFoto);
+		}
 		echo '<p> Autor de la experiencia '.$experiencia["CREADOR"].'<p>';
 		echo '</div>';
 		if (isset($_SESSION["login"])){

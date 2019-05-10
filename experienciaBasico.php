@@ -1,10 +1,12 @@
 <?php
 	require("includes/config.php");
 	require("includes/ExperienciaBD.php");
+	require("includes/imagenBD.php");
 	
 	$id = $_GET["id"];
 	$experiencia= ExperienciaBD::buscarExperiencia($id);
 	$comentario = ExperienciaBD::buscarlistaComentarios($id);
+	$idFoto = ExperienciaBD::buscarFoto($id);
 
 	if (isset($_POST['like'])){
 		if($_POST['like'] == 'Me gusta')
@@ -13,12 +15,14 @@
 			ExperienciaBD::noMeGusta($_SESSION['nick'],$id,$experiencia['CREADOR']);
 	}
 
-	function mostrarExperiencia($experiencia,$comentario,$id){
+	function mostrarExperiencia($experiencia,$comentario,$id,$idFoto){
 		echo '<div id="ExperienciaConcreta">';
 		echo '<h1>'.$experiencia["TITULO"].'</h1>';
 		echo '<p>'.$experiencia["DESCB"].'<p>';
 		echo '<p>'.$experiencia["DESCG"].'<p>';
-		echo '<p>'.$experiencia["FOTO"].'<p>';
+		if ($idFoto != NULL){
+			imagenBD::cargaImagen($idFoto);
+		}
 		echo '<p> Autor de la experiencia '.$experiencia["CREADOR"].'<p>';
 		if (isset($_SESSION["login"])){
 			$resultado=ExperienciaBD::tieneMegusta($_SESSION['nick'], $id);
@@ -79,7 +83,7 @@
 			<div id="contenido">
 				<?php
 					require('menubasico.php');
-					mostrarExperiencia($experiencia,$comentario,$id);
+					mostrarExperiencia($experiencia,$comentario,$id,$idFoto);
 				?>
 			</div>
 		<?php
