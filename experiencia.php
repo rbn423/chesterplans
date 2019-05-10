@@ -1,10 +1,12 @@
 <?php
 	require("includes/config.php");
 	require("includes/ExperienciaBD.php");
+	require("includes/imagenBD.php");
 	
 	$id = $_GET["id"];
 	$experiencia= ExperienciaBD::buscarExperiencia($id);
 	$comentarios = ExperienciaBD::buscarlistaComentarios($id);
+	$idFoto = ExperienciaBD::buscarFoto($id);
 
 	if (isset($_POST['like'])){
 		if($_POST['like'] == 'Me gusta')
@@ -13,12 +15,12 @@
 			ExperienciaBD::noMeGusta($_SESSION['nick'],$id,$experiencia['CREADOR']);
 	}
 
-	function mostrarExperiencia($experiencia,$comentarios,$id){
+	function mostrarExperiencia($experiencia,$comentarios,$id,$idFoto){
 		echo '<div id="infoExperiencia">';
 		echo '<h1>'.$experiencia["TITULO"].'</h1>';
 		echo '<p>'.$experiencia["DESCB"].'<p>';
 		echo '<p>'.$experiencia["DESCG"].'<p>';
-		echo '<p>'.$experiencia["FOTO"].'<p>';
+		imagenBD::cargaImagen($idFoto);
 		echo '<p> Autor de la experiencia '.$experiencia["CREADOR"].'<p>';
 		echo '</div>';
 		if (isset($_SESSION["login"])){
@@ -81,7 +83,7 @@
 		<div id="contenido">
 			<div id="ExperienciaConcreta">
 			<?php
-				mostrarExperiencia($experiencia,$comentarios,$id);
+				mostrarExperiencia($experiencia,$comentarios,$id,$idFoto);
 			?>
 			</div>
 		</div>
