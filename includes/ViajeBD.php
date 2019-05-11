@@ -2,18 +2,6 @@
 require("config.php");
 
 class ViajeBD {
- 
-    private $Id;
-    private $Titulo;
-    private $Descb;
-    private $Descg;
-    private $Foto;
-    private $Comentario;
-    private $Creador;
-    private $FechaIni;
-	private $FechaFin;
-	private $Precio;
-	
 
     public static function ListaViajes() {
 		$app = Aplicacion::getSingleton();
@@ -68,6 +56,16 @@ class ViajeBD {
 		$busquedas= $busquedas->fetch_assoc();
 		return $busquedas;
 	}
+
+	public static function buscarViajeCreador($idCreador) {
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		$query = "SELECT titulo, id FROM viaje where creador = '$idCreador'";
+		$busquedas = $conn->query($query);
+		$busquedas = $busquedas->fetch_all();
+		return $busquedas;
+	}
+
 	public static function buscarListaFotos($idact) {
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();

@@ -67,22 +67,32 @@ class ActividadBD {
 		$comen= $comen->fetch_assoc();
 		return $comen;
 	}
+
+	public static function buscarActividadCreador($idCreador) {
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		$query = "SELECT TITULO, ID FROM actividad where CREADOR = '$idCreador'";
+		$busquedas = $conn->query($query);
+		$busquedas = $busquedas->fetch_all();
+		return $busquedas;
+	}
+
 	public static function buscarListaFotos($idact) {
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
 		$query = "SELECT * FROM interfoto where id = '$idact'";
-		$comentarios = $conn->query($query);
-		$comentarios = $comentarios->fetch_all();
-		return $comentarios;
+		$busqueda = $conn->query($query);
+		$busqueda = $comentarios->fetch_all();
+		return $busqueda;
 	}
 	
 	public static function buscarFoto($idfoto){
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
 		$que= "SELECT * from foto where id='$idfoto'";
-		$comen=$conn->query($que);
-		$comen= $comen->fetch_assoc();
-		return $comen;
+		$busqueda=$conn->query($que);
+		$busqueda= $comen->fetch_assoc();
+		return $busqueda;
 	}
 	
 	public static function crearActividad($id, $titulo, $descb, $texto, $precio, $nick){

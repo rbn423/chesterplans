@@ -7,9 +7,8 @@
 	$titulo = htmlspecialchars(trim(strip_tags($_REQUEST["titulo"])));
 	$descb = htmlspecialchars(trim(strip_tags($_REQUEST["descb"])));
 	$texto = htmlspecialchars(trim(strip_tags($_REQUEST["descg"])));
-	$imagen = $_FILES["imagen"]; //["tmp_name"];
+	$imagen = $_FILES["imagen"];
 	
-	//header("Content-type: image/jpg"); //sirve para mostrar una foto
 	if($titulo != "" && $descb != "" && $texto != ""){
 		$f=getdate()[0];
 		$id=$nick.$f;
