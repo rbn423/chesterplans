@@ -2,6 +2,7 @@
 	require("includes/config.php");
 	require("includes/ExperienciaBD.php");
 	require("includes/ViajeBD.php");
+	require("includes/ActividadBD.php");
 	
 	$conn = $app->conexionBd();
 	
@@ -36,20 +37,17 @@
 				echo '</div>';
 			}
 		}
-		$query="SELECT id FROM actividad";
-		$actividades= $conn->query($query);
-		$nactividades=$actividades->num_rows;
-		$actividades= $actividades->fetch_all();
+
+		$actividades= ActividadBD::ListaActividades();
+		$nact=count($actividades);
 		echo '<div id="nombre">';
 		echo '<p>Actividades</p>';
 		echo '</div>';
-		for($i=0; $i<$nactividades; $i++){
+		for($i=0; $i<$nact; $i++){
 			if($i<2){
 				$valor = $actividades[$i][0];
-				$sql = "SELECT * FROM actividad where id = '$valor'";
-				$actividad = $conn->query($sql);
-				$actividad = $actividad->fetch_assoc();
-				if($i!=$nactividades-1){
+				$actividad=ActividadBD::buscarActividad($valor);
+				if($i!=$nact-1){
 				echo '<div id="lista">';
 				}
 				else{

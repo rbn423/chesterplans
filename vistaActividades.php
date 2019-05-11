@@ -21,7 +21,7 @@
 			echo '</div>';
 			echo '<form method="post" action="actividad.php?id='.$valor.'">';
 			echo '<div id="boton">';
-			echo '<input type="submit" value="Ver mas">';
+			echo '<input type="submit" value="Ver más">';
 			echo '</div>';
 			echo '</form>';
 			echo '</div>';		
