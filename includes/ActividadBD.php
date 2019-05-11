@@ -30,7 +30,7 @@ class ActividadBD {
 		return $busquedas;
     }
 	
-		public static function buscarActividad($id){
+	public static function buscarActividad($id){
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
 		$sql = "SELECT * FROM actividad where id = '$id'";
@@ -39,7 +39,18 @@ class ActividadBD {
 		return $actividad;
 	}
 	
-		public static function buscarListaComentarios($idact) {
+	public static function buscarContenidoActividad($busqueda){
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		$sql = "SELECT * FROM actividad where titulo like '%$busqueda' or titulo like '$busqueda%' or titulo like '%$busqueda%' or 
+		descb like '%$busqueda' or descg like '$busqueda%' or descb like '%$busqueda%' or
+				descg like '%$busqueda' or descg like '$busqueda%' or descg like '%$busqueda%'";
+		$busquedas = $conn->query($sql); 
+		$busquedas = $busquedas->fetch_all();
+		return $busquedas;
+	}
+	
+	public static function buscarListaComentarios($idact) {
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
 		$query = "SELECT * FROM intercomentario where id = '$idact'";

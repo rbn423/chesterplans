@@ -31,48 +31,59 @@ class ViajeBD {
 		return $busquedas;
     }
 	
-		public static function buscarViaje($id){
+	public static function buscarViaje($id){
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
 		$sql = "SELECT * FROM viaje where id = '$id'";
-		$experiencia = $conn->query($sql);
-		$experiencia = $experiencia->fetch_assoc();
-		return $experiencia;
+		$busquedas = $conn->query($sql);
+		$busquedas = $busquedas->fetch_assoc();
+		return $busquedas;
 	}
 	
-		public static function buscarListaComentarios($idact) {
+	public static function buscarContenidoViaje($busqueda){
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		$sql = "SELECT * FROM viaje where titulo like '%$busqueda' or titulo like '$busqueda%' or titulo like '%$busqueda%' or 
+		descb like '%$busqueda' or descg like '$busqueda%' or descb like '%$busqueda%' or
+				descg like '%$busqueda' or descg like '$busqueda%' or descg like '%$busqueda%'";
+		$busquedas = $conn->query($sql); 
+		$busquedas = $busquedas->fetch_all();
+		return $busquedas;
+	}
+	
+	public static function buscarListaComentarios($idact) {
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
 		$query = "SELECT * FROM intercomentario where id = '$idact'";
-		$comentarios = $conn->query($query);
-		$comentarios = $comentarios->fetch_all();
-		return $comentarios;
+		$busquedas = $conn->query($query);
+		$busquedas = $busquedas->fetch_all();
+		return $busquedas;
 	}
 	
 	public static function buscarComentario($idcomen){
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
 		$que= "SELECT * from comentario where id='$idcomen'";
-		$comen=$conn->query($que);
-		$comen= $comen->fetch_assoc();
-		return $comen;
+		$busquedas=$conn->query($que);
+		$busquedas= $busquedas->fetch_assoc();
+		return $busquedas;
 	}
 	public static function buscarListaFotos($idact) {
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
 		$query = "SELECT * FROM interfoto where id = '$idact'";
-		$comentarios = $conn->query($query);
-		$comentarios = $comentarios->fetch_all();
-		return $comentarios;
+		$busquedas = $conn->query($query);
+		$busquedas = $busquedas->fetch_all();
+		return $fotos;
 	}
 	
 	public static function buscarFoto($idfoto){
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
 		$que= "SELECT * from foto where id='$idfoto'";
-		$comen=$conn->query($que);
-		$comen= $comen->fetch_assoc();
-		return $comen;
+		$busquedas = $conn->query($que);
+		$busquedas = $busquedas->fetch_assoc();
+		return $busquedas;
 	}
 
 	public static function crearViaje($id, $titulo, $descb, $texto, $precio, $nick, $fechaIni, $fechaFin){

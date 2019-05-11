@@ -33,6 +33,17 @@ class ExperienciaBD {
 		return $experiencia;
 	}
 	
+		public static function buscarContenidoExperiencia($busqueda){
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		$sql = "SELECT * FROM experiencias where titulo like '%$busqueda' or titulo like '$busqueda%' or titulo like '%$busqueda%' or 
+		descb like '%$busqueda' or descg like '$busqueda%' or descb like '%$busqueda%' or
+				descg like '%$busqueda' or descg like '$busqueda%' or descg like '%$busqueda%'";
+		$busquedas = $conn->query($sql); 
+		$busquedas = $busquedas->fetch_all();
+		return $busquedas;
+		}
+	
 	public static function buscarFoto($idExperiencia){
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
