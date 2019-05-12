@@ -44,37 +44,39 @@
 		echo '<p> Fecha: '.$actividad["FECHA"].'</p>';
 		echo '<p>Precio: '.$actividad["PRECIO"].' €</p>';
 
-		if(isset($_SESSION["login"])){
-			$compras = ComprasBD::compruebaCompra($_SESSION["nick"], $id);
-			$intereses = InteresesBD::compruebaInteres($_SESSION["nick"], $id);
-			if (!isset($compras)){
-				echo '<div id="botonCompra">';
-				echo '<form method="post" action="actividad.php?id='.$id.'">';
-				echo '<div id="boton">';
-				echo '<input type="submit" value="comprar" name="comprar">';
-				echo '</div>';
-				echo '</form>';
-				echo '</div>';
-			}
-			else
-				echo "<h3>Ya has adquirido esta actividad.</h3>";
-			if (!isset($intereses)){
-				echo '<div id="botonInteres">';
-				echo '<form method="post" action="actividad.php?id='.$id.'">';
-				echo '<div id="boton">';
-				echo '<input type="submit" value="interesa" name="interesa">';
-				echo '</div>';
-				echo '</form>';
-				echo '</div>';
-			}
-			else{
-				echo '<div id="botonInteres">';
-				echo '<form method="post" action="actividad.php?id='.$id.'">';
-				echo '<div id="boton">';
-				echo '<input type="submit" value="Ya no me interesa" name="interesa">';
-				echo '</div>';
-				echo '</form>';
-				echo '</div>';
+		if ($_SESSION["tipo"] == "basico"){
+			if(isset($_SESSION["login"])){
+				$compras = ComprasBD::compruebaCompra($_SESSION["nick"], $id);
+				$intereses = InteresesBD::compruebaInteres($_SESSION["nick"], $id);
+				if (!isset($compras)){
+					echo '<div id="botonCompra">';
+					echo '<form method="post" action="actividad.php?id='.$id.'">';
+					echo '<div id="boton">';
+					echo '<input type="submit" value="comprar" name="comprar">';
+					echo '</div>';
+					echo '</form>';
+					echo '</div>';
+				}
+				else
+					echo "<h3>Ya has adquirido esta actividad.</h3>";
+				if (!isset($intereses)){
+					echo '<div id="botonInteres">';
+					echo '<form method="post" action="actividad.php?id='.$id.'">';
+					echo '<div id="boton">';
+					echo '<input type="submit" value="interesa" name="interesa">';
+					echo '</div>';
+					echo '</form>';
+					echo '</div>';
+				}
+				else{
+					echo '<div id="botonInteres">';
+					echo '<form method="post" action="actividad.php?id='.$id.'">';
+					echo '<div id="boton">';
+					echo '<input type="submit" value="Ya no me interesa" name="interesa">';
+					echo '</div>';
+					echo '</form>';
+					echo '</div>';
+				}
 			}
 		}
 	}
