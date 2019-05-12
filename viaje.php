@@ -5,12 +5,19 @@
 	$id = $_GET["id"];
 	$viaje= ViajeBD::buscarViaje($id);
 	$comentarios = ViajeBD::buscarlistaComentarios($id);
+	$foto = ViajeBD::buscarFoto($id);
 
-	function mostrarViaje($viaje, $comentarios){
+	function mostrarViaje($viaje, $comentarios,$foto){
 
 		echo '<h1>'.$viaje["TITULO"].'</h1>';
 		echo '<p>'.$viaje["DESCB"].'<p>';
 		echo '<p>'.$viaje["DESCG"].'<p>';
+		if ($foto != NULL){
+			echo '<p>'.$viaje["FOTO"].'<p>';
+			imagenBD::cargaImagen($foto);
+		}
+
+
 		echo '<p> Creador del viaje: '.$viaje["CREADOR"].'<p>';
 		echo '<p> Fecha de inicio: '.$viaje["FECHAINI"].'    Fecha de fin: '.$viaje["FECHAFIN"].'</p>';
 		echo '<p> Precio: '.$viaje["PRECIO"].' €</p>';
@@ -47,7 +54,7 @@
 			<div id="contenido">
 				<div id="ViajeConcreto">
 				<?php
-					mostrarViaje($viaje, $comentarios);		
+					mostrarViaje($viaje, $comentarios, $foto);		
 				?>
 				</div>
 			</div>
