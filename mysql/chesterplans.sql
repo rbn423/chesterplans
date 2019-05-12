@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-05-2019 a las 13:56:06
+-- Tiempo de generación: 12-05-2019 a las 14:29:38
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -419,6 +419,7 @@ ALTER TABLE `intercomentario`
 -- Indices de la tabla `intereses`
 --
 ALTER TABLE `intereses`
+  ADD PRIMARY KEY (`IDUSUARIO`,`IDINTERES`),
   ADD KEY `IDUSUARIO` (`IDUSUARIO`);
 
 --

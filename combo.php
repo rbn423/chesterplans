@@ -2,22 +2,39 @@
 	require("includes/config.php");
 	require("includes/ComboBD.php");
 	require("includes/ComprasBD.php");
+	require("includes/InteresesBD.php");
 
 	$id=$_GET["id"];
 	if (isset($_POST["comprar"]))
 		$comprado = $_POST["comprar"];
 	else
 		$comprado = NULL;
+	if (isset($_POST["interesa"]))
+		$interesado = $_POST["interesa"];
+	else
+		$interesado = NULL;
 	$combo = ComboBD::getCombo($id);
 	$viaje = $combo["VIAJE"];
 	$actividades = $combo["ACTIVIDADES"];
 
-	function mostrarCombo($combo, $viaje, $actividades, $id,$comprado){
+	function mostrarCombo($combo, $viaje, $actividades, $id,$comprado,$interesado){
 		if ($comprado == "comprar"){
 			echo "<div id='comprado'";
 			echo "<p>Acabas de comprar este combo.</p>";
 			echo "</div>";
 			ComprasBD::insertaCompra($_SESSION["nick"],"combo",$id);
+		}
+		if ($interesado == "interesa"){
+			echo "<div id='interesado'";
+			echo "<p>Acabas de añadir este combo a tus intereses.</p>";
+			echo "</div>";
+			InteresesBD::insertaInteres($_SESSION["nick"],"combo",$id);
+		}
+		elseif ($interesado == "Ya no me interesa") {
+			echo "<div id='interesado'";
+			echo "<p>Acabas de eliminar este combo de tus intereses.</p>";
+			echo "</div>";
+			InteresesBD::eliminaInteres($_SESSION["nick"],$id);
 		}
 		echo "<h1>VIAJE</h1>";
 		echo '<h2>'.$viaje["TITULO"].'</h2>';
@@ -36,6 +53,7 @@
 		echo "<h2>Precio: ".$combo['PRECIO']." €</h2>";
 		if(isset($_SESSION["login"])){
 			$compras = ComprasBD::compruebaCompra($_SESSION["nick"], $id);
+			$intereses = InteresesBD::compruebaInteres($_SESSION["nick"], $id);
 			if (!isset($compras)){
 				echo '<div id="botonCompra">';
 				echo '<form method="post" action="combo.php?id='.$id.'">';
@@ -47,6 +65,24 @@
 			}
 			else
 				echo "<h3>Ya has adquirido este combo.</h3>";
+			if (!isset($intereses)){
+				echo '<div id="botonInteres">';
+				echo '<form method="post" action="combo.php?id='.$id.'">';
+				echo '<div id="boton">';
+				echo '<input type="submit" value="interesa" name="interesa">';
+				echo '</div>';
+				echo '</form>';
+				echo '</div>';
+			}
+			else{
+				echo '<div id="botonInteres">';
+				echo '<form method="post" action="combo.php?id='.$id.'">';
+				echo '<div id="boton">';
+				echo '<input type="submit" value="Ya no me interesa" name="interesa">';
+				echo '</div>';
+				echo '</form>';
+				echo '</div>';
+			}
 		}
 	}
 ?>
@@ -65,7 +101,7 @@
 			<div id="contenido">
 				<div id="ComboConcreto">
 				<?php
-					mostrarCombo($combo, $viaje, $actividades, $id,$comprado);		
+					mostrarCombo($combo, $viaje, $actividades, $id,$comprado,$interesado);		
 				?>
 				</div>
 			</div>
