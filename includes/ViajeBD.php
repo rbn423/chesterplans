@@ -81,7 +81,7 @@ class ViajeBD {
 		$query = "SELECT * FROM interfoto where id = '$idact'";
 		$busquedas = $conn->query($query);
 		$busquedas = $busquedas->fetch_all();
-		return $fotos;
+		return $busquedas;
 	}
 	
 	public static function buscarFoto($idfoto){
