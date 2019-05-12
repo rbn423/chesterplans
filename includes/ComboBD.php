@@ -29,6 +29,7 @@
 				$actividades[$i]=$actividad;
 			}
 			$resultado = array();
+			$resultado['ID'] = $id;
 			$resultado['VIAJE'] = $viaje;
 			$resultado['ACTIVIDADES'] = $actividades;
 			$resultado['PRECIO'] = $combo['PRECIO'];

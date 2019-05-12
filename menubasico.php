@@ -49,9 +49,9 @@
 			Intereses guardados
 		</div>
 	</a>
-	<a href="">
+	<a href="vistaCompras.php">
 		<div class="ultimo" id="menuHistorialBas">
-			Historial
+			Compras
 		</div>
 	</a>
 </div>

@@ -23,7 +23,7 @@
 			echo "</div>";
 			ComprasBD::insertaCompra($_SESSION["nick"],"actividad",$id);
 		}
-		if ($interesado == "interesa"){
+		if ($interesado == "Me interesa"){
 			echo "<div id='interesado'";
 			echo "<p>Acabas de añadir esta actividad a tus intereses.</p>";
 			echo "</div>";
@@ -63,7 +63,7 @@
 					echo '<div id="botonInteres">';
 					echo '<form method="post" action="actividad.php?id='.$id.'">';
 					echo '<div id="boton">';
-					echo '<input type="submit" value="interesa" name="interesa">';
+					echo '<input type="submit" value="Me interesa" name="interesa">';
 					echo '</div>';
 					echo '</form>';
 					echo '</div>';

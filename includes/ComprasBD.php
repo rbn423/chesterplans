@@ -18,6 +18,15 @@ class ComprasBD {
 		$datos = $datos->fetch_assoc();
 		return $datos;
 	}
+
+	public static function buscaCompras($nick){
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		$query = "SELECT * FROM compras WHERE IDUSUARIO = '$nick'";
+		$datos = $conn->query($query);
+		$datos = $datos->fetch_all();
+		return $datos;
+	}
 }
 
 ?>
