@@ -44,7 +44,7 @@
 		echo '<p> Fecha: '.$actividad["FECHA"].'</p>';
 		echo '<p>Precio: '.$actividad["PRECIO"].' €</p>';
 
-		if ($_SESSION["tipo"] == "basico"){
+		if (isset($_SESSION["tipo"]) && $_SESSION["tipo"] == "basico"){
 			if(isset($_SESSION["login"])){
 				$compras = ComprasBD::compruebaCompra($_SESSION["nick"], $id);
 				$intereses = InteresesBD::compruebaInteres($_SESSION["nick"], $id);

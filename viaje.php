@@ -48,7 +48,7 @@
 		echo '<p> Fecha de inicio: '.$viaje["FECHAINI"].'    Fecha de fin: '.$viaje["FECHAFIN"].'</p>';
 		echo '<p> Precio: '.$viaje["PRECIO"].' €</p>';
 
-		if ($_SESSION["tipo"] == "basico"){
+		if (isset($_SESSION["tipo"]) && $_SESSION["tipo"] == "basico"){
 			if(isset($_SESSION["login"])){
 				$compras = ComprasBD::compruebaCompra($_SESSION["nick"], $id);
 				$intereses = InteresesBD::compruebaInteres($_SESSION["nick"], $id);
@@ -83,7 +83,7 @@
 				}
 			}
 		}
-		
+
 		$ncomentarios=count($comentarios);
 		if($ncomentarios>0){
 			for($i=0; $i<$ncomentarios; $i++){

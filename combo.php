@@ -54,7 +54,7 @@
 		if(isset($_SESSION["login"])){
 			$compras = ComprasBD::compruebaCompra($_SESSION["nick"], $id);
 			$intereses = InteresesBD::compruebaInteres($_SESSION["nick"], $id);
-			if ($_SESSION["tipo"] == "basico"){
+			if (isset($_SESSION["tipo"]) && $_SESSION["tipo"] == "basico"){
 				if (!isset($compras)){
 					echo '<div id="botonCompra">';
 					echo '<form method="post" action="combo.php?id='.$id.'">';
