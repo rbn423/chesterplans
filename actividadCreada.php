@@ -16,7 +16,7 @@
 
 	function mostrarCreado($nick, $titulo, $descb, $texto, $precio){
 		if($titulo != "" && $descb != "" && $texto != "" && $precio != ""){
-			echo '<p> Enorabuena '.$nick.', ya has creado una actividad.</p>';
+			echo '<p> Enhorabuena '.$nick.', ya has creado una actividad.</p>';
 		}
 		else{
 			$mensaje = "No se ha creado la experiencia porque faltan por rellenar: ";

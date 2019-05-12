@@ -18,6 +18,15 @@ class ViajeBD {
 		$busquedas = $busquedas->fetch_all();
 		return $busquedas;
     }
+
+    public static function buscarNombreViaje($id){
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		$sql = "SELECT TITULO FROM viaje where id = '$id'";
+		$busquedas = $conn->query($sql);
+		$busquedas = $busquedas->fetch_assoc();
+		return $busquedas["TITULO"];
+	}
 	
 	public static function buscarViaje($id){
 		$app = Aplicacion::getSingleton();

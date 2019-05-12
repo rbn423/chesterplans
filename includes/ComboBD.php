@@ -77,8 +77,18 @@
 			return $combos;
 		}
 
-		public static function insertCombo(){
-			
+		public static function insertCombo($idViaje, $nick, $idCombo, $precio, $nombreViaje){
+			$app = Aplicacion::getSingleton();
+			$conn = $app->conexionBd();
+			$query = "INSERT INTO combo(ID, CREADOR, VIAJE, PRECIO, NOMBREVIAJE) VALUES ('$idCombo', '$nick', '$idViaje', '$precio', '$nombreViaje')";
+			$conn->query($query);
+		}
+
+		public static function insertActividadCombo($idCombo, $actividad){
+			$app = Aplicacion::getSingleton();
+			$conn = $app->conexionBd();
+			$query = "INSERT INTO intercombo(IDACT, IDCOMBO) VALUES ('$actividad','$idCombo')";
+			$conn->query($query);
 		}
 	}
 

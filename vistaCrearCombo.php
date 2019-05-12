@@ -41,6 +41,9 @@
 						echo '<option value='.$actividades[$i][1].'>'.$actividades[$i][0].'</option>';
 					}
 					echo '</select></p>';
+					echo "<h2>Precio:</h2>";
+					echo "<p>Introduzca el precio que tendrá su combo: ";
+					echo'<p><textarea rows="1" cols="5" name="precio"></textarea>€</p>';
 					echo'<p><input type="submit" value="crear combo"/></p>';
 					echo'</div>';
 					echo'</form>';
