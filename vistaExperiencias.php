@@ -1,31 +1,24 @@
 <?php
 	require("includes/config.php");
-	$conn = $app->conexionBd();
+	require("includes/ExperienciaBD.php");
 	
-	function mostrarExperiencias($conn){
-		if($_POST)
-			$sql = "SELECT id FROM experiencias ORDER BY ".$_POST['filtro']." ".$_POST['orden'];
-		else
-			$sql = "SELECT id FROM experiencias";
-		$busquedas = $conn->query($sql);
-		$nexperiencias=$busquedas->num_rows;
-		$busquedas = $busquedas->fetch_all();
+	function mostrarExperiencias(){
+		$busquedas=ExperienciaBD::buscarListaExperiencias();
+		$nexperiencias=count($busquedas);
 		for ($i=0;$i<$nexperiencias;$i++){
 			if($i!=$nexperiencias-1)
 				echo '<div id="lista">';
 			else
 				echo '<div id="ultimolista">';
 			$valor = $busquedas[$i][0];
-			$sql = "SELECT * FROM experiencias where id = '$valor'";
-			$experiencia = $conn->query($sql);
-			$experiencia = $experiencia->fetch_assoc();
+			$experiencia = ExperienciaBD::buscarExperiencia($valor);
 			echo '<div id="info">';
 			echo '<h2>'.$experiencia["TITULO"].'</h2>';
 			echo '<p>'.$experiencia["DESCB"].'<p>';
 			echo '</div>';
 			echo '<form method="post" action="experiencia.php?id='.$valor.'">';						
 			echo '<div id="boton">';
-			echo '<input type="submit" value="Ver mas">';
+			echo '<input type="submit" value="Ver más">';
 			echo '</div>';
 			echo '</form>';
 			echo '</div>';
@@ -47,7 +40,7 @@
 		?>
 			<div id="contenido">
 				<?php
-					mostrarExperiencias($conn);
+					mostrarExperiencias();
 				?>
 			</div>
 		<?php

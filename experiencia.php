@@ -1,43 +1,32 @@
 <?php
 	require("includes/config.php");
-	$conn = $app->conexionBd();
+	require("includes/ExperienciaBD.php");
+	require("includes/imagenBD.php");
 	
 	$id = $_GET["id"];
-	$sql = "SELECT * FROM experiencias where id = '$id'";
-	$experiencia = $conn->query($sql);
-	$experiencia = $experiencia->fetch_assoc();
-	$idcomen = $experiencia["COMENTARIO"];
-	$query = "SELECT * FROM intercomentario where id = '$id'";//esta query busca todos los comentarios de la experiencia
-	$comentario = $conn->query($query);
+	$experiencia= ExperienciaBD::buscarExperiencia($id);
+	$comentarios = ExperienciaBD::buscarlistaComentarios($id);
+	$idFoto = ExperienciaBD::buscarFoto($id);
 
 	if (isset($_POST['like'])){
-		if($_POST['like'] == 'Me gusta'){
-			$query = "INSERT INTO megustas(NICKUSUARIO, IDEXPERIENCIA) VALUES ('".$_SESSION['nick']."','".$id."')";
-			$conn->query($query);
-			$query = "UPDATE usuario SET PUNTOS = puntos+'1' WHERE nick = '".$experiencia['CREADOR']."'";
-			$conn->query($query);
-			$query = "UPDATE experiencias SET likes = likes+'1' WHERE id = '".$id."'";
-			$conn->query($query);
-		}
-		else{
-			$query = "DELETE FROM megustas WHERE NICKUSUARIO = '".$_SESSION['nick']."' AND IDEXPERIENCIA = '".$id."'";
-			$conn->query($query);
-			$query = "UPDATE usuario SET PUNTOS = puntos-'1' WHERE nick = '".$experiencia['CREADOR']."'";
-			$conn->query($query);
-			$query = "UPDATE experiencias SET likes = likes-'1' WHERE id = '".$id."'";
-			$conn->query($query);
-		}
+		if($_POST['like'] == 'Me gusta')
+			ExperienciaBD::meGusta($_SESSION['nick'],$id,$experiencia['CREADOR']);
+		else
+			ExperienciaBD::noMeGusta($_SESSION['nick'],$id,$experiencia['CREADOR']);
 	}
 
-	function mostrarExperiencia($experiencia,$comentario,$id,$conn){
+	function mostrarExperiencia($experiencia,$comentarios,$id,$idFoto){
+		echo '<div id="infoExperiencia">';
 		echo '<h1>'.$experiencia["TITULO"].'</h1>';
 		echo '<p>'.$experiencia["DESCB"].'<p>';
 		echo '<p>'.$experiencia["DESCG"].'<p>';
-		echo '<p>'.$experiencia["FOTO"].'<p>';
+		if ($idFoto != NULL){
+			imagenBD::cargaImagen($idFoto);
+		}
 		echo '<p> Autor de la experiencia '.$experiencia["CREADOR"].'<p>';
+		echo '</div>';
 		if (isset($_SESSION["login"])){
-			$query="SELECT * FROM megustas WHERE nickusuario = '". $_SESSION['nick']. "' AND idexperiencia = '$id'";
-			$resultado = $conn->query($query);
+			$resultado=ExperienciaBD::tieneMegusta($_SESSION['nick'], $id);
 			if ($resultado->num_rows == 1){
 				echo '<div id="botonNoMeGusta">';
 				echo '<form method="post" action="experiencia.php?id='.$id.'">';
@@ -57,17 +46,12 @@
 				echo '</div>';
 			}
 		}
-		if($comentario->num_rows>0){
-			$ncomentarios=$comentario->num_rows;
-			$comentario = $comentario->fetch_all();
+		$ncomentarios=count($comentarios);
+		if($ncomentarios>0){
 			for($i=0; $i<$ncomentarios; $i++){
-				$valor=$comentario[$i][1];
-				$que= "SELECT * from comentario where id='$valor'";
-				$comen=$conn->query($que);
-				$comen= $comen->fetch_assoc();
-				if($i==0)
-					echo '<div id="primercomentario">';
-				else
+				$valor=$comentarios[$i][1];
+				$comen = ExperienciaBD::buscarComentario($valor);
+				
 					echo '<div id="comentario">';
 				echo '<p>'.$comen["COMENTARIO"].'</p>';
 				echo '<p>Por: '.$comen["ESCRITOR"].'<p>';
@@ -76,11 +60,14 @@
 		}
 		if (isset($_SESSION["login"])){
 			echo '<div id="nuevoComentario">';
-			echo '<p>Crea tu comentario</p>';
+			echo '<form method="post" action="comentarioCreado.php?id='.$id.'">';
+			echo '<h3>Cree un comentario:</h3>';
+			echo '<p><textarea rows="5" cols="50" name="com" id="textoComentario"/></textarea></p>';
+			echo '<input type="submit" value="Enviar" name="comentario" id="crearComentario">';
+			echo '</form>';
 			echo '</div>';
 		}
 	}
-	
 ?>
 <html>
 	<head>
@@ -94,13 +81,15 @@
 			require("includes/comun/menu.php");
 			require("includes/comun/izquierda.php");
 		?>
-			<div id="contenido">
-				<div id="ExperienciaConcreta">
-				<?php
-					mostrarExperiencia($experiencia,$comentario,$id,$conn);
-				?>
-				</div>
+		
+		<div id="contenido">
+			<div id="ExperienciaConcreta">
+			<?php
+				mostrarExperiencia($experiencia,$comentarios,$id,$idFoto);
+			?>
 			</div>
+		</div>
+		
 		<?php
 			require("includes/comun/derecha.php");
 			require("includes/comun/pie.php");

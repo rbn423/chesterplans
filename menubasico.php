@@ -1,27 +1,57 @@
+<script>
+	var URLactual = window.location;
+	var stringUrl= String(URLactual);
+	var url = stringUrl.split("/");
+	if(url[url.length-1]=="vistaExperienciasCompartidas.php"){
+		$(document).ready(function() {
+			$("#menuEsperienciasCreadas").css({'background-color':'#CA4E07'});
+		});
+	}
+	else if(url[url.length-1]=="vistaCrearViaje.php"){
+		$(document).ready(function() {
+			$("#menuPuntos").css({'background-color':'#B829BF'});
+		});
+	}
+	else if(url[url.length-1]=="vistaCrearExperiencia.php"){
+		$(document).ready(function() {
+			$("#menuCrearExperiencia").css({'background-color':'#CA4E07'});
+		});
+	}
+	else if(url[url.length-1]=="vistaHistorial.php"){
+		$(document).ready(function() {
+			$("#menuInteresesGuardados").css({'background-color':'#B829BF'});
+		});
+	}
+	else if(url[url.length-1]=="vistaHistorial.php"){
+		$(document).ready(function() {
+			$("#menuHistorialBas").css({'background-color':'#B829BF'});
+		});
+	}
+</script>
 <div id="menubasico">
 	<a href="vistaExperienciasCompartidas.php">
-		<span class="apartado">
+		<div class="apartado" id="menuEsperienciasCreadas">
 			Exp.compartida
-		</span>
+		</div>
 	</a>
 	<a href="">
-		<span class="apartado">
+		<div class="apartado" id="menuPuntos">
 			Puntos
-		</span>
+		</div>
 	</a>
 	<a href="vistaCrearExperiencia.php">
-		<span class="apartado">
+		<div class="apartado" id="menuCrearExperiencia">
 			Crear Experiencia
-		</span>
+		</div>
 	</a>
 	<a href="">
-		<span class="apartado">
+		<div class="apartado" id="menuInteresesGuardados">
 			Intereses guardados
-		</span>
+		</div>
 	</a>
 	<a href="">
-		<span class="ultimo">
+		<div class="ultimo" id="menuHistorialBas">
 			Historial
-		</span>
+		</div>
 	</a>
 </div>

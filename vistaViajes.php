@@ -1,39 +1,28 @@
 <?php
 	require("includes/config.php");
-	$conn = $app->conexionBd();
+	require("includes/ViajeBD.php");
 
-	function mostrarViajes($conn){
-		if($_POST){
-			if ($_POST['precio'] == 0)
-				$sql = "SELECT id FROM viaje ORDER BY ".$_POST['filtro']." ".$_POST['orden'];
-			else
-				$sql = "SELECT id FROM viaje WHERE precio < ".$_POST['precio']. " ORDER BY ".$_POST['filtro']." ".$_POST['orden'];
-		}
-		else
-			$sql = "SELECT id FROM viaje";
-		$busquedas = $conn->query($sql);
-		$nviajes=$busquedas->num_rows;
-		$busquedas = $busquedas->fetch_all();
-		for ($i=0;$i<$nviajes;$i++){	
-			$valor = $busquedas[$i][0];
-			$sql = "SELECT * FROM viaje where id = '$valor'";
-			$viaje = $conn->query($sql);
-			$viaje = $viaje->fetch_assoc();
-			if($i!=$nviajes-1){
+	function mostrarViajes(){
+		
+		$busquedas=viajeBD::ListaViajes();
+		$nviajes=count($busquedas);
+	
+		for ($i=0;$i<$nviajes;$i++){
+			if($i!=$nviajes-1)
 				echo '<div id="lista">';
-			}
-			else{
+			else
 				echo '<div id="ultimolista">';
-			}
+			$valor = $busquedas[$i][0];
+			$viaje = ViajeBD::buscarViaje($valor);
 			echo '<div id="info">';
 			echo '<h1>'.$viaje["TITULO"].'</h1>';
 			echo '<p>'.$viaje["DESCB"].'<p>';
 			echo '<p>De '.$viaje["FECHAINI"].' a '.$viaje["FECHAFIN"]. '<p>';
-			echo '<p>Precio: '.$viaje["PRECIO"].'</p>';
+			echo '<p>Precio: '.$viaje["PRECIO"].' €</p>';
 			echo '</div>';
 			echo '<form method="post" action="viaje.php?id='.$valor.'">';
 			echo '<div id="boton">';
-			echo '<input type="submit" value="Ver mas">';
+			echo '<input type="submit" value="Ver más">';
 			echo '</div>';
 			echo '</form>';
 			echo '</div>';		
@@ -56,7 +45,7 @@
 		?>
 			<div id="contenido">
 				<?php
-					mostrarViajes($conn);			
+					mostrarViajes();			
 				?>
 			</div>
 		<?php

@@ -1,45 +1,91 @@
 <?php
 	require("includes/config.php");
+	require("includes/ComboBD.php");
+	require("includes/ComprasBD.php");
+	require("includes/InteresesBD.php");
 
-	$conn = $app->conexionBd();
 	$id=$_GET["id"];
-	$sql = "SELECT * FROM combo WHERE id = '$id'";
-	$combo = $conn->query($sql);
-	$combo= $combo->fetch_assoc();
-	
-	$idviaje = $combo["VIAJE"];
-	$query = "SELECT * FROM viaje WHERE id = '$idviaje'";
+	if (isset($_POST["comprar"]))
+		$comprado = $_POST["comprar"];
+	else
+		$comprado = NULL;
+	if (isset($_POST["interesa"]))
+		$interesado = $_POST["interesa"];
+	else
+		$interesado = NULL;
+	$combo = ComboBD::getCombo($id);
+	$viaje = $combo["VIAJE"];
+	$actividades = $combo["ACTIVIDADES"];
 
-	$viaje = $conn->query($query);
-	$viaje = $viaje->fetch_assoc();
-
-	$idActividades = array();
-	$query = "SELECT idact FROM intercombo WHERE idcombo = '$id'";
-	$idActividades = $conn->query($query);
-	$idActividades = $idActividades->fetch_all();
-	$tam = count($idActividades);
-	$html = "";
-	for ($i=0;$i<$tam;$i++){
-		$query = "SELECT * FROM actividad WHERE id = '". $idActividades[$i][0]."'";
-		$actividad = $conn->query($query);
-		$actividad = $actividad->fetch_assoc();
-		$html .= "<h3>".($i+1).". ".$actividad['TITULO']."</h3>";
-		$html .= "<h4>".$actividad["DESCB"]."</h4>";
-		$html .= "<p>".$actividad["DESCG"]."</p>";
-		$html .= "<p>Creador: ".$actividad["CREADOR"]."</p>";
-		$html .= "<p>Fecha: ".$actividad["FECHA"]."</p>";
-	}
-
-
-	function mostrarCombo($combo, $viaje, $html){
+	function mostrarCombo($combo, $viaje, $actividades, $id,$comprado,$interesado){
+		if ($comprado == "comprar"){
+			echo "<div id='comprado'";
+			echo "<p>Acabas de comprar este combo.</p>";
+			echo "</div>";
+			ComprasBD::insertaCompra($_SESSION["nick"],"combo",$id);
+		}
+		if ($interesado == "interesa"){
+			echo "<div id='interesado'";
+			echo "<p>Acabas de añadir este combo a tus intereses.</p>";
+			echo "</div>";
+			InteresesBD::insertaInteres($_SESSION["nick"],"combo",$id);
+		}
+		elseif ($interesado == "Ya no me interesa") {
+			echo "<div id='interesado'";
+			echo "<p>Acabas de eliminar este combo de tus intereses.</p>";
+			echo "</div>";
+			InteresesBD::eliminaInteres($_SESSION["nick"],$id);
+		}
 		echo "<h1>VIAJE</h1>";
 		echo '<h2>'.$viaje["TITULO"].'</h2>';
 		echo '<h3>'.$viaje["DESCB"].'</h3>';
-		echo '<p>'.$viaje["DESCG"].'<p>';
+		echo '<p>'.$viaje["DESCG"].'</p>';
 		echo '<p> Fecha de inicio: '.$viaje["FECHAINI"].' Fecha de fin: '.$viaje["FECHAFIN"].'</p>';
 		echo "<h1>ACTIVIDADES</h1>";
-		echo $html;
+		$tam = count($actividades);
+		for ($i=0;$i<$tam;$i++){
+			echo "<h3>".($i+1).". ".$actividades[$i]['TITULO']."</h3>";
+			echo "<h4>".$actividades[$i]["DESCB"]."</h4>";
+			echo "<p>".$actividades[$i]["DESCG"]."</p>";
+			echo "<p>Creador: ".$actividades[$i]["CREADOR"]."</p>";
+			echo "<p>Fecha: ".$actividades[$i]["FECHA"]."</p>";
+		}
 		echo "<h2>Precio: ".$combo['PRECIO']." €</h2>";
+		if(isset($_SESSION["login"])){
+			$compras = ComprasBD::compruebaCompra($_SESSION["nick"], $id);
+			$intereses = InteresesBD::compruebaInteres($_SESSION["nick"], $id);
+			if (isset($_SESSION["tipo"]) && $_SESSION["tipo"] == "basico"){
+				if (!isset($compras)){
+					echo '<div id="botonCompra">';
+					echo '<form method="post" action="combo.php?id='.$id.'">';
+					echo '<div id="boton">';
+					echo '<input type="submit" value="comprar" name="comprar">';
+					echo '</div>';
+					echo '</form>';
+					echo '</div>';
+				}
+				else
+					echo "<h3>Ya has adquirido este combo.</h3>";
+				if (!isset($intereses)){
+					echo '<div id="botonInteres">';
+					echo '<form method="post" action="combo.php?id='.$id.'">';
+					echo '<div id="boton">';
+					echo '<input type="submit" value="interesa" name="interesa">';
+					echo '</div>';
+					echo '</form>';
+					echo '</div>';
+				}
+				else{
+					echo '<div id="botonInteres">';
+					echo '<form method="post" action="combo.php?id='.$id.'">';
+					echo '<div id="boton">';
+					echo '<input type="submit" value="Ya no me interesa" name="interesa">';
+					echo '</div>';
+					echo '</form>';
+					echo '</div>';
+				}
+			}
+		}
 	}
 ?>
 <html>
@@ -57,7 +103,7 @@
 			<div id="contenido">
 				<div id="ComboConcreto">
 				<?php
-					mostrarCombo($combo, $viaje, $html);		
+					mostrarCombo($combo, $viaje, $actividades, $id,$comprado,$interesado);		
 				?>
 				</div>
 			</div>

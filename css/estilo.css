@@ -51,24 +51,15 @@ body{
 	}
 	
 	div#menu{
-		float: bottom;
-		background-color: #18F393;
 		height: 7%;
-		text-align:center;
 	}
 	
 	div#menubasico{
-		float: bottom;
-		background-color: #F9610A;
-		height: 7%;
-		text-align:center;
+		height: 10%;
 	}
 	
 	div#menuempresa{
-		float: bottom;
-		background-color: #F129FA;
-		height: 7%;
-		text-align:center;
+		height: 10%;
 	}
 
 	div#izquierda {
@@ -89,7 +80,9 @@ body{
 		background-color:#0EA5DA;
 		color:black;
 		padding-left:2%;
+		padding-right:2%;
 		font-size:19px;
+		overflow: auto;
 	}
 
 	div#contenido {
@@ -99,6 +92,7 @@ body{
 		color: black;
 		overflow: auto;
 		background-color:#EEEEEF;
+		
 	}
 
 	div#pie {
@@ -123,7 +117,7 @@ body{
 		padding-left:20px;
 	}
 
-	div#cabecera div#boton {
+	div#cabecera div#login div#boton {
 		float:right;
 		margin-top: -20px;
 	}
@@ -153,25 +147,21 @@ body{
 		margin-right:10px;
 		margin-top:0.9%;
 	}
+	
+	div#cabecera div#logout div#boton {
+		float:right;
+	}
 
 	div#menu{
-		float: bottom;
-		background-color: #18F393;
 		height: 3.5%;
-		text-align:center;
 	}
 	
 	div#menubasico{
-		float: bottom;
-		background-color: #F9610A;
 		height: 5%;
 	}
 	
 	div#menuempresa{
-		float: bottom;
-		background-color: #F129FA;
 		height: 5%;
-		text-align:center;
 	}
 
 	div#izquierda {
@@ -192,6 +182,7 @@ body{
 		background-color:#0EA5DA;
 		color:black;
 		padding-left:2%;
+		padding-right:2%;
 		font-size:19px;
 	}
 
@@ -224,13 +215,20 @@ div#cabecera a, div#cabecera a:visited {
 	text-decoration:underline;
 }
 
+div#menu{
+	float: bottom;
+	text-align:center;
+	font-size: 20px;
+	background-color: #18F393;
+}
+	
 div#menu a, div#menu a:visited {
 	color: black;
 	font-weight: bold;
 	text-decoration: none;
 }
 
-span.apartado{
+div.apartado{
 	text-align: center;
 	width: 20%;
 	height: 100%;
@@ -238,10 +236,10 @@ span.apartado{
 	border-right: black 2px solid;
 	padding-top: 10px;
 	border-bottom: black 2px solid;
-	box-sizing: border-box;
 }
 
-span.ultimo{
+
+div.ultimo{
 	text-align: center;
 	width: 20%;
 	height: 100%;
@@ -250,10 +248,26 @@ span.ultimo{
 	border-bottom: black 2px solid;
 }
 
+div#menubasico{
+	float: bottom;
+	background-color: #F9610A;
+	text-align:center;
+	flex-direction:row;
+	font-size: 18px;
+}
+
 div#menubasico a, div#menubasico a:visited {
 	color: black;
 	font-weight: bold;
 	text-decoration: none;
+}
+
+div#menuempresa{
+	float: bottom;
+	background-color: #F129FA;
+	text-align:center;
+	flex-direction:row;	
+	font-size: 18px;
 }
 
 div#menuempresa a, div#menuempresa a:visited {
@@ -288,20 +302,14 @@ div#izquierda div#ranking {
 	font-size:25px;
 }
 
+div#izquierda{
+	display:flex;
+	flex-direction:column;
+}
+
 div#izquierda div#ranking div#nick{
 	width:50%;
 	margin-left: 3%;
-}
-
-div#contenido div#ExperienciaConcreta{
-	text-align: center;
-	margin-top:20px;
-}
-
-div#contenido div#ExperienciaConcreta div#boton{
-	float:right;
-	margin-top:-4%;
-	margin-right:2%;
 }
 
 div#contenido div#ViajeConcreto{
@@ -349,8 +357,10 @@ div#contenido div#ultimolista div#boton{
 }
 
 div#contenido div#nombre {
-	margin-left: 3%;
-	font-size: 30px;
+	text-align:center;
+	font-size: 40px;
+	margin-top:-10px;
+	margin-bottom:-20px;
 }
 
 div#contenido div#escribirActividad {
@@ -378,14 +388,30 @@ div#escribirExperiencia{
 	padding-left:5%;
 }
 	
-
-div#primercomentario{
-	width:100%;
+div#infoExperiencia{
 	border-bottom:black 2px solid;
-	border-top:black 2px solid;
 }
 
 div#comentario{
 	width:100%;
 	border-bottom:black 2px solid;
+}
+
+div#contenido div#ExperienciaConcreta{
+	text-align: center;
+	margin-top:20px;
+}
+
+div#contenido div#ExperienciaConcreta div#nuevoComentario h3{
+	margin-left:-35%;
+}
+
+div#contenido div#ExperienciaConcreta div#nuevoComentario input#crearComentario{
+	margin-right:-48%;
+}
+
+div#contenido div#ExperienciaConcreta div#boton{
+	float:right;
+	margin-top:-6%;
+	margin-right:2%;
 }

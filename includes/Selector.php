@@ -4,9 +4,27 @@
 	class Selector{
 
 		public static function genera($vista){
+
 			switch($vista){
 				case "viajes":
 				echo <<<EOF
+					<form method="post" action="buscador.php">
+						<div id = "selector">
+							<p>
+							Buscar en: <select name="tema">
+												<option value="todo">Todo</option>
+												<option value="viajes">Viajes</option>
+												<option value="actividades">Actividades</option>
+												<option value="experiencias">Experiencias</option>
+										<select>
+							</p>
+				<p><input type="textarea" name="buscar" placeholder="Buscador"</p>
+				<p>
+					<input type="submit" value="Enviar">
+				</p>
+				</div>
+				</form>
+						
 				<form method="post" action="vistaViajes.php">
 					<div id="selector">
 						<p>
@@ -51,6 +69,22 @@ EOF;
 break;
 			case "experiencias":
 			echo <<<EOF
+			<form method="post" action="buscador.php">
+						<div id = "selector">
+							<p>
+							Buscar en: <select name="tema">
+												<option value="todo">Todo</option>
+												<option value="viajes">Viajes</option>
+												<option value="actividades">Actividades</option>
+												<option value="experiencias">Experiencias</option>
+										<select>
+							</p>
+				<p><input type="textarea" name="buscar" placeholder="Buscador"</p>
+				<p>
+					<input type="submit" value="Enviar">
+				</p>
+				</div>
+				</form>
 				<form method="post" action="vistaExperiencias.php">
 					<div id="selector">
 						<p>Filtrar por:</p>
@@ -69,6 +103,22 @@ EOF;
 break;
 			case "actividades":
 			echo <<<EOF
+			<form method="post" action="buscador.php">
+						<div id = "selector">
+							<p>
+							Buscar en: <select name="tema">
+												<option value="todo">Todo</option>
+												<option value="viajes">Viajes</option>
+												<option value="actividades">Actividades</option>
+												<option value="experiencias">Experiencias</option>
+										<select>
+							</p>
+				<p><input type="textarea" name="buscar" placeholder="Buscador"</p>
+				<p>
+					<input type="submit" value="Enviar">
+				</p>
+				</div>
+				</form>
 				<form method="post" action="vistaActividades.php">
 					<div id="selector">
 						<p>
@@ -153,10 +203,10 @@ break;
 EOF;
 break;
 			default:
-				echo "<h3>Bienvendido a Chesterplans</h3>";
+				echo "<h3>Bienvenido a Chesterplans</h3>";
 				echo "<p>Aquí podrás disfrutar del mejor contenido para viajeros.</p>";
 				echo "<p>Disponemos de las mejores ofertas para viajes y actividades, además de contenido compratido por nuestros usuarios en los que comparten sus experiencias.</p>";
-				echo "<p>Date una vuelta y mira lo que te interese</p>";
+				echo "<p>Date una vuelta y mira lo que te interese.</p>";
 				echo "<p>Si eres una empresa también podrás publicar tus ofertas de viajes y actividades aquí.</p>";
 			}
 		}
