@@ -1,17 +1,28 @@
 <?php
 	require("includes/config.php");
 	require("includes/ComboBD.php");
+	require("includes/ComprasBD.php");
 
 	$id=$_GET["id"];
+	if (isset($_POST["comprar"]))
+		$comprado = $_POST["comprar"];
+	else
+		$comprado = NULL;
 	$combo = ComboBD::getCombo($id);
 	$viaje = $combo["VIAJE"];
 	$actividades = $combo["ACTIVIDADES"];
 
-	function mostrarCombo($combo, $viaje, $actividades){
+	function mostrarCombo($combo, $viaje, $actividades, $id,$comprado){
+		if ($comprado == "comprar"){
+			echo "<div id='comprado'";
+			echo "<p>Acabas de comprar este combo.</p>";
+			echo "</div>";
+			ComprasBD::insertaCompra($_SESSION["nick"],"combo",$id);
+		}
 		echo "<h1>VIAJE</h1>";
 		echo '<h2>'.$viaje["TITULO"].'</h2>';
 		echo '<h3>'.$viaje["DESCB"].'</h3>';
-		echo '<p>'.$viaje["DESCG"].'<p>';
+		echo '<p>'.$viaje["DESCG"].'</p>';
 		echo '<p> Fecha de inicio: '.$viaje["FECHAINI"].' Fecha de fin: '.$viaje["FECHAFIN"].'</p>';
 		echo "<h1>ACTIVIDADES</h1>";
 		$tam = count($actividades);
@@ -23,6 +34,20 @@
 			echo "<p>Fecha: ".$actividades[$i]["FECHA"]."</p>";
 		}
 		echo "<h2>Precio: ".$combo['PRECIO']." €</h2>";
+		if(isset($_SESSION["login"])){
+			$compras = ComprasBD::compruebaCompra($_SESSION["nick"], $id);
+			if (!isset($compras)){
+				echo '<div id="botonCompra">';
+				echo '<form method="post" action="combo.php?id='.$id.'">';
+				echo '<div id="boton">';
+				echo '<input type="submit" value="comprar" name="comprar">';
+				echo '</div>';
+				echo '</form>';
+				echo '</div>';
+			}
+			else
+				echo "<h3>Ya has adquirido este combo.</h3>";
+		}
 	}
 ?>
 <html>
@@ -40,7 +65,7 @@
 			<div id="contenido">
 				<div id="ComboConcreto">
 				<?php
-					mostrarCombo($combo, $viaje, $actividades);		
+					mostrarCombo($combo, $viaje, $actividades, $id,$comprado);		
 				?>
 				</div>
 			</div>
