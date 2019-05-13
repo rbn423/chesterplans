@@ -59,11 +59,6 @@
 				echo '</div>';
 			}
 		}
-		if (isset($_SESSION["login"])){
-			echo '<div id="nuevoComentario">';
-			echo '<p>Crea tu comentario</p>';
-			echo '</div>';
-		}
 		echo '</div>';
 	}
 	

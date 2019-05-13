@@ -19,7 +19,9 @@
 
 		private static function mostrar($Nicks){
 			$numero = count($Nicks);
-			$html = "<h2>Ranking de puntos</h2>";
+			$html = '<div id="tituloRanking">';
+			$html .= "<p>Ranking de puntos</p>";
+			$html .= '</div>';
 			for($i=0;$i<$numero;$i++){
 				$html .='<div id="ranking">';
 				$html .= '<div id="nick">'.$Nicks[$i][0].'</div>';

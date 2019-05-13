@@ -13,7 +13,7 @@
 			$valor = $busquedas[$i][0];
 			$experiencia = ExperienciaBD::buscarExperiencia($valor);
 			echo '<div id="info">';
-			echo '<h2>'.$experiencia["TITULO"].'</h2>';
+			echo '<p id="titulo">'.$experiencia["TITULO"].'</p>';
 			echo '<p>'.$experiencia["DESCB"].'<p>';
 			echo '</div>';
 			echo '<form method="post" action="experiencia.php?id='.$valor.'">';						

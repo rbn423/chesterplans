@@ -47,7 +47,7 @@
 						echo '<div id="ultimolista">';
 					}
 					echo '<div id="info">';
-					echo '<h1>'.$viajes[$i]["TITULO"].'</h1>';
+					echo '<p id="titulo">'.$viajes[$i]["TITULO"].'</p>';
 					echo '<p>'.$viajes[$i]["DESCB"].'<p>';
 					echo '<p>De '.$viajes[$i]["FECHAINI"].' a '.$viajes[$i]["FECHAFIN"]. '<p>';
 					echo '<p>Precio: '.$viajes[$i]["PRECIO"].' €</p>';
@@ -73,7 +73,7 @@
 						echo '<div id="ultimolista">';
 					}
 					echo '<div id="info">';
-					echo '<h1>'.$actividades[$i]["TITULO"].'</h1>';
+					echo '<p id="titulo">'.$actividades[$i]["TITULO"].'</p>';
 					echo '<p>'.$actividades[$i]["DESCB"].'<p>';
 					echo '<p>Precio: '.$actividades[$i]["PRECIO"].' €</p>';
 					echo '</div>';
@@ -101,10 +101,10 @@
 						echo '<div id="ultimolista">';
 					}
 					echo '<div id="info">';
-					echo '<h1>'.$viajeCombo['TITULO'].': '.$viajeCombo["DESCB"].'</h1>';
+					echo '<p id="titulo">'.$viajeCombo['TITULO'].': '.$viajeCombo["DESCB"].'</p>';
 					echo "<ul>";
 					for($j=0;$j<$nActividadesCombo;$j++){
-						echo "<li><h2>".$actividadesCombo[$j]['TITULO'].": ".$actividadesCombo[$j]['DESCB']."</h2></li>";
+						echo "<li><p>".$actividadesCombo[$j]['TITULO'].": ".$actividadesCombo[$j]['DESCB']."</p></li>";
 					}
 					echo '<p>Precio: '.$combos[$i]["PRECIO"].' €</p>';
 					echo '</div>';

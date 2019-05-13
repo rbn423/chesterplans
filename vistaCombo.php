@@ -18,16 +18,16 @@
 			else
 				echo '<div id="ultimolista">';
 			echo '<div id="info">';
-			echo '<h1>'.$combos[$i]["VIAJE"]["titulo"].': '.$combos[$i]["VIAJE"]["descb"].'</h1>';
+			echo '<p id="titulo">'.$combos[$i]["VIAJE"]["titulo"].': '.$combos[$i]["VIAJE"]["descb"].'</p>';
 			echo "<ul>";
 			for($j=0;$j<$nactividades;$j++){
-				echo "<li><h2>".$actividades[$j]['titulo'].": ".$actividades[$j]['descb']."</h2></li>";
+				echo "<li><p>".$actividades[$j]['titulo'].": ".$actividades[$j]['descb']."</p></li>";
 			}
 			echo '<p>Precio: '.$precio.' €</p>';
 			echo '</div>';
 			echo '<form method="post" action="combo.php?id='.$idcombo.'">';
 			echo '<div id="boton">';
-			echo '<input type="submit" value="Ver más">';
+			echo '<input type="submit" value="Ver mas">';
 			echo '</div>';
 			echo '</form>';
 			echo '</div>';

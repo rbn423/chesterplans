@@ -14,7 +14,7 @@
 			$actividad = ActividadBD::buscarActividad($valor);
 			
 			echo '<div id="info">';
-			echo '<h1>'.$actividad["TITULO"].'</h1>';
+			echo '<p id="titulo">'.$actividad["TITULO"].'</p>';
 			echo '<p>'.$actividad["DESCB"].'<p>';
 			echo '<p>Fecha: '.$actividad["FECHA"].'<p>';
 			echo '<p>Precio: '.$actividad["PRECIO"].' €</p>';

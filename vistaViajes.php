@@ -15,7 +15,7 @@
 			$valor = $busquedas[$i][0];
 			$viaje = ViajeBD::buscarViaje($valor);
 			echo '<div id="info">';
-			echo '<h1>'.$viaje["TITULO"].'</h1>';
+			echo '<p id="titulo">'.$viaje["TITULO"].'</p>';
 			echo '<p>'.$viaje["DESCB"].'<p>';
 			echo '<p>De '.$viaje["FECHAINI"].' a '.$viaje["FECHAFIN"]. '<p>';
 			echo '<p>Precio: '.$viaje["PRECIO"].' €</p>';

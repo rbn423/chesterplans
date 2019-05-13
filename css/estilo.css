@@ -6,8 +6,6 @@ body{
 	
 	div#cabecera {	
 		height: 20%;
-		background-color: white;
-		border-bottom: black 2px solid;
 	}
 
 	div#cabecera img{
@@ -15,101 +13,73 @@ body{
 		padding-left:20px;
 	}
 
-	div#cabecera div#login div#boton {
-		float:right;
-		margin-top: -20px;
-	}
-
 	div#cabecera div#login{
-		float: right;
-		background-color: white;
-		padding-top: -20px;
-		padding-left: 10px;
-		padding-right:10px;
 		height: 90%;
-		border: black 2px solid;
-		color: black;
-		margin-right:10px;
 		margin-top:5px;
+		font-size:16px;
 	}
 	
 	div#cabecera div#logout{
-		float: right;
-		background-color: white;
-		padding-top: -20px;
-		padding-left: 10px;
-		padding-right:10px;
-		height: 70%;
-		border: black 2px solid;
-		color: black;
-		margin-right:10px;
 		margin-top:15px;
-	}
-	
-	div#cabecera div#logout div#boton {
-		float:right;
+		font-size:18px;
 	}
 	
 	div#menu{
 		height: 7%;
+		font-size: 20px;
 	}
 	
 	div#menubasico{
 		height: 10%;
+		font-size: 18px;
 	}
 	
 	div#menuempresa{
 		height: 10%;
+		font-size: 18px;
 	}
 
 	div#izquierda {
-		float: left;
-		width: 20%;
 		height: 65%;
-		flex-direction:colum;
-		text-align:center;
-		overflow: auto;
-		background-color:#0EA5DA;
-		color:black;
+		font-size: 18px;
+	}
+	
+	div#izquierda div#tituloRanking{
+		font-size:30px;
+	}
+	
+	div#izquierda div#ranking {
+		font-size:25px;
 	}
 
 	div#derecha {
-		float: right;
-		width: 20%;
 		height: 65%;
-		background-color:#0EA5DA;
-		color:black;
-		padding-left:2%;
-		padding-right:2%;
-		font-size:19px;
-		overflow: auto;
+		font-size:20px;
+	}
+	
+	div#derecha div#tituloEmpresa{
+		font-size:25px;
+		font-weight: bold;
+	}
+	
+	div#derecha fieldset#filtrar legen{
+		background-color:#000000;
 	}
 
 	div#contenido {
-		float: left;
-		height: 65%;
-		width: 60%;
-		color: black;
-		overflow: auto;
-		background-color:#EEEEEF;
-		
+		height: 65%;		
 	}
 
 	div#pie {
-		clear: both;
-		background-color: black;
-		color: white;
-		text-align: center;
 		height: 8%;
+		font-size:16px;
 	}
 }
 
 @media only screen and (min-height : 900px){
 	
 	div#cabecera {	
-		height: 16.5%;
-		background-color: white;
-		border-bottom: black 2px solid;
+		height: 16%;
 	}
 
 	div#cabecera img{
@@ -117,95 +87,71 @@ body{
 		padding-left:20px;
 	}
 
-	div#cabecera div#login div#boton {
-		float:right;
-		margin-top: -20px;
-	}
-
 	div#cabecera div#login{
-		float: right;
-		background-color: white;
-		padding-top: -20px;
-		padding-left: 10px;
-		padding-right:10px;
 		height: 80%;
-		border: black 2px solid;
-		color: black;
-		margin-right:10px;
 		margin-top:0.6%;
+		font-size:17px;
 	}
 	
 	div#cabecera div#logout{
-		float: right;
-		background-color: white;
-		padding-top: -20px;
-		padding-left: 10px;
-		padding-right:10px;
-		height: 70%;
-		border: black 2px solid;
-		color: black;
-		margin-right:10px;
 		margin-top:0.9%;
-	}
-	
-	div#cabecera div#logout div#boton {
-		float:right;
+		font-size:20px;
 	}
 
 	div#menu{
-		height: 3.5%;
+		height: 5%;
+		font-size: 23px;
 	}
 	
 	div#menubasico{
-		height: 5%;
+		height: 7%;
+		font-size: 21px;
 	}
 	
 	div#menuempresa{
-		height: 5%;
+		height: 7%;
+		font-size: 21px;
 	}
 
 	div#izquierda {
-		float: left;
-		width: 20%;
 		height: 70%;
-		flex-direction:colum;
-		text-align:center;
-		overflow: auto;
-		background-color:#0EA5DA;
-		color:black;
+	}
+	
+	div#izquierda div#tituloRanking{
+		font-size:40px;
+	}
+	
+	div#izquierda div#ranking {
+		font-size:30px;
 	}
 
 	div#derecha {
-		float: right;
-		width: 20%;
 		height: 70%;
-		background-color:#0EA5DA;
-		color:black;
-		padding-left:2%;
-		padding-right:2%;
-		font-size:19px;
+		font-size:25px;
+	}
+	
+	div#derecha div#tituloEmpresa{
+		font-size:28px;
+		font-weight: bold;
 	}
 
 	div#contenido {
-		float: left;
 		height: 70%;
-		width: 60%;
-		color: black;
-		overflow:auto;
-		background-color:#EEEEEF;;
 	}
 
 	div#pie {
-		clear: both;
-		background-color: black;
-		color: white;
-		text-align: center;
-		height: 10%;
-	}	
+		height: 9%;
+		font-size:20px;
+	}
 }
 
 * {
 	box-sizing: border-box;
+}
+
+div#cabecera {
+	background-color: white;
+	border-bottom: black 2px solid;
 }
 
 div#cabecera a, div#cabecera a:visited {
@@ -215,10 +161,41 @@ div#cabecera a, div#cabecera a:visited {
 	text-decoration:underline;
 }
 
+div#cabecera div#login div#boton {
+	float:right;
+	margin-top: -20px;
+}
+
+div#cabecera div#login{
+	float: right;
+	background-color: white;
+	padding-top: -20px;
+	padding-left: 10px;
+	padding-right:10px;
+	border: black 2px solid;
+	color: black;
+	margin-right:10px;
+}
+
+div#cabecera div#logout{
+	float: right;
+	background-color: white;
+	padding-top: -20px;
+	padding-left: 10px;
+	padding-right:10px;
+	height: 70%;
+	border: black 2px solid;
+	color: black;
+	margin-right:10px;
+}
+
+div#cabecera div#logout div#boton {
+	float:right;
+}
+
 div#menu{
 	float: bottom;
 	text-align:center;
-	font-size: 20px;
 	background-color: #18F393;
 }
 	
@@ -253,7 +230,6 @@ div#menubasico{
 	background-color: #F9610A;
 	text-align:center;
 	flex-direction:row;
-	font-size: 18px;
 }
 
 div#menubasico a, div#menubasico a:visited {
@@ -266,8 +242,7 @@ div#menuempresa{
 	float: bottom;
 	background-color: #F129FA;
 	text-align:center;
-	flex-direction:row;	
-	font-size: 18px;
+	flex-direction:row;
 }
 
 div#menuempresa a, div#menuempresa a:visited {
@@ -284,7 +259,6 @@ div#menuempresa span.apartado{
 	border-right: black 2px solid;
 	padding-top: 10px;
 	border-bottom: black 2px solid;
-	box-sizing: border-box;
 }
 
 div#menuempresa span.ultimo{
@@ -296,15 +270,24 @@ div#menuempresa span.ultimo{
 	border-bottom: black 2px solid;
 }
 
+div#izquierda {
+	float: left;
+	width: 20%;
+	text-align:center;
+	overflow: auto;
+	background-color:#0EA5DA;
+	color:black;	
+	display:flex;
+	flex-direction:column;
+}
+
+div#izquierda div#tituloRanking{
+	font-weight: bold;
+}
+
 div#izquierda div#ranking {
 	display:flex;
 	flex-direction: row;
-	font-size:25px;
-}
-
-div#izquierda{
-	display:flex;
-	flex-direction:column;
 }
 
 div#izquierda div#ranking div#nick{
@@ -312,10 +295,29 @@ div#izquierda div#ranking div#nick{
 	margin-left: 3%;
 }
 
+div#derecha {
+	float: right;
+	width: 20%;
+	background-color:#0EA5DA;
+	color:black;
+	padding-left:2%;
+	padding-right:2%;
+	overflow: auto;
+}
+
+div#contenido {
+	float: left;
+	width: 60%;
+	color: black;
+	overflow: auto;
+	background-color:#EEEEEF;		
+}
+
 div#contenido div#ViajeConcreto{
 	text-align: center;
 	margin:20px;
 }
+
 
 div#contenido div#ActividadConcreta{
 	text-align: center;
@@ -331,6 +333,24 @@ div#contenido div#lista{
 	border-bottom: black 2px solid;
 	display:flex;
 	flex-direction: row;
+}
+
+div#contenido div#lista p#titulo{
+	font-size:30px;
+	font-weight:bold;
+}
+
+div#contenido div#lista{
+	font-size:20px;
+}
+
+div#contenido div#ultimolista p#titulo{
+	font-size:30px;
+	font-weight:bold;
+}
+
+div#contenido div#ultimolista{
+	font-size:20px;
 }
 
 div#contenido div#lista div#info{
@@ -361,6 +381,7 @@ div#contenido div#nombre {
 	font-size: 40px;
 	margin-top:-10px;
 	margin-bottom:-20px;
+	font-weight: bold;
 }
 
 div#contenido div#escribirActividad {
@@ -402,16 +423,26 @@ div#contenido div#ExperienciaConcreta{
 	margin-top:20px;
 }
 
-div#contenido div#ExperienciaConcreta div#nuevoComentario h3{
-	margin-left:-35%;
+div#contenido div#ExperienciaConcreta div#nuevoComentario{
+	width:50%;
+	margin-left:25%;
+	text-align:left;
 }
 
 div#contenido div#ExperienciaConcreta div#nuevoComentario input#crearComentario{
-	margin-right:-48%;
+	float:right;
 }
 
 div#contenido div#ExperienciaConcreta div#boton{
 	float:right;
 	margin-top:-6%;
 	margin-right:2%;
+}
+
+
+div#pie {
+	clear: both;
+	background-color: black;
+	color: white;
+	text-align: center;
 }
