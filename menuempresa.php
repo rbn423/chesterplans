@@ -39,7 +39,7 @@
 			Crear Combo
 		</span>
 	</a>
-	<a href="">
+	<a href="vistaHistorial.php">
 		<span class="ultimo" id="menuHistorialEmp">
 			Historial
 		</span>

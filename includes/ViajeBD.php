@@ -69,7 +69,7 @@ class ViajeBD {
 	public static function buscarViajeCreador($idCreador) {
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
-		$query = "SELECT titulo, id FROM viaje where creador = '$idCreador'";
+		$query = "SELECT titulo, id, descb, descg, fechaini, fechafin, precio FROM viaje where creador = '$idCreador'";
 		$busquedas = $conn->query($query);
 		$busquedas = $busquedas->fetch_all();
 		return $busquedas;

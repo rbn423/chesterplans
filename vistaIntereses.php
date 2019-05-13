@@ -11,7 +11,7 @@
 		$intereses=InteresesBD::buscaIntereses($nick);
 		$nIntereses=count($intereses);
 		if($nIntereses==0){
-			echo '<p>Aun no has añadido ningun viaje, actividad o combo a tus intereses.</p>';
+			echo '<p>Aún no has añadido ningun viaje, actividad o combo a tus intereses.</p>';
 		}
 		else{
 			$viajes = array();

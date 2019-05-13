@@ -71,7 +71,7 @@ class ActividadBD {
 	public static function buscarActividadCreador($idCreador) {
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
-		$query = "SELECT TITULO, ID FROM actividad where CREADOR = '$idCreador'";
+		$query = "SELECT TITULO, ID, DESCB, DESCG, FECHA, PRECIO FROM actividad where CREADOR = '$idCreador'";
 		$busquedas = $conn->query($query);
 		$busquedas = $busquedas->fetch_all();
 		return $busquedas;
