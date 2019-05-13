@@ -52,7 +52,7 @@
 					echo '<div id="botonCompra">';
 					echo '<form method="post" action="actividad.php?id='.$id.'">';
 					echo '<div id="boton">';
-					echo '<input type="submit" value="comprar" name="comprar">';
+					echo '<input type="submit" value="Comprar" name="comprar">';
 					echo '</div>';
 					echo '</form>';
 					echo '</div>';

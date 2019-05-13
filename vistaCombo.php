@@ -27,7 +27,7 @@
 			echo '</div>';
 			echo '<form method="post" action="combo.php?id='.$idcombo.'">';
 			echo '<div id="boton">';
-			echo '<input type="submit" value="Ver mas">';
+			echo '<input type="submit" value="Ver más">';
 			echo '</div>';
 			echo '</form>';
 			echo '</div>';
