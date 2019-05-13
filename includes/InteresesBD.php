@@ -25,6 +25,15 @@ class InteresesBD {
 		$query = "DELETE FROM `intereses` WHERE `intereses`.`IDUSUARIO` = '$nick' AND `intereses`.`IDINTERES` = '$idInteres' ";
 		$conn->query($query);
 	}
+
+	public static function buscaIntereses($nick){
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		$query = "SELECT * FROM intereses WHERE IDUSUARIO = '$nick'";
+		$datos = $conn->query($query);
+		$datos = $datos->fetch_all();
+		return $datos;
+	}
 }
 
 ?>

@@ -44,7 +44,7 @@
 			Crear Experiencia
 		</div>
 	</a>
-	<a href="">
+	<a href="vistaIntereses.php">
 		<div class="apartado" id="menuInteresesGuardados">
 			Intereses guardados
 		</div>
