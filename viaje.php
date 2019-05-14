@@ -18,11 +18,12 @@
 	$foto = ViajeBD::buscarFoto($id);
 
 	function mostrarViaje($viaje, $comentarios,$foto,$id,$comprado,$interesado){
-		if ($comprado == "comprar"){
+		if ($comprado == "Comprar"){
 			echo "<div id='comprado'";
 			echo "<p>Acabas de comprar este viaje.</p>";
 			echo "</div>";
 			ComprasBD::insertaCompra($_SESSION["nick"],"viaje",$id);
+			InteresesBD::eliminaInteres($_SESSION["nick"], $id);
 		}
 		if ($interesado == "Me interesa"){
 			echo "<div id='interesado'";
@@ -60,27 +61,27 @@
 					echo '</div>';
 					echo '</form>';
 					echo '</div>';
+					if (!isset($intereses)){
+						echo '<div id="botonInteres">';
+						echo '<form method="post" action="viaje.php?id='.$id.'">';
+						echo '<div id="boton">';
+						echo '<input type="submit" value="Me interesa" name="interesa">';
+						echo '</div>';
+						echo '</form>';
+						echo '</div>';
+					}
+					else{
+						echo '<div id="botonInteres">';
+						echo '<form method="post" action="viaje.php?id='.$id.'">';
+						echo '<div id="boton">';
+						echo '<input type="submit" value="Ya no me interesa" name="interesa">';
+						echo '</div>';
+						echo '</form>';
+						echo '</div>';
+					}
 				}
 				else
 					echo "<h3>Ya has adquirido este viaje.</h3>";
-				if (!isset($intereses)){
-					echo '<div id="botonInteres">';
-					echo '<form method="post" action="viaje.php?id='.$id.'">';
-					echo '<div id="boton">';
-					echo '<input type="submit" value="Me interesa" name="interesa">';
-					echo '</div>';
-					echo '</form>';
-					echo '</div>';
-				}
-				else{
-					echo '<div id="botonInteres">';
-					echo '<form method="post" action="viaje.php?id='.$id.'">';
-					echo '<div id="boton">';
-					echo '<input type="submit" value="Ya no me interesa" name="interesa">';
-					echo '</div>';
-					echo '</form>';
-					echo '</div>';
-				}
 			}
 		}
 

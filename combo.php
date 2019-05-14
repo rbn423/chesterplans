@@ -23,6 +23,7 @@
 			echo "<p>Acabas de comprar este combo.</p>";
 			echo "</div>";
 			ComprasBD::insertaCompra($_SESSION["nick"],"combo",$id);
+			InteresesBD::eliminaInteres($_SESSION["nick"],$id);
 		}
 		if ($interesado == "Me interesa"){
 			echo "<div id='interesado'";
@@ -63,27 +64,27 @@
 					echo '</div>';
 					echo '</form>';
 					echo '</div>';
+					if (!isset($intereses)){
+						echo '<div id="botonInteres">';
+						echo '<form method="post" action="combo.php?id='.$id.'">';
+						echo '<div id="boton">';
+						echo '<input type="submit" value="Me interesa" name="interesa">';
+						echo '</div>';
+						echo '</form>';
+						echo '</div>';
+					}
+					else{
+						echo '<div id="botonInteres">';
+						echo '<form method="post" action="combo.php?id='.$id.'">';
+						echo '<div id="boton">';
+						echo '<input type="submit" value="Ya no me interesa" name="interesa">';
+						echo '</div>';
+						echo '</form>';
+						echo '</div>';
+					}
 				}
 				else
 					echo "<h3>Ya has adquirido este combo.</h3>";
-				if (!isset($intereses)){
-					echo '<div id="botonInteres">';
-					echo '<form method="post" action="combo.php?id='.$id.'">';
-					echo '<div id="boton">';
-					echo '<input type="submit" value="Me interesa" name="interesa">';
-					echo '</div>';
-					echo '</form>';
-					echo '</div>';
-				}
-				else{
-					echo '<div id="botonInteres">';
-					echo '<form method="post" action="combo.php?id='.$id.'">';
-					echo '<div id="boton">';
-					echo '<input type="submit" value="Ya no me interesa" name="interesa">';
-					echo '</div>';
-					echo '</form>';
-					echo '</div>';
-				}
 			}
 		}
 	}

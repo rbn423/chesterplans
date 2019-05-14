@@ -17,11 +17,12 @@
 
 	function mostrarActividad($actividad, $id,$comprado,$interesado){
 
-		if ($comprado == "comprar"){
+		if ($comprado == "Comprar"){
 			echo "<div id='comprado'";
 			echo "<p>Acabas de comprar esta actividad.</p>";
 			echo "</div>";
 			ComprasBD::insertaCompra($_SESSION["nick"],"actividad",$id);
+			InteresesBD::eliminaInteres($_SESSION["nick"], $id);
 		}
 		if ($interesado == "Me interesa"){
 			echo "<div id='interesado'";
@@ -56,27 +57,27 @@
 					echo '</div>';
 					echo '</form>';
 					echo '</div>';
+					if (!isset($intereses)){
+						echo '<div id="botonInteres">';
+						echo '<form method="post" action="actividad.php?id='.$id.'">';
+						echo '<div id="boton">';
+						echo '<input type="submit" value="Me interesa" name="interesa">';
+						echo '</div>';
+						echo '</form>';
+						echo '</div>';
+					}
+					else{
+						echo '<div id="botonInteres">';
+						echo '<form method="post" action="actividad.php?id='.$id.'">';
+						echo '<div id="boton">';
+						echo '<input type="submit" value="Ya no me interesa" name="interesa">';
+						echo '</div>';
+						echo '</form>';
+						echo '</div>';
+					}
 				}
 				else
 					echo "<h3>Ya has adquirido esta actividad.</h3>";
-				if (!isset($intereses)){
-					echo '<div id="botonInteres">';
-					echo '<form method="post" action="actividad.php?id='.$id.'">';
-					echo '<div id="boton">';
-					echo '<input type="submit" value="Me interesa" name="interesa">';
-					echo '</div>';
-					echo '</form>';
-					echo '</div>';
-				}
-				else{
-					echo '<div id="botonInteres">';
-					echo '<form method="post" action="actividad.php?id='.$id.'">';
-					echo '<div id="boton">';
-					echo '<input type="submit" value="Ya no me interesa" name="interesa">';
-					echo '</div>';
-					echo '</form>';
-					echo '</div>';
-				}
 			}
 		}
 	}
