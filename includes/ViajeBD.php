@@ -40,9 +40,7 @@ class ViajeBD {
 	public static function buscarContenidoViaje($busqueda){
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
-		$sql = "SELECT * FROM viaje where titulo like '%$busqueda' or titulo like '$busqueda%' or titulo like '%$busqueda%' or 
-		descb like '%$busqueda' or descg like '$busqueda%' or descb like '%$busqueda%' or
-				descg like '%$busqueda' or descg like '$busqueda%' or descg like '%$busqueda%'";
+		$sql = "SELECT * FROM viaje where titulo like '%$busqueda%' or descb like '%$busqueda%' or descg like '%$busqueda%'";
 		$busquedas = $conn->query($sql); 
 		$busquedas = $busquedas->fetch_all();
 		return $busquedas;
@@ -75,22 +73,17 @@ class ViajeBD {
 		return $busquedas;
 	}
 
-	public static function buscarListaFotos($idact) {
+	public static function buscarFoto($idviaje) {
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
-		$query = "SELECT * FROM interfoto where id = '$idact'";
-		$busquedas = $conn->query($query);
-		$busquedas = $busquedas->fetch_all();
-		return $busquedas;
-	}
-	
-	public static function buscarFoto($idfoto){
-		$app = Aplicacion::getSingleton();
-		$conn = $app->conexionBd();
-		$que= "SELECT * from foto where id='$idfoto'";
-		$busquedas = $conn->query($que);
-		$busquedas = $busquedas->fetch_assoc();
-		return $busquedas;
+		$query = "SELECT * FROM interfoto where idpublicacion = '$idviaje'";
+		$idFoto = $conn->query($query);
+		$idFoto = $idFoto->fetch_all();
+		if (count($idFoto) != 0){
+			$idFoto = $idFoto[0][0];
+			return $idFoto;
+		}
+		return $idFoto;
 	}
 
 	public static function crearViaje($id, $titulo, $descb, $texto, $precio, $nick, $fechaIni, $fechaFin){

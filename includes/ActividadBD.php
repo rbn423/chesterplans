@@ -42,9 +42,7 @@ class ActividadBD {
 	public static function buscarContenidoActividad($busqueda){
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
-		$sql = "SELECT * FROM actividad where titulo like '%$busqueda' or titulo like '$busqueda%' or titulo like '%$busqueda%' or 
-		descb like '%$busqueda' or descg like '$busqueda%' or descb like '%$busqueda%' or
-				descg like '%$busqueda' or descg like '$busqueda%' or descg like '%$busqueda%'";
+		$sql = "SELECT * FROM actividad where titulo like '%$busqueda%' or descb like '%$busqueda%' or descg like '%$busqueda%'";
 		$busquedas = $conn->query($sql); 
 		$busquedas = $busquedas->fetch_all();
 		return $busquedas;
@@ -77,21 +75,12 @@ class ActividadBD {
 		return $busquedas;
 	}
 
-	public static function buscarListaFotos($idact) {
+	public static function buscarFoto($idact) {
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
 		$query = "SELECT * FROM interfoto where id = '$idact'";
 		$busqueda = $conn->query($query);
 		$busqueda = $comentarios->fetch_all();
-		return $busqueda;
-	}
-	
-	public static function buscarFoto($idfoto){
-		$app = Aplicacion::getSingleton();
-		$conn = $app->conexionBd();
-		$que= "SELECT * from foto where id='$idfoto'";
-		$busqueda=$conn->query($que);
-		$busqueda= $comen->fetch_assoc();
 		return $busqueda;
 	}
 	

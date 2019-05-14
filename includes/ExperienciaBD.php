@@ -36,9 +36,7 @@ class ExperienciaBD {
 		public static function buscarContenidoExperiencia($busqueda){
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
-		$sql = "SELECT * FROM experiencias where titulo like '%$busqueda' or titulo like '$busqueda%' or titulo like '%$busqueda%' or 
-		descb like '%$busqueda' or descg like '$busqueda%' or descb like '%$busqueda%' or
-				descg like '%$busqueda' or descg like '$busqueda%' or descg like '%$busqueda%'";
+		$sql = "SELECT * FROM experiencias where titulo like '%$busqueda%' or descb like '%$busqueda' or descg like '%$busqueda%'";
 		$busquedas = $conn->query($sql); 
 		$busquedas = $busquedas->fetch_all();
 		return $busquedas;
