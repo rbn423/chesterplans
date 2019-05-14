@@ -7,6 +7,22 @@
 			switch($vista){
 				case "viajes":
 				echo <<<EOF
+				<form method="post" action="buscador.php">
+					<div id = "selector">
+						<p>
+							Buscar en: <select name="tema">
+												<option value="todo">Todo</option>
+												<option value="viajes">Viajes</option>
+												<option value="actividades">Actividades</option>
+												<option value="experiencias">Experiencias</option>
+										<select>
+						</p>
+						<p><input type="textarea" name="buscar" placeholder="Buscador"</p>
+						<p>
+							<input type="submit" value="Enviar">
+						</p>
+					</div>
+				</form>
 				<form method="post" action="vistaViajes.php">
 					<div id="selector">
 						<p>
@@ -55,6 +71,22 @@ EOF;
 break;
 			case "experiencias":
 			echo <<<EOF
+			<form method="post" action="buscador.php">
+				<div id = "selector">
+					<p>
+						Buscar en: <select name="tema">
+											<option value="todo">Todo</option>
+											<option value="viajes">Viajes</option>
+											<option value="actividades">Actividades</option>
+											<option value="experiencias">Experiencias</option>
+									<select>
+					</p>
+					<p><input type="textarea" name="buscar" placeholder="Buscador"</p>
+					<p>
+						<input type="submit" value="Enviar">
+					</p>
+				</div>
+			</form>
 				<form method="post" action="vistaExperiencias.php">
 					<div id="selector">
 						<fieldset id="filtrar">
@@ -77,6 +109,22 @@ EOF;
 break;
 			case "actividades":
 			echo <<<EOF
+			<form method="post" action="buscador.php">
+				<div id = "selector">
+					<p>
+						Buscar en: <select name="tema">
+											<option value="todo">Todo</option>
+											<option value="viajes">Viajes</option>
+											<option value="actividades">Actividades</option>
+											<option value="experiencias">Experiencias</option>
+									<select>
+					</p>
+					<p><input type="textarea" name="buscar" placeholder="Buscador"</p>
+					<p>
+						<input type="submit" value="Enviar">
+					</p>
+				</div>
+			</form>
 				<form method="post" action="vistaActividades.php">
 					<div id="selector">
 						<p>
@@ -124,6 +172,22 @@ EOF;
 break;
 			case "combos":
 			echo <<<EOF
+			<form method="post" action="buscador.php">
+				<div id = "selector">
+					<p>
+						Buscar en: <select name="tema">
+											<option value="todo">Todo</option>
+											<option value="viajes">Viajes</option>
+											<option value="actividades">Actividades</option>
+											<option value="experiencias">Experiencias</option>
+									<select>
+					</p>
+					<p><input type="textarea" name="buscar" placeholder="Buscador"</p>
+					<p>
+						<input type="submit" value="Enviar">
+					</p>
+				</div>
+			</form>
 			<form method="post" action="vistaCombo.php">
 					<div id="selector">
 						<p>
