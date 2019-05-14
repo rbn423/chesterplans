@@ -16,3 +16,5 @@ Las funcionalidades implementadas en esta entrega son:
 - Un ranking en la barra derecha que muestra los usuarios con mas puntos.
 - La vista del empresario, que permite crear viajes y actividades.
 - Se pueden insertar imagenes en el contenido compartido.
+- Buscador de la web
+- Validador de usuario al registrar
