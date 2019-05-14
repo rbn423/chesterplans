@@ -24,7 +24,7 @@
 					echo '<div id="ultimolista">';
 				}
 				echo '<div id="info">';
-				echo '<h1>'.$viaje["TITULO"].'</h1>';
+				echo '<p id="titulo">'.$viaje["TITULO"].'</p>';
 				echo '<p>'.$viaje["DESCB"].'<p>';
 				echo '<p>De '.$viaje["FECHAINI"].' a '.$viaje["FECHAFIN"]. '<p>';
 				echo '<p>Precio: '.$viaje["PRECIO"].' €</p>';
@@ -54,7 +54,7 @@
 					echo '<div id="ultimolista">';
 				}
 				echo '<div id="info">';
-				echo '<h1>'.$actividad["TITULO"].'</h1>';
+				echo '<p id="titulo">'.$actividad["TITULO"].'</p>';
 				echo '<p>'.$actividad["DESCB"].'<p>';
 				echo '<p>Precio: '.$actividad["PRECIO"].' €</p>';
 				echo '</div>';
@@ -80,7 +80,7 @@
 				else
 					echo '<div id="ultimolista">';
 				echo '<div id="info">';
-				echo '<h2>'.$experiencia["TITULO"].'</h2>';
+				echo '<p id="titulo">'.$experiencia["TITULO"].'</p>';
 				echo '<p>'.$experiencia["DESCB"].'<p>';
 				echo '</div>';
 				echo '<form method="post" action="experiencia.php?id='.$valor.'">';						
