@@ -18,7 +18,8 @@
 				<h1>Registro de Usuario</h1>
 				<p>
 					Nick de usuario:
-					<input type="text" name="usernombre"/>
+					<input type="text" name="usernombre" id="username"/>
+					<img src="imagenes/no.png" id="nouser"> <img src="imagenes/ok.png" id="siuser"></p>
 				</p>
 				<p>
 					Nombre: 
