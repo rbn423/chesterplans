@@ -2,7 +2,7 @@
 	require("includes/config.php");
 
 	function mostrarCrear(){
-		echo '<form method="post" action="viajeCreado.php">';
+		echo '<form method="post" action="viajeCreado.php" enctype="multipart/form-data">';
 			echo'<div id="escribirViaje">'; 
 			echo'<h3>Título:</h3>';
 			echo'<p><input type="text" name="titulo"/></p>';
@@ -14,6 +14,8 @@
 			echo'<p><input type="text" name="descb" size="50"/></p>';
 			echo'<h3>Texto:</h3>';
 			echo'<p><textarea rows="10" cols="60" name="descg"></textarea></p>';
+			echo'<p>Imagenes:</p>';
+			echo'<p><input type="file" name="imagen" id="imagen"/></p>';
 			echo'<h3>Precio:</h3>';
 			echo'<p><textarea rows="1" cols="5" name="precio"></textarea></p>';
 			echo'<p><input type="submit" value="Compartir"/></p>';

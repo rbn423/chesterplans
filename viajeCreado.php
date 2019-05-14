@@ -1,6 +1,7 @@
 <?php
 	require("includes/config.php");
 	require("includes/ViajeBD.php");
+	require("includes/ImagenBD.php");
 	$nick = $_SESSION["nick"];
 	$titulo = htmlspecialchars(trim(strip_tags($_REQUEST["titulo"])));
 	$descb = htmlspecialchars(trim(strip_tags($_REQUEST["descb"])));
@@ -8,10 +9,16 @@
 	$precio = htmlspecialchars(trim(strip_tags($_REQUEST["precio"])));
 	$fechaIni = htmlspecialchars(trim(strip_tags($_REQUEST["fechaIni"])));
 	$fechaFin = htmlspecialchars(trim(strip_tags($_REQUEST["fechaFin"])));
+	$imagen = $_FILES["imagen"];
+	
 	if($titulo != "" && $descb != "" && $texto != "" && $precio != "" && $precio > 0 && $fechaIni != "" && $fechaFin != ""){
 		$conn = $app->conexionBd();
 		$f=getdate()[0];
 		$id=$nick.$f;
+		if($imagen["size"] != 0 && $imagen["error"] == 0){
+			$idImagen=$imagen["name"].$f;
+			ImagenBD::insertaImagen($imagen,$idImagen,$id);
+		}
 		ViajeBD::crearViaje($id, $titulo, $descb, $texto, $precio, $nick, $fechaIni, $fechaFin);
 	}
 
