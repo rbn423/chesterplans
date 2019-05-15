@@ -18,8 +18,9 @@
 			for ($i=0;$i<$nUsuarios;$i++){
 				$nickUsuario = $usuarios[$i][0];
 				$nombreUsuario = $usuarios[$i][1];
+				$tipoUsuario = $usuarios[$i][6];
 				$puntosUsuario = $usuarios[$i][7];
-				if ($nickUsuario != $nick){
+				if ($nickUsuario != $nick && $tipoUsuario != "empresa"){
 					if($i!=$nUsuarios-1)
 						echo '<div id="lista">';
 					else
