@@ -26,6 +26,17 @@ class RankingBD {
 			$resultado[$i]["nick"] = $amigos[$i];
 			$resultado[$i]["puntos"] = $puntos[0][0];
 		}
+		$query = "SELECT puntos FROM usuario WHERE nick = '$nick'";
+		$propio = $conn->query($query);
+		$propio = $propio->fetch_all();
+		$resultado[$nAmigos]["nick"] = $nick;
+		$resultado[$nAmigos]["puntos"] = $propio[0][0];
+
+		foreach ($resultado as $key => $row) {
+		    $aux[$key] = $row['puntos'];
+		}
+		array_multisort($aux, SORT_DESC, $resultado);
+
 		return $resultado;
 	}
 }
