@@ -39,11 +39,14 @@
 						}
 						else{
 							echo '<form method="post" action="EnviarSolicitud.php?receptor='.$nickUsuario.'">';
-							echo '<input type="hidden" name="usuarios" value="'.$busqueda.'"/>';
-							echo '<input type="submit" value="Enviar solicitud">';
+								echo '<input type="hidden" name="usuarios" value="'.$busqueda.'"/>';
+								echo '<input type="submit" value="Enviar solicitud">';
 							echo '</form>';
 						}
 					}
+					echo '<form method="post" action="VerPublicaciones.php?nick='.$nickUsuario.'">';
+						echo '<input type="submit" value="Ver experiencias">';
+					echo '</form>';
 					echo '</div>';
 					echo '</div>';
 				}

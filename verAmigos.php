@@ -21,8 +21,7 @@
 						echo '<p>Puntos: '.$usuario->puntos().'</p>';
 					echo '</div>';
 					echo '<div id="boton">';
-						echo '<form method="post" action="VerPublicaciones.php">';
-						echo '<input type="hidden" name="usuario" value="'.$usuario->nick().'"/>';
+						echo '<form method="post" action="VerPublicaciones.php?nick='.$usuario->nick().'">';
 						echo '<input type="submit" value="Ver experiencias">';
 						echo '</form>';
 					echo '</div>';
