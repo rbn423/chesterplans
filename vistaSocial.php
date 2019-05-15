@@ -1,11 +1,13 @@
 <?php
 	require("includes/config.php");
-	require("includes/AmigosBD.php");
+	require_once("includes/AmigosBD.php");
+	require_once("includes/Ranking.php");
 	
 	$nick = $_SESSION["nick"];
 
 	function mostrarSocial($nick){
 		$nSolicitudes = AmigosBD::cuentaSolicitudes($nick);
+		$ranking = Ranking::mostrarAmigos($nick);
 
 		echo "<div id='buscador'>";
 			echo '<form method="post" action="encuentraUsuarios.php">';
@@ -29,7 +31,8 @@
 			echo'</form>';
 		echo "</div>";
 		echo "<div id='ranking'>";
-
+			echo "<h2>Ranking de puntos de amigos</h2>";
+			echo $ranking;
 		echo "</div>";
 		echo "<div id='descuentos'>";
 

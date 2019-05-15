@@ -1,32 +1,34 @@
 <?php 
 	require("config.php");
+	require_once("Usuario.php");
+	require_once("RankingBD.php");
 
 	class Ranking{
 
-		public static function gestionar(){
-			$nicks = self::buscar();
-			return self::mostrar($nicks);
-		}
-
-		private static function buscar(){
-			$app = Aplicacion::getSingleton();
-			$conn = $app->conexionBd();
-			$query = "SELECT nick, puntos FROM usuario WHERE tipo = 'basico' ORDER BY PUNTOS DESC LIMIT 20";
-			$Nicks = $conn->query($query);
-			$Nicks = $Nicks->fetch_all();
-			return $Nicks;
-		}
-
-		private static function mostrar($Nicks){
-			$numero = count($Nicks);
+		public static function mostrarGeneral(){
+			$nicks = RankingBD::buscar();
+			$numero = count($nicks);
 			$html = '<div id="tituloRanking">';
 			$html .= "<p>Ranking de puntos</p>";
 			$html .= '</div>';
 			for($i=0;$i<$numero;$i++){
 				$html .='<div id="ranking">';
-				$html .= '<div id="nick">'.$Nicks[$i][0].'</div>';
-				$html .= '<div id="puntos">'.$Nicks[$i][1].' puntos</div>';
-				//$html .= "<p>Nick: ".$Nicks[$i][0]." ".$Nicks[$i][1]." PUNTOS</p>";
+				$html .= '<div id="nick">'.$nicks[$i][0].'</div>';
+				$html .= '<div id="puntos">'.$nicks[$i][1].' puntos</div>';
+				$html .= "</div>";
+			}
+			return $html;
+		}
+
+		public static function mostrarAmigos($nick){
+			$amigos = RankingBD::buscarAmigos($nick);
+			$numero = count($amigos);
+			$html = '<div id="tituloRanking">';
+			$html .= '</div>';
+			for($i=0;$i<$numero;$i++){
+				$html .='<div id="ranking">';
+				$html .= '<div id="nick">'.$amigos[$i]["nick"].'</div>';
+				$html .= '<div id="puntos">'.$amigos[$i]["puntos"].' puntos</div>';
 				$html .= "</div>";
 			}
 			return $html;
