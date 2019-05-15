@@ -1,0 +1,82 @@
+<?php
+	require("includes/config.php");
+	require("includes/Usuario.php");
+	require("includes/AmigosBD.php");
+	
+	$nick = $_SESSION["nick"];
+	if (isset($_SESSION["busqueda"])){
+		$busqueda = $_SESSION["busqueda"];
+		unset($_SESSION['busqueda']);
+	}
+	else
+		$busqueda = $_POST["usuarios"];
+
+	function mostrarUsuarios($busqueda, $nick){
+		$usuarios = Usuario::buscadorUsuario($busqueda);
+		$nUsuarios = count($usuarios);
+		if ($nUsuarios > 0){
+			for ($i=0;$i<$nUsuarios;$i++){
+				$nickUsuario = $usuarios[$i][0];
+				$nombreUsuario = $usuarios[$i][1];
+				$puntosUsuario = $usuarios[$i][7];
+				if ($nickUsuario != $nick){
+					if($i!=$nUsuarios-1)
+						echo '<div id="lista">';
+					else
+						echo '<div id="ultimolista">';
+					echo '<div id="info">';
+					echo '<h2>Nick: '.$nickUsuario.'</h2>';
+					echo '<p>Nombre: '.$nombreUsuario.'</p>';
+					echo '<p>Puntos: '.$puntosUsuario.'</p>';
+					echo '</div>';
+					echo '<div id="boton">';
+					if (AmigosBD::compruebaAmigos($nickUsuario,$nick))
+						echo "Ya eres amigo de este usuario";
+					else{
+						if (AmigosBD::compruebaSolicitud($nick, $nickUsuario)){
+							echo "Solicitud enviada";
+						}
+						else{
+							echo '<form method="post" action="EnviarSolicitud.php?receptor='.$nickUsuario.'">';
+							echo '<input type="hidden" name="usuarios" value="'.$busqueda.'"/>';
+							echo '<input type="submit" value="Enviar solicitud">';
+							echo '</form>';
+						}
+					}
+					echo '</div>';
+					echo '</div>';
+				}
+			}
+		}
+		else
+			echo "No se ha encontrado ningún usuario con ese nick o nombre.";
+	}
+?>
+
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
+		<title> Social </title>
+	</head>
+	<body>
+
+		<?php
+			require('includes/comun/cabecera.php');
+			require('includes/comun/menu.php');
+			require('includes/comun/izquierda.php');
+		?>
+		<div id="contenido">
+			<?php
+				require('menubasico.php');
+				mostrarUsuarios($busqueda, $nick);
+			?>		
+		</div>			
+		<?php
+			require('includes/comun/derecha.php');
+			require('includes/comun/pie.php');
+		?>
+		
+	
+	</body>
+
+</html>
