@@ -78,13 +78,17 @@ class ActividadBD {
 	public static function buscarFoto($idact) {
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
-		$query = "SELECT * FROM interfoto where id = '$idact'";
-		$busqueda = $conn->query($query);
-		$busqueda = $comentarios->fetch_all();
-		return $busqueda;
+		$query = "SELECT IDFOTO FROM interfoto where idpublicacion = '$idact'";
+		$idFoto = $conn->query($query);
+		$idFoto = $idFoto->fetch_all();
+		if (count($idFoto) != 0){
+			$idFoto = $idFoto[0][0];
+			return $idFoto;
+		}
+		return $idFoto;
 	}
 	
-	public static function crearActividad($id, $titulo, $descb, $texto, $precio, $nick){
+	public static function crearActividad($id, $titulo, $descb, $texto, $precio, $nick, $fecha){
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
 		$query="INSERT INTO actividad (ID,TITULO,DESCB,DESCG,CREADOR,PRECIO,FECHA) 

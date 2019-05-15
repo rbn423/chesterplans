@@ -76,7 +76,7 @@ class ViajeBD {
 	public static function buscarFoto($idviaje) {
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
-		$query = "SELECT * FROM interfoto where idpublicacion = '$idviaje'";
+		$query = "SELECT IDFOTO FROM interfoto where idpublicacion = '$idviaje'";
 		$idFoto = $conn->query($query);
 		$idFoto = $idFoto->fetch_all();
 		if (count($idFoto) != 0){
