@@ -3,6 +3,7 @@
 	require("includes/ViajeBD.php");
 	require("includes/ComprasBD.php");
 	require("includes/InteresesBD.php");
+	require("includes/ImagenBD.php");
 	
 	$id = $_GET["id"];
 	if (isset($_POST["comprar"]))
@@ -31,7 +32,7 @@
 			echo "</div>";
 			InteresesBD::insertaInteres($_SESSION["nick"],"viaje",$id);
 		}
-		elseif ($interesado == "Ya no me interesa") {
+		else if ($interesado == "Ya no me interesa") {
 			echo "<div id='interesado'";
 			echo "<p>Acabas de eliminar este viaje de tus intereses.</p>";
 			echo "</div>";

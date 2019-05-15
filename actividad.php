@@ -3,9 +3,12 @@
 	require("includes/ActividadBD.php");
 	require("includes/ComprasBD.php");
 	require("includes/InteresesBD.php");
-
+	require("includes/ImagenBD.php");
+	
 	$id=$_GET["id"];
 	$actividad = ActividadBD::buscarActividad($id);	
+	$foto = ActividadBD::buscarFoto($id);
+	
 	if (isset($_POST["comprar"]))
 		$comprado = $_POST["comprar"];
 	else
@@ -15,7 +18,7 @@
 	else
 		$interesado = NULL;
 
-	function mostrarActividad($actividad, $id,$comprado,$interesado){
+	function mostrarActividad($actividad, $id,$comprado,$interesado, $foto){
 
 		if ($comprado == "Comprar"){
 			echo "<div id='comprado'";
@@ -40,7 +43,11 @@
 		echo '<h1>'.$actividad["TITULO"].'</h1>';
 		echo '<p>'.$actividad["DESCB"].'<p>';
 		echo '<p>'.$actividad["DESCG"].'<p>';
-		echo '<p>'.$actividad["FOTO"].'<p>';
+		if ($foto != NULL){
+			echo '<p>'.$actividad["FOTO"].'<p>';
+			imagenBD::cargaImagen($foto);
+		}
+		
 		echo '<p> Creador del viaje: '.$actividad["CREADOR"].'<p>';
 		echo '<p> Fecha: '.$actividad["FECHA"].'</p>';
 		echo '<p>Precio: '.$actividad["PRECIO"].' €</p>';
@@ -97,7 +104,7 @@
 			<div id="contenido">
 				<div id="ActividadConcreta">
 				<?php
-					mostrarActividad($actividad, $id,$comprado,$interesado);		
+					mostrarActividad($actividad, $id,$comprado,$interesado, $foto);		
 				?>
 				</div>
 			</div>

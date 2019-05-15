@@ -1,6 +1,7 @@
 <?php
 	require("includes/config.php");
 	require("includes/ActividadBD.php");
+	require("includes/ImagenBD.php");
 
 	$nick = $_SESSION["nick"];
 	$titulo = htmlspecialchars(trim(strip_tags($_REQUEST["titulo"])));
@@ -8,10 +9,16 @@
 	$descb = htmlspecialchars(trim(strip_tags($_REQUEST["descb"])));
 	$texto = htmlspecialchars(trim(strip_tags($_REQUEST["descg"])));
 	$precio = htmlspecialchars(trim(strip_tags($_REQUEST["precio"])));
+	$imagen = $_FILES["imagen"];
+	
 	if($titulo != "" && $descb != "" && $texto != "" && $precio > 0){
 		$f=getdate()[0];
 		$id=$nick.$f;
-		ActividadBD::crearActividad($id, $titulo, $descb, $texto, $precio, $nick);
+		if($imagen["size"] != 0 && $imagen["error"] == 0){
+			$idImagen=$imagen["name"].$f;
+			ImagenBD::insertaImagen($imagen,$idImagen,$id);
+		}
+		ActividadBD::crearActividad($id, $titulo, $descb, $texto, $precio, $nick, $fecha);
 	}
 
 	function mostrarCreado($nick, $titulo, $descb, $texto, $precio){
