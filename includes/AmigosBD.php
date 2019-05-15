@@ -38,7 +38,7 @@ class AmigosBD {
 			$resultado[] = $resultadoA[$i][0];
 		}
 		for ($i = 0; $i < $tamB ; $i++){
-			$resultado = $resultadoB[$i][0];
+			$resultado[] = $resultadoB[$i][0];
 		}
 		return $resultado;
 	}

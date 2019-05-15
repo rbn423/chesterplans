@@ -25,8 +25,8 @@
 		echo "</div>";
 		echo "<div id='amigos'>";
 			echo '<form method="post" action="verAmigos.php">';
-					echo'<input type="submit" value="Ver amigos"/></p>';
-				echo'</form>';
+				echo'<input type="submit" value="Ver amigos"/></p>';
+			echo'</form>';
 		echo "</div>";
 		echo "<div id='ranking'>";
 
