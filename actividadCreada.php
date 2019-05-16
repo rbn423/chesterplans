@@ -10,11 +10,7 @@
 	$texto = htmlspecialchars(trim(strip_tags($_REQUEST["descg"])));
 	$precio = htmlspecialchars(trim(strip_tags($_REQUEST["precio"])));
 	$imagen = $_FILES["imagen"];
-
-	$format = new SimpleDateFormat("yyyy-MM-dd");
-	$date = format.parse($fecha);
-	$timestamp = date.getTime();
-	echo $timestamp;
+	
 	if($titulo != "" && $descb != "" && $texto != "" && $precio > 0){
 		$f=getdate()[0];
 		$id=$nick.$f;

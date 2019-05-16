@@ -1,5 +1,5 @@
 <?php
-	require_once("includes/config.php");
+	require("includes/config.php");
 	require_once("includes/AmigosBD.php");
 	require_once("includes/Ranking.php");
 	
@@ -8,10 +8,11 @@
 	function mostrarSocial($nick){
 		$nSolicitudes = AmigosBD::cuentaSolicitudes($nick);
 		$ranking = Ranking::mostrarAmigos($nick);
+
 		echo "<div id='buscador'>";
 			echo '<form method="post" action="encuentraUsuarios.php">';
-				echo'<p>Buscar usuarios:</p> <p><input type="text" name="usuarios" id="textoBus"/></p>';
-				echo'<p><input type="submit" value="Buscar" id="botonBus"/></p>';
+				echo'<p>Buscar usuarios: <input type="text" name="usuarios"/>';
+				echo'<input type="submit" value="Buscar"/></p>';
 			echo'</form>';
 		echo "</div>";
 		echo "<div id='solicitudes'>";
@@ -20,16 +21,17 @@
 			else{
 				echo "<p>Tienes ".$nSolicitudes." solicitudes de amistad pendientes.";
 				echo '<form method="post" action="verSolicitudes.php">';
-					echo'<input type="submit" value="Ver Solicitudes"/></p>';
+					echo'<input type="submit" value="Ver"/></p>';
 				echo'</form>';
 			}
+		echo "</div>";
+		echo "<div id='amigos'>";
 			echo '<form method="post" action="verAmigos.php">';
-				echo '<p>Aquí puedes ver tu lista de amigos</p>';
 				echo'<input type="submit" value="Ver amigos"/></p>';
 			echo'</form>';
 		echo "</div>";
-		echo "<div id='rankingAmi'>";
-			echo '<p id="titRankingAmi">Ranking de puntos de amigos</p>';
+		echo "<div id='ranking'>";
+			echo "<h2>Ranking de puntos de amigos</h2>";
 			echo $ranking;
 		echo "</div>";
 		echo "<div id='descuentos'>";
@@ -46,21 +48,19 @@
 	<body>
 
 		<?php
-			require_once('includes/comun/cabecera.php');
-			require_once('includes/comun/menu.php');
-			require_once('includes/comun/izquierda.php');
+			require('includes/comun/cabecera.php');
+			require('includes/comun/menu.php');
+			require('includes/comun/izquierda.php');
 		?>
 		<div id="contenido">
-			<div id="usuario">
 			<?php
-				require_once('menubasico.php');
+				require('menubasico.php');
 				mostrarSocial($nick);
-			?>	
-			</div>
+			?>		
 		</div>			
 		<?php
-			require_once('includes/comun/derecha.php');
-			require_once('includes/comun/pie.php');
+			require('includes/comun/derecha.php');
+			require('includes/comun/pie.php');
 		?>
 		
 	

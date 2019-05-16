@@ -187,15 +187,6 @@ div#cabecera div#login div#boton input{
     border: 2px solid #0016b0;
 }
 
-div#contenido input[type="submit"]{
-	text-decoration: none;
-    font-weight: 60;
-    color: #000000;
-    background-color: #0EA5DA;
-    border-radius: 4px;
-    border: 2px solid #0016b0;
-}
-
 div#cabecera div#logout{
 	float: right;
 	background-color: #EEEEEF;
@@ -392,18 +383,9 @@ div#contenido div#lista form{
 	align-items: center;
 }
 
-div#contenido div#lista div#botonAmigos{
-	display:flex;
-	align-items: center;
-	flex-direction: column;
-	text-align:center;
-	margin-top:3%;
-	width:20%;
-}
-
 div#contenido div#ultimolista{
-	display: flex;
-	align-items: center;
+	display:flex;
+	flex-direction: row;
 }
 
 div#contenido div#ultimolista div#info{
@@ -414,14 +396,6 @@ div#contenido div#ultimolista div#info{
 div#contenido div#ultimolista form{
 	display: flex;
 	align-items: center;
-}
-
-div#contenido div#ultimolista div#botonAmigos{
-	display:flex;
-	align-items: center;
-	flex-direction: column;
-	text-align:center;
-	margin-top:3%;
 }
 
 div#contenido div#nombre {
@@ -495,7 +469,6 @@ div#contenido div#buscador{
 	font-size:19px;
 	padding-left:5%;
 	width:50%;
-	height:50%;
 }
 
 div#contenido div#buscador input#textoBus{
@@ -509,45 +482,14 @@ div#contenido div#buscador input#botonBus{
 
 div#contenido div#solicitudes{
 	width:50%;
-	height:50%;
 	float:left;
-	padding-top:5%;
-	font-size:19px;
 }
 
-
-div#contenido div#solicitudes input{
-	margin-left:70%;
-}
-
-div#contenido div#rankingAmi{
-	font-size:20px;
+div#contenido div#amigos{
+	float:right;
 	width:50%;
-	height:50%;
-	float:left;
-	padding-left:3%;
 }
 
-div#contenido div#rankingAmi p#titRankingAmi{
-	font-size:22px;
-	font-weight:bold;
-}
-
-
-div#contenido div#rankingAmi div#ranking {
-	display:flex;
-	flex-direction: row;
-	margin-left:15%;
-}
-
-div#contenido div#rankingAmi div#ranking div#nick{
-	width:20%;
-}
-
-div#contenido img{
-	width:50%;
-	height:50%;
-}
 
 div#pie {
 	clear: both;

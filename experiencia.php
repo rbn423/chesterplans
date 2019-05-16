@@ -7,7 +7,14 @@
 	$experiencia= ExperienciaBD::buscarExperiencia($id);
 	$comentarios = ExperienciaBD::buscarlistaComentarios($id);
 	$idFoto = ExperienciaBD::buscarFoto($id);
-	
+
+	if (isset($_POST['like'])){
+		if($_POST['like'] == 'Me gusta')
+			ExperienciaBD::meGusta($_SESSION['nick'],$id,$experiencia['CREADOR']);
+		else
+			ExperienciaBD::noMeGusta($_SESSION['nick'],$id,$experiencia['CREADOR']);
+	}
+
 	function mostrarExperiencia($experiencia,$comentarios,$id,$idFoto){
 		echo '<div id="infoExperiencia">';
 		echo '<h1>'.$experiencia["TITULO"].'</h1>';
@@ -22,16 +29,20 @@
 			$resultado=ExperienciaBD::tieneMegusta($_SESSION['nick'], $id);
 			if ($resultado->num_rows == 1){
 				echo '<div id="botonNoMeGusta">';
-				echo '<div id="boton" class="Like">';
-				echo '<input type="image" value="No me gusta" name="like" src="imagenes/like.png" >';
+				echo '<form method="post" action="experiencia.php?id='.$id.'">';
+				echo '<div id="boton">';
+				echo '<input type="submit" value="No me gusta" name="like">';
 				echo '</div>';
+				echo '</form>';
 				echo '</div>';
 			}
 			else{
 				echo '<div id="botonMeGusta">';
-				echo '<div id="boton" class="noLike">';
-				echo '<input type="image" value="Me gusta" name="like" src="imagenes/nolike.png" id="nolike">';
+				echo '<form method="post" action="experiencia.php?id='.$id.'">';
+				echo '<div id="boton">';
+				echo '<input type="submit" value="Me gusta" name="like">';
 				echo '</div>';
+				echo '</form>';
 				echo '</div>';
 			}
 		}
@@ -39,8 +50,9 @@
 		if($ncomentarios>0){
 			for($i=0; $i<$ncomentarios; $i++){
 				$valor=$comentarios[$i][1];
-				$comen = ExperienciaBD::buscarComentario($valor);				
-				echo '<div id="comentario">';
+				$comen = ExperienciaBD::buscarComentario($valor);
+				
+					echo '<div id="comentario">';
 				echo '<p>'.$comen["COMENTARIO"].'</p>';
 				echo '<p>Por: '.$comen["ESCRITOR"].'<p>';
 				echo '</div>';
@@ -50,7 +62,7 @@
 			echo '<div id="nuevoComentario">';
 			echo '<form method="post" action="comentarioCreado.php?id='.$id.'">';
 			echo '<h3>Cree un comentario:</h3>';
-			echo '<p><textarea rows="5" cols="55" name="com" id="textoComentario"/></textarea></p>';
+			echo '<p><textarea rows="5" cols="50" name="com" id="textoComentario"/></textarea></p>';
 			echo '<input type="submit" value="Enviar" name="comentario" id="crearComentario">';
 			echo '</form>';
 			echo '</div>';
@@ -59,29 +71,6 @@
 ?>
 <html>
 	<head>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-		<script>
-		$(document).ready(function() {
-			var URLactual = window.location;
-			var stringUrl= String(URLactual);
-			var url = stringUrl.split("/");
-			var id =url[url.length-1].split("=");
-			
-			function actualizar(data, status){
-				location.reload();				
-			}
-			
-			$(".noLike").click(function(){
-				var url="darLike.php?id="+ id[id.length-1];
-				$.get(url,actualizar);
-			});
-			
-			$(".Like").click(function(){
-				var url="quitarLike.php?id="+ id[id.length-1];
-				$.get(url,actualizar);
-			});
-		})
-		</script>
 		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
 		<title> Inicio </title>
 	</head>
