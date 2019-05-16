@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-05-2019 a las 22:30:56
+-- Tiempo de generación: 16-05-2019 a las 22:44:59
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -540,48 +540,48 @@ ALTER TABLE `viaje`
 -- Filtros para la tabla `actividad`
 --
 ALTER TABLE `actividad`
-  ADD CONSTRAINT `actividad_ibfk_2` FOREIGN KEY (`CREADOR`) REFERENCES `usuario` (`NICK`),
-  ADD CONSTRAINT `actividad_ibfk_3` FOREIGN KEY (`COMENTARIO`) REFERENCES `comentario` (`ID`);
+  ADD CONSTRAINT `actividad_ibfk_2` FOREIGN KEY (`CREADOR`) REFERENCES `usuario` (`NICK`) ON DELETE CASCADE,
+  ADD CONSTRAINT `actividad_ibfk_3` FOREIGN KEY (`COMENTARIO`) REFERENCES `comentario` (`ID`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `combo`
 --
 ALTER TABLE `combo`
-  ADD CONSTRAINT `combo_ibfk_1` FOREIGN KEY (`CREADOR`) REFERENCES `usuario` (`NICK`),
-  ADD CONSTRAINT `combo_ibfk_2` FOREIGN KEY (`VIAJE`) REFERENCES `viaje` (`ID`),
-  ADD CONSTRAINT `combo_ibfk_3` FOREIGN KEY (`ACTIVIDAD`) REFERENCES `actividad` (`ID`);
+  ADD CONSTRAINT `combo_ibfk_1` FOREIGN KEY (`CREADOR`) REFERENCES `usuario` (`NICK`) ON DELETE CASCADE,
+  ADD CONSTRAINT `combo_ibfk_2` FOREIGN KEY (`VIAJE`) REFERENCES `viaje` (`ID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `combo_ibfk_3` FOREIGN KEY (`ACTIVIDAD`) REFERENCES `actividad` (`ID`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `compras`
 --
 ALTER TABLE `compras`
-  ADD CONSTRAINT `compras_ibfk_1` FOREIGN KEY (`IDUSUARIO`) REFERENCES `usuario` (`NICK`);
+  ADD CONSTRAINT `compras_ibfk_1` FOREIGN KEY (`IDUSUARIO`) REFERENCES `usuario` (`NICK`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `experiencias`
 --
 ALTER TABLE `experiencias`
-  ADD CONSTRAINT `experiencias_ibfk_2` FOREIGN KEY (`CREADOR`) REFERENCES `usuario` (`NICK`),
-  ADD CONSTRAINT `experiencias_ibfk_3` FOREIGN KEY (`COMENTARIO`) REFERENCES `comentario` (`ID`);
+  ADD CONSTRAINT `experiencias_ibfk_2` FOREIGN KEY (`CREADOR`) REFERENCES `usuario` (`NICK`) ON DELETE CASCADE,
+  ADD CONSTRAINT `experiencias_ibfk_3` FOREIGN KEY (`COMENTARIO`) REFERENCES `comentario` (`ID`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `intercombo`
 --
 ALTER TABLE `intercombo`
-  ADD CONSTRAINT `intercombo_ibfk_1` FOREIGN KEY (`IDCOMBO`) REFERENCES `combo` (`ID`),
-  ADD CONSTRAINT `intercombo_ibfk_2` FOREIGN KEY (`IDACT`) REFERENCES `actividad` (`ID`);
+  ADD CONSTRAINT `intercombo_ibfk_1` FOREIGN KEY (`IDCOMBO`) REFERENCES `combo` (`ID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `intercombo_ibfk_2` FOREIGN KEY (`IDACT`) REFERENCES `actividad` (`ID`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `intercomentario`
 --
 ALTER TABLE `intercomentario`
-  ADD CONSTRAINT `intercomentario_ibfk_1` FOREIGN KEY (`IDCOMENT`) REFERENCES `comentario` (`ID`);
+  ADD CONSTRAINT `intercomentario_ibfk_1` FOREIGN KEY (`IDCOMENT`) REFERENCES `comentario` (`ID`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `intereses`
 --
 ALTER TABLE `intereses`
-  ADD CONSTRAINT `intereses_ibfk_1` FOREIGN KEY (`IDUSUARIO`) REFERENCES `usuario` (`NICK`);
+  ADD CONSTRAINT `intereses_ibfk_1` FOREIGN KEY (`IDUSUARIO`) REFERENCES `usuario` (`NICK`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `lista`
@@ -596,8 +596,8 @@ ALTER TABLE `lista`
 -- Filtros para la tabla `viaje`
 --
 ALTER TABLE `viaje`
-  ADD CONSTRAINT `viaje_ibfk_2` FOREIGN KEY (`CREADOR`) REFERENCES `usuario` (`NICK`),
-  ADD CONSTRAINT `viaje_ibfk_3` FOREIGN KEY (`COMENTARIO`) REFERENCES `comentario` (`ID`);
+  ADD CONSTRAINT `viaje_ibfk_2` FOREIGN KEY (`CREADOR`) REFERENCES `usuario` (`NICK`) ON DELETE CASCADE,
+  ADD CONSTRAINT `viaje_ibfk_3` FOREIGN KEY (`COMENTARIO`) REFERENCES `comentario` (`ID`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
