@@ -20,12 +20,19 @@
 						echo '<p>Nombre: '.$usuario->nombre().'</p>';
 						echo '<p>Puntos: '.$usuario->puntos().'</p>';
 					echo '</div>';
-					echo '<form method="post" action="AceptarSolicitud.php">';
-						echo '<div id="boton">';						
-							echo '<input type="hidden" name="usuario" value="'.$usuario->nick().'"/>';
-							echo '<input type="submit" value="Aceptar solicitud">';						
-						echo '</div>';
-					echo '</form>';
+					
+					echo '<div id="botonAmigos">';
+						echo '<form method="post" action="AceptarSolicitud.php">';
+						echo '<input type="hidden" name="emisor" value="'.$usuario->nick().'"/>';
+						echo '<input type="hidden" name="receptor" value="'.$nick.'"/>';
+						echo '<input type="submit" value="Aceptar solicitud">';
+						echo '</form>';
+						echo '<form method="post" action="RechazarSolicitud.php">';
+						echo '<input type="hidden" name="emisor" value="'.$usuario->nick().'"/>';
+						echo '<input type="hidden" name="receptor" value="'.$nick.'"/>';
+						echo '<input type="submit" value="Rechazar solicitud">';
+						echo '</form>';
+					echo '</div>';
 					echo '</div>';
 				}
 			}
