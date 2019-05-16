@@ -27,12 +27,13 @@
 	<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script>
-		
+			
 			window.onload = function(){
 				$("#noprecio").hide();
 				$("#siprecio").hide();
 				$("#sidate").hide();
 				$("#nodate").hide();
+
 			};
 			
 			function fechaValida(data, status){
@@ -83,7 +84,8 @@
 				<?php
 					require_once('menuempresa.php');
 					mostrarCrear();
-					echo $fechaactual = date("Ymd");
+						$fechaactual = date("Ymd");
+
 				?>
 			</div>
 		<?php

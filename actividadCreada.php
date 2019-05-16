@@ -10,12 +10,10 @@
 	$texto = htmlspecialchars(trim(strip_tags($_REQUEST["descg"])));
 	$precio = htmlspecialchars(trim(strip_tags($_REQUEST["precio"])));
 	$imagen = $_FILES["imagen"];
-
-	$format = new SimpleDateFormat("yyyy-MM-dd");
-	$date = format.parse($fecha);
-	$timestamp = date.getTime();
-	echo $timestamp;
-	if($titulo != "" && $descb != "" && $texto != "" && $precio > 0){
+	
+	$fechaactual = date("Ymd");
+	$fecha = date("Ymd", strtotime($fecha));
+	if($titulo != "" && $descb != "" && $texto != "" && $precio > 0 && $fecha >= $fechaactual){
 		$f=getdate()[0];
 		$id=$nick.$f;
 		if($imagen["size"] != 0 && $imagen["error"] == 0){
@@ -25,21 +23,12 @@
 		ActividadBD::crearActividad($id, $titulo, $descb, $texto, $precio, $nick, $fecha);
 	}
 
-	function mostrarCreado($nick, $titulo, $descb, $texto, $precio){
-		if($titulo != "" && $descb != "" && $texto != "" && $precio != ""){
-			echo '<p> Enhorabuena '.$nick.', ya has creado una actividad.</p>';
+	function mostrarCreado($nick, $titulo, $descb, $texto, $precio, $fecha, $fechaactual){
+		if($titulo != "" && $descb != "" && $texto != "" && $precio > 0 && $fecha >= $fechaactual){
+			echo '<h1> Enhorabuena '.$nick.', ya has creado una actividad.</h1>';
 		}
 		else{
-			$mensaje = "No se ha creado la experiencia porque faltan por rellenar: ";
-			if($titulo == "")
-				$mensaje .= " -titulo ";
-			if($descb == "")
-				$mensaje .= " -descripcion breve ";
-			if($texto == "")
-				$mensaje .= " -texto ";
-			if($precio == "")
-				$mensaje .= " -precio ";
-			echo $mensaje;
+			echo '<h1>No se ha creado la experiencia porque faltan por rellenar datos o son incorrectos</h1>';
 		}
 	}
 ?>
@@ -58,7 +47,7 @@
 		?>
 		<div id="contenido">
 			<?php
-				mostrarCreado($nick,$titulo, $descb, $texto, $precio);
+				mostrarCreado($nick,$titulo, $descb, $texto, $precio, $fecha, $fechaactual);
 			?>		
 		</div>			
 		<?php

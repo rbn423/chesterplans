@@ -3,10 +3,10 @@
 	
 	$fecha = htmlspecialchars(trim(strip_tags($_REQUEST["fecha"])));
 	$fechaactual = date("Ymd");
-	$fecha.strtotime("Ymd");
 
+	$fecha = date("Ymd", strtotime($fecha));
 
-	if($fecha > $fechaactual)
+	if($fecha >= $fechaactual)
 		echo "bien";
 	else
 		echo "mal";

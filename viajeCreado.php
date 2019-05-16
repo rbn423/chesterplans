@@ -11,7 +11,9 @@
 	$fechaFin = htmlspecialchars(trim(strip_tags($_REQUEST["fechaFin"])));
 	$imagen = $_FILES["imagen"];
 	
-	if($titulo != "" && $descb != "" && $texto != "" && $precio != "" && $precio > 0 && $fechaIni != "" && $fechaFin != ""){
+	$fechaIni = date("Ymd", strtotime($fechaIni));
+	$fechaFin = date("Ymd", strtotime($fechaFin));
+	if($titulo != "" && $descb != "" && $texto != "" && $precio != "" && $precio > 0 && $fechaIni <= $fechaFin){
 		$conn = $app->conexionBd();
 		$f=getdate()[0];
 		$id=$nick.$f;
@@ -23,24 +25,11 @@
 	}
 
 	function mostrarCreado($nick,$titulo, $descb, $texto, $precio, $fechaIni, $fechaFin){
-		if($titulo != "" && $descb != "" && $texto != "" && $precio != "" && $fechaIni != "" && $fechaFin != "" ){
-			echo '<p> Enorabuena '.$nick.', ya has creado un viaje.</p>';
+		if($titulo != "" && $descb != "" && $texto != "" && $precio != "" && $fechaIni <= $fechaFin ){
+			echo '<h1> Enorabuena '.$nick.', ya has creado un viaje.</h1>';
 		}
 		else{
-			$mensaje = "No se ha creado el viaje porque faltan por rellenar: ";
-			if($titulo == "")
-				$mensaje .= " -titulo ";
-			if($descb == "")
-				$mensaje .= " -descripcion breve ";
-			if($texto == "")
-				$mensaje .= " -texto ";
-			if($precio == "")
-				$mensaje .= " -precio ";
-			if($fechaIni == "")
-				$mensaje .= " -fecha inicio ";
-			if($fechaFin == "")
-				$mensaje .= " -fecha fin ";
-			echo $mensaje;
+			echo '<h1>No se ha creado la experiencia porque faltan por rellenar datos o son incorrectos</h1>';
 		}
 	}
 ?>
