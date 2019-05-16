@@ -161,25 +161,35 @@ div#cabecera a, div#cabecera a:visited {
 	text-decoration:underline;
 }
 
-div#cabecera div#login div#boton {
-	float:right;
-	margin-top: -20px;
-}
-
 div#cabecera div#login{
 	float: right;
-	background-color: white;
+	background-color: #EEEEEF;
 	padding-top: -20px;
 	padding-left: 10px;
 	padding-right:10px;
 	border: black 2px solid;
 	color: black;
 	margin-right:10px;
+	-webkit-border-radius: 8px 8px 8px 8px;
+}
+
+div#cabecera div#login div#boton {
+	float:right;
+	margin-top: -20px;
+}
+
+div#cabecera div#login div#boton input{
+	text-decoration: none;
+    font-weight: 60;
+    color: #000000;
+    background-color: #0EA5DA;
+    border-radius: 4px;
+    border: 2px solid #0016b0;
 }
 
 div#cabecera div#logout{
 	float: right;
-	background-color: white;
+	background-color: #EEEEEF;
 	padding-top: -20px;
 	padding-left: 10px;
 	padding-right:10px;
@@ -187,10 +197,20 @@ div#cabecera div#logout{
 	border: black 2px solid;
 	color: black;
 	margin-right:10px;
+	-webkit-border-radius: 8px 8px 8px 8px;	
 }
 
-div#cabecera div#logout div#boton {
+div#cabecera div#logout div#boton{
 	float:right;
+}
+
+div#cabecera div#logout div#boton input{
+	text-decoration: none;
+    font-weight: 60;
+    color: #000000;
+    background-color: #0EA5DA;
+    border-radius: 4px;
+    border: 2px solid #0016b0;
 }
 
 div#menu{
@@ -212,9 +232,8 @@ div.apartado{
 	float:left;
 	border-right: black 2px solid;
 	padding-top: 10px;
-	border-bottom: black 2px solid;
+	border-bottom: black 2px solid;	
 }
-
 
 div.ultimo{
 	text-align: center;
@@ -305,6 +324,10 @@ div#derecha {
 	overflow: auto;
 }
 
+div#derecha fieldset{
+	-webkit-border-radius: 12px 7px 7px 7px;
+}
+
 div#contenido {
 	float: left;
 	width: 60%;
@@ -333,15 +356,12 @@ div#contenido div#lista{
 	border-bottom: black 2px solid;
 	display:flex;
 	flex-direction: row;
+	font-size:20px;
 }
 
 div#contenido div#lista p#titulo{
 	font-size:30px;
 	font-weight:bold;
-}
-
-div#contenido div#lista{
-	font-size:20px;
 }
 
 div#contenido div#ultimolista p#titulo{
@@ -358,8 +378,9 @@ div#contenido div#lista div#info{
 	margin-left: 3%;
 }
 
-div#contenido div#lista div#boton{
-	padding-top:60px;
+div#contenido div#lista form{
+	display: flex;
+	align-items: center;
 }
 
 div#contenido div#ultimolista{
@@ -372,8 +393,9 @@ div#contenido div#ultimolista div#info{
 	margin-left: 3%;
 }
 
-div#contenido div#ultimolista div#boton{
-	padding-top:60px;
+div#contenido div#ultimolista form{
+	display: flex;
+	align-items: center;
 }
 
 div#contenido div#nombre {
@@ -437,6 +459,35 @@ div#contenido div#ExperienciaConcreta div#boton{
 	float:right;
 	margin-top:-6%;
 	margin-right:2%;
+}
+div#contenido div#ExperienciaConcreta div#boton input{
+	width:22%;
+}
+
+div#contenido div#buscador{
+	float:left;
+	font-size:19px;
+	padding-left:5%;
+	width:50%;
+}
+
+div#contenido div#buscador input#textoBus{
+	width:60%;
+}
+
+div#contenido div#buscador input#botonBus{
+	margin-left:50%;
+	margin-top:5px;
+}
+
+div#contenido div#solicitudes{
+	width:50%;
+	float:left;
+}
+
+div#contenido div#amigos{
+	float:right;
+	width:50%;
 }
 
 
