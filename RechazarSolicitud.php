@@ -5,7 +5,6 @@
 	$emisor = $_POST["emisor"];
 	$receptor = $_POST["receptor"];
 
-	AmigosBD::insertaAmigos($receptor, $emisor);
 	AmigosBD::eliminarSolicitud($emisor, $receptor);
 	header('Location: verSolicitudes.php');
 

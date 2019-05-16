@@ -79,7 +79,7 @@ class Usuario
                 return false;
             }
             if (self::comparaPassword($password,$rPassword)){
-                $user = new Usuario($nick, $nombre, $apellidos, self::hashPassword($password), $mail, $telefono, $tipo);
+                $user = new Usuario($nick, $nombre, $apellidos, self::hashPassword($password), $mail, $telefono, $tipo,0);
                 return self::guarda($user);
             }
         }

@@ -22,8 +22,14 @@
 					echo '</div>';
 					echo '<div id="boton">';
 						echo '<form method="post" action="AceptarSolicitud.php">';
-						echo '<input type="hidden" name="usuario" value="'.$usuario->nick().'"/>';
+						echo '<input type="hidden" name="emisor" value="'.$usuario->nick().'"/>';
+						echo '<input type="hidden" name="receptor" value="'.$nick.'"/>';
 						echo '<input type="submit" value="Aceptar solicitud">';
+						echo '</form>';
+						echo '<form method="post" action="RechazarSolicitud.php">';
+						echo '<input type="hidden" name="emisor" value="'.$usuario->nick().'"/>';
+						echo '<input type="hidden" name="receptor" value="'.$nick.'"/>';
+						echo '<input type="submit" value="Rechazar solicitud">';
 						echo '</form>';
 					echo '</div>';
 					echo '</div>';
