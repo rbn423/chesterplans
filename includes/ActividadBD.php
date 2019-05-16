@@ -95,6 +95,15 @@ class ActividadBD {
 			VALUES ('$id','$titulo','$descb','$texto','$nick', '$precio','$fecha')";
 		$conn->query($query);
 	}
+
+	public static function eliminarActividades($nick){
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		$nick = mysqli_real_escape_string($conn,$nick);
+		$query = "DELETE FROM actividad WHERE CREADOR = '$nick'";
+		$conn->query($query);
+	}
+
 }
 
 ?>

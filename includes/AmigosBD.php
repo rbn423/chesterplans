@@ -43,6 +43,14 @@ class AmigosBD {
 		return $resultado;
 	}
 
+	public static function eliminarAmigos($nick){
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		$nick = mysqli_real_escape_string($conn,$nick);
+		$query = "DELETE FROM amigos WHERE AMIGOB = '$nick' OR AMIGOA = '$nick'";
+		$conn->query($query);
+	}
+
 	public static function enviaSolicitud($emisor, $receptor){
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();

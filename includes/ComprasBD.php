@@ -27,6 +27,14 @@ class ComprasBD {
 		$datos = $datos->fetch_all();
 		return $datos;
 	}
+
+	public static function eliminarCompras($nick){
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		$nick = mysqli_real_escape_string($conn,$nick);
+		$query = "DELETE FROM compras WHERE IDUSUARIO = '$nick'";
+		$conn->query($query);
+	}
 }
 
 ?>

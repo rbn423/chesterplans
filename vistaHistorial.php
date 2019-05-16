@@ -4,7 +4,10 @@
 	require_once("includes/ComboBD.php");
 	require_once("includes/ActividadBD.php");
 	
-	$nick = $_SESSION["nick"];
+	if ($_SESSION["tipo"] == "admin")
+		$nick = $_POST["nick"];
+	else
+		$nick = $_SESSION["nick"];
 
 	function mostrarHistorial($nick){
 		$combosCreados = ComboBD::getCombosCreador($nick);
@@ -115,7 +118,10 @@
 		?>
 		<div id="contenido">
 			<?php
-				require_once('menuempresa.php');
+				if ($_SESSION["tipo"] == "empresa")
+					require_once('menuempresa.php');
+				elseif($_SESSION["tipo"] == "admin")
+					require_once("menuadmin.php");
 				mostrarHistorial($nick);
 			?>		
 		</div>			

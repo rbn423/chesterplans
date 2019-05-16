@@ -47,7 +47,10 @@
 		?>
 		<div id="contenido">
 			<?php
-				require_once('menubasico.php');
+				if ($_SESSION["tipo"] == "basico")
+					require_once('menubasico.php');
+				elseif($_SESSION["tipo"] == "admin")
+					require_once('menuAdmin.php');
 				mostrarPublicaciones($nick);
 			?>		
 		</div>			

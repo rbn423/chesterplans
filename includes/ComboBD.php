@@ -126,6 +126,14 @@
 			$query = "INSERT INTO intercombo(IDACT, IDCOMBO) VALUES ('$actividad','$idCombo')";
 			$conn->query($query);
 		}
+
+		public static function eliminarCombos($nick){
+			$app = Aplicacion::getSingleton();
+			$conn = $app->conexionBd();
+			$nick = mysqli_real_escape_string($conn,$nick);
+			$query = "DELETE FROM combo WHERE CREADOR = '$nick'";
+			$conn->query($query);
+		}
 	}
 
 ?>

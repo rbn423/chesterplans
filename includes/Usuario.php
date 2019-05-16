@@ -48,6 +48,15 @@ class Usuario
         return $rs;
     }
 
+    public static function eliminaUsuario($id)
+    {
+        $app = Aplicacion::getSingleton();
+        $conn = $app->conexionBd();
+        $id=mysqli_real_escape_string($conn,$id);
+        $query = "DELETE FROM usuario WHERE nick = '$id'";
+        $conn->query($query);
+    }
+
     public static function buscaUsuario($nick)
     {
         $app = Aplicacion::getSingleton();

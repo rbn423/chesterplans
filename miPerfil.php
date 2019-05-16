@@ -3,7 +3,9 @@
 	if($_SESSION["tipo"]=="basico"){
 		require_once("basico.php");
 	}
-	else {
+	elseif ($_SESSION["tipo"] == "empresa") {
 		require_once("empresa.php");
 	}
+	else
+		require_once("admin.php");
 ?>

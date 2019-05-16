@@ -123,6 +123,18 @@ class ExperienciaBD {
 			VALUES ('$id','$titulo','$descb','$texto','$nick')";
 		$conn->query($query);
 	}
+
+	public static function eliminarExperiencias($nick){
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		$nick = mysqli_real_escape_string($conn,$nick);
+		$query = "DELETE FROM experiencias WHERE creador = '$nick'";
+		$conn->query($query);
+		$query = "DELETE FROM comentario WHERE escritor = '$nick'";
+		$conn->query($query);
+		$query = "DELETE FROM meGusta WHERE nickusuario = '$nick'";
+		$conn->query($query);
+	}
 }
 
 ?>

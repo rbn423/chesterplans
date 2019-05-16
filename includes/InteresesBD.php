@@ -26,6 +26,14 @@ class InteresesBD {
 		$conn->query($query);
 	}
 
+	public static function eliminarIntereses($nick){
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		$nick = mysqli_real_escape_string($conn,$nick);
+		$query = "DELETE FROM intereses WHERE IDUSUARIO = '$nick'";
+		$conn->query($query);
+	}
+
 	public static function buscaIntereses($nick){
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();

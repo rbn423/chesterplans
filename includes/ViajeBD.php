@@ -93,6 +93,15 @@ class ViajeBD {
 			VALUES ('$id','$titulo','$descb','$texto','$nick', '$precio', '$fechaIni', '$fechaFin')";
 		$conn->query($query);
 	}
+
+	public static function eliminarViajes($nick){
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		$nick = mysqli_real_escape_string($conn,$nick);
+		$query = "DELETE FROM viaje WHERE CREADOR = '$nick'";
+		$conn->query($query);
+	}
+
 }
 
 ?>

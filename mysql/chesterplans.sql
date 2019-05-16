@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-05-2019 a las 22:44:59
+-- Tiempo de generación: 16-05-2019 a las 23:00:35
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -329,6 +329,14 @@ CREATE TABLE `solicitudes` (
   `receptor` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `solicitudes`
+--
+
+INSERT INTO `solicitudes` (`emisor`, `receptor`) VALUES
+('andrea', 'ruben'),
+('ruben', 'ari');
+
 -- --------------------------------------------------------
 
 --
@@ -351,6 +359,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`NICK`, `NOMBRE`, `APELLIDOS`, `PASSWORD`, `MAIL`, `TELEFONO`, `TIPO`, `PUNTOS`) VALUES
+('admin', 'admin', '', '$2y$10$74N9vLrnNP95kZHdEiM9W.Za9dF2U7R/lxNlNlPNSHj6dYKUhe1Ti', '', 0, 'admin', 0),
 ('adri', 'adrian', 'agudo', '$2y$10$Q50hSqbXSdPrjkP4qqp8Wu9Smhv6GKKF3vd4DmJfXRpNbVWAeIttu', 'adrian@ucm.es', 12356, 'empresa', 0),
 ('andrea', 'andrea', 'lopez', '$2y$10$pEDRdScx5C/FOCvi7n7HRupynF53zp3cocaNLmN/Nj1BFD3NTwTHK', 'andrea@ucm.es', 7864432, 'basico', 3),
 ('ari', 'arantxa', 'brock', '$2y$10$T4gbIRvuvcxEjPPSmFJwHO0vQaEz/LUvaF0fJuNIJiM8KDbGHX6h.', 'ari@ucm.es', 2871832, 'basico', 1),
