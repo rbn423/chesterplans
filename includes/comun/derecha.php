@@ -1,5 +1,5 @@
 <?php 
-	include (dirname(__DIR__)."/Selector.php");
+	include_once (dirname(__DIR__)."/Selector.php");
 ?>
 <div id="derecha">
 	<?php
