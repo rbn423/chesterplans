@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-05-2019 a las 14:21:38
+-- Tiempo de generación: 16-05-2019 a las 22:30:56
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -132,6 +132,20 @@ INSERT INTO `compras` (`IDUSUARIO`, `TIPO`, `IDCOMPRA`) VALUES
 ('ruben', 'viaje', 'adri1555275879'),
 ('ruben', 'viaje', 'adri1555275938'),
 ('ruben', 'combo', 'adri1557657300');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `descuentos`
+--
+
+CREATE TABLE `descuentos` (
+  `id` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `nombre` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `porcentaje` int(11) NOT NULL,
+  `tipo` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `puntos` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -427,6 +441,12 @@ ALTER TABLE `comentario`
 ALTER TABLE `compras`
   ADD PRIMARY KEY (`IDUSUARIO`,`IDCOMPRA`),
   ADD KEY `IDUSUARIO` (`IDUSUARIO`);
+
+--
+-- Indices de la tabla `descuentos`
+--
+ALTER TABLE `descuentos`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `experiencias`
