@@ -18,7 +18,7 @@
 		}
 		echo '<p> Autor de la experiencia '.$experiencia["CREADOR"].'<p>';
 		echo '</div>';
-		if (isset($_SESSION["login"])){
+		if (isset($_SESSION["login"]) && $_SESSION["tipo"] == "basico"){
 			$resultado=ExperienciaBD::tieneMegusta($_SESSION['nick'], $id);
 			if ($resultado->num_rows == 1){
 				echo '<div id="botonNoMeGusta">';
@@ -46,7 +46,7 @@
 				echo '</div>';
 			}
 		}
-		if (isset($_SESSION["login"])){
+		if (isset($_SESSION["login"]) && $_SESSION["tipo"] == "basico"){
 			echo '<div id="nuevoComentario">';
 			echo '<form method="post" action="comentarioCreado.php?id='.$id.'">';
 			echo '<h3>Cree un comentario:</h3>';
