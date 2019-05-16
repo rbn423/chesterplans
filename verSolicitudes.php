@@ -20,7 +20,8 @@
 						echo '<p>Nombre: '.$usuario->nombre().'</p>';
 						echo '<p>Puntos: '.$usuario->puntos().'</p>';
 					echo '</div>';
-					echo '<div id="boton">';
+					
+					echo '<div id="botonAmigos">';
 						echo '<form method="post" action="AceptarSolicitud.php">';
 						echo '<input type="hidden" name="emisor" value="'.$usuario->nick().'"/>';
 						echo '<input type="hidden" name="receptor" value="'.$nick.'"/>';
