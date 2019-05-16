@@ -1,7 +1,7 @@
 <?php
-	require("includes/config.php");
-	require("includes/AmigosBD.php");
-	require("includes/Usuario.php");
+	require_once("includes/config.php");
+	require_once("includes/AmigosBD.php");
+	require_once("includes/Usuario.php");
 
 	$nick = $_SESSION["nick"];
 
@@ -48,19 +48,19 @@
 	<body>
 
 		<?php
-			require('includes/comun/cabecera.php');
-			require('includes/comun/menu.php');
-			require('includes/comun/izquierda.php');
+			require_once('includes/comun/cabecera.php');
+			require_once('includes/comun/menu.php');
+			require_once('includes/comun/izquierda.php');
 		?>
 		<div id="contenido">
 			<?php
-				require('menubasico.php');
+				require_once('menubasico.php');
 				mostrarSolicitudes($nick);
 			?>		
 		</div>			
 		<?php
-			require('includes/comun/derecha.php');
-			require('includes/comun/pie.php');
+			require_once('includes/comun/derecha.php');
+			require_once('includes/comun/pie.php');
 		?>
 		
 	

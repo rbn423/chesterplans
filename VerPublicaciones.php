@@ -1,6 +1,6 @@
 <?php
-	require("includes/config.php");
-	require("includes/ExperienciaBD.php");
+	require_once("includes/config.php");
+	require_once("includes/ExperienciaBD.php");
 
 	$nick = $_GET["nick"];
 
@@ -41,19 +41,19 @@
 	<body>
 
 		<?php
-			require('includes/comun/cabecera.php');
-			require('includes/comun/menu.php');
-			require('includes/comun/izquierda.php');
+			require_once('includes/comun/cabecera.php');
+			require_once('includes/comun/menu.php');
+			require_once('includes/comun/izquierda.php');
 		?>
 		<div id="contenido">
 			<?php
-				require('menubasico.php');
+				require_once('menubasico.php');
 				mostrarPublicaciones($nick);
 			?>		
 		</div>			
 		<?php
-			require('includes/comun/derecha.php');
-			require('includes/comun/pie.php');
+			require_once('includes/comun/derecha.php');
+			require_once('includes/comun/pie.php');
 		?>
 		
 	

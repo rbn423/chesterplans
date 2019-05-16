@@ -1,6 +1,6 @@
 <?php
-	require("includes/config.php");
-	require("includes/AmigosBD.php");
+	require_once("includes/config.php");
+	require_once("includes/AmigosBD.php");
 
 	$emisor = $_POST["emisor"];
 	$receptor = $_POST["receptor"];

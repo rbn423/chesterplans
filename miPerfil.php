@@ -1,9 +1,9 @@
 <?php
-	require("includes/config.php");
+	require_once("includes/config.php");
 	if($_SESSION["tipo"]=="basico"){
-		require("basico.php");
+		require_once("basico.php");
 	}
 	else {
-		require("empresa.php");
+		require_once("empresa.php");
 	}
 ?>

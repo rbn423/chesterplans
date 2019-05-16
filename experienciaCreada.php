@@ -1,7 +1,7 @@
 <?php
-	require("includes/config.php");
-	require("includes/ExperienciaBD.php");
-	require("includes/ImagenBD.php");
+	require_once("includes/config.php");
+	require_once("includes/ExperienciaBD.php");
+	require_once("includes/ImagenBD.php");
 
 	$nick = $_SESSION["nick"];
 	$titulo = htmlspecialchars(trim(strip_tags($_REQUEST["titulo"])));
@@ -47,19 +47,19 @@
 	<body>
 
 		<?php
-			require('includes/comun/cabecera.php');
-			require('includes/comun/menu.php');
-			require('includes/comun/izquierda.php');
+			require_once('includes/comun/cabecera.php');
+			require_once('includes/comun/menu.php');
+			require_once('includes/comun/izquierda.php');
 		?>
 		<div id="contenido">
 			<?php
-				require('menubasico.php');
+				require_once('menubasico.php');
 				mostrarCreada($titulo, $descb, $texto, $nick);
 			?>		
 		</div>			
 		<?php
-			require('includes/comun/derecha.php');
-			require('includes/comun/pie.php');
+			require_once('includes/comun/derecha.php');
+			require_once('includes/comun/pie.php');
 		?>
 		
 	

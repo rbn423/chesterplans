@@ -1,5 +1,5 @@
 <?php
-	require("includes/config.php");
+	require_once("includes/config.php");
 	require_once ('includes/Usuario.php');
 	
 	$user = htmlspecialchars(trim(strip_tags($_REQUEST["user"])));
