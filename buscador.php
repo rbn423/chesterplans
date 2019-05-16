@@ -1,9 +1,9 @@
 <?php
-	require_once("includes/config.php");
-	require_once("includes/ViajeBD.php");
-	require_once("includes/ExperienciaBD.php");
-	require_once("includes/ActividadBD.php");
-	require_once("includes/ComboBD.php");
+	require("includes/config.php");
+	require("includes/ViajeBD.php");
+	require("includes/ExperienciaBD.php");
+	require("includes/ActividadBD.php");
+	require("includes/ComboBD.php");
 	
 	$filtro = htmlspecialchars(trim(strip_tags($_REQUEST["tema"])));
 	$texto = htmlspecialchars(trim(strip_tags($_REQUEST["buscar"])));
@@ -151,7 +151,7 @@
 						echo '</div>';		
 					}
 				}
-				if($nact > 0){
+				else if($nact > 0){
 					echo '<div id="nombre">';
 					echo '<p>Actividades</p>';
 					echo '</div>';
@@ -176,7 +176,7 @@
 						echo '</div>';
 					}
 				}
-				if($nexp > 0){
+				else if($nexp > 0){
 					echo '<div id="nombre">';
 					echo '<p>Experiencias</p>';
 					echo '</div>';			
@@ -212,9 +212,9 @@
 	<body>
 
 		<?php
-			require_once("includes/comun/cabecera.php");
-			require_once("includes/comun/menu.php");
-			require_once("includes/comun/izquierda.php");
+			require("includes/comun/cabecera.php");
+			require("includes/comun/menu.php");
+			require("includes/comun/izquierda.php");
 		?>
 			<div id="contenido">
 				<?php
@@ -222,8 +222,8 @@
 				?>
 			</div>
 		<?php
-			require_once("includes/comun/derecha.php");
-			require_once("includes/comun/pie.php");
+			require("includes/comun/derecha.php");
+			require("includes/comun/pie.php");
 		?>
 		
 	

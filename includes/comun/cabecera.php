@@ -1,5 +1,5 @@
 <div id="cabecera">
-	<a href="index.php"><img src="imagenes/logo.png"> </a>
+	<img src="imagenes/logo.png">
 	<?php
 		if(!isset($_SESSION["login"])){
 			require('login.php');
