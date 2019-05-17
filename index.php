@@ -29,6 +29,9 @@
 				echo '<p>De '.$viaje["FECHAINI"].' a '.$viaje["FECHAFIN"]. '<p>';
 				echo '<p>Precio: '.$viaje["PRECIO"].' €</p>';
 				echo '</div>';
+				echo '<div id="foto">';
+
+				echo '</div>';
 				echo '<form method="post" action="viaje.php?id='.$valor.'">';
 				echo '<div id="boton">';
 				echo '<input type="submit" value="Ver más">';
@@ -58,6 +61,9 @@
 				echo '<p>'.$actividad["DESCB"].'<p>';
 				echo '<p>Precio: '.$actividad["PRECIO"].' €</p>';
 				echo '</div>';
+				echo '<div id="foto">';
+
+				echo '</div>';
 				echo '<form method="post" action="actividad.php?id='.$valor.'">';
 				echo '<div id="boton">';
 				echo '<input type="submit" value="Ver más">';
@@ -82,6 +88,9 @@
 				echo '<div id="info">';
 				echo '<p id="titulo">'.$experiencia["TITULO"].'</p>';
 				echo '<p>'.$experiencia["DESCB"].'<p>';
+				echo '</div>';
+				echo '<div id="foto">';
+
 				echo '</div>';
 				echo '<form method="post" action="experiencia.php?id='.$valor.'">';						
 				echo '<div id="boton">';
