@@ -9,16 +9,28 @@
 	$idFoto = ExperienciaBD::buscarFoto($id);
 	
 	function mostrarExperiencia($experiencia,$comentarios,$id,$idFoto){
-		echo '<div id="infoExperiencia">';
-		echo '<h1>'.$experiencia["TITULO"].'</h1>';
-		echo '<p>'.$experiencia["DESCB"].'<p>';
-		echo '<p>'.$experiencia["DESCG"].'<p>';
+		echo '<p id="tituloCon">'.$experiencia["TITULO"].'</p>';		
 		if ($idFoto != NULL){
+			echo '<div id="segundo">';
+			echo '<div id="fotoCon">';
 			imagenBD::cargaImagen($idFoto);
+			echo '</div>';
+			echo '<div id="infoExperiencia">';
+			echo '<p>'.$experiencia["DESCB"].'<p>';
+			echo '<p>'.$experiencia["DESCG"].'<p>';
+			echo '<p> Autor de la experiencia '.$experiencia["CREADOR"].'<p>';
+			echo "<p>".$experiencia["likes"]." Puntos</p>";
+			echo '</div>';
+			echo '</div>';
 		}
-		echo '<p> Autor de la experiencia '.$experiencia["CREADOR"].'<p>';
-		echo "<p>".$experiencia["likes"]." Puntos</p>";
-		echo '</div>';
+		else {
+			echo '<div id="infoExperienciaSolo">';
+			echo '<p>'.$experiencia["DESCB"].'<p>';
+			echo '<p>'.$experiencia["DESCG"].'<p>';
+			echo '<p> Autor de la experiencia '.$experiencia["CREADOR"].'<p>';
+			echo "<p>".$experiencia["likes"]." Puntos</p>";
+			echo '</div>';
+		}
 		if (isset($_SESSION["login"]) && $_SESSION["tipo"] == "basico"){
 			$resultado=ExperienciaBD::tieneMegusta($_SESSION['nick'], $id);
 			if ($resultado->num_rows == 1){
