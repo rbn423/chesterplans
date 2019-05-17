@@ -1,5 +1,5 @@
 <?php
-require("config.php");
+require_once("config.php");
 
 class ExperienciaBD {
 	
@@ -36,9 +36,7 @@ class ExperienciaBD {
 		public static function buscarContenidoExperiencia($busqueda){
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
-		$sql = "SELECT * FROM experiencias where titulo like '%$busqueda' or titulo like '$busqueda%' or titulo like '%$busqueda%' or 
-		descb like '%$busqueda' or descg like '$busqueda%' or descb like '%$busqueda%' or
-				descg like '%$busqueda' or descg like '$busqueda%' or descg like '%$busqueda%'";
+		$sql = "SELECT * FROM experiencias where titulo like '%$busqueda%' or descb like '%$busqueda' or descg like '%$busqueda%'";
 		$busquedas = $conn->query($sql); 
 		$busquedas = $busquedas->fetch_all();
 		return $busquedas;
@@ -123,6 +121,18 @@ class ExperienciaBD {
 		$conn = $app->conexionBd();
 		$query="INSERT INTO experiencias (ID,TITULO,DESCB,DESCG,CREADOR) 
 			VALUES ('$id','$titulo','$descb','$texto','$nick')";
+		$conn->query($query);
+	}
+
+	public static function eliminarExperiencias($nick){
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		$nick = mysqli_real_escape_string($conn,$nick);
+		$query = "DELETE FROM experiencias WHERE creador = '$nick'";
+		$conn->query($query);
+		$query = "DELETE FROM comentario WHERE escritor = '$nick'";
+		$conn->query($query);
+		$query = "DELETE FROM meGusta WHERE nickusuario = '$nick'";
 		$conn->query($query);
 	}
 }

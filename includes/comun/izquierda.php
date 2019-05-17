@@ -1,5 +1,5 @@
 <?php
-	include (dirname(__DIR__)."/Ranking.php");
+	require_once(dirname(__DIR__)."/Ranking.php");
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
@@ -11,7 +11,6 @@
 </script>
 <div id="izquierda">
 	<?php 
-		$ranking = new Ranking();
-		echo $ranking::gestionar();
+		echo Ranking::mostrarGeneral();
 	?>
 </div>

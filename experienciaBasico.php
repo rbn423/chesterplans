@@ -1,7 +1,7 @@
 <?php
-	require("includes/config.php");
-	require("includes/ExperienciaBD.php");
-	require("includes/imagenBD.php");
+	require_once("includes/config.php");
+	require_once("includes/ExperienciaBD.php");
+	require_once("includes/imagenBD.php");
 	
 	$id = $_GET["id"];
 	$experiencia= ExperienciaBD::buscarExperiencia($id);
@@ -59,11 +59,6 @@
 				echo '</div>';
 			}
 		}
-		if (isset($_SESSION["login"])){
-			echo '<div id="nuevoComentario">';
-			echo '<p>Crea tu comentario</p>';
-			echo '</div>';
-		}
 		echo '</div>';
 	}
 	
@@ -76,19 +71,22 @@
 	<body>
 
 		<?php
-			require("includes/comun/cabecera.php");
-			require("includes/comun/menu.php");
-			require("includes/comun/izquierda.php");
+			require_once("includes/comun/cabecera.php");
+			require_once("includes/comun/menu.php");
+			require_once("includes/comun/izquierda.php");
 		?>
 			<div id="contenido">
 				<?php
-					require('menubasico.php');
+					if ($_SESSION["tipo"] == "basico")
+						require_once('menubasico.php');
+					elseif ($_SESSION["tipo"] == "admin")
+						require_once('menuAdmin.php');
 					mostrarExperiencia($experiencia,$comentario,$id,$idFoto);
 				?>
 			</div>
 		<?php
-			require("includes/comun/derecha.php");
-			require("includes/comun/pie.php");
+			require_once("includes/comun/derecha.php");
+			require_once("includes/comun/pie.php");
 		?>
 		
 	</body>

@@ -1,5 +1,5 @@
 <?php
-	require("config.php");	
+	require_once("config.php");	
 
 	class ComboBD{
 
@@ -29,10 +29,46 @@
 				$actividades[$i]=$actividad;
 			}
 			$resultado = array();
+			$resultado['ID'] = $id;
 			$resultado['VIAJE'] = $viaje;
 			$resultado['ACTIVIDADES'] = $actividades;
 			$resultado['PRECIO'] = $combo['PRECIO'];
 			return $resultado;
+		}
+
+		public static function getCombosCreador($idCreador){
+			$app = Aplicacion::getSingleton();
+			$conn = $app->conexionBd();
+			$sql = "SELECT * FROM combo WHERE CREADOR = '$idCreador'";
+			$busquedas = $conn->query($sql);
+			$busquedas = $busquedas->fetch_all();
+			$ncombos = count($busquedas);
+			$combos = array();
+			for ($i=0;$i<$ncombos;$i++){	
+				$idcombo = $busquedas[$i][0];
+				$idViaje = $busquedas[$i][2];
+				$precio = $busquedas[$i][4];
+				$sql = "SELECT titulo, descb FROM viaje WHERE id = '".$idViaje."'";
+				$viaje = $conn->query($sql);
+				$viaje = $viaje->fetch_assoc();
+				$sql = "SELECT idact FROM intercombo WHERE idcombo = '".$idcombo."'";
+				$idActividades = $conn->query($sql);
+				$idActividades = $idActividades->fetch_all();
+				$nactividades=count($idActividades);
+				$actividades = array();
+				for($j=0;$j<$nactividades;$j++){
+					$sql= "SELECT titulo, descb FROM actividad WHERE id = '".$idActividades[$j][0]."'";
+					$actividad = $conn->query($sql);
+					$actividad = $actividad->fetch_assoc();
+					$actividades[$j] = $actividad ;
+				}
+				$combos[$i]["ID"] = $idcombo;
+				$combos[$i]["idViaje"] = $idViaje;
+				$combos[$i]["VIAJE"] = $viaje ;
+				$combos[$i]["PRECIO"] = $precio;
+				$combos[$i]["ACTIVIDADES"] = $actividades;
+			}
+			return $combos;
 		}
  
 		public static function getListaCombos(){
@@ -88,6 +124,14 @@
 			$app = Aplicacion::getSingleton();
 			$conn = $app->conexionBd();
 			$query = "INSERT INTO intercombo(IDACT, IDCOMBO) VALUES ('$actividad','$idCombo')";
+			$conn->query($query);
+		}
+
+		public static function eliminarCombos($nick){
+			$app = Aplicacion::getSingleton();
+			$conn = $app->conexionBd();
+			$nick = mysqli_real_escape_string($conn,$nick);
+			$query = "DELETE FROM combo WHERE CREADOR = '$nick'";
 			$conn->query($query);
 		}
 	}

@@ -1,8 +1,8 @@
 <?php
-	require("includes/config.php");
-	require("includes/ExperienciaBD.php");
-	require("includes/ViajeBD.php");
-	require("includes/ActividadBD.php");
+	require_once("includes/config.php");
+	require_once("includes/ExperienciaBD.php");
+	require_once("includes/ViajeBD.php");
+	require_once("includes/ActividadBD.php");
 	
 	$conn = $app->conexionBd();
 	
@@ -24,14 +24,14 @@
 					echo '<div id="ultimolista">';
 				}
 				echo '<div id="info">';
-				echo '<h1>'.$viaje["TITULO"].'</h1>';
+				echo '<p id="titulo">'.$viaje["TITULO"].'</p>';
 				echo '<p>'.$viaje["DESCB"].'<p>';
 				echo '<p>De '.$viaje["FECHAINI"].' a '.$viaje["FECHAFIN"]. '<p>';
 				echo '<p>Precio: '.$viaje["PRECIO"].' €</p>';
 				echo '</div>';
 				echo '<form method="post" action="viaje.php?id='.$valor.'">';
 				echo '<div id="boton">';
-				echo '<input type="submit" value="Ver mas">';
+				echo '<input type="submit" value="Ver más">';
 				echo '</div>';
 				echo '</form>';
 				echo '</div>';
@@ -54,13 +54,13 @@
 					echo '<div id="ultimolista">';
 				}
 				echo '<div id="info">';
-				echo '<h1>'.$actividad["TITULO"].'</h1>';
+				echo '<p id="titulo">'.$actividad["TITULO"].'</p>';
 				echo '<p>'.$actividad["DESCB"].'<p>';
 				echo '<p>Precio: '.$actividad["PRECIO"].' €</p>';
 				echo '</div>';
 				echo '<form method="post" action="actividad.php?id='.$valor.'">';
 				echo '<div id="boton">';
-				echo '<input type="submit" value="Ver mas">';
+				echo '<input type="submit" value="Ver más">';
 				echo '</div>';
 				echo '</form>';
 				echo '</div>';
@@ -80,12 +80,12 @@
 				else
 					echo '<div id="ultimolista">';
 				echo '<div id="info">';
-				echo '<h2>'.$experiencia["TITULO"].'</h2>';
+				echo '<p id="titulo">'.$experiencia["TITULO"].'</p>';
 				echo '<p>'.$experiencia["DESCB"].'<p>';
 				echo '</div>';
 				echo '<form method="post" action="experiencia.php?id='.$valor.'">';						
 				echo '<div id="boton">';
-				echo '<input type="submit" value="Ver mas">';
+				echo '<input type="submit" value="Ver más">';
 				echo '</div>';
 				echo '</form>';
 				echo '</div>';
@@ -105,9 +105,9 @@
 
 		<?php
 			$_SESSION['vista'] = "index";
-			require("includes/comun/cabecera.php");
-			require("includes/comun/menu.php");
-			require("includes/comun/izquierda.php");
+			require_once("includes/comun/cabecera.php");
+			require_once("includes/comun/menu.php");
+			require_once("includes/comun/izquierda.php");
 		?>
 			<div id="contenido">
 			 	<?php
@@ -115,8 +115,8 @@
 				?>
 			</div>
 		<?php
-			require("includes/comun/derecha.php");
-			require("includes/comun/pie.php");
+			require_once("includes/comun/derecha.php");
+			require_once("includes/comun/pie.php");
 		?>
 	</body>
 

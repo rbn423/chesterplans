@@ -9,7 +9,7 @@
 	}
 	else if(url[url.length-1]=="vistaCrearViaje.php"){
 		$(document).ready(function() {
-			$("#menuPuntos").css({'background-color':'#B829BF'});
+			$("#menuSocial").css({'background-color':'#B829BF'});
 		});
 	}
 	else if(url[url.length-1]=="vistaCrearExperiencia.php"){
@@ -34,9 +34,9 @@
 			Exp.compartida
 		</div>
 	</a>
-	<a href="">
-		<div class="apartado" id="menuPuntos">
-			Puntos
+	<a href="vistaSocial.php">
+		<div class="apartado" id="menuSocial">
+			Social
 		</div>
 	</a>
 	<a href="vistaCrearExperiencia.php">
@@ -44,14 +44,14 @@
 			Crear Experiencia
 		</div>
 	</a>
-	<a href="">
+	<a href="vistaIntereses.php">
 		<div class="apartado" id="menuInteresesGuardados">
 			Intereses guardados
 		</div>
 	</a>
-	<a href="">
+	<a href="vistaCompras.php">
 		<div class="ultimo" id="menuHistorialBas">
-			Historial
+			Compras
 		</div>
 	</a>
 </div>

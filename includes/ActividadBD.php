@@ -1,5 +1,5 @@
 <?php
-require("config.php");
+require_once("config.php");
 
 class ActividadBD {
  
@@ -42,9 +42,7 @@ class ActividadBD {
 	public static function buscarContenidoActividad($busqueda){
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
-		$sql = "SELECT * FROM actividad where titulo like '%$busqueda' or titulo like '$busqueda%' or titulo like '%$busqueda%' or 
-		descb like '%$busqueda' or descg like '$busqueda%' or descb like '%$busqueda%' or
-				descg like '%$busqueda' or descg like '$busqueda%' or descg like '%$busqueda%'";
+		$sql = "SELECT * FROM actividad where titulo like '%$busqueda%' or descb like '%$busqueda%' or descg like '%$busqueda%'";
 		$busquedas = $conn->query($sql); 
 		$busquedas = $busquedas->fetch_all();
 		return $busquedas;
@@ -71,37 +69,41 @@ class ActividadBD {
 	public static function buscarActividadCreador($idCreador) {
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
-		$query = "SELECT TITULO, ID FROM actividad where CREADOR = '$idCreador'";
+		$query = "SELECT TITULO, ID, DESCB, DESCG, FECHA, PRECIO FROM actividad where CREADOR = '$idCreador'";
 		$busquedas = $conn->query($query);
 		$busquedas = $busquedas->fetch_all();
 		return $busquedas;
 	}
 
-	public static function buscarListaFotos($idact) {
+	public static function buscarFoto($idact) {
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
-		$query = "SELECT * FROM interfoto where id = '$idact'";
-		$busqueda = $conn->query($query);
-		$busqueda = $comentarios->fetch_all();
-		return $busqueda;
+		$query = "SELECT IDFOTO FROM interfoto where idpublicacion = '$idact'";
+		$idFoto = $conn->query($query);
+		$idFoto = $idFoto->fetch_all();
+		if (count($idFoto) != 0){
+			$idFoto = $idFoto[0][0];
+			return $idFoto;
+		}
+		return $idFoto;
 	}
 	
-	public static function buscarFoto($idfoto){
-		$app = Aplicacion::getSingleton();
-		$conn = $app->conexionBd();
-		$que= "SELECT * from foto where id='$idfoto'";
-		$busqueda=$conn->query($que);
-		$busqueda= $comen->fetch_assoc();
-		return $busqueda;
-	}
-	
-	public static function crearActividad($id, $titulo, $descb, $texto, $precio, $nick){
+	public static function crearActividad($id, $titulo, $descb, $texto, $precio, $nick, $fecha){
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
 		$query="INSERT INTO actividad (ID,TITULO,DESCB,DESCG,CREADOR,PRECIO,FECHA) 
 			VALUES ('$id','$titulo','$descb','$texto','$nick', '$precio','$fecha')";
 		$conn->query($query);
 	}
+
+	public static function eliminarActividades($nick){
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		$nick = mysqli_real_escape_string($conn,$nick);
+		$query = "DELETE FROM actividad WHERE CREADOR = '$nick'";
+		$conn->query($query);
+	}
+
 }
 
 ?>

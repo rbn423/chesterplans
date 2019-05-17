@@ -1,6 +1,6 @@
 <?php
-	require("includes/config.php");
-	require("includes/ActividadBD.php");
+	require_once("includes/config.php");
+	require_once("includes/ActividadBD.php");
 	
 	function mostrarActividades(){
 		$busquedas=ActividadBD::ListaActividades();
@@ -14,10 +14,12 @@
 			$actividad = ActividadBD::buscarActividad($valor);
 			
 			echo '<div id="info">';
-			echo '<h1>'.$actividad["TITULO"].'</h1>';
+			echo '<p id="titulo">'.$actividad["TITULO"].'</p>';
 			echo '<p>'.$actividad["DESCB"].'<p>';
 			echo '<p>Fecha: '.$actividad["FECHA"].'<p>';
 			echo '<p>Precio: '.$actividad["PRECIO"].' €</p>';
+			echo '</div>';
+			echo '<div id="foto">';
 			echo '</div>';
 			echo '<form method="post" action="actividad.php?id='.$valor.'">';
 			echo '<div id="boton">';
@@ -38,9 +40,9 @@
 
 		<?php
 			$_SESSION['vista'] = "actividades";
-			require("includes/comun/cabecera.php");
-			require("includes/comun/menu.php");
-			require("includes/comun/izquierda.php");
+			require_once("includes/comun/cabecera.php");
+			require_once("includes/comun/menu.php");
+			require_once("includes/comun/izquierda.php");
 		?>
 			<div id="contenido">
 				<?php
@@ -48,8 +50,8 @@
 				?>
 			</div>
 		<?php
-			require("includes/comun/derecha.php");
-			require("includes/comun/pie.php");
+			require_once("includes/comun/derecha.php");
+			require_once("includes/comun/pie.php");
 		?>
 		
 	

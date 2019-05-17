@@ -1,5 +1,5 @@
 <?php
-require("config.php");
+require_once("config.php");
 
 class InteresesBD {
 
@@ -24,6 +24,23 @@ class InteresesBD {
 		$conn = $app->conexionBd();
 		$query = "DELETE FROM `intereses` WHERE `intereses`.`IDUSUARIO` = '$nick' AND `intereses`.`IDINTERES` = '$idInteres' ";
 		$conn->query($query);
+	}
+
+	public static function eliminarIntereses($nick){
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		$nick = mysqli_real_escape_string($conn,$nick);
+		$query = "DELETE FROM intereses WHERE IDUSUARIO = '$nick'";
+		$conn->query($query);
+	}
+
+	public static function buscaIntereses($nick){
+		$app = Aplicacion::getSingleton();
+		$conn = $app->conexionBd();
+		$query = "SELECT * FROM intereses WHERE IDUSUARIO = '$nick'";
+		$datos = $conn->query($query);
+		$datos = $datos->fetch_all();
+		return $datos;
 	}
 }
 

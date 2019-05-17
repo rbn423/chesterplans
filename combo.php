@@ -1,8 +1,8 @@
 <?php
-	require("includes/config.php");
-	require("includes/ComboBD.php");
-	require("includes/ComprasBD.php");
-	require("includes/InteresesBD.php");
+	require_once("includes/config.php");
+	require_once("includes/ComboBD.php");
+	require_once("includes/ComprasBD.php");
+	require_once("includes/InteresesBD.php");
 
 	$id=$_GET["id"];
 	if (isset($_POST["comprar"]))
@@ -23,8 +23,9 @@
 			echo "<p>Acabas de comprar este combo.</p>";
 			echo "</div>";
 			ComprasBD::insertaCompra($_SESSION["nick"],"combo",$id);
+			InteresesBD::eliminaInteres($_SESSION["nick"],$id);
 		}
-		if ($interesado == "interesa"){
+		if ($interesado == "Me interesa"){
 			echo "<div id='interesado'";
 			echo "<p>Acabas de añadir este combo a tus intereses.</p>";
 			echo "</div>";
@@ -63,27 +64,27 @@
 					echo '</div>';
 					echo '</form>';
 					echo '</div>';
+					if (!isset($intereses)){
+						echo '<div id="botonInteres">';
+						echo '<form method="post" action="combo.php?id='.$id.'">';
+						echo '<div id="boton">';
+						echo '<input type="submit" value="Me interesa" name="interesa">';
+						echo '</div>';
+						echo '</form>';
+						echo '</div>';
+					}
+					else{
+						echo '<div id="botonInteres">';
+						echo '<form method="post" action="combo.php?id='.$id.'">';
+						echo '<div id="boton">';
+						echo '<input type="submit" value="Ya no me interesa" name="interesa">';
+						echo '</div>';
+						echo '</form>';
+						echo '</div>';
+					}
 				}
 				else
 					echo "<h3>Ya has adquirido este combo.</h3>";
-				if (!isset($intereses)){
-					echo '<div id="botonInteres">';
-					echo '<form method="post" action="combo.php?id='.$id.'">';
-					echo '<div id="boton">';
-					echo '<input type="submit" value="interesa" name="interesa">';
-					echo '</div>';
-					echo '</form>';
-					echo '</div>';
-				}
-				else{
-					echo '<div id="botonInteres">';
-					echo '<form method="post" action="combo.php?id='.$id.'">';
-					echo '<div id="boton">';
-					echo '<input type="submit" value="Ya no me interesa" name="interesa">';
-					echo '</div>';
-					echo '</form>';
-					echo '</div>';
-				}
 			}
 		}
 	}
@@ -96,9 +97,9 @@
 	<body>
 
 		<?php
-			require("includes/comun/cabecera.php");
-			require("includes/comun/menu.php");
-			require("includes/comun/izquierda.php");
+			require_once("includes/comun/cabecera.php");
+			require_once("includes/comun/menu.php");
+			require_once("includes/comun/izquierda.php");
 		?>
 			<div id="contenido">
 				<div id="ComboConcreto">
@@ -108,8 +109,8 @@
 				</div>
 			</div>
 		<?php
-			require("includes/comun/derecha.php");
-			require("includes/comun/pie.php");
+			require_once("includes/comun/derecha.php");
+			require_once("includes/comun/pie.php");
 		?>
 		
 	

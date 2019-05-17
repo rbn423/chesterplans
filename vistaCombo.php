@@ -1,6 +1,6 @@
 <?php
-	require("includes/config.php");
-	require("includes/ComboBD.php");
+	require_once("includes/config.php");
+	require_once("includes/ComboBD.php");
 
 	function mostrarCombos(){
 		$combos = ComboBD::getListaCombos();
@@ -18,12 +18,14 @@
 			else
 				echo '<div id="ultimolista">';
 			echo '<div id="info">';
-			echo '<h1>'.$combos[$i]["VIAJE"]["titulo"].': '.$combos[$i]["VIAJE"]["descb"].'</h1>';
+			echo '<p id="titulo">'.$combos[$i]["VIAJE"]["titulo"].': '.$combos[$i]["VIAJE"]["descb"].'</p>';
 			echo "<ul>";
 			for($j=0;$j<$nactividades;$j++){
-				echo "<li><h2>".$actividades[$j]['titulo'].": ".$actividades[$j]['descb']."</h2></li>";
+				echo "<li><p>".$actividades[$j]['titulo'].": ".$actividades[$j]['descb']."</p></li>";
 			}
 			echo '<p>Precio: '.$precio.' €</p>';
+			echo '</div>';
+			echo '<div id="foto">';
 			echo '</div>';
 			echo '<form method="post" action="combo.php?id='.$idcombo.'">';
 			echo '<div id="boton">';
@@ -44,9 +46,9 @@
 
 		<?php
 			$_SESSION['vista'] = "combos";
-			require("includes/comun/cabecera.php");
-			require("includes/comun/menu.php");
-			require("includes/comun/izquierda.php");
+			require_once("includes/comun/cabecera.php");
+			require_once("includes/comun/menu.php");
+			require_once("includes/comun/izquierda.php");
 		?>
 			<div id="contenido">
 				<?php
@@ -54,8 +56,8 @@
 				?>
 			</div>
 		<?php
-			require("includes/comun/derecha.php");
-			require("includes/comun/pie.php");
+			require_once("includes/comun/derecha.php");
+			require_once("includes/comun/pie.php");
 		?>
 		
 	

@@ -1,6 +1,6 @@
 <?php
-	require("includes/config.php");
-	require("includes/ViajeBD.php");
+	require_once("includes/config.php");
+	require_once("includes/ViajeBD.php");
 
 	function mostrarViajes(){
 		
@@ -15,10 +15,12 @@
 			$valor = $busquedas[$i][0];
 			$viaje = ViajeBD::buscarViaje($valor);
 			echo '<div id="info">';
-			echo '<h1>'.$viaje["TITULO"].'</h1>';
+			echo '<p id="titulo">'.$viaje["TITULO"].'</p>';
 			echo '<p>'.$viaje["DESCB"].'<p>';
 			echo '<p>De '.$viaje["FECHAINI"].' a '.$viaje["FECHAFIN"]. '<p>';
 			echo '<p>Precio: '.$viaje["PRECIO"].' €</p>';
+			echo '</div>';
+			echo '<div id="foto">';
 			echo '</div>';
 			echo '<form method="post" action="viaje.php?id='.$valor.'">';
 			echo '<div id="boton">';
@@ -39,9 +41,9 @@
 
 		<?php
 			$_SESSION['vista'] = "viajes";
-			require("includes/comun/cabecera.php");
-			require("includes/comun/menu.php");
-			require("includes/comun/izquierda.php");
+			require_once("includes/comun/cabecera.php");
+			require_once("includes/comun/menu.php");
+			require_once("includes/comun/izquierda.php");
 		?>
 			<div id="contenido">
 				<?php
@@ -49,8 +51,8 @@
 				?>
 			</div>
 		<?php
-			require("includes/comun/derecha.php");
-			require("includes/comun/pie.php");
+			require_once("includes/comun/derecha.php");
+			require_once("includes/comun/pie.php");
 		?>
 		
 	

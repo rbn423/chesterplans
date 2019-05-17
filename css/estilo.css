@@ -6,8 +6,6 @@ body{
 	
 	div#cabecera {	
 		height: 20%;
-		background-color: white;
-		border-bottom: black 2px solid;
 	}
 
 	div#cabecera img{
@@ -15,101 +13,78 @@ body{
 		padding-left:20px;
 	}
 
-	div#cabecera div#login div#boton {
-		float:right;
-		margin-top: -20px;
-	}
-
 	div#cabecera div#login{
-		float: right;
-		background-color: white;
-		padding-top: -20px;
-		padding-left: 10px;
-		padding-right:10px;
 		height: 90%;
-		border: black 2px solid;
-		color: black;
-		margin-right:10px;
 		margin-top:5px;
+		font-size:16px;
 	}
 	
 	div#cabecera div#logout{
-		float: right;
-		background-color: white;
-		padding-top: -20px;
-		padding-left: 10px;
-		padding-right:10px;
-		height: 70%;
-		border: black 2px solid;
-		color: black;
-		margin-right:10px;
 		margin-top:15px;
-	}
-	
-	div#cabecera div#logout div#boton {
-		float:right;
+		font-size:18px;
 	}
 	
 	div#menu{
 		height: 7%;
+		font-size: 20px;
 	}
 	
 	div#menubasico{
 		height: 10%;
+		font-size: 18px;
 	}
 	
 	div#menuempresa{
 		height: 10%;
+		font-size: 18px;
+	}
+	
+	div#menuadmin{
+		height: 10%;
+		font-size: 18px;
 	}
 
 	div#izquierda {
-		float: left;
-		width: 20%;
 		height: 65%;
-		flex-direction:colum;
-		text-align:center;
-		overflow: auto;
-		background-color:#0EA5DA;
-		color:black;
+		font-size: 18px;
+	}
+	
+	div#izquierda div#tituloRanking{
+		font-size:30px;
+	}
+	
+	div#izquierda div#ranking {
+		font-size:25px;
 	}
 
 	div#derecha {
-		float: right;
-		width: 20%;
 		height: 65%;
-		background-color:#0EA5DA;
-		color:black;
-		padding-left:2%;
-		padding-right:2%;
-		font-size:19px;
-		overflow: auto;
+		font-size:20px;
+	}
+	
+	div#derecha div#tituloEmpresa{
+		font-size:25px;
+		font-weight: bold;
+	}
+	
+	div#derecha fieldset#filtrar legen{
+		background-color:#000000;
 	}
 
 	div#contenido {
-		float: left;
-		height: 65%;
-		width: 60%;
-		color: black;
-		overflow: auto;
-		background-color:#EEEEEF;
-		
+		height: 65%;		
 	}
 
 	div#pie {
-		clear: both;
-		background-color: black;
-		color: white;
-		text-align: center;
 		height: 8%;
+		font-size:16px;
 	}
 }
 
 @media only screen and (min-height : 900px){
 	
 	div#cabecera {	
-		height: 16.5%;
-		background-color: white;
-		border-bottom: black 2px solid;
+		height: 16%;
 	}
 
 	div#cabecera img{
@@ -117,95 +92,76 @@ body{
 		padding-left:20px;
 	}
 
-	div#cabecera div#login div#boton {
-		float:right;
-		margin-top: -20px;
-	}
-
 	div#cabecera div#login{
-		float: right;
-		background-color: white;
-		padding-top: -20px;
-		padding-left: 10px;
-		padding-right:10px;
 		height: 80%;
-		border: black 2px solid;
-		color: black;
-		margin-right:10px;
 		margin-top:0.6%;
+		font-size:17px;
 	}
 	
 	div#cabecera div#logout{
-		float: right;
-		background-color: white;
-		padding-top: -20px;
-		padding-left: 10px;
-		padding-right:10px;
-		height: 70%;
-		border: black 2px solid;
-		color: black;
-		margin-right:10px;
 		margin-top:0.9%;
-	}
-	
-	div#cabecera div#logout div#boton {
-		float:right;
+		font-size:20px;
 	}
 
 	div#menu{
-		height: 3.5%;
+		height: 5%;
+		font-size: 23px;
 	}
 	
 	div#menubasico{
-		height: 5%;
+		height: 7%;
+		font-size: 21px;
 	}
 	
 	div#menuempresa{
-		height: 5%;
+		height: 7%;
+		font-size: 21px;
+	}
+	
+	div#menuadmin{
+		height: 7%;
+		font-size: 21px;
 	}
 
 	div#izquierda {
-		float: left;
-		width: 20%;
 		height: 70%;
-		flex-direction:colum;
-		text-align:center;
-		overflow: auto;
-		background-color:#0EA5DA;
-		color:black;
+	}
+	
+	div#izquierda div#tituloRanking{
+		font-size:40px;
+	}
+	
+	div#izquierda div#ranking {
+		font-size:30px;
 	}
 
 	div#derecha {
-		float: right;
-		width: 20%;
 		height: 70%;
-		background-color:#0EA5DA;
-		color:black;
-		padding-left:2%;
-		padding-right:2%;
-		font-size:19px;
+		font-size:25px;
+	}
+	
+	div#derecha div#tituloEmpresa{
+		font-size:28px;
+		font-weight: bold;
 	}
 
 	div#contenido {
-		float: left;
 		height: 70%;
-		width: 60%;
-		color: black;
-		overflow:auto;
-		background-color:#EEEEEF;;
 	}
 
 	div#pie {
-		clear: both;
-		background-color: black;
-		color: white;
-		text-align: center;
-		height: 10%;
-	}	
+		height: 9%;
+		font-size:20px;
+	}
 }
 
 * {
 	box-sizing: border-box;
+}
+
+div#cabecera {
+	background-color: white;
+	border-bottom: black 2px solid;
 }
 
 div#cabecera a, div#cabecera a:visited {
@@ -215,10 +171,61 @@ div#cabecera a, div#cabecera a:visited {
 	text-decoration:underline;
 }
 
+div#cabecera div#login{
+	float: right;
+	background-color: #EEEEEF;
+	padding-top: -20px;
+	padding-left: 10px;
+	padding-right:10px;
+	border: black 2px solid;
+	color: black;
+	margin-right:10px;
+	-webkit-border-radius: 8px 8px 8px 8px;
+}
+
+div#cabecera div#login div#boton {
+	float:right;
+	margin-top: -20px;
+}
+
+div#cabecera div#login div#boton input{
+	text-decoration: none;
+    font-weight: 60;
+    color: #000000;
+    background-color: #0EA5DA;
+    border-radius: 4px;
+    border: 2px solid #0016b0;
+}
+
+div#cabecera div#logout{
+	float: right;
+	background-color: #EEEEEF;
+	padding-top: -20px;
+	padding-left: 10px;
+	padding-right:10px;
+	height: 70%;
+	border: black 2px solid;
+	color: black;
+	margin-right:10px;
+	-webkit-border-radius: 8px 8px 8px 8px;	
+}
+
+div#cabecera div#logout div#boton{
+	float:right;
+}
+
+div#cabecera div#logout div#boton input{
+	text-decoration: none;
+    font-weight: 60;
+    color: #000000;
+    background-color: #0EA5DA;
+    border-radius: 4px;
+    border: 2px solid #0016b0;
+}
+
 div#menu{
 	float: bottom;
 	text-align:center;
-	font-size: 20px;
 	background-color: #18F393;
 }
 	
@@ -235,9 +242,8 @@ div.apartado{
 	float:left;
 	border-right: black 2px solid;
 	padding-top: 10px;
-	border-bottom: black 2px solid;
+	border-bottom: black 2px solid;	
 }
-
 
 div.ultimo{
 	text-align: center;
@@ -249,11 +255,10 @@ div.ultimo{
 }
 
 div#menubasico{
-	float: bottom;
+	float: top;
 	background-color: #F9610A;
 	text-align:center;
 	flex-direction:row;
-	font-size: 18px;
 }
 
 div#menubasico a, div#menubasico a:visited {
@@ -263,11 +268,10 @@ div#menubasico a, div#menubasico a:visited {
 }
 
 div#menuempresa{
-	float: bottom;
+	float: top;
 	background-color: #F129FA;
 	text-align:center;
-	flex-direction:row;	
-	font-size: 18px;
+	flex-direction:row;
 }
 
 div#menuempresa a, div#menuempresa a:visited {
@@ -284,7 +288,6 @@ div#menuempresa span.apartado{
 	border-right: black 2px solid;
 	padding-top: 10px;
 	border-bottom: black 2px solid;
-	box-sizing: border-box;
 }
 
 div#menuempresa span.ultimo{
@@ -296,15 +299,66 @@ div#menuempresa span.ultimo{
 	border-bottom: black 2px solid;
 }
 
+div#menuadmin{
+	float: top;
+	background-color: #F0E61A;
+	text-align:center;
+	flex-direction:row;
+}
+
+div#menuadmin a, div#menuadmin a:visited {
+	color: black;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+div#menuadmin span.apartado{
+	text-align: center;
+	width: 33.3%;
+	height: 100%;
+	float:left;
+	border-right: black 2px solid;
+	padding-top: 10px;
+	border-bottom: black 2px solid;
+}
+
+div#menuadmin span.apartado2{
+	text-align: center;
+	width: 33.4%;
+	height: 100%;
+	float:left;
+	border-right: black 2px solid;
+	padding-top: 10px;
+	border-bottom: black 2px solid;
+}
+
+div#menuadmin span.ultimo{
+	text-align: center;
+	width: 33.3%;
+	height: 100%;
+	float:left;
+	padding-top: 10px;
+	border-bottom: black 2px solid;
+}
+
+div#izquierda {
+	float: left;
+	width: 20%;
+	text-align:center;
+	overflow: auto;
+	background-color:#0EA5DA;
+	color:black;	
+	display:flex;
+	flex-direction:column;
+}
+
+div#izquierda div#tituloRanking{
+	font-weight: bold;
+}
+
 div#izquierda div#ranking {
 	display:flex;
 	flex-direction: row;
-	font-size:25px;
-}
-
-div#izquierda{
-	display:flex;
-	flex-direction:column;
 }
 
 div#izquierda div#ranking div#nick{
@@ -312,10 +366,42 @@ div#izquierda div#ranking div#nick{
 	margin-left: 3%;
 }
 
+div#derecha {
+	float: right;
+	width: 20%;
+	background-color:#0EA5DA;
+	color:black;
+	padding-left:2%;
+	padding-right:2%;
+	overflow: auto;
+}
+
+div#derecha fieldset{
+	-webkit-border-radius: 12px 7px 7px 7px;
+}
+
+div#derecha input[type="submit"]{
+	text-decoration: none;
+    font-weight: 60;
+    color: #000000;
+    background-color: #BDBCC3;
+    border-radius: 4px;
+    border: 2px solid #0016b0;
+}
+
+div#contenido {
+	float: left;
+	width: 60%;
+	color: black;
+	overflow: auto;
+	background-color:#EEEEEF;		
+}
+
 div#contenido div#ViajeConcreto{
 	text-align: center;
 	margin:20px;
 }
+
 
 div#contenido div#ActividadConcreta{
 	text-align: center;
@@ -331,29 +417,86 @@ div#contenido div#lista{
 	border-bottom: black 2px solid;
 	display:flex;
 	flex-direction: row;
+	font-size:20px;
+}
+
+div#contenido div#lista p#titulo{
+	font-size:30px;
+	font-weight:bold;
 }
 
 div#contenido div#lista div#info{
-	width:80%;
+	width:50%;
 	margin-left: 3%;
 }
 
-div#contenido div#lista div#boton{
-	padding-top:60px;
+div#contenido div#lista form{
+	display: flex;
+	align-items: center;
+}
+
+div#contenido div#lista div#botonAmigos{
+	display:flex;
+	align-items: center;
+	flex-direction: column;
+	text-align:center;
+	margin-top:3%;
+	width:20%;
+}
+
+div#contenido div#lista div#foto{
+	width:30%;
+}
+
+div#contenido div#lista div#foto img{
+	width:90%;
+	height:120px;
+	margin-left:-5%;
+	margin-top:4%;
+}
+
+div#contenido div#ultimolista p#titulo{
+	font-size:30px;
+	font-weight:bold;
 }
 
 div#contenido div#ultimolista{
-	display:flex;
-	flex-direction: row;
+	font-size:20px;
+}
+
+div#contenido div#ultimolista{
+	display: flex;
+	align-items: center;
 }
 
 div#contenido div#ultimolista div#info{
-	width:80%;
+	width:50%;
 	margin-left: 3%;
 }
 
-div#contenido div#ultimolista div#boton{
-	padding-top:60px;
+div#contenido div#ultimolista form{
+	display: flex;
+	align-items: center;
+}
+
+div#contenido div#ultimolista div#botonAmigos{
+	display:flex;
+	align-items: center;
+	flex-direction: column;
+	text-align:center;
+	margin-top:3%;
+	width:20%;
+}
+
+div#contenido div#ultimolista div#foto{
+	width:30%;
+}
+
+div#contenido div#ultimolista div#foto img{
+	width:90%;
+	height:120px;
+	margin-left:-5%;
+	margin-top:4%;
 }
 
 div#contenido div#nombre {
@@ -361,6 +504,7 @@ div#contenido div#nombre {
 	font-size: 40px;
 	margin-top:-10px;
 	margin-bottom:-20px;
+	font-weight: bold;
 }
 
 div#contenido div#escribirActividad {
@@ -402,16 +546,112 @@ div#contenido div#ExperienciaConcreta{
 	margin-top:20px;
 }
 
-div#contenido div#ExperienciaConcreta div#nuevoComentario h3{
-	margin-left:-35%;
+div#contenido div#ExperienciaConcreta div#nuevoComentario{
+	width:50%;
+	margin-left:25%;
+	text-align:left;
+	margin-bottom:6%;
 }
 
 div#contenido div#ExperienciaConcreta div#nuevoComentario input#crearComentario{
-	margin-right:-48%;
+	float:right;
 }
 
 div#contenido div#ExperienciaConcreta div#boton{
 	float:right;
 	margin-top:-6%;
 	margin-right:2%;
+	padding-bottom:5%;
+}
+div#contenido div#ExperienciaConcreta div#boton input{
+	width:22%;
+}
+
+div#ExperienciaConcreta img{
+	width:50%;
+	height:50%;
+}
+
+div#contenido div#buscador{
+	float:left;
+	font-size:19px;
+	padding-left:5%;
+	width:50%;
+	height:50%;
+}
+
+div#contenido div#buscador input#textoBus{
+	width:60%;
+}
+
+div#contenido div#buscador input#botonBus{
+	margin-left:50%;
+	margin-top:5px;
+}
+
+div#contenido div#solicitudes{
+	width:50%;
+	height:50%;
+	float:left;
+	padding-top:5%;
+	font-size:19px;
+}
+
+
+div#contenido div#solicitudes input{
+	margin-left:70%;
+}
+
+div#contenido div#rankingAmi{
+	font-size:20px;
+	width:50%;
+	height:50%;
+	float:left;
+	padding-left:3%;
+}
+
+div#contenido div#rankingAmi p#titRankingAmi{
+	font-size:22px;
+	font-weight:bold;
+}
+
+
+div#contenido div#rankingAmi div#ranking {
+	display:flex;
+	flex-direction: row;
+	margin-left:15%;
+}
+
+div#contenido div#rankingAmi div#ranking div#nick{
+	width:20%;
+}
+
+div#ViajeConcreto img{
+	width:50%;
+	height:50%;
+}
+
+div#ActividadConcreta img{
+	width:50%;
+	height:50%;
+}
+
+div#contenido input[type="submit"]{
+	text-decoration: none;
+    font-weight: 60;
+    color: #000000;
+    background-color: #0EA5DA;
+    border-radius: 4px;
+    border: 2px solid #0016b0;
+}
+
+div#contenido div#crearDescuento{
+	margin-left:5%;
+}
+
+div#pie {
+	clear: both;
+	background-color: black;
+	color: white;
+	text-align: center;
 }

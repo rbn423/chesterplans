@@ -1,11 +1,14 @@
 <?php
-	require("includes/config.php");
-	require("includes/ActividadBD.php");
-	require("includes/ComprasBD.php");
-	require("includes/InteresesBD.php");
-
+	require_once("includes/config.php");
+	require_once("includes/ActividadBD.php");
+	require_once("includes/ComprasBD.php");
+	require_once("includes/InteresesBD.php");
+	require_once("includes/ImagenBD.php");
+	
 	$id=$_GET["id"];
 	$actividad = ActividadBD::buscarActividad($id);	
+	$foto = ActividadBD::buscarFoto($id);
+	
 	if (isset($_POST["comprar"]))
 		$comprado = $_POST["comprar"];
 	else
@@ -15,15 +18,16 @@
 	else
 		$interesado = NULL;
 
-	function mostrarActividad($actividad, $id,$comprado,$interesado){
+	function mostrarActividad($actividad, $id,$comprado,$interesado, $foto){
 
-		if ($comprado == "comprar"){
+		if ($comprado == "Comprar"){
 			echo "<div id='comprado'";
 			echo "<p>Acabas de comprar esta actividad.</p>";
 			echo "</div>";
 			ComprasBD::insertaCompra($_SESSION["nick"],"actividad",$id);
+			InteresesBD::eliminaInteres($_SESSION["nick"], $id);
 		}
-		if ($interesado == "interesa"){
+		if ($interesado == "Me interesa"){
 			echo "<div id='interesado'";
 			echo "<p>Acabas de añadir esta actividad a tus intereses.</p>";
 			echo "</div>";
@@ -39,7 +43,11 @@
 		echo '<h1>'.$actividad["TITULO"].'</h1>';
 		echo '<p>'.$actividad["DESCB"].'<p>';
 		echo '<p>'.$actividad["DESCG"].'<p>';
-		echo '<p>'.$actividad["FOTO"].'<p>';
+		if ($foto != NULL){
+			echo '<p>'.$actividad["FOTO"].'<p>';
+			imagenBD::cargaImagen($foto);
+		}
+		
 		echo '<p> Creador del viaje: '.$actividad["CREADOR"].'<p>';
 		echo '<p> Fecha: '.$actividad["FECHA"].'</p>';
 		echo '<p>Precio: '.$actividad["PRECIO"].' €</p>';
@@ -52,31 +60,31 @@
 					echo '<div id="botonCompra">';
 					echo '<form method="post" action="actividad.php?id='.$id.'">';
 					echo '<div id="boton">';
-					echo '<input type="submit" value="comprar" name="comprar">';
+					echo '<input type="submit" value="Comprar" name="comprar">';
 					echo '</div>';
 					echo '</form>';
 					echo '</div>';
+					if (!isset($intereses)){
+						echo '<div id="botonInteres">';
+						echo '<form method="post" action="actividad.php?id='.$id.'">';
+						echo '<div id="boton">';
+						echo '<input type="submit" value="Me interesa" name="interesa">';
+						echo '</div>';
+						echo '</form>';
+						echo '</div>';
+					}
+					else{
+						echo '<div id="botonInteres">';
+						echo '<form method="post" action="actividad.php?id='.$id.'">';
+						echo '<div id="boton">';
+						echo '<input type="submit" value="Ya no me interesa" name="interesa">';
+						echo '</div>';
+						echo '</form>';
+						echo '</div>';
+					}
 				}
 				else
 					echo "<h3>Ya has adquirido esta actividad.</h3>";
-				if (!isset($intereses)){
-					echo '<div id="botonInteres">';
-					echo '<form method="post" action="actividad.php?id='.$id.'">';
-					echo '<div id="boton">';
-					echo '<input type="submit" value="interesa" name="interesa">';
-					echo '</div>';
-					echo '</form>';
-					echo '</div>';
-				}
-				else{
-					echo '<div id="botonInteres">';
-					echo '<form method="post" action="actividad.php?id='.$id.'">';
-					echo '<div id="boton">';
-					echo '<input type="submit" value="Ya no me interesa" name="interesa">';
-					echo '</div>';
-					echo '</form>';
-					echo '</div>';
-				}
 			}
 		}
 	}
@@ -89,20 +97,20 @@
 	<body>
 
 		<?php
-			require("includes/comun/cabecera.php");
-			require("includes/comun/menu.php");
-			require("includes/comun/izquierda.php");
+			require_once("includes/comun/cabecera.php");
+			require_once("includes/comun/menu.php");
+			require_once("includes/comun/izquierda.php");
 		?>
 			<div id="contenido">
 				<div id="ActividadConcreta">
 				<?php
-					mostrarActividad($actividad, $id,$comprado,$interesado);		
+					mostrarActividad($actividad, $id,$comprado,$interesado, $foto);		
 				?>
 				</div>
 			</div>
 		<?php
-			require("includes/comun/derecha.php");
-			require("includes/comun/pie.php");
+			require_once("includes/comun/derecha.php");
+			require_once("includes/comun/pie.php");
 		?>
 		
 	

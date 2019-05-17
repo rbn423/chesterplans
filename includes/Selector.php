@@ -1,30 +1,28 @@
 <?php 
-	require("config.php");
+	require_once("config.php");
 
 	class Selector{
 
 		public static function genera($vista){
-
 			switch($vista){
 				case "viajes":
 				echo <<<EOF
-					<form method="post" action="buscador.php">
-						<div id = "selector">
-							<p>
+				<form method="post" action="buscador.php">
+					<div id = "selector">
+						<p>
 							Buscar en: <select name="tema">
 												<option value="todo">Todo</option>
 												<option value="viajes">Viajes</option>
 												<option value="actividades">Actividades</option>
 												<option value="experiencias">Experiencias</option>
 										<select>
-							</p>
-				<p><input type="textarea" name="buscar" placeholder="Buscador"</p>
-				<p>
-					<input type="submit" value="Enviar">
-				</p>
-				</div>
+						</p>
+						<p><input type="textarea" name="buscar" placeholder="Buscador"</p>
+						<p>
+							<input type="submit" value="Enviar">
+						</p>
+					</div>
 				</form>
-						
 				<form method="post" action="vistaViajes.php">
 					<div id="selector">
 						<p>
@@ -52,14 +50,18 @@
 								<option value=1000>1000 €</option>
 							<select>
 						</p>
-						<p>Filtrar por:</p>
+						<fieldset id="filtrar">
+						<legend>Filtrar por:</legend>
 							<p><input type="radio" name="filtro" value="titulo" checked>Nombre</p>
 							<p><input type="radio" name="filtro" value="fechaIni">Fecha de inicio</p>
 							<p><input type="radio" name="filtro" value="fechaFin">Fecha de fin</p>
  							<p><input type="radio" name="filtro" value="precio">Precio</p>
- 						<p>Orden: </p>
+						</fieldset>
+						<fieldset id="ordenar">
+						<legend>Ordenar por:</legend>
 		 					<p><input type="radio" name="orden" value="desc" checked>Descendente</p>
 		 					<p><input type="radio" name="orden" value="asc">Ascendente</p>
+						</fieldset>
 						<p>
 							<input type="submit" value="Enviar">
 						</p>
@@ -70,30 +72,34 @@ break;
 			case "experiencias":
 			echo <<<EOF
 			<form method="post" action="buscador.php">
-						<div id = "selector">
-							<p>
-							Buscar en: <select name="tema">
-												<option value="todo">Todo</option>
-												<option value="viajes">Viajes</option>
-												<option value="actividades">Actividades</option>
-												<option value="experiencias">Experiencias</option>
-										<select>
-							</p>
-				<p><input type="textarea" name="buscar" placeholder="Buscador"</p>
-				<p>
-					<input type="submit" value="Enviar">
-				</p>
+				<div id = "selector">
+					<p>
+						Buscar en: <select name="tema">
+											<option value="todo">Todo</option>
+											<option value="viajes">Viajes</option>
+											<option value="actividades">Actividades</option>
+											<option value="experiencias">Experiencias</option>
+									<select>
+					</p>
+					<p><input type="textarea" name="buscar" placeholder="Buscador"</p>
+					<p>
+						<input type="submit" value="Enviar">
+					</p>
 				</div>
-				</form>
+			</form>
 				<form method="post" action="vistaExperiencias.php">
 					<div id="selector">
-						<p>Filtrar por:</p>
+						<fieldset id="filtrar">
+						<legend>Filtrar por:</legend>
 							<p><input type="radio" name="filtro" value="titulo" checked>Título de la experiencia</p>
 							<p><input type="radio" name="filtro" value="creador">Nick del creador</p>
 							<p><input type="radio" name="filtro" value="likes">Me gustas</p>
-		 				<p>Orden: </p>
+		 				</fieldset>
+						<fieldset id="ordenar">
+						<legend>Ordenar por:</legend>
 		 					<p><input type="radio" name="orden" value="desc" checked>Descendente</p>
 		 					<p><input type="radio" name="orden" value="asc">Ascendente</p>
+						</fieldset>
 							<p>
 								<input type="submit" value="Enviar">
 							</p>
@@ -104,21 +110,21 @@ break;
 			case "actividades":
 			echo <<<EOF
 			<form method="post" action="buscador.php">
-						<div id = "selector">
-							<p>
-							Buscar en: <select name="tema">
-												<option value="todo">Todo</option>
-												<option value="viajes">Viajes</option>
-												<option value="actividades">Actividades</option>
-												<option value="experiencias">Experiencias</option>
-										<select>
-							</p>
-				<p><input type="textarea" name="buscar" placeholder="Buscador"</p>
-				<p>
-					<input type="submit" value="Enviar">
-				</p>
+				<div id = "selector">
+					<p>
+						Buscar en: <select name="tema">
+											<option value="todo">Todo</option>
+											<option value="viajes">Viajes</option>
+											<option value="actividades">Actividades</option>
+											<option value="experiencias">Experiencias</option>
+									<select>
+					</p>
+					<p><input type="textarea" name="buscar" placeholder="Buscador"</p>
+					<p>
+						<input type="submit" value="Enviar">
+					</p>
 				</div>
-				</form>
+			</form>
 				<form method="post" action="vistaActividades.php">
 					<div id="selector">
 						<p>
@@ -146,13 +152,17 @@ break;
 								<option value=1000>1000 €</option>
 							<select>
 						</p>
-						<p>Filtrar por:</p>
+						<fieldset id="filtrar">
+						<legend>Filtrar por:</legend>
 							<p><input type="radio" name="filtro" value="titulo" checked>Nombre</p>
 							<p><input type="radio" name="filtro" value="fecha">Fecha de la actividad</p>
  							<p><input type="radio" name="filtro" value="precio">Precio</p>
- 						<p>Orden: </p>
+						</fieldset>
+						<fieldset id="ordenar">
+						<legend>Ordenar por:</legend>
 		 					<p><input type="radio" name="orden" value="desc" checked>Descendente</p>
 		 					<p><input type="radio" name="orden" value="asc">Ascendente</p>
+						</fieldset>
 						<p>
 							<input type="submit" value="Enviar">
 						</p>
@@ -162,6 +172,22 @@ EOF;
 break;
 			case "combos":
 			echo <<<EOF
+			<form method="post" action="buscador.php">
+				<div id = "selector">
+					<p>
+						Buscar en: <select name="tema">
+											<option value="todo">Todo</option>
+											<option value="viajes">Viajes</option>
+											<option value="actividades">Actividades</option>
+											<option value="experiencias">Experiencias</option>
+									<select>
+					</p>
+					<p><input type="textarea" name="buscar" placeholder="Buscador"</p>
+					<p>
+						<input type="submit" value="Enviar">
+					</p>
+				</div>
+			</form>
 			<form method="post" action="vistaCombo.php">
 					<div id="selector">
 						<p>
@@ -189,12 +215,16 @@ break;
 								<option value=1000>1000 €</option>
 							<select>
 						</p>
-						<p>Filtrar por:</p>
+						<fieldset id="filtrar">
+						<legend>Filtrar por:</legend>
 							<p><input type="radio" name="filtro" value="NOMBREVIAJE" checked>Nombre del viaje</p>
  							<p><input type="radio" name="filtro" value="precio">Precio</p>
- 						<p>Orden: </p>
+ 						</fieldset>
+						<fieldset id="ordenar">
+						<legend>Ordenar por:</legend>
 		 					<p><input type="radio" name="orden" value="desc" checked>Descendente</p>
 		 					<p><input type="radio" name="orden" value="asc">Ascendente</p>
+						</fieldset>
 						<p>
 							<input type="submit" value="Enviar">
 						</p>
@@ -203,7 +233,9 @@ break;
 EOF;
 break;
 			default:
-				echo "<h3>Bienvenido a Chesterplans</h3>";
+				echo "<div id=tituloEmpresa>";
+				echo "<p>Bienvenido a Chesterplans</p>";
+				echo "</div>";
 				echo "<p>Aquí podrás disfrutar del mejor contenido para viajeros.</p>";
 				echo "<p>Disponemos de las mejores ofertas para viajes y actividades, además de contenido compratido por nuestros usuarios en los que comparten sus experiencias.</p>";
 				echo "<p>Date una vuelta y mira lo que te interese.</p>";

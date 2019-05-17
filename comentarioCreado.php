@@ -1,5 +1,5 @@
 <?php
-	require("includes/ExperienciaBD.php");
+	require_once("includes/ExperienciaBD.php");
 	
 	$nick = $_SESSION["nick"];
 	$id = $_GET["id"];

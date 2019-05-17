@@ -1,5 +1,5 @@
 <?php
-require("config.php");
+require_once("config.php");
 
 class Usuario
 {
@@ -12,9 +12,10 @@ class Usuario
     private $Telefono;
     private $Tipo;
     private $Registrado;
+    private $Puntos;
 
     //constructora
-    private function __construct($nick, $nombre, $apellidos, $password, $mail, $telefono, $tipo)
+    private function __construct($nick, $nombre, $apellidos, $password, $mail, $telefono, $tipo, $puntos)
     {
         $this->Nick= $nick;
         $this->Nombre = $nombre;
@@ -23,6 +24,7 @@ class Usuario
         $this->Mail = $mail;
         $this->Telefono = $telefono;
         $this->Tipo = $tipo;
+        $this->Puntos = $puntos;
     }
 
     //Inicia el login
@@ -35,6 +37,26 @@ class Usuario
         return false;
     }
 
+     public static function buscadorUsuario($busqueda)
+    {
+        $app = Aplicacion::getSingleton();
+        $conn = $app->conexionBd();
+        $busqueda=mysqli_real_escape_string($conn,$busqueda);
+        $query = "SELECT * FROM usuario WHERE nick LIKE '%$busqueda%' OR nombre LIKE '%$busqueda%'";
+        $rs = $conn->query($query);
+        $rs = $rs->fetch_all();
+        return $rs;
+    }
+
+    public static function eliminaUsuario($id)
+    {
+        $app = Aplicacion::getSingleton();
+        $conn = $app->conexionBd();
+        $id=mysqli_real_escape_string($conn,$id);
+        $query = "DELETE FROM usuario WHERE nick = '$id'";
+        $conn->query($query);
+    }
+
     public static function buscaUsuario($nick)
     {
         $app = Aplicacion::getSingleton();
@@ -45,7 +67,7 @@ class Usuario
         if ($rs) {
             if ( $rs->num_rows == 1) {
                 $fila = $rs->fetch_assoc();
-                $user = new Usuario($fila['NICK'], $fila['NOMBRE'], $fila['APELLIDOS'], $fila['PASSWORD'], $fila['MAIL'], $fila['TELEFONO'], $fila['TIPO']);
+                $user = new Usuario($fila['NICK'], $fila['NOMBRE'], $fila['APELLIDOS'], $fila['PASSWORD'], $fila['MAIL'], $fila['TELEFONO'], $fila['TIPO'], $fila['PUNTOS']);
                 $user->Registrado = true;
                 $result = $user;
             }
@@ -66,7 +88,7 @@ class Usuario
                 return false;
             }
             if (self::comparaPassword($password,$rPassword)){
-                $user = new Usuario($nick, $nombre, $apellidos, self::hashPassword($password), $mail, $telefono, $tipo);
+                $user = new Usuario($nick, $nombre, $apellidos, self::hashPassword($password), $mail, $telefono, $tipo,0);
                 return self::guarda($user);
             }
         }
@@ -167,6 +189,10 @@ class Usuario
 
     public function tipo(){
         return $this->Tipo;
+    }
+
+    public function puntos(){
+        return $this->Puntos;
     }
 
     public function compruebaPassword($password)

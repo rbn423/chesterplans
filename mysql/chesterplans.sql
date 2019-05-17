@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-05-2019 a las 14:29:38
+-- Tiempo de generación: 16-05-2019 a las 23:00:35
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -52,6 +52,17 @@ INSERT INTO `actividad` (`ID`, `TITULO`, `DESCB`, `DESCG`, `FOTO`, `COMENTARIO`,
 ('adri1555273947', 'Bolera', 'Dos pases para la bolera', 'Ven a divertirte en un día de bolera sin igual.\r\nTe ofrecemos dos pases de día completo en la bolera, con los que podrás disfrutar de unas partidas de bolos con quien tu mas quieras.', NULL, NULL, 'adri', '2019-06-07', 30),
 ('adri1555274092', 'Degustación de vino', 'Cata de vinos profesional', 'En esta cata de vinos podrás ser un gourmet de los mejores caldos de la península.\r\nTendrás a tu disposición, además, a varios expertos que te guiarán en la cata.\r\nNo te lo pierdas.', NULL, NULL, 'adri', '2019-04-16', 90),
 ('adri1555274178', 'Cine para dos', 'Ven al cine con quién tu más quieras... o ven dos veces.', 'Ofrecemos dos entradas de cine para el cine que desees. No desaproveches esta oportunidad de ver tus películas preferidas a muy buen precio.', NULL, NULL, 'adri', '2019-06-20', 15);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `amigos`
+--
+
+CREATE TABLE `amigos` (
+  `AMIGOA` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `AMIGOB` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -108,6 +119,33 @@ CREATE TABLE `compras` (
   `TIPO` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `IDCOMPRA` varchar(20) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `compras`
+--
+
+INSERT INTO `compras` (`IDUSUARIO`, `TIPO`, `IDCOMPRA`) VALUES
+('ruben', 'actividad', 'adri1555273544'),
+('ruben', 'actividad', 'adri1555273688'),
+('ruben', 'actividad', 'adri1555273875'),
+('ruben', 'viaje', 'adri1555275802'),
+('ruben', 'viaje', 'adri1555275879'),
+('ruben', 'viaje', 'adri1555275938'),
+('ruben', 'combo', 'adri1557657300');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `descuentos`
+--
+
+CREATE TABLE `descuentos` (
+  `id` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `nombre` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `porcentaje` int(11) NOT NULL,
+  `tipo` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `puntos` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -283,6 +321,25 @@ INSERT INTO `megustas` (`nickusuario`, `idexperiencia`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `solicitudes`
+--
+
+CREATE TABLE `solicitudes` (
+  `emisor` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `receptor` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `solicitudes`
+--
+
+INSERT INTO `solicitudes` (`emisor`, `receptor`) VALUES
+('andrea', 'ruben'),
+('ruben', 'ari');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuario`
 --
 
@@ -302,9 +359,11 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`NICK`, `NOMBRE`, `APELLIDOS`, `PASSWORD`, `MAIL`, `TELEFONO`, `TIPO`, `PUNTOS`) VALUES
+('admin', 'admin', '', '$2y$10$74N9vLrnNP95kZHdEiM9W.Za9dF2U7R/lxNlNlPNSHj6dYKUhe1Ti', '', 0, 'admin', 0),
 ('adri', 'adrian', 'agudo', '$2y$10$Q50hSqbXSdPrjkP4qqp8Wu9Smhv6GKKF3vd4DmJfXRpNbVWAeIttu', 'adrian@ucm.es', 12356, 'empresa', 0),
 ('andrea', 'andrea', 'lopez', '$2y$10$pEDRdScx5C/FOCvi7n7HRupynF53zp3cocaNLmN/Nj1BFD3NTwTHK', 'andrea@ucm.es', 7864432, 'basico', 3),
 ('ari', 'arantxa', 'brock', '$2y$10$T4gbIRvuvcxEjPPSmFJwHO0vQaEz/LUvaF0fJuNIJiM8KDbGHX6h.', 'ari@ucm.es', 2871832, 'basico', 1),
+('edu', 'edu', 'muñoz estebez', '$2y$10$WgSNBi6UC5Fr/SIie1mqXuHg3mGkZpefYWaA5qAcfCm.8grslZVnK', 'edu@mail.com', 123789456, 'empresa', 0),
 ('esti', 'estibaliz', 'busto', '$2y$10$E5XdhwV6cdwQgBK4Ql1I/eTSlqxjCKMIRX7Xq3cekGAC6LMxK3Aoa', 'esti@ucm.es', 1234567, 'basico', 2),
 ('lucia', 'lucia', 'perez', '$2y$10$qvFhXAG64Bs5UvK4/Uxdf.v3F650czIC/9838MT/S2Oq2MlZ2THoa', 'lucia@ucm.es', 4597527, 'basico', 1),
 ('luis', 'luis', 'lopez', '$2y$10$L9hqJprd/90/QZroZX0EleuU0F6ImH0meivp1FrPn5X6oS.M1pp5a', 'luis@ucm.es', 85748914, 'basico', 0),
@@ -362,6 +421,12 @@ ALTER TABLE `actividad`
   ADD KEY `CREADOR` (`CREADOR`);
 
 --
+-- Indices de la tabla `amigos`
+--
+ALTER TABLE `amigos`
+  ADD PRIMARY KEY (`AMIGOA`,`AMIGOB`);
+
+--
 -- Indices de la tabla `combo`
 --
 ALTER TABLE `combo`
@@ -385,6 +450,12 @@ ALTER TABLE `comentario`
 ALTER TABLE `compras`
   ADD PRIMARY KEY (`IDUSUARIO`,`IDCOMPRA`),
   ADD KEY `IDUSUARIO` (`IDUSUARIO`);
+
+--
+-- Indices de la tabla `descuentos`
+--
+ALTER TABLE `descuentos`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `experiencias`
@@ -448,6 +519,12 @@ ALTER TABLE `megustas`
   ADD KEY `idexperiencia` (`idexperiencia`);
 
 --
+-- Indices de la tabla `solicitudes`
+--
+ALTER TABLE `solicitudes`
+  ADD PRIMARY KEY (`emisor`,`receptor`);
+
+--
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
@@ -472,48 +549,48 @@ ALTER TABLE `viaje`
 -- Filtros para la tabla `actividad`
 --
 ALTER TABLE `actividad`
-  ADD CONSTRAINT `actividad_ibfk_2` FOREIGN KEY (`CREADOR`) REFERENCES `usuario` (`NICK`),
-  ADD CONSTRAINT `actividad_ibfk_3` FOREIGN KEY (`COMENTARIO`) REFERENCES `comentario` (`ID`);
+  ADD CONSTRAINT `actividad_ibfk_2` FOREIGN KEY (`CREADOR`) REFERENCES `usuario` (`NICK`) ON DELETE CASCADE,
+  ADD CONSTRAINT `actividad_ibfk_3` FOREIGN KEY (`COMENTARIO`) REFERENCES `comentario` (`ID`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `combo`
 --
 ALTER TABLE `combo`
-  ADD CONSTRAINT `combo_ibfk_1` FOREIGN KEY (`CREADOR`) REFERENCES `usuario` (`NICK`),
-  ADD CONSTRAINT `combo_ibfk_2` FOREIGN KEY (`VIAJE`) REFERENCES `viaje` (`ID`),
-  ADD CONSTRAINT `combo_ibfk_3` FOREIGN KEY (`ACTIVIDAD`) REFERENCES `actividad` (`ID`);
+  ADD CONSTRAINT `combo_ibfk_1` FOREIGN KEY (`CREADOR`) REFERENCES `usuario` (`NICK`) ON DELETE CASCADE,
+  ADD CONSTRAINT `combo_ibfk_2` FOREIGN KEY (`VIAJE`) REFERENCES `viaje` (`ID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `combo_ibfk_3` FOREIGN KEY (`ACTIVIDAD`) REFERENCES `actividad` (`ID`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `compras`
 --
 ALTER TABLE `compras`
-  ADD CONSTRAINT `compras_ibfk_1` FOREIGN KEY (`IDUSUARIO`) REFERENCES `usuario` (`NICK`);
+  ADD CONSTRAINT `compras_ibfk_1` FOREIGN KEY (`IDUSUARIO`) REFERENCES `usuario` (`NICK`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `experiencias`
 --
 ALTER TABLE `experiencias`
-  ADD CONSTRAINT `experiencias_ibfk_2` FOREIGN KEY (`CREADOR`) REFERENCES `usuario` (`NICK`),
-  ADD CONSTRAINT `experiencias_ibfk_3` FOREIGN KEY (`COMENTARIO`) REFERENCES `comentario` (`ID`);
+  ADD CONSTRAINT `experiencias_ibfk_2` FOREIGN KEY (`CREADOR`) REFERENCES `usuario` (`NICK`) ON DELETE CASCADE,
+  ADD CONSTRAINT `experiencias_ibfk_3` FOREIGN KEY (`COMENTARIO`) REFERENCES `comentario` (`ID`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `intercombo`
 --
 ALTER TABLE `intercombo`
-  ADD CONSTRAINT `intercombo_ibfk_1` FOREIGN KEY (`IDCOMBO`) REFERENCES `combo` (`ID`),
-  ADD CONSTRAINT `intercombo_ibfk_2` FOREIGN KEY (`IDACT`) REFERENCES `actividad` (`ID`);
+  ADD CONSTRAINT `intercombo_ibfk_1` FOREIGN KEY (`IDCOMBO`) REFERENCES `combo` (`ID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `intercombo_ibfk_2` FOREIGN KEY (`IDACT`) REFERENCES `actividad` (`ID`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `intercomentario`
 --
 ALTER TABLE `intercomentario`
-  ADD CONSTRAINT `intercomentario_ibfk_1` FOREIGN KEY (`IDCOMENT`) REFERENCES `comentario` (`ID`);
+  ADD CONSTRAINT `intercomentario_ibfk_1` FOREIGN KEY (`IDCOMENT`) REFERENCES `comentario` (`ID`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `intereses`
 --
 ALTER TABLE `intereses`
-  ADD CONSTRAINT `intereses_ibfk_1` FOREIGN KEY (`IDUSUARIO`) REFERENCES `usuario` (`NICK`);
+  ADD CONSTRAINT `intereses_ibfk_1` FOREIGN KEY (`IDUSUARIO`) REFERENCES `usuario` (`NICK`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `lista`
@@ -528,8 +605,8 @@ ALTER TABLE `lista`
 -- Filtros para la tabla `viaje`
 --
 ALTER TABLE `viaje`
-  ADD CONSTRAINT `viaje_ibfk_2` FOREIGN KEY (`CREADOR`) REFERENCES `usuario` (`NICK`),
-  ADD CONSTRAINT `viaje_ibfk_3` FOREIGN KEY (`COMENTARIO`) REFERENCES `comentario` (`ID`);
+  ADD CONSTRAINT `viaje_ibfk_2` FOREIGN KEY (`CREADOR`) REFERENCES `usuario` (`NICK`) ON DELETE CASCADE,
+  ADD CONSTRAINT `viaje_ibfk_3` FOREIGN KEY (`COMENTARIO`) REFERENCES `comentario` (`ID`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,6 +1,7 @@
 <?php
-	require("includes/config.php");
-	require("includes/ActividadBD.php");
+	require_once("includes/config.php");
+	require_once("includes/ActividadBD.php");
+	require_once("includes/ImagenBD.php");
 
 	$nick = $_SESSION["nick"];
 	$titulo = htmlspecialchars(trim(strip_tags($_REQUEST["titulo"])));
@@ -8,27 +9,26 @@
 	$descb = htmlspecialchars(trim(strip_tags($_REQUEST["descb"])));
 	$texto = htmlspecialchars(trim(strip_tags($_REQUEST["descg"])));
 	$precio = htmlspecialchars(trim(strip_tags($_REQUEST["precio"])));
-	if($titulo != "" && $descb != "" && $texto != "" && $precio > 0){
+	$imagen = $_FILES["imagen"];
+	
+	$fechaactual = date("Ymd");
+	$fecha = date("Ymd", strtotime($fecha));
+	if($titulo != "" && $descb != "" && $texto != "" && $precio > 0 && $fecha >= $fechaactual){
 		$f=getdate()[0];
 		$id=$nick.$f;
-		ActividadBD::crearActividad($id, $titulo, $descb, $texto, $precio, $nick);
+		if($imagen["size"] != 0 && $imagen["error"] == 0){
+			$idImagen=$imagen["name"].$f;
+			ImagenBD::insertaImagen($imagen,$idImagen,$id);
+		}
+		ActividadBD::crearActividad($id, $titulo, $descb, $texto, $precio, $nick, $fecha);
 	}
 
-	function mostrarCreado($nick, $titulo, $descb, $texto, $precio){
-		if($titulo != "" && $descb != "" && $texto != "" && $precio != ""){
-			echo '<p> Enhorabuena '.$nick.', ya has creado una actividad.</p>';
+	function mostrarCreado($nick, $titulo, $descb, $texto, $precio, $fecha, $fechaactual){
+		if($titulo != "" && $descb != "" && $texto != "" && $precio > 0 && $fecha >= $fechaactual){
+			echo '<h1> Enhorabuena '.$nick.', ya has creado una actividad.</h1>';
 		}
 		else{
-			$mensaje = "No se ha creado la experiencia porque faltan por rellenar: ";
-			if($titulo == "")
-				$mensaje .= " -titulo ";
-			if($descb == "")
-				$mensaje .= " -descripcion breve ";
-			if($texto == "")
-				$mensaje .= " -texto ";
-			if($precio == "")
-				$mensaje .= " -precio ";
-			echo $mensaje;
+			echo '<h1>No se ha creado la experiencia porque faltan por rellenar datos o son incorrectos</h1>';
 		}
 	}
 ?>
@@ -41,18 +41,18 @@
 	<body>
 
 		<?php
-			require('includes/comun/cabecera.php');
-			require('includes/comun/menu.php');
-			require('includes/comun/izquierda.php');
+			require_once('includes/comun/cabecera.php');
+			require_once('includes/comun/menu.php');
+			require_once('includes/comun/izquierda.php');
 		?>
 		<div id="contenido">
 			<?php
-				mostrarCreado($nick,$titulo, $descb, $texto, $precio);
+				mostrarCreado($nick,$titulo, $descb, $texto, $precio, $fecha, $fechaactual);
 			?>		
 		</div>			
 		<?php
-			require('includes/comun/derecha.php');
-			require('includes/comun/pie.php');
+			require_once('includes/comun/derecha.php');
+			require_once('includes/comun/pie.php');
 		?>
 		
 	
