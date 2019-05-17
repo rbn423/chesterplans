@@ -25,6 +25,8 @@
 			}
 			echo '<p>Precio: '.$precio.' €</p>';
 			echo '</div>';
+			echo '<div id="foto">';
+			echo '</div>';
 			echo '<form method="post" action="combo.php?id='.$idcombo.'">';
 			echo '<div id="boton">';
 			echo '<input type="submit" value="Ver mas">';

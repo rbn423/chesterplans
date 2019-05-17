@@ -22,6 +22,8 @@
 				echo '<h2>'.$experiencia["TITULO"].'</h2>';
 				echo '<p>'.$experiencia["DESCB"].'<p>';
 				echo '</div>';
+				echo '<div id="foto">';
+				echo '</div>';
 				echo '<form method="post" action="experienciaBasico.php?id='.$valor.'">';						
 				echo '<div id="boton">';
 				echo '<input type="submit" value="Ver mas">';

@@ -20,6 +20,8 @@
 			echo '<p>De '.$viaje["FECHAINI"].' a '.$viaje["FECHAFIN"]. '<p>';
 			echo '<p>Precio: '.$viaje["PRECIO"].' €</p>';
 			echo '</div>';
+			echo '<div id="foto">';
+			echo '</div>';
 			echo '<form method="post" action="viaje.php?id='.$valor.'">';
 			echo '<div id="boton">';
 			echo '<input type="submit" value="Ver más">';

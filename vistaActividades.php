@@ -19,6 +19,8 @@
 			echo '<p>Fecha: '.$actividad["FECHA"].'<p>';
 			echo '<p>Precio: '.$actividad["PRECIO"].' €</p>';
 			echo '</div>';
+			echo '<div id="foto">';
+			echo '</div>';
 			echo '<form method="post" action="actividad.php?id='.$valor.'">';
 			echo '<div id="boton">';
 			echo '<input type="submit" value="Ver más">';

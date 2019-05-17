@@ -21,7 +21,9 @@
 					echo '<p>Nombre: '.$nombreUsuario.'</p>';
 					echo '<p>Puntos: '.$puntosUsuario.'</p>';
 					echo '</div>';
-					echo '<div id="boton">';
+					echo '<div id="foto">';
+					echo '</div>';
+					echo '<div id="botonAmigos">';
 						echo '<form method="post" action="eliminarUsuario.php">';
 						echo '<input type="hidden" name="nick" value="'.$nickUsuario.'"/>';
 						echo '<input type="hidden" name="tipo" value="'.$tipoUsuario.'"/>';

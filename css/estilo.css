@@ -38,6 +38,11 @@ body{
 		height: 10%;
 		font-size: 18px;
 	}
+	
+	div#menuadmin{
+		height: 10%;
+		font-size: 18px;
+	}
 
 	div#izquierda {
 		height: 65%;
@@ -109,6 +114,11 @@ body{
 	}
 	
 	div#menuempresa{
+		height: 7%;
+		font-size: 21px;
+	}
+	
+	div#menuadmin{
 		height: 7%;
 		font-size: 21px;
 	}
@@ -187,15 +197,6 @@ div#cabecera div#login div#boton input{
     border: 2px solid #0016b0;
 }
 
-div#contenido input[type="submit"]{
-	text-decoration: none;
-    font-weight: 60;
-    color: #000000;
-    background-color: #0EA5DA;
-    border-radius: 4px;
-    border: 2px solid #0016b0;
-}
-
 div#cabecera div#logout{
 	float: right;
 	background-color: #EEEEEF;
@@ -254,7 +255,7 @@ div.ultimo{
 }
 
 div#menubasico{
-	float: bottom;
+	float: top;
 	background-color: #F9610A;
 	text-align:center;
 	flex-direction:row;
@@ -267,7 +268,7 @@ div#menubasico a, div#menubasico a:visited {
 }
 
 div#menuempresa{
-	float: bottom;
+	float: top;
 	background-color: #F129FA;
 	text-align:center;
 	flex-direction:row;
@@ -292,6 +293,48 @@ div#menuempresa span.apartado{
 div#menuempresa span.ultimo{
 	text-align: center;
 	width: 25%;
+	height: 100%;
+	float:left;
+	padding-top: 10px;
+	border-bottom: black 2px solid;
+}
+
+div#menuadmin{
+	float: top;
+	background-color: #F0E61A;
+	text-align:center;
+	flex-direction:row;
+}
+
+div#menuadmin a, div#menuadmin a:visited {
+	color: black;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+div#menuadmin span.apartado{
+	text-align: center;
+	width: 33.3%;
+	height: 100%;
+	float:left;
+	border-right: black 2px solid;
+	padding-top: 10px;
+	border-bottom: black 2px solid;
+}
+
+div#menuadmin span.apartado2{
+	text-align: center;
+	width: 33.4%;
+	height: 100%;
+	float:left;
+	border-right: black 2px solid;
+	padding-top: 10px;
+	border-bottom: black 2px solid;
+}
+
+div#menuadmin span.ultimo{
+	text-align: center;
+	width: 33.3%;
 	height: 100%;
 	float:left;
 	padding-top: 10px;
@@ -337,6 +380,15 @@ div#derecha fieldset{
 	-webkit-border-radius: 12px 7px 7px 7px;
 }
 
+div#derecha input[type="submit"]{
+	text-decoration: none;
+    font-weight: 60;
+    color: #000000;
+    background-color: #BDBCC3;
+    border-radius: 4px;
+    border: 2px solid #0016b0;
+}
+
 div#contenido {
 	float: left;
 	width: 60%;
@@ -373,17 +425,8 @@ div#contenido div#lista p#titulo{
 	font-weight:bold;
 }
 
-div#contenido div#ultimolista p#titulo{
-	font-size:30px;
-	font-weight:bold;
-}
-
-div#contenido div#ultimolista{
-	font-size:20px;
-}
-
 div#contenido div#lista div#info{
-	width:80%;
+	width:50%;
 	margin-left: 3%;
 }
 
@@ -401,13 +444,33 @@ div#contenido div#lista div#botonAmigos{
 	width:20%;
 }
 
+div#contenido div#lista div#foto{
+	width:30%;
+}
+
+div#contenido div#lista div#foto img{
+	width:90%;
+	height:120px;
+	margin-left:-5%;
+	margin-top:4%;
+}
+
+div#contenido div#ultimolista p#titulo{
+	font-size:30px;
+	font-weight:bold;
+}
+
+div#contenido div#ultimolista{
+	font-size:20px;
+}
+
 div#contenido div#ultimolista{
 	display: flex;
 	align-items: center;
 }
 
 div#contenido div#ultimolista div#info{
-	width:80%;
+	width:50%;
 	margin-left: 3%;
 }
 
@@ -422,6 +485,18 @@ div#contenido div#ultimolista div#botonAmigos{
 	flex-direction: column;
 	text-align:center;
 	margin-top:3%;
+	width:20%;
+}
+
+div#contenido div#ultimolista div#foto{
+	width:30%;
+}
+
+div#contenido div#ultimolista div#foto img{
+	width:90%;
+	height:120px;
+	margin-left:-5%;
+	margin-top:4%;
 }
 
 div#contenido div#nombre {
@@ -475,6 +550,7 @@ div#contenido div#ExperienciaConcreta div#nuevoComentario{
 	width:50%;
 	margin-left:25%;
 	text-align:left;
+	margin-bottom:6%;
 }
 
 div#contenido div#ExperienciaConcreta div#nuevoComentario input#crearComentario{
@@ -485,9 +561,15 @@ div#contenido div#ExperienciaConcreta div#boton{
 	float:right;
 	margin-top:-6%;
 	margin-right:2%;
+	padding-bottom:5%;
 }
 div#contenido div#ExperienciaConcreta div#boton input{
 	width:22%;
+}
+
+div#ExperienciaConcreta img{
+	width:50%;
+	height:50%;
 }
 
 div#contenido div#buscador{
@@ -544,9 +626,27 @@ div#contenido div#rankingAmi div#ranking div#nick{
 	width:20%;
 }
 
-div#contenido img{
+div#ViajeConcreto img{
 	width:50%;
 	height:50%;
+}
+
+div#ActividadConcreta img{
+	width:50%;
+	height:50%;
+}
+
+div#contenido input[type="submit"]{
+	text-decoration: none;
+    font-weight: 60;
+    color: #000000;
+    background-color: #0EA5DA;
+    border-radius: 4px;
+    border: 2px solid #0016b0;
+}
+
+div#contenido div#crearDescuento{
+	margin-left:5%;
 }
 
 div#pie {

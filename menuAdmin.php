@@ -2,40 +2,35 @@
 	var URLactual = window.location;
 	var stringUrl= String(URLactual);
 	var url = stringUrl.split("/");
-	if(url[url.length-1]=="vistaCrearActividad.php"){
+	if(url[url.length-1]=="vistaCrearDescuento.php"){
 		$(document).ready(function() {
-			$("#menuCrearActividad").css({'background-color':'#B829BF'});
+			$("#menuCrearDescuento").css({'background-color':'#D6CC07'});
 		});
 	}
-	else if(url[url.length-1]=="vistaCrearViaje.php"){
+	else if(url[url.length-1]=="vistaDescuentos.php"){
 		$(document).ready(function() {
-			$("#menuCrearViaje").css({'background-color':'#B829BF'});
+			$("#menuGestionarDescuentos").css({'background-color':'#D6CC07'});
 		});
 	}
-	else if(url[url.length-1]=="vistaCrearCombo.php"){
+	else if(url[url.length-1]=="vistaUsuarios.php"){
 		$(document).ready(function() {
-			$("#menuCrearCombo").css({'background-color':'#B829BF'});
-		});
-	}
-	else if(url[url.length-1]=="vistaHistorial.php"){
-		$(document).ready(function() {
-			$("#menuHistorialEmp").css({'background-color':'#B829BF'});
+			$("#menuGestionarUsuarios").css({'background-color':'#D6CC07'});
 		});
 	}
 </script>
-<div id="menuempresa">
+<div id="menuadmin">
 	<a href="vistaCrearDescuento.php">
 		<span class="apartado" id="menuCrearDescuento">
 			Crear Descuento
 		</span>
 	</a>	
 	<a href="vistaDescuentos.php">
-		<span class="apartado" id="menuGestionarDescuentos">
+		<span class="apartado2" id="menuGestionarDescuentos">
 			Gestionar Descuentos
 		</span>
 	</a>
 	<a href="vistaUsuarios.php">
-		<span class="apartado" id="menuGestionarUsuarios">
+		<span class="ultimo" id="menuGestionarUsuarios">
 			Gestionar Usuarios
 		</span>
 	</a>

@@ -20,6 +20,8 @@
 						echo '<p>Nombre: '.$usuario->nombre().'</p>';
 						echo '<p>Puntos: '.$usuario->puntos().'</p>';
 					echo '</div>';
+					echo '<div id="foto">';
+					echo '</div>';
 					echo '<form method="post" action="VerPublicaciones.php?nick='.$usuario->nick().'">';
 						echo '<div id="boton">';
 						echo '<input type="submit" value="Ver experiencias">';

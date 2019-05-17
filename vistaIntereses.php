@@ -52,6 +52,8 @@
 					echo '<p>De '.$viajes[$i]["FECHAINI"].' a '.$viajes[$i]["FECHAFIN"]. '<p>';
 					echo '<p>Precio: '.$viajes[$i]["PRECIO"].' €</p>';
 					echo '</div>';
+					echo '<div id="foto">';
+					echo '</div>';
 					echo '<form method="post" action="viaje.php?id='.$viajes[$i]['ID'].'">';
 					echo '<div id="boton">';
 					echo '<input type="submit" value="Ver mas">';
@@ -76,6 +78,8 @@
 					echo '<p id="titulo">'.$actividades[$i]["TITULO"].'</p>';
 					echo '<p>'.$actividades[$i]["DESCB"].'<p>';
 					echo '<p>Precio: '.$actividades[$i]["PRECIO"].' €</p>';
+					echo '</div>';
+					echo '<div id="foto">';
 					echo '</div>';
 					echo '<form method="post" action="actividad.php?id='.$actividades[$i]['ID'].'">';
 					echo '<div id="boton">';
@@ -107,6 +111,8 @@
 						echo "<li><p>".$actividadesCombo[$j]['TITULO'].": ".$actividadesCombo[$j]['DESCB']."</p></li>";
 					}
 					echo '<p>Precio: '.$combos[$i]["PRECIO"].' €</p>';
+					echo '</div>';
+					echo '<div id="foto">';
 					echo '</div>';
 					echo '<form method="post" action="combo.php?id='.$combos[$i]['ID'].'">';
 					echo '<div id="boton">';

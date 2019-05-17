@@ -18,9 +18,11 @@
 			echo '<p id="titulo">'.$experiencia["TITULO"].'</p>';
 			echo '<p>'.$experiencia["DESCB"].'<p>';
 			echo '</div>';
+			echo '<div id="foto">';
 			if ($idFoto != NULL){
 				imagenBD::cargaImagen($idFoto);
 			}
+			echo '</div>';
 			echo '<form method="post" action="experiencia.php?id='.$valor.'">';						
 			echo '<div id="boton">';
 			echo '<input type="submit" value="Ver más">';
