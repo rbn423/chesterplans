@@ -21,3 +21,13 @@ Las funcionalidades implementadas en esta entrega son:
   * Ver los amigos que tienes. Al pinchar sobre estos ves todas las experiencias que han compartido.
   * Un ranking de puntos en el que solo salen los amigos y el propio usuario.
 - Vista historial en el usuario empresa que permite ver el contenido creado por ese usuario.
+- Vista de admin, que permite:
+  * Ver todos los usuarios registrados en la pagina y eliminarlos junto con todo el contenido creado por estos.
+  * Crear descuentos
+  * Eliminar los decuentos creados
+- Se pueden ver fotos en las vistas generales de los contenidos.
+- Comprobaciones con javascript en los formularios.
+- Ahora se pueden ver los puntos que tiene cada experiencia y quien la ha creado.
+- El mayor descuento aplicable al tipo de articulo a comprar se aplica al precio de este.
+- Se restan puntos al usuario al canjear descuentos.
+
