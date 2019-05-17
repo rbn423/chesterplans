@@ -4,6 +4,7 @@
 	require_once("includes/BD/ComprasBD.php");
 	require_once("includes/BD/InteresesBD.php");
 	require_once("includes/BD/ImagenBD.php");
+	require_once("includes/BD/DescuentoBD.php");
 	
 	$id = $_GET["id"];
 	if (isset($_POST["comprar"]))
@@ -19,6 +20,16 @@
 	$foto = ViajeBD::buscarFoto($id);
 
 	function mostrarViaje($viaje, $comentarios,$foto,$id,$comprado,$interesado){
+		$descuentos = DescuentoBD::buscarDescuentosUsuario($_SESSION["nick"]);
+		$nDescuentos = count($descuentos);
+		$mayorDescuento["porcentaje"] = 0;
+		for ($i = 0 ; $i < $nDescuentos;$i++){
+			if($descuentos[$i]["tipo"] == "todos" || $descuentos[$i]["tipo"] == "viaje"){
+				if ($descuentos[$i]["porcentaje"] > $mayorDescuento["porcentaje"]){
+					$mayorDescuento = $descuentos[$i];
+				}
+			} 
+		}
 		if ($comprado == "Comprar"){
 			echo "<div id='comprado'";
 			echo "<p>Acabas de comprar este viaje.</p>";
@@ -48,7 +59,13 @@
 
 		echo '<p> Creador del viaje: '.$viaje["CREADOR"].'<p>';
 		echo '<p> Fecha de inicio: '.$viaje["FECHAINI"].'    Fecha de fin: '.$viaje["FECHAFIN"].'</p>';
-		echo '<p> Precio: '.$viaje["PRECIO"].' €</p>';
+		if ($mayorDescuento["porcentaje"] > 0){
+			$nuevoPrecio = $viaje["PRECIO"] - ($viaje["PRECIO"] * $mayorDescuento["porcentaje"] / 100);
+			echo '<p> Precio Anterior: <strike>'.$viaje["PRECIO"].' €</strike> </p>';
+			echo '<p> Nuevo precio: '.$nuevoPrecio.' € aplicando el descuento "'.$mayorDescuento["nombre"].'"</p>';
+		}
+		else
+			echo '<p> Precio: '.$viaje["PRECIO"].' €</p>';
 
 		if (isset($_SESSION["tipo"]) && $_SESSION["tipo"] == "basico"){
 			if(isset($_SESSION["login"])){

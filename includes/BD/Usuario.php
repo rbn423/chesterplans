@@ -37,6 +37,15 @@ class Usuario
         return false;
     }
 
+     public static function restaPuntos($nick,$puntos){
+        $app = Aplicacion::getSingleton();
+        $conn = $app->conexionBd();
+        $nick=mysqli_real_escape_string($conn,$nick);
+        $puntos=mysqli_real_escape_string($conn,$puntos);
+        $query = "UPDATE usuario SET PUNTOS = puntos-'$puntos' WHERE nick = '$nick'";
+        $conn->query($query);
+     }
+
      public static function buscadorUsuario($busqueda)
     {
         $app = Aplicacion::getSingleton();

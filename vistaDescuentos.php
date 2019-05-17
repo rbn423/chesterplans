@@ -36,7 +36,7 @@
 					else{
 						$puntos = Usuario::buscaPuntos($_SESSION["nick"]);
 						if ($puntos >= $descuentos[$i]["puntos"]){
-							echo '<form method="post" action="AdquirirDescuento.php?id='.$descuentos[$i]["id"].'">';
+							echo '<form method="post" action="AdquirirDescuento.php?id='.$descuentos[$i]["id"].'&puntos='.$descuentos[$i]["puntos"].'">';
 							echo '<div id="boton">';
 							echo '<input type="submit" value="Adquirir descuento">';
 							echo '</div>';
