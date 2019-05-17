@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once("includes/config.php");
 	require_once("includes/BD/viajeBD.php");
 	require_once("includes/BD/actividadBD.php");
@@ -43,7 +43,8 @@
 					echo '</select></p>';
 					echo "<h2>Precio:</h2>";
 					echo "<p>Introduzca el precio que tendrá su combo: ";
-					echo'<p><textarea rows="1" cols="5" name="precio"></textarea>€</p>';
+					echo'<p><textarea rows="1" cols="5" name="precio" id="price"/></textarea>';
+					echo'<img src="imagenes/no.png" id="noprecio"> <img src="imagenes/ok.png" id="siprecio"></p>';
 					echo'<p><input type="submit" value="crear combo"/></p>';
 					echo'</div>';
 					echo'</form>';
@@ -64,6 +65,31 @@
 ?>
 <html>
 	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script>
+			
+			window.onload = function(){
+				$("#noprecio").hide();
+				$("#siprecio").hide();
+			};
+				
+			function precioValido(data, status){
+				
+				if(data == "mal"){
+					$("#noprecio").show();
+					$("#siprecio").hide();
+				}
+				else if (data == "bien"){
+					$("#noprecio").hide();
+					$("#siprecio").show();
+				}
+			}			
+			
+			$(this).change(function(){
+				var url="comprobarPrecio.php?precio="+ $("#price").val();
+				$.get(url,precioValido);
+			});
+		</script>
 		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
 		<title> Crear Combo </title>
 	</head>

@@ -36,7 +36,7 @@
 					echo "Has seleccionado actividades repetidas, por lo que no se ha podido crear el combo.";
 				}
 				else{
-					if (is_numeric($precio)){
+					if (is_numeric($precio) && $precio > 0){
 						$f=getdate()[0];
 						$id=$nick.$f;
 						$tituloViaje = viajeBD::buscarNombreViaje($viaje);
@@ -53,7 +53,7 @@
 						echo "Tu combo ha sido creado correctamente.";
 					}
 					else{
-						echo "El precio no era numérico.";
+						echo "El precio no es válido.";
 					}
 				}
 			}
