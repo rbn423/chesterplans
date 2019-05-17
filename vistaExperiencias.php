@@ -23,8 +23,9 @@
 				imagenBD::cargaImagen($idFoto);
 			}
 			echo '</div>';
-			echo '<form method="post" action="experiencia.php?id='.$valor.'">';						
+			echo '<form method="post" action="experiencia.php?id='.$valor.'">';
 			echo '<div id="boton">';
+			echo "<p>".$experiencia["likes"]." Puntos</p>";
 			echo '<input type="submit" value="Ver más">';
 			echo '</div>';
 			echo '</form>';

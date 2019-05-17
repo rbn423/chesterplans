@@ -32,6 +32,7 @@
 				echo '</div>';
 				echo '<form method="post" action="experienciaBasico.php?id='.$valor.'">';						
 				echo '<div id="boton">';
+				echo "<p>".$experiencia["likes"]." Puntos</p>";
 				echo '<input type="submit" value="Ver mas">';
 				echo '</div>';
 				echo '</form>';
