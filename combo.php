@@ -6,6 +6,7 @@
 	require_once("includes/BD/ImagenBD.php");
 	require_once("includes/BD/ViajeBD.php");
 	require_once("includes/BD/ActividadBD.php");
+	require_once("includes/BD/DescuentoBD.php");
 
 
 	$id=$_GET["id"];
@@ -22,6 +23,16 @@
 	$actividades = $combo["ACTIVIDADES"];
 
 	function mostrarCombo($combo, $viaje, $actividades, $id,$comprado,$interesado){
+		$descuentos = DescuentoBD::buscarDescuentosUsuario($_SESSION["nick"]);
+		$nDescuentos = count($descuentos);
+		$mayorDescuento["porcentaje"] = 0;
+		for ($i = 0 ; $i < $nDescuentos;$i++){
+			if($descuentos[$i]["tipo"] == "todos" || $descuentos[$i]["tipo"] == "combo"){
+				if ($descuentos[$i]["porcentaje"] > $mayorDescuento["porcentaje"]){
+					$mayorDescuento = $descuentos[$i];
+				}
+			} 
+		}
 		if ($comprado == "comprar"){
 			echo "<div id='comprado'";
 			echo "<p>Acabas de comprar este combo.</p>";
@@ -63,7 +74,13 @@
 				imagenBD::cargaImagen($idFotoActividad);
 			}
 		}
-		echo "<h2>Precio: ".$combo['PRECIO']." €</h2>";
+		if ($mayorDescuento["porcentaje"] > 0){
+			$nuevoPrecio = $combo["PRECIO"] - ($combo["PRECIO"] * $mayorDescuento["porcentaje"] / 100);
+			echo '<p> Precio Anterior: <strike>'.$combo["PRECIO"].' €</strike> </p>';
+			echo '<p> Nuevo precio: '.$nuevoPrecio.' € aplicando el descuento "'.$mayorDescuento["nombre"].'"</p>';
+		}
+		else
+			echo "<h2>Precio: ".$combo['PRECIO']." €</h2>";
 		if(isset($_SESSION["login"])){
 			$compras = ComprasBD::compruebaCompra($_SESSION["nick"], $id);
 			$intereses = InteresesBD::compruebaInteres($_SESSION["nick"], $id);

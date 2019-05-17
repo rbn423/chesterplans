@@ -30,14 +30,14 @@ class DescuentoBD {
 		$nBusquedas = count($busqueda);
 		$resultado = array();
 		for ($i = 0; $i < $nBusquedas; $i++){
-			$query = "SELECT * FROM descuentos WHERE id = '".$busqueda[0][0]."'";
+			$query = "SELECT * FROM descuentos WHERE id = '".$busqueda[$i][0]."'";
 			$descuentos = $conn->query($query);
 			$descuentos = $descuentos->fetch_all();
-			$resultado[$i]["id"] = $descuentos[$i][0];
-			$resultado[$i]["nombre"] = $descuentos[$i][1];
-			$resultado[$i]["porcentaje"] = $descuentos[$i][2];
-			$resultado[$i]["tipo"] = $descuentos[$i][3];
-			$resultado[$i]["puntos"] = $descuentos[$i][4];
+			$resultado[$i]["id"] = $descuentos[0][0];
+			$resultado[$i]["nombre"] = $descuentos[0][1];
+			$resultado[$i]["porcentaje"] = $descuentos[0][2];
+			$resultado[$i]["tipo"] = $descuentos[0][3];
+			$resultado[$i]["puntos"] = $descuentos[0][4];
 		}
 		return $resultado;
 	}
