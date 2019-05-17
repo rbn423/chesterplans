@@ -1,7 +1,8 @@
 <?php
 	require_once("includes/config.php");
 	require_once("includes/BD/ActividadBD.php");
-	
+	require_once("includes/BD/ImagenBD.php");
+
 	function mostrarActividades(){
 		$busquedas=ActividadBD::ListaActividades();
 		$nactividades=count($busquedas);
@@ -12,6 +13,7 @@
 				echo '<div id="ultimolista">';
 			$valor = $busquedas[$i][0];
 			$actividad = ActividadBD::buscarActividad($valor);
+			$idFoto = ActividadBD::buscarFoto($valor);
 			
 			echo '<div id="info">';
 			echo '<p id="titulo">'.$actividad["TITULO"].'</p>';
@@ -20,6 +22,9 @@
 			echo '<p>Precio: '.$actividad["PRECIO"].' €</p>';
 			echo '</div>';
 			echo '<div id="foto">';
+			if ($idFoto != NULL){
+				imagenBD::cargaImagen($idFoto);
+			}
 			echo '</div>';
 			echo '<form method="post" action="actividad.php?id='.$valor.'">';
 			echo '<div id="boton">';

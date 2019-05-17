@@ -4,6 +4,7 @@
 	require_once("includes/BD/ViajeBD.php");
 	require_once("includes/BD/ActividadBD.php");
 	require_once("includes/BD/ComboBD.php");
+	require_once("includes/BD/ImagenBD.php");
 	
 	$nick = $_SESSION["nick"];
 
@@ -40,6 +41,7 @@
 				echo '<p>Viajes</p>';
 				echo '</div>';
 				for($i=0; $i<$nViajes; $i++){
+					$idFoto = ViajeBD::buscarFoto($viajes[$i]['ID']);
 					if($i!=$nViajes-1){
 					echo '<div id="lista">';
 					}
@@ -53,6 +55,9 @@
 					echo '<p>Precio: '.$viajes[$i]["PRECIO"].' €</p>';
 					echo '</div>';
 					echo '<div id="foto">';
+					if ($idFoto != NULL){
+						imagenBD::cargaImagen($idFoto);
+					}
 					echo '</div>';
 					echo '<form method="post" action="viaje.php?id='.$viajes[$i]['ID'].'">';
 					echo '<div id="boton">';
@@ -68,6 +73,7 @@
 				echo '<p>Actividades</p>';
 				echo '</div>';
 				for($i=0; $i<$nActividades; $i++){
+					$idFoto = ActividadBD::buscarFoto($actividades[$i]['ID']);
 					if($i!=$nActividades-1){
 					echo '<div id="lista">';
 					}
@@ -80,6 +86,9 @@
 					echo '<p>Precio: '.$actividades[$i]["PRECIO"].' €</p>';
 					echo '</div>';
 					echo '<div id="foto">';
+					if ($idFoto != NULL){
+						imagenBD::cargaImagen($idFoto);
+					}
 					echo '</div>';
 					echo '<form method="post" action="actividad.php?id='.$actividades[$i]['ID'].'">';
 					echo '<div id="boton">';
@@ -96,6 +105,7 @@
 				echo '</div>';
 				for($i=0; $i<$nCombos; $i++){
 					$viajeCombo = $combos[$i]["VIAJE"];
+					$idFotoViaje = ViajeBD::buscarFoto($viajeCombo["ID"]);
 					$actividadesCombo = $combos[$i]["ACTIVIDADES"];
 					$nActividadesCombo = count($actividadesCombo);
 					if($i!=$nCombos-1){
@@ -108,11 +118,20 @@
 					echo '<p id="titulo">'.$viajeCombo['TITULO'].': '.$viajeCombo["DESCB"].'</p>';
 					echo "<ul>";
 					for($j=0;$j<$nActividadesCombo;$j++){
+						$idFotoActividad[$j] = ActividadBD::buscarFoto($actividadesCombo[$j]["ID"]);
 						echo "<li><p>".$actividadesCombo[$j]['TITULO'].": ".$actividadesCombo[$j]['DESCB']."</p></li>";
 					}
 					echo '<p>Precio: '.$combos[$i]["PRECIO"].' €</p>';
 					echo '</div>';
 					echo '<div id="foto">';
+					if ($idFotoViaje != NULL){
+						imagenBD::cargaImagen($idFotoViaje);
+					}
+					for ($j = 0; $j < $nActividadesCombo;$j++){
+						if ($idFotoActividad[$j] != NULL){
+							imagenBD::cargaImagen($idFotoActividad[$j]);
+						}
+					}
 					echo '</div>';
 					echo '<form method="post" action="combo.php?id='.$combos[$i]['ID'].'">';
 					echo '<div id="boton">';

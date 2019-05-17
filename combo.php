@@ -3,6 +3,10 @@
 	require_once("includes/BD/ComboBD.php");
 	require_once("includes/BD/ComprasBD.php");
 	require_once("includes/BD/InteresesBD.php");
+	require_once("includes/BD/ImagenBD.php");
+	require_once("includes/BD/ViajeBD.php");
+	require_once("includes/BD/ActividadBD.php");
+
 
 	$id=$_GET["id"];
 	if (isset($_POST["comprar"]))
@@ -37,19 +41,27 @@
 			echo "</div>";
 			InteresesBD::eliminaInteres($_SESSION["nick"],$id);
 		}
+		$idFotoViaje = ViajeBD::buscarFoto($viaje["ID"]);
 		echo "<h1>VIAJE</h1>";
 		echo '<h2>'.$viaje["TITULO"].'</h2>';
 		echo '<h3>'.$viaje["DESCB"].'</h3>';
 		echo '<p>'.$viaje["DESCG"].'</p>';
+		if ($idFotoViaje != NULL){
+			imagenBD::cargaImagen($idFotoViaje);
+		}
 		echo '<p> Fecha de inicio: '.$viaje["FECHAINI"].' Fecha de fin: '.$viaje["FECHAFIN"].'</p>';
 		echo "<h1>ACTIVIDADES</h1>";
 		$tam = count($actividades);
 		for ($i=0;$i<$tam;$i++){
+			$idFotoActividad = ActividadBD::buscarFoto($actividades[$i]["ID"]);
 			echo "<h3>".($i+1).". ".$actividades[$i]['TITULO']."</h3>";
 			echo "<h4>".$actividades[$i]["DESCB"]."</h4>";
 			echo "<p>".$actividades[$i]["DESCG"]."</p>";
 			echo "<p>Creador: ".$actividades[$i]["CREADOR"]."</p>";
 			echo "<p>Fecha: ".$actividades[$i]["FECHA"]."</p>";
+			if ($idFotoActividad != NULL){
+				imagenBD::cargaImagen($idFotoActividad);
+			}
 		}
 		echo "<h2>Precio: ".$combo['PRECIO']." €</h2>";
 		if(isset($_SESSION["login"])){

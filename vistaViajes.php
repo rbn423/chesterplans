@@ -1,6 +1,7 @@
 <?php
 	require_once("includes/config.php");
 	require_once("includes/BD/ViajeBD.php");
+	require_once("includes/BD/ImagenBD.php");
 
 	function mostrarViajes(){
 		
@@ -14,6 +15,7 @@
 				echo '<div id="ultimolista">';
 			$valor = $busquedas[$i][0];
 			$viaje = ViajeBD::buscarViaje($valor);
+			$idFoto = ViajeBD::buscarFoto($valor);
 			echo '<div id="info">';
 			echo '<p id="titulo">'.$viaje["TITULO"].'</p>';
 			echo '<p>'.$viaje["DESCB"].'<p>';
@@ -21,6 +23,9 @@
 			echo '<p>Precio: '.$viaje["PRECIO"].' €</p>';
 			echo '</div>';
 			echo '<div id="foto">';
+			if ($idFoto != NULL){
+				imagenBD::cargaImagen($idFoto);
+			}
 			echo '</div>';
 			echo '<form method="post" action="viaje.php?id='.$valor.'">';
 			echo '<div id="boton">';

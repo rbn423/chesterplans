@@ -1,6 +1,7 @@
 <?php
 	require_once("includes/config.php");
 	require_once("includes/BD/ExperienciaBD.php");
+	require_once("includes/BD/ImagenBD.php");
 
 	$nick = $_GET["nick"];
 
@@ -18,11 +19,15 @@
 					echo '<div id="ultimolista">';
 				$valor = $experiencias[$i][0];
 				$experiencia = ExperienciaBD::buscarExperiencia($valor);
+				$idFoto = ExperienciaBD::buscarFoto($valor);
 				echo '<div id="info">';
 				echo '<h2>'.$experiencia["TITULO"].'</h2>';
 				echo '<p>'.$experiencia["DESCB"].'<p>';
 				echo '</div>';
 				echo '<div id="foto">';
+				if ($idFoto != NULL){
+					imagenBD::cargaImagen($idFoto);
+				}
 				echo '</div>';
 				echo '<form method="post" action="experienciaBasico.php?id='.$valor.'">';						
 				echo '<div id="boton">';

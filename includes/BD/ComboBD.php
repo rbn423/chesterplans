@@ -99,7 +99,7 @@
 				$nactividades=count($idActividades);
 				$actividades = array();
 				for($j=0;$j<$nactividades;$j++){
-					$sql= "SELECT titulo, descb FROM actividad WHERE id = '".$idActividades[$j][0]."'";
+					$sql= "SELECT titulo, descb, id FROM actividad WHERE id = '".$idActividades[$j][0]."'";
 					$actividad = $conn->query($sql);
 					$actividad = $actividad->fetch_assoc();
 					$actividades[$j] = $actividad ;
