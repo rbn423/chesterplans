@@ -17,6 +17,7 @@
 			imagenBD::cargaImagen($idFoto);
 		}
 		echo '<p> Autor de la experiencia '.$experiencia["CREADOR"].'<p>';
+		echo "<p>".$experiencia["likes"]." Puntos</p>";
 		echo '</div>';
 		if (isset($_SESSION["login"]) && $_SESSION["tipo"] == "basico"){
 			$resultado=ExperienciaBD::tieneMegusta($_SESSION['nick'], $id);
