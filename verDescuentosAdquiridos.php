@@ -1,13 +1,12 @@
 <?php
 	require_once("includes/config.php");
 	require_once("includes/BD/DescuentoBD.php");
-	require_once("includes/BD/Usuario.php");
 	
 	function mostrarDescuentos(){
-		$descuentos=DescuentoBD::buscarDescuentos();
+		$descuentos=DescuentoBD::buscarDescuentosUsuario($_SESSION["nick"]);
 		$nDescuentos=count($descuentos);
 		if ($nDescuentos == 0)
-			echo "Todavia no hay ningún descuento creado.";
+			echo "Todavia no has adquirido ningún descuento.";
 		else{
 			for ($i=0;$i<$nDescuentos;$i++){
 				if($i!=$nDescuentos-1)
@@ -23,34 +22,6 @@
 					echo "los productos del tipo ".$descuentos[$i]["tipo"].".</p>";
 				echo "<p>Puntos necesarios: ".$descuentos[$i]["puntos"]." puntos.</p>";
 				echo '</div>';
-				if($_SESSION["tipo"] == "admin"){
-					echo '<form method="post" action="eliminarDescuento.php?id='.$descuentos[$i]["id"].'">';
-					echo '<div id="boton">';
-					echo '<input type="submit" value="Eliminar descuento">';
-					echo '</div>';
-					echo '</form>';
-				}
-				elseif($_SESSION["tipo"] == "basico"){
-					if (DescuentoBD::compruebaDescuento($descuentos[$i]["id"],$_SESSION["nick"]))
-						echo "Descuento adquirido";
-					else{
-						$puntos = Usuario::buscaPuntos($_SESSION["nick"]);
-						if ($puntos >= $descuentos[$i]["puntos"]){
-							echo '<form method="post" action="AdquirirDescuento.php?id='.$descuentos[$i]["id"].'">';
-							echo '<div id="boton">';
-							echo '<input type="submit" value="Adquirir descuento">';
-							echo '</div>';
-							echo '</form>';
-						}
-						else{
-							echo '<form method="post" action="">';
-							echo '<div id="boton">';
-							echo '<input type="submit" value="Puntos insuficientes">';
-							echo '</div>';
-							echo '</form>';
-						}
-					}
-				}
 				echo '</div>';
 			}
 		}

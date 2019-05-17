@@ -48,6 +48,17 @@ class Usuario
         return $rs;
     }
 
+      public static function buscaPuntos($nick)
+    {
+        $app = Aplicacion::getSingleton();
+        $conn = $app->conexionBd();
+        $nick=mysqli_real_escape_string($conn,$nick);
+        $query = "SELECT puntos FROM usuario WHERE nick = '$nick'";
+        $rs = $conn->query($query);
+        $rs = $rs->fetch_all();
+        return $rs[0][0];
+    }
+
     public static function eliminaUsuario($id)
     {
         $app = Aplicacion::getSingleton();
