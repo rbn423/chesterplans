@@ -30,7 +30,7 @@
 			}
 			echo '<p>Precio: '.$precio.' €</p>';
 			echo '</div>';
-			echo '<div id="foto">';
+			echo '<div id="combo">';
 			if ($idFotoViaje != NULL){
 				imagenBD::cargaImagen($idFotoViaje);
 			}

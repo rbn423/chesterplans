@@ -47,24 +47,38 @@
 			InteresesBD::insertaInteres($_SESSION["nick"],"combo",$id);
 		}
 		elseif ($interesado == "Ya no me interesa") {
-			echo "<div id='interesado'";
+			echo "<div id='nointeresado'";
 			echo "<p>Acabas de eliminar este combo de tus intereses.</p>";
 			echo "</div>";
 			InteresesBD::eliminaInteres($_SESSION["nick"],$id);
 		}
 		$idFotoViaje = ViajeBD::buscarFoto($viaje["ID"]);
-		echo "<h1>VIAJE</h1>";
-		echo '<h2>'.$viaje["TITULO"].'</h2>';
-		echo '<h3>'.$viaje["DESCB"].'</h3>';
+		
+		echo '<p id="nombre">VIAJE</p>';
+		echo '<div id="viajeCombo">';
+		echo '<p id="tituloCon">'.$viaje["TITULO"].'</p>';
+		echo '<p>'.$viaje["DESCB"].'</p>';
 		echo '<p>'.$viaje["DESCG"].'</p>';
 		if ($idFotoViaje != NULL){
 			imagenBD::cargaImagen($idFotoViaje);
 		}
 		echo '<p> Fecha de inicio: '.$viaje["FECHAINI"].' Fecha de fin: '.$viaje["FECHAFIN"].'</p>';
-		echo "<h1>ACTIVIDADES</h1>";
+		echo '</div>';
+		echo '<p id="nombre">ACTIVIDADES</p>';
+		echo '<div id="actividadesCombo">';
 		$tam = count($actividades);
 		for ($i=0;$i<$tam;$i++){
 			$idFotoActividad = ActividadBD::buscarFoto($actividades[$i]["ID"]);
+			if($i==0){
+				echo '<div id="fila">';
+				echo '<div id="act1">';
+			}
+			else if($i==1)
+				echo '<div id="act2">';
+			else{
+				echo '</div>';
+				echo '<div id="act3">';
+			}
 			echo "<h3>".($i+1).". ".$actividades[$i]['TITULO']."</h3>";
 			echo "<h4>".$actividades[$i]["DESCB"]."</h4>";
 			echo "<p>".$actividades[$i]["DESCG"]."</p>";
@@ -73,7 +87,11 @@
 			if ($idFotoActividad != NULL){
 				imagenBD::cargaImagen($idFotoActividad);
 			}
+			echo '</div>';
 		}
+		if($tam==1 || $tam==2)
+			echo "</div>";
+		echo '</div>';
 		if ($mayorDescuento["porcentaje"] > 0){
 			$nuevoPrecio = $combo["PRECIO"] - ($combo["PRECIO"] * $mayorDescuento["porcentaje"] / 100);
 			echo '<p> Precio Anterior: <strike>'.$combo["PRECIO"].' €</strike> </p>';
@@ -81,15 +99,17 @@
 		}
 		else
 			echo "<h2>Precio: ".$combo['PRECIO']." €</h2>";
+		
 		if(isset($_SESSION["login"])){
 			$compras = ComprasBD::compruebaCompra($_SESSION["nick"], $id);
 			$intereses = InteresesBD::compruebaInteres($_SESSION["nick"], $id);
+			echo '<div id="botoncesCon">';
 			if (isset($_SESSION["tipo"]) && $_SESSION["tipo"] == "basico"){
 				if (!isset($compras)){
 					echo '<div id="botonCompra">';
 					echo '<form method="post" action="combo.php?id='.$id.'">';
 					echo '<div id="boton">';
-					echo '<input type="submit" value="comprar" name="comprar">';
+					echo '<input type="submit" value="Comprar" name="comprar">';
 					echo '</div>';
 					echo '</form>';
 					echo '</div>';
@@ -114,6 +134,7 @@
 				}
 				else
 					echo "<h3>Ya has adquirido este combo.</h3>";
+				echo '</div>';
 			}
 		}
 	}

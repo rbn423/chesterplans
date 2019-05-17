@@ -44,7 +44,7 @@
 			InteresesBD::insertaInteres($_SESSION["nick"],"viaje",$id);
 		}
 		else if ($interesado == "Ya no me interesa") {
-			echo "<div id='interesado'";
+			echo "<div id='nointeresado'";
 			echo "<p>Acabas de eliminar este viaje de tus intereses.</p>";
 			echo "</div>";
 			InteresesBD::eliminaInteres($_SESSION["nick"],$id);
