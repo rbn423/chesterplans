@@ -1,6 +1,6 @@
 <?php
 	require_once("includes/config.php");
-	require_once("includes/DescuentoBD.php");
+	require_once("includes/BD/DescuentoBD.php");
 	
 	function mostrarDescuentos(){
 		$descuentos=DescuentoBD::buscarDescuentos();

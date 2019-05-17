@@ -1,6 +1,6 @@
 <?php
 	require_once("includes/config.php");
-	require_once("includes/ComboBD.php");
+	require_once("includes/BD/ComboBD.php");
 
 	function mostrarCombos(){
 		$combos = ComboBD::getListaCombos();

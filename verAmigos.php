@@ -1,7 +1,7 @@
 <?php
 	require_once("includes/config.php");
-	require_once("includes/AmigosBD.php");
-	require_once("includes/Usuario.php");
+	require_once("includes/BD/AmigosBD.php");
+	require_once("includes/BD/Usuario.php");
 
 	$nick = $_SESSION["nick"];
 

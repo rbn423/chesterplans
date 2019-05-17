@@ -1,6 +1,6 @@
 <?php
 	require("includes/config.php");
-	require_once("includes/DescuentoBD.php");
+	require_once("includes/BD/DescuentoBD.php");
 
 	$nombre=$_POST["nombre"];
 	$porcentaje=$_POST["porcentaje"];

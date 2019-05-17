@@ -1,7 +1,7 @@
 <?php 
 	require_once("config.php");
-	require_once("Usuario.php");
-	require_once("RankingBD.php");
+	require_once("BD/Usuario.php");
+	require_once("BD/RankingBD.php");
 
 	class Ranking{
 

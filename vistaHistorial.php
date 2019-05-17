@@ -1,8 +1,8 @@
 <?php
 	require_once("includes/config.php");
-	require_once("includes/ViajeBD.php");
-	require_once("includes/ComboBD.php");
-	require_once("includes/ActividadBD.php");
+	require_once("includes/BD/ViajeBD.php");
+	require_once("includes/BD/ComboBD.php");
+	require_once("includes/BD/ActividadBD.php");
 	
 	if ($_SESSION["tipo"] == "admin")
 		$nick = $_POST["nick"];

@@ -1,7 +1,7 @@
 <?php
 	require_once("includes/config.php");
-	require_once("includes/ViajeBD.php");
-	require_once("includes/ImagenBD.php");
+	require_once("includes/BD/ViajeBD.php");
+	require_once("includes/BD/ImagenBD.php");
 	$nick = $_SESSION["nick"];
 	$titulo = htmlspecialchars(trim(strip_tags($_REQUEST["titulo"])));
 	$descb = htmlspecialchars(trim(strip_tags($_REQUEST["descb"])));

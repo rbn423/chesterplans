@@ -1,7 +1,7 @@
 <?php
 	require_once("includes/config.php");
-	require_once("includes/ExperienciaBD.php");
-	require_once("includes/ImagenBD.php");
+	require_once("includes/BD/ExperienciaBD.php");
+	require_once("includes/BD/ImagenBD.php");
 	
 	function mostrarExperiencias(){
 		$busquedas=ExperienciaBD::buscarListaExperiencias();

@@ -1,14 +1,14 @@
 <?php
 	require_once("includes/config.php");
-	require_once("includes/Usuario.php");
-	require_once("includes/ExperienciaBD.php");
-	require_once("includes/AmigosBD.php");
-	require_once("includes/ActividadBD.php");
-	require_once("includes/ComboBD.php");
-	require_once("includes/ComprasBD.php");
-	require_once("includes/DescuentoBD.php");
-	require_once("includes/InteresesBD.php");
-	require_once("includes/ViajeBD.php");
+	require_once("includes/BD/Usuario.php");
+	require_once("includes/BD/ExperienciaBD.php");
+	require_once("includes/BD/AmigosBD.php");
+	require_once("includes/BD/ActividadBD.php");
+	require_once("includes/BD/ComboBD.php");
+	require_once("includes/BD/ComprasBD.php");
+	require_once("includes/BD/DescuentoBD.php");
+	require_once("includes/BD/InteresesBD.php");
+	require_once("includes/BD/ViajeBD.php");
 
 	$nick = $_POST["nick"];
 	$tipo = $_POST["tipo"];

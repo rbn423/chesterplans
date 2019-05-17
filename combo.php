@@ -1,8 +1,8 @@
 <?php
 	require_once("includes/config.php");
-	require_once("includes/ComboBD.php");
-	require_once("includes/ComprasBD.php");
-	require_once("includes/InteresesBD.php");
+	require_once("includes/BD/ComboBD.php");
+	require_once("includes/BD/ComprasBD.php");
+	require_once("includes/BD/InteresesBD.php");
 
 	$id=$_GET["id"];
 	if (isset($_POST["comprar"]))

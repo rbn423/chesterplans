@@ -1,7 +1,7 @@
 <?php
 	require_once("includes/config.php");
-	require_once("includes/viajeBD.php");
-	require_once("includes/actividadBD.php");
+	require_once("includes/BD/viajeBD.php");
+	require_once("includes/BD/actividadBD.php");
 	
 	function mostrarCrear(){
 		$viajes = viajeBD::buscarViajeCreador($_SESSION["nick"]);

@@ -1,6 +1,6 @@
 <?php
 	require_once("includes/config.php");
-	require_once("includes/ActividadBD.php");
+	require_once("includes/BD/ActividadBD.php");
 	
 	function mostrarActividades(){
 		$busquedas=ActividadBD::ListaActividades();

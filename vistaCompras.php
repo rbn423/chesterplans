@@ -1,9 +1,9 @@
 <?php
 	require_once("includes/config.php");
-	require_once("includes/ComprasBD.php");
-	require_once("includes/ViajeBD.php");
-	require_once("includes/ActividadBD.php");
-	require_once("includes/ComboBD.php");
+	require_once("includes/BD/ComprasBD.php");
+	require_once("includes/BD/ViajeBD.php");
+	require_once("includes/BD/ActividadBD.php");
+	require_once("includes/BD/ComboBD.php");
 	
 	$nick = $_SESSION["nick"];
 

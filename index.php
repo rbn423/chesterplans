@@ -1,8 +1,8 @@
 <?php
 	require_once("includes/config.php");
-	require_once("includes/ExperienciaBD.php");
-	require_once("includes/ViajeBD.php");
-	require_once("includes/ActividadBD.php");
+	require_once("includes/BD/ExperienciaBD.php");
+	require_once("includes/BD/ViajeBD.php");
+	require_once("includes/BD/ActividadBD.php");
 	
 	$conn = $app->conexionBd();
 	

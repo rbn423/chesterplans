@@ -1,6 +1,6 @@
 <?php
 	require_once("includes/config.php");
-	require_once ('includes/Usuario.php');
+	require_once ('includes/BD/Usuario.php');
 
 	$nombre = htmlspecialchars(trim(strip_tags($_REQUEST["nombre"])));
 	$contraseña = htmlspecialchars(trim(strip_tags($_REQUEST["contra"])));

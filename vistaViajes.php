@@ -1,6 +1,6 @@
 <?php
 	require_once("includes/config.php");
-	require_once("includes/ViajeBD.php");
+	require_once("includes/BD/ViajeBD.php");
 
 	function mostrarViajes(){
 		

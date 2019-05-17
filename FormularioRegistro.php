@@ -1,6 +1,6 @@
 <?php 
 	require_once("includes/Form.php");
-	require_once("includes/Usuario.php");
+	require_once("includes/BD/Usuario.php");
 
 	class FormularioRegistro extends Form{
 
