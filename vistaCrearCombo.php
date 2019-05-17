@@ -8,6 +8,7 @@
 		$actividades = actividadBD::buscarActividadCreador($_SESSION["nick"]);
 		$numViajes = count($viajes);
 		$numActividades = count($actividades);
+		echo '<div id="escribirViaje">';
 		if(isset($_SESSION["login"])){
 			if($numViajes > 0){ 
 				if ($numActividades > 0){
@@ -61,6 +62,7 @@
 			echo '<h1>Usuario sin registrar</h1>' ;
 			echo '<p>registrarte para poder compartir contenido creado por ti.</p>';			
 		}
+		echo '</div>';
 	}
 ?>
 <html>

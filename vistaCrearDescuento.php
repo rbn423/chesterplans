@@ -2,6 +2,7 @@
 	require_once("includes/config.php");
 
 	function mostrarCrear(){
+		echo '<div id="escribirViaje">';
 		echo '<form method="post" action="descuentoCreado.php">';
 			echo'<div id="escribirDescuento">'; 
 				echo'<h3>Nombre del descuento:</h3>';
@@ -20,6 +21,7 @@
 				echo'<p><input type="submit" value="Crear"/></p>';
 			echo'</div>';
 		echo'</form>';
+		echo '</div>';
 	}
 ?>
 <html>

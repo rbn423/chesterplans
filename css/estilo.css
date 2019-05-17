@@ -630,6 +630,18 @@ div#contenido div#lista div#combo img{
 	margin-top:5%;
 }
 
+div#contenido div#ultimolista div#combo{
+	width:30%;
+	align-items: center;
+}
+
+div#contenido div#ultimolista div#combo img{
+	width:90%;
+	height:80px;
+	margin-left:-5%;
+	margin-top:5%;
+}
+
 
 div#contenido div#ultimolista p#titulo{
 	font-size:30px;
