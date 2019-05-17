@@ -23,6 +23,8 @@
 					echo "los productos del tipo ".$descuentos[$i]["tipo"].".</p>";
 				echo "<p>Puntos necesarios: ".$descuentos[$i]["puntos"]." puntos.</p>";
 				echo '</div>';
+				echo '<div id="foto">';
+				echo '</div>';
 				if($_SESSION["tipo"] == "admin"){
 					echo '<form method="post" action="eliminarDescuento.php?id='.$descuentos[$i]["id"].'">';
 					echo '<div id="boton">';
@@ -31,6 +33,7 @@
 					echo '</form>';
 				}
 				elseif($_SESSION["tipo"] == "basico"){
+					echo '<div id="boton">';
 					if (DescuentoBD::compruebaDescuento($descuentos[$i]["id"],$_SESSION["nick"]))
 						echo "Descuento adquirido";
 					else{
@@ -43,13 +46,10 @@
 							echo '</form>';
 						}
 						else{
-							echo '<form method="post" action="">';
-							echo '<div id="boton">';
-							echo '<input type="submit" value="Puntos insuficientes">';
-							echo '</div>';
-							echo '</form>';
+							echo "Puntos insuficientes";
 						}
 					}
+					echo '</div>';
 				}
 				echo '</div>';
 			}

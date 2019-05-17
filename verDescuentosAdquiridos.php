@@ -10,10 +10,9 @@
 		else{
 			for ($i=0;$i<$nDescuentos;$i++){
 				if($i!=$nDescuentos-1)
-					echo '<div id="lista">';
+					echo '<div id="listaDesc">';
 				else
-					echo '<div id="ultimolista">';
-				echo '<div id="info">';
+					echo '<div id="ultimolistaDesc">';
 				echo '<p id="titulo">'.$descuentos[$i]["nombre"].'</p>';
 				echo '<p>Este descuento es del '.$descuentos[$i]["porcentaje"].'% en ';
 				if ($descuentos[$i]["tipo"] == "todos")
@@ -21,7 +20,6 @@
 				else
 					echo "los productos del tipo ".$descuentos[$i]["tipo"].".</p>";
 				echo "<p>Puntos necesarios: ".$descuentos[$i]["puntos"]." puntos.</p>";
-				echo '</div>';
 				echo '</div>';
 			}
 		}

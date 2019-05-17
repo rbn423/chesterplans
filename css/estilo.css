@@ -455,6 +455,7 @@ div#contenido div#lista div#foto img{
 	padding-top:8%;
 }
 
+
 div#contenido div#ultimolista p#titulo{
 	font-size:30px;
 	font-weight:bold;
@@ -599,7 +600,7 @@ div#contenido div#buscador{
 	float:left;
 	font-size:19px;
 	padding-left:5%;
-	width:90%;
+	width:50%;
 	height:50%;
 }
 
@@ -649,6 +650,18 @@ div#contenido div#rankingAmi div#ranking div#nick{
 	width:20%;
 }
 
+div#contenido div#descuentos{
+	font-size:20px;
+	width:50%;
+	height:50%;
+	float:left;
+	padding-left:3%;
+}
+
+div#contenido div#descuentos input{
+	margin-left:60%;
+}
+
 div#ViajeConcreto img{
 	width:50%;
 	height:50%;
@@ -671,6 +684,27 @@ div#contenido input[type="submit"]{
 
 div#contenido div#crearDescuento{
 	margin-left:5%;
+}
+
+div#contenido div#listaDesc{
+	border-bottom: black 2px solid;
+	font-size:20px;
+	text-align:center;
+}
+
+div#contenido div#listaDesc p#titulo{
+	font-size:30px;
+	font-weight:bold;
+}
+
+div#contenido div#ultimolistaDesc{
+	font-size:20px;
+	text-align:center;
+}
+
+div#contenido div#ultimolistaDesc p#titulo{
+	font-size:30px;
+	font-weight:bold;
 }
 
 div#pie {
