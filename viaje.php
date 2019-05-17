@@ -20,15 +20,18 @@
 	$foto = ViajeBD::buscarFoto($id);
 
 	function mostrarViaje($viaje, $comentarios,$foto,$id,$comprado,$interesado){
-		$descuentos = DescuentoBD::buscarDescuentosUsuario($_SESSION["nick"]);
-		$nDescuentos = count($descuentos);
 		$mayorDescuento["porcentaje"] = 0;
-		for ($i = 0 ; $i < $nDescuentos;$i++){
-			if($descuentos[$i]["tipo"] == "todos" || $descuentos[$i]["tipo"] == "viaje"){
-				if ($descuentos[$i]["porcentaje"] > $mayorDescuento["porcentaje"]){
-					$mayorDescuento = $descuentos[$i];
-				}
-			} 
+		if (isset($_SESSION["nick"])){
+			$descuentos = DescuentoBD::buscarDescuentosUsuario($_SESSION["nick"]);
+			$nDescuentos = count($descuentos);
+			
+			for ($i = 0 ; $i < $nDescuentos;$i++){
+				if($descuentos[$i]["tipo"] == "todos" || $descuentos[$i]["tipo"] == "viaje"){
+					if ($descuentos[$i]["porcentaje"] > $mayorDescuento["porcentaje"]){
+						$mayorDescuento = $descuentos[$i];
+					}
+				} 
+			}
 		}
 		if ($comprado == "Comprar"){
 			echo "<div id='comprado'";

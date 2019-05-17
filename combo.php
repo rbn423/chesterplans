@@ -23,15 +23,18 @@
 	$actividades = $combo["ACTIVIDADES"];
 
 	function mostrarCombo($combo, $viaje, $actividades, $id,$comprado,$interesado){
-		$descuentos = DescuentoBD::buscarDescuentosUsuario($_SESSION["nick"]);
-		$nDescuentos = count($descuentos);
 		$mayorDescuento["porcentaje"] = 0;
-		for ($i = 0 ; $i < $nDescuentos;$i++){
-			if($descuentos[$i]["tipo"] == "todos" || $descuentos[$i]["tipo"] == "combo"){
-				if ($descuentos[$i]["porcentaje"] > $mayorDescuento["porcentaje"]){
-					$mayorDescuento = $descuentos[$i];
-				}
-			} 
+		if (isset($_SESSION["nick"])){
+			$descuentos = DescuentoBD::buscarDescuentosUsuario($_SESSION["nick"]);
+			$nDescuentos = count($descuentos);
+			
+			for ($i = 0 ; $i < $nDescuentos;$i++){
+				if($descuentos[$i]["tipo"] == "todos" || $descuentos[$i]["tipo"] == "combo"){
+					if ($descuentos[$i]["porcentaje"] > $mayorDescuento["porcentaje"]){
+						$mayorDescuento = $descuentos[$i];
+					}
+				} 
+			}
 		}
 		if ($comprado == "comprar"){
 			echo "<div id='comprado'";
