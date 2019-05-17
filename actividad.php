@@ -33,52 +33,74 @@
 		}
 
 		if ($comprado == "Comprar"){
-			echo "<div id='comprado'";
+			echo "<div id='comprado'>";
 			echo "<p>Acabas de comprar esta actividad.</p>";
 			echo "</div>";
 			ComprasBD::insertaCompra($_SESSION["nick"],"actividad",$id);
 			InteresesBD::eliminaInteres($_SESSION["nick"], $id);
 		}
 		if ($interesado == "Me interesa"){
-			echo "<div id='interesado'";
+			echo "<div id='interesado'>";
 			echo "<p>Acabas de añadir esta actividad a tus intereses.</p>";
 			echo "</div>";
 			InteresesBD::insertaInteres($_SESSION["nick"],"actividad",$id);
 		}
 		elseif ($interesado == "Ya no me interesa") {
-			echo "<div id='interesado'";
+			echo "<div id='nointeresado'>";
 			echo "<p>Acabas de eliminar esta actividad de tus intereses.</p>";
 			echo "</div>";
 			InteresesBD::eliminaInteres($_SESSION["nick"],$id);
 		}
-
-		echo '<h1>'.$actividad["TITULO"].'</h1>';
-		echo '<p>'.$actividad["DESCB"].'<p>';
-		echo '<p>'.$actividad["DESCG"].'<p>';
+		
+		
+		echo '<p id="tituloCon">'.$actividad["TITULO"].'</p>';		
 		if ($foto != NULL){
+			echo '<div id="segundo">';
+			echo '<div id="fotoCon">';
 			echo '<p>'.$actividad["FOTO"].'<p>';
 			imagenBD::cargaImagen($foto);
+			echo '</div>';
+			echo '<div id="infoExperiencia">';
+			echo '<p>'.$actividad["DESCB"].'<p>';
+			echo '<p>'.$actividad["DESCG"].'<p>';
+			echo '<p> Creador del viaje: '.$actividad["CREADOR"].'<p>';
+			echo '<p> Fecha: '.$actividad["FECHA"].'</p>';
+			if ($mayorDescuento["porcentaje"] > 0){
+				$nuevoPrecio = $actividad["PRECIO"] - ($actividad["PRECIO"] * $mayorDescuento["porcentaje"] / 100);
+				echo '<p> Precio Anterior: <strike>'.$actividad["PRECIO"].' €</strike> </p>';
+				echo '<p> Nuevo precio: '.$nuevoPrecio.' € aplicando el descuento "'.$mayorDescuento["nombre"].'"</p>';
+			}
+			else
+				echo '<p> Precio: '.$actividad["PRECIO"].' €</p>';
+			echo '</div>';
+			echo '</div>';
 		}
-		
-		echo '<p> Creador del viaje: '.$actividad["CREADOR"].'<p>';
-		echo '<p> Fecha: '.$actividad["FECHA"].'</p>';
-		if ($mayorDescuento["porcentaje"] > 0){
-			$nuevoPrecio = $actividad["PRECIO"] - ($actividad["PRECIO"] * $mayorDescuento["porcentaje"] / 100);
-			echo '<p> Precio Anterior: <strike>'.$actividad["PRECIO"].' €</strike> </p>';
-			echo '<p> Nuevo precio: '.$nuevoPrecio.' € aplicando el descuento "'.$mayorDescuento["nombre"].'"</p>';
+		else {
+			echo '<div id="infoExperienciaSolo">';
+			echo '<p>'.$actividad["DESCB"].'<p>';
+			echo '<p>'.$actividad["DESCG"].'<p>';
+			echo '<p> Creador del viaje: '.$actividad["CREADOR"].'<p>';
+			echo '<p> Fecha: '.$actividad["FECHA"].'</p>';
+			if ($mayorDescuento["porcentaje"] > 0){
+				$nuevoPrecio = $actividad["PRECIO"] - ($actividad["PRECIO"] * $mayorDescuento["porcentaje"] / 100);
+				echo '<p> Precio Anterior: <strike>'.$actividad["PRECIO"].' €</strike> </p>';
+				echo '<p> Nuevo precio: '.$nuevoPrecio.' € aplicando el descuento "'.$mayorDescuento["nombre"].'"</p>';
+			}
+			else
+				echo '<p> Precio: '.$actividad["PRECIO"].' €</p>';
+			echo '</div>';			
 		}
-		else
-			echo '<p> Precio: '.$actividad["PRECIO"].' €</p>';
 
 		if (isset($_SESSION["tipo"]) && $_SESSION["tipo"] == "basico"){
 			if(isset($_SESSION["login"])){
 				$compras = ComprasBD::compruebaCompra($_SESSION["nick"], $id);
 				$intereses = InteresesBD::compruebaInteres($_SESSION["nick"], $id);
+				echo '<div id="botoncesCon">';
 				if (!isset($compras)){
 					echo '<div id="botonCompra">';
 					echo '<form method="post" action="actividad.php?id='.$id.'">';
 					echo '<div id="boton">';
-					echo '<input type="submit" value="Comprar" name="comprar">';
+					echo '<input type="submit" value="Comprar" name="comprar" title="Realiza la compra">';
 					echo '</div>';
 					echo '</form>';
 					echo '</div>';
@@ -86,7 +108,7 @@
 						echo '<div id="botonInteres">';
 						echo '<form method="post" action="actividad.php?id='.$id.'">';
 						echo '<div id="boton">';
-						echo '<input type="submit" value="Me interesa" name="interesa">';
+						echo '<input type="submit" value="Me interesa" name="interesa" title="Añadelo a tus intereses">';
 						echo '</div>';
 						echo '</form>';
 						echo '</div>';
@@ -95,7 +117,7 @@
 						echo '<div id="botonInteres">';
 						echo '<form method="post" action="actividad.php?id='.$id.'">';
 						echo '<div id="boton">';
-						echo '<input type="submit" value="Ya no me interesa" name="interesa">';
+						echo '<input type="submit" value="Ya no me interesa" name="interesa" title="Quitalo de tus intereses">';
 						echo '</div>';
 						echo '</form>';
 						echo '</div>';
@@ -103,6 +125,7 @@
 				}
 				else
 					echo "<h3>Ya has adquirido esta actividad.</h3>";
+				echo '</div>';
 			}
 		}
 	}

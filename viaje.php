@@ -49,28 +49,51 @@
 			echo "</div>";
 			InteresesBD::eliminaInteres($_SESSION["nick"],$id);
 		}
-		echo '<h1>'.$viaje["TITULO"].'</h1>';
-		echo '<p>'.$viaje["DESCB"].'<p>';
-		echo '<p>'.$viaje["DESCG"].'<p>';
+		
+
+		echo '<p id="tituloCon">'.$viaje["TITULO"].'</p>';		
 		if ($foto != NULL){
+			echo '<div id="segundo">';
+			echo '<div id="fotoCon">';
 			echo '<p>'.$viaje["FOTO"].'<p>';
 			imagenBD::cargaImagen($foto);
+			echo '</div>';
+			echo '<div id="infoExperiencia">';
+			echo '<p>'.$viaje["DESCB"].'<p>';
+			echo '<p>'.$viaje["DESCG"].'<p>';
+			echo '<p> Creador del viaje: '.$viaje["CREADOR"].'<p>';
+			echo '<p> Fecha de inicio: '.$viaje["FECHAINI"].'    Fecha de fin: '.$viaje["FECHAFIN"].'</p>';
+			if ($mayorDescuento["porcentaje"] > 0){
+				$nuevoPrecio = $viaje["PRECIO"] - ($viaje["PRECIO"] * $mayorDescuento["porcentaje"] / 100);
+				echo '<p> Precio Anterior: <strike>'.$viaje["PRECIO"].' €</strike> </p>';
+				echo '<p> Nuevo precio: '.$nuevoPrecio.' € aplicando el descuento "'.$mayorDescuento["nombre"].'"</p>';
+			}
+			else
+				echo '<p> Precio: '.$viaje["PRECIO"].' €</p>';
+			echo '</div>';
+			echo '</div>';
 		}
-
-		echo '<p> Creador del viaje: '.$viaje["CREADOR"].'<p>';
-		echo '<p> Fecha de inicio: '.$viaje["FECHAINI"].'    Fecha de fin: '.$viaje["FECHAFIN"].'</p>';
-		if ($mayorDescuento["porcentaje"] > 0){
-			$nuevoPrecio = $viaje["PRECIO"] - ($viaje["PRECIO"] * $mayorDescuento["porcentaje"] / 100);
-			echo '<p> Precio Anterior: <strike>'.$viaje["PRECIO"].' €</strike> </p>';
-			echo '<p> Nuevo precio: '.$nuevoPrecio.' € aplicando el descuento "'.$mayorDescuento["nombre"].'"</p>';
+		else {
+			echo '<div id="infoExperienciaSolo">';
+			echo '<p>'.$viaje["DESCB"].'<p>';
+			echo '<p>'.$viaje["DESCG"].'<p>';
+			echo '<p> Creador del viaje: '.$viaje["CREADOR"].'<p>';
+			echo '<p> Fecha de inicio: '.$viaje["FECHAINI"].'    Fecha de fin: '.$viaje["FECHAFIN"].'</p>';
+			if ($mayorDescuento["porcentaje"] > 0){
+				$nuevoPrecio = $viaje["PRECIO"] - ($viaje["PRECIO"] * $mayorDescuento["porcentaje"] / 100);
+				echo '<p> Precio Anterior: <strike>'.$viaje["PRECIO"].' €</strike> </p>';
+				echo '<p> Nuevo precio: '.$nuevoPrecio.' € aplicando el descuento "'.$mayorDescuento["nombre"].'"</p>';
+			}
+			else
+				echo '<p> Precio: '.$viaje["PRECIO"].' €</p>';
+			echo '</div>';			
 		}
-		else
-			echo '<p> Precio: '.$viaje["PRECIO"].' €</p>';
 
 		if (isset($_SESSION["tipo"]) && $_SESSION["tipo"] == "basico"){
 			if(isset($_SESSION["login"])){
 				$compras = ComprasBD::compruebaCompra($_SESSION["nick"], $id);
 				$intereses = InteresesBD::compruebaInteres($_SESSION["nick"], $id);
+				echo '<div id="botoncesCon">';
 				if (!isset($compras)){
 					echo '<div id="botonCompra">';
 					echo '<form method="post" action="viaje.php?id='.$id.'">';
@@ -100,6 +123,7 @@
 				}
 				else
 					echo "<h3>Ya has adquirido este viaje.</h3>";
+				echo '</div>';
 			}
 		}
 
