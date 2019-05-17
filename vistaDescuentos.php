@@ -22,11 +22,20 @@
 					echo "los productos del tipo ".$descuentos[$i]["tipo"].".</p>";
 				echo "<p>Puntos necesarios: ".$descuentos[$i]["puntos"]." puntos.</p>";
 				echo '</div>';
-				echo '<form method="post" action="eliminarDescuento.php?id='.$descuentos[$i]["id"].'">';						
-				echo '<div id="boton">';
-				echo '<input type="submit" value="Eliminar descuento">';
-				echo '</div>';
-				echo '</form>';
+				if($_SESSION["tipo"] == "admin"){
+					echo '<form method="post" action="eliminarDescuento.php?id='.$descuentos[$i]["id"].'">';
+					echo '<div id="boton">';
+					echo '<input type="submit" value="Eliminar descuento">';
+					echo '</div>';
+					echo '</form>';
+				}
+				elseif($_SESSION["tipo"] == "basico"){
+					echo '<form method="post" action="AdquirirDescuento.php?id='.$descuentos[$i]["id"].'">';
+					echo '<div id="boton">';
+					echo '<input type="submit" value="Adquirir descuento">';
+					echo '</div>';
+					echo '</form>';
+				}
 				echo '</div>';
 			}
 		}
@@ -47,7 +56,10 @@
 		?>
 			<div id="contenido">
 				<?php
-					require_once('menuadmin.php');
+					if ($_SESSION["tipo"] == "admin")
+						require_once('menuadmin.php');
+					elseif($_SESSION["tipo"] == "basico")
+						require_once("menubasico.php");
 					mostrarDescuentos();
 				?>
 			</div>

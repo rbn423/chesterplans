@@ -17,6 +17,7 @@
 			echo '<div id="info">';
 			echo '<p id="titulo">'.$experiencia["TITULO"].'</p>';
 			echo '<p>'.$experiencia["DESCB"].'<p>';
+			echo '<p>Creador: '.$experiencia["CREADOR"].'<p>';
 			echo '</div>';
 			echo '<div id="foto">';
 			if ($idFoto != NULL){

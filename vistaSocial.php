@@ -33,7 +33,14 @@
 			echo $ranking;
 		echo "</div>";
 		echo "<div id='descuentos'>";
-
+			echo "<p>Descuentos adquiridos:";
+			echo '<form method="post" action="verDescuentosAdquiridos.php">';
+				echo'<input type="submit" value="Ver Mis Descuentos"/></p>';
+			echo'</form>';
+			echo "<p>Adquirir descuentos:";
+				echo '<form method="post" action="vistaDescuentos.php">';
+					echo'<input type="submit" value="Conseguir Descuentos"/></p>';
+				echo'</form>';
 		echo "</div>";
 	}
 ?>
